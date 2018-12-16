@@ -30,7 +30,7 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"users,id"];
+			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"cms_users,id"];
 			$this->col[] = ["label"=>"Tasks","name"=>"id_tasks","join"=>"tasks,title"];
 			$this->col[] = ["label"=>"Date Comment","name"=>"date_comment"];
 			$this->col[] = ["label"=>"Description","name"=>"description"];
@@ -39,20 +39,19 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
+			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
 			$this->form[] = ['label'=>'Tasks','name'=>'id_tasks','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tasks,title'];
 			$this->form[] = ['label'=>'Date Comment','name'=>'date_comment','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Readed','name'=>'isNew','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Users","name"=>"id_users","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"users,id"];
-			//$this->form[] = ["label"=>"Tasks","name"=>"id_tasks","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"tasks,title"];
-			//$this->form[] = ["label"=>"Date Comment","name"=>"date_comment","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
-			//$this->form[] = ["label"=>"Description","name"=>"description","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"IsNew","name"=>"isNew","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Tasks','name'=>'id_tasks','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tasks,title'];
+			//$this->form[] = ['label'=>'Date Comment','name'=>'date_comment','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Readed','name'=>'isNew','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

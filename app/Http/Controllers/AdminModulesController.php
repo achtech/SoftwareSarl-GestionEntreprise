@@ -40,22 +40,22 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'projects,id'];
-			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,nom'];
+			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS; NEEDS WORK; DONE'];
+			$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Projects","name"=>"id_projects","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"projects,id"];
-			//$this->form[] = ["label"=>"Libelle","name"=>"libelle","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Start Date","name"=>"start_date","type"=>"date","required"=>TRUE,"validation"=>"required|date"];
-			//$this->form[] = ["label"=>"End Date","name"=>"end_date","type"=>"date","required"=>TRUE,"validation"=>"required|date"];
-			//$this->form[] = ["label"=>"Status","name"=>"status","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Progress","name"=>"progress","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'projects,nom'];
+			//$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS; NEEDS WORK; DONE'];
+			//$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

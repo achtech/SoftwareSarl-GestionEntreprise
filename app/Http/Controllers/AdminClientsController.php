@@ -10,7 +10,7 @@
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "id";
+			$this->title_field = "social_reason";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
