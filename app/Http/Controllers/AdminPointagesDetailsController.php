@@ -5,14 +5,14 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminProfessionsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminPointagesDetailsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
 			$this->title_field = "id";
 			$this->limit = "20";
-			$this->orderby = "Id,desc";
+			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
@@ -25,23 +25,32 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "professions";
+			$this->table = "pointages";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Libelle","name"=>"Libelle"];
+			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"cms_users,name"];
+			$this->col[] = ["label"=>"Date Pointage","name"=>"date_pointage"];
+			$this->col[] = ["label"=>"Time In","name"=>"time_in"];
+			$this->col[] = ["label"=>"Time Out","name"=>"time_out"];
+			$this->col[] = ["label"=>"Duree","name"=>"id","callback_php"=>'$this->getDuration($row->time_in,$row->time_out)'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Libelle','name'=>'Libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			$this->form[] = ['label'=>'Date Pointage','name'=>'date_pointage','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Time In','name'=>'time_in','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Time Out','name'=>'time_out','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Id','name'=>'Id','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Libelle','name'=>'Libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Date Pointage','name'=>'date_pointage','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Time In','name'=>'time_in','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Time Out','name'=>'time_out','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -205,6 +214,12 @@
 	        
 	    }
 
+	    public function getDuration($in,$out){
+	    	$in  = strtotime($in);
+	    	$out = strtotime($out);
+	    	$diff = $out-$in;
+	    	return date('H:i:s', $diff);
+	    } 
 
 	    /*
 	    | ---------------------------------------------------------------------- 

@@ -14,30 +14,30 @@
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
-			$this->button_table_action = true;
-			$this->button_bulk_action = true;
+			$this->button_table_action = false;
+			$this->button_bulk_action = false;
 			$this->button_action_style = "button_icon";
-			$this->button_add = true;
-			$this->button_edit = true;
-			$this->button_delete = true;
-			$this->button_detail = true;
-			$this->button_show = true;
+			$this->button_add = false;
+			$this->button_edit = false;
+			$this->button_delete = false;
+			$this->button_detail = false;
+			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "pointages";
+			$this->table = "pointages_journaliere";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Date Pointage","name"=>"date_pointage"];
-			$this->col[] = ["label"=>"Time In","name"=>"time_in"];
-			$this->col[] = ["label"=>"Time Out","name"=>"time_out"];
+			$this->col[] = ["label"=>"Date Pointage","name"=>"date_pointages"];
+			$this->col[] = ["label"=>"Employes","name"=>"id_users","join"=>"cms_users,name"];
+			$this->col[] = ["label"=>"Durée","name"=>"(select total from v_pointages_journalieres where id_users=pointages_journaliere.id_users and date_pointage=pointages_journaliere.date_pointages) as result","callback_php"=>'$this->getHourFromMinutes($row->result)'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
+			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
 			$this->form[] = ['label'=>'Date Pointage','name'=>'date_pointage','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Time In','name'=>'time_in','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Time Out','name'=>'time_out','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
@@ -45,10 +45,10 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Users","name"=>"id_users","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"users,id"];
-			//$this->form[] = ["label"=>"Date Pointage","name"=>"date_pointage","type"=>"date","required"=>TRUE,"validation"=>"required|date"];
-			//$this->form[] = ["label"=>"Time In","name"=>"time_in","type"=>"time","required"=>TRUE,"validation"=>"required|date_format:H:i:s"];
-			//$this->form[] = ["label"=>"Time Out","name"=>"time_out","type"=>"time","required"=>TRUE,"validation"=>"required|date_format:H:i:s"];
+			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
+			//$this->form[] = ['label'=>'Date Pointage','name'=>'date_pointage','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Time In','name'=>'time_in','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Time Out','name'=>'time_out','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -323,8 +323,14 @@
 	    }
 
 
-
 	    //By the way, you can still create your own method in here... :) 
+	    public function getHourFromMinutes($seconds){
+		    $h = intval($seconds / 3600);
+		    $sec = $seconds - $h*3600;
+		    $m = intval($sec / 60);
+		    $s =  $sec - $m * 60;
+		    return $h.":".($m<10?"0".$m:$m).":".($s<10?"0".$s:$s);
+		}
 
 
 	}

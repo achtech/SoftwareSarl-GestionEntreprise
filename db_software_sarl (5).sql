@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 16 déc. 2018 à 00:50
+-- Généré le :  mer. 19 déc. 2018 à 09:41
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `cms_logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_logs`
@@ -232,7 +232,51 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (26, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/projects/add-save', 'Add New Data  at Projects', '', 1, '2018-12-15 23:38:51', NULL),
 (27, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/modules/add-save', 'Add New Data  at Modules', '', 1, '2018-12-15 23:39:18', NULL),
 (28, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/logout', 'achraf.saloumi@exo-it.com logout', '', 1, '2018-12-15 23:48:25', NULL),
-(29, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-15 23:49:02', NULL);
+(29, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-15 23:49:02', NULL),
+(30, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-17 08:23:33', NULL),
+(31, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/modules/add-save', 'Add New Data  at Modules', '', 1, '2018-12-17 08:26:58', NULL),
+(32, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/professions/add-save', 'Add New Data  at Profession', '', 1, '2018-12-17 08:58:12', NULL),
+(33, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-17 13:05:21', NULL),
+(34, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/statistic_builder/add-save', 'Add New Data Projects at Statistic Builder', '', 1, '2018-12-17 13:05:49', NULL),
+(35, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/menu_management/add-save', 'Add New Data Personnels at Menu Management', '', 1, '2018-12-17 13:23:45', NULL),
+(36, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/logout', 'achraf.saloumi@exo-it.com logout', '', 1, '2018-12-17 14:25:04', NULL),
+(37, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-17 14:25:07', NULL),
+(38, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/tasks/edit-save/2', 'Update data Create analysis at Tasks', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>status</td><td>TODO</td><td>DONE</td></tr></tbody></table>', 1, '2018-12-17 14:27:10', NULL),
+(39, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-17 18:08:53', NULL),
+(40, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-18 08:05:23', NULL),
+(41, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-18 10:23:54', NULL),
+(42, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/professions/add-save', 'Add New Data  at Profession', '', 1, '2018-12-18 16:47:50', NULL),
+(43, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/personnels/add-save', 'Add New Data  at Personnel', '', 1, '2018-12-18 17:15:41', NULL),
+(44, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/personnels/add-save', 'Add New Data  at Personnel', '', 1, '2018-12-18 17:19:37', NULL),
+(45, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/pointages/delete/1206', 'Delete data 1206 at Pointages', '', 1, '2018-12-18 18:40:07', NULL),
+(46, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/pointages/delete/1208', 'Delete data 1208 at Pointages', '', 1, '2018-12-18 18:40:10', NULL),
+(47, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/pointages/delete/1210', 'Delete data 1210 at Pointages', '', 1, '2018-12-18 18:40:14', NULL),
+(48, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/pointages/delete/1207', 'Delete data 1207 at Pointages', '', 1, '2018-12-18 18:40:17', NULL),
+(49, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/pointages/delete/1209', 'Delete data 1209 at Pointages', '', 1, '2018-12-18 18:40:20', NULL),
+(50, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/menu_management/edit-save/10', 'Update data Pointages at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>type</td><td>Route</td><td>Module</td></tr><tr><td>path</td><td>AdminPointagesControllerGetIndex</td><td>pointages_journaliere</td></tr><tr><td>color</td><td></td><td>normal</td></tr><tr><td>parent_id</td><td>15</td><td></td></tr><tr><td>sorting</td><td>2</td><td></td></tr></tbody></table>', 1, '2018-12-18 19:27:02', NULL),
+(51, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/projects/add-save', 'Add New Data  at Projects', '', 1, '2018-12-18 19:56:42', NULL),
+(52, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/modules/add-save', 'Add New Data  at Modules', '', 1, '2018-12-18 19:57:36', NULL),
+(53, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/modules/add-save', 'Add New Data  at Modules', '', 1, '2018-12-18 19:57:51', NULL),
+(54, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/modules/add-save', 'Add New Data  at Modules', '', 1, '2018-12-18 19:58:10', NULL),
+(55, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/modules/add-save', 'Add New Data  at Modules', '', 1, '2018-12-18 19:58:46', NULL),
+(56, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/conges/add-save', 'Add New Data  at Conges', '', 1, '2018-12-18 20:01:47', NULL),
+(57, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/spent_revenues/add-save', 'Add New Data  at Spent / Revenue', '', 1, '2018-12-18 20:10:00', NULL),
+(58, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/spent_revenues/add-save', 'Add New Data  at Spent / Revenue', '', 1, '2018-12-18 20:24:16', NULL),
+(59, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/menu_management/edit-save/19', 'Update data Personnels at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2018-12-18 21:27:54', NULL),
+(60, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/menu_management/delete/19', 'Delete data Personnels at Menu Management', '', 1, '2018-12-18 21:28:01', NULL),
+(61, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/menu_management/add-save', 'Add New Data Pointages at Menu Management', '', 1, '2018-12-18 21:28:39', NULL),
+(62, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/menu_management/edit-save/10', 'Update data Pointages Journaliere at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>name</td><td>Pointages</td><td>Pointages Journaliere</td></tr><tr><td>parent_id</td><td>21</td><td></td></tr></tbody></table>', 1, '2018-12-18 21:29:26', NULL),
+(63, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/menu_management/delete/18', 'Delete data Users at Menu Management', '', 1, '2018-12-18 21:29:55', NULL),
+(64, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/personnels/edit-save/2', 'Update data  at Personnel', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>cnss</td><td></td><td>140924898</td></tr></tbody></table>', 1, '2018-12-18 22:24:47', NULL),
+(65, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/personnels/edit-save/3', 'Update data  at Personnel', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>mobile</td><td>+212628803044</td><td>+212 6 28 80 30 44</td></tr></tbody></table>', 1, '2018-12-18 22:25:03', NULL),
+(66, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/users/delete-image', 'Delete the image of Achraf Saloumi at Users Management', '', 1, '2018-12-18 22:26:15', NULL),
+(67, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/users/edit-save/1', 'Update data Achraf Saloumi at Users Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>photo</td><td></td><td>uploads/1/2018-12/achraf600_600.png</td></tr><tr><td>password</td><td>$2y$10$JWPs.xq1VebGO./hZhrEkuRON/B7E7oSr6tRHgE7zYfo8/ENGxdgy</td><td></td></tr><tr><td>status</td><td>Active</td><td></td></tr></tbody></table>', 1, '2018-12-18 22:29:41', NULL),
+(68, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/logout', 'achraf.saloumi@exo-it.com logout', '', 1, '2018-12-18 22:29:59', NULL),
+(69, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-18 22:30:02', NULL),
+(70, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/conges/edit-save/69', 'Update data  at Conges', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>isJustify</td><td>Non</td><td>Oui</td></tr></tbody></table>', 1, '2018-12-18 22:33:45', NULL),
+(71, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/conges/edit-save/68', 'Update data  at Conges', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>isJustify</td><td>Non</td><td>Oui</td></tr></tbody></table>', 1, '2018-12-18 22:34:27', NULL),
+(72, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-19 08:24:30', NULL),
+(73, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/laravel/GE/public/admin/menu_management/add-save', 'Add New Data Pointages Report at Menu Management', '', 1, '2018-12-19 08:27:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -256,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `cms_menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_menus`
@@ -265,21 +309,24 @@ CREATE TABLE IF NOT EXISTS `cms_menus` (
 INSERT INTO `cms_menus` (`id`, `name`, `type`, `path`, `color`, `icon`, `parent_id`, `is_active`, `is_dashboard`, `id_cms_privileges`, `sorting`, `created_at`, `updated_at`) VALUES
 (1, 'Clients', 'Route', 'AdminClientsControllerGetIndex', NULL, 'fa fa-users', 16, 1, 0, 1, 5, '2018-12-14 21:59:26', NULL),
 (2, 'Commentaires', 'Route', 'AdminCommentsControllerGetIndex', NULL, 'fa fa-file-o', 16, 1, 0, 1, 4, '2018-12-14 22:04:01', NULL),
-(3, 'Conges', 'Route', 'AdminCongesControllerGetIndex', NULL, 'fa fa-share-square-o', 15, 1, 0, 1, 3, '2018-12-14 22:06:56', NULL),
-(4, 'Document administratif', 'Route', 'AdminDocumentsControllerGetIndex', NULL, 'fa fa-file-pdf-o', 15, 1, 0, 1, 5, '2018-12-14 22:10:01', NULL),
+(3, 'Conges', 'Route', 'AdminCongesControllerGetIndex', NULL, 'fa fa-share-square-o', 15, 1, 0, 1, 2, '2018-12-14 22:06:56', NULL),
+(4, 'Document administratif', 'Route', 'AdminDocumentsControllerGetIndex', NULL, 'fa fa-file-pdf-o', 15, 1, 0, 1, 4, '2018-12-14 22:10:01', NULL),
 (5, 'Entreprise', 'Route', 'AdminEntreprisesControllerGetIndex', NULL, 'fa fa-home', 17, 1, 0, 1, 3, '2018-12-14 22:12:10', NULL),
 (6, 'Free days', 'Route', 'AdminFreedaysControllerGetIndex', NULL, 'fa fa-birthday-cake', 17, 1, 0, 1, 2, '2018-12-15 08:01:20', NULL),
 (7, 'Modules', 'Route', 'AdminModulesControllerGetIndex', NULL, 'fa fa-th', 16, 1, 0, 1, 2, '2018-12-15 08:03:18', NULL),
-(8, 'Notifications', 'Route', 'AdminNotifications19ControllerGetIndex', NULL, 'fa fa-thumbs-o-up', 15, 1, 0, 1, 4, '2018-12-15 08:05:09', NULL),
+(8, 'Notifications', 'Route', 'AdminNotifications19ControllerGetIndex', NULL, 'fa fa-thumbs-o-up', 15, 1, 0, 1, 3, '2018-12-15 08:05:09', NULL),
 (9, 'Personnel', 'Route', 'AdminPersonnelsControllerGetIndex', NULL, 'fa fa-user-md', 15, 1, 0, 1, 1, '2018-12-15 08:07:51', NULL),
-(10, 'Pointages', 'Route', 'AdminPointagesControllerGetIndex', NULL, 'fa fa-user-times', 15, 1, 0, 1, 2, '2018-12-15 08:09:39', NULL),
+(10, 'Pointages Journaliere', 'Module', 'pointages_journaliere', 'normal', 'fa fa-user-times', 21, 1, 0, 1, 1, '2018-12-15 08:09:39', '2018-12-18 21:29:26'),
 (11, 'Profession', 'Route', 'AdminProfessionsControllerGetIndex', NULL, 'fa fa-star', 17, 1, 0, 1, 1, '2018-12-15 08:12:17', NULL),
 (12, 'Projects', 'Route', 'AdminProjectsControllerGetIndex', NULL, 'fa fa-signal', 16, 1, 0, 1, 1, '2018-12-15 08:18:50', NULL),
-(13, 'Spent / Revenue', 'Route', 'AdminSpentRevenuesControllerGetIndex', NULL, 'fa fa-money', 15, 1, 0, 1, 6, '2018-12-15 08:23:11', NULL),
+(13, 'Spent / Revenue', 'Route', 'AdminSpentRevenuesControllerGetIndex', NULL, 'fa fa-money', 15, 1, 0, 1, 5, '2018-12-15 08:23:11', NULL),
 (14, 'Tasks', 'Route', 'AdminTasksControllerGetIndex', NULL, 'fa fa-inbox', 16, 1, 0, 1, 3, '2018-12-15 08:25:31', NULL),
-(15, 'Administratif', 'URL', '#', 'normal', 'fa fa-user', 0, 1, 0, 1, 1, '2018-12-15 08:57:22', NULL),
-(16, 'Projects', 'URL', '#', 'normal', 'fa fa-th-list', 0, 1, 0, 1, 2, '2018-12-15 08:58:16', NULL),
-(17, 'Parametres', 'URL', '#', 'normal', 'fa fa-gears', 0, 1, 0, 1, 3, '2018-12-15 08:58:49', NULL);
+(15, 'Administratif', 'URL', '#', 'normal', 'fa fa-user', 0, 1, 0, 1, 2, '2018-12-15 08:57:22', NULL),
+(16, 'Projects', 'URL', '#', 'normal', 'fa fa-th-list', 0, 1, 0, 1, 3, '2018-12-15 08:58:16', NULL),
+(17, 'Parametres', 'URL', '#', 'normal', 'fa fa-gears', 0, 1, 0, 1, 4, '2018-12-15 08:58:49', NULL),
+(20, 'Pointage details', 'Route', 'AdminPointagesDetailsControllerGetIndex', NULL, 'fa fa-road', 21, 1, 0, 1, 2, '2018-12-18 21:22:00', NULL),
+(21, 'Pointages', 'URL', '#', 'normal', 'fa fa-users', 0, 1, 0, 1, 1, '2018-12-18 21:28:39', NULL),
+(22, 'Pointages Report', 'URL', 'pointageReport', 'normal', 'fa fa-bar-chart-o', 21, 1, 0, 1, 3, '2018-12-19 08:27:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -293,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `cms_menus_privileges` (
   `id_cms_menus` int(11) DEFAULT NULL,
   `id_cms_privileges` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_menus_privileges`
@@ -309,14 +356,19 @@ INSERT INTO `cms_menus_privileges` (`id`, `id_cms_menus`, `id_cms_privileges`) V
 (7, 7, 1),
 (8, 8, 1),
 (9, 9, 1),
-(10, 10, 1),
 (11, 11, 1),
 (12, 12, 1),
 (13, 13, 1),
 (14, 14, 1),
 (15, 15, 1),
 (16, 16, 1),
-(17, 17, 1);
+(17, 17, 1),
+(18, 18, 1),
+(21, 20, 1),
+(22, 19, 1),
+(23, 21, 1),
+(24, 10, 1),
+(25, 22, 1);
 
 -- --------------------------------------------------------
 
@@ -338,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `cms_moduls` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_moduls`
@@ -365,11 +417,13 @@ INSERT INTO `cms_moduls` (`id`, `name`, `icon`, `path`, `table_name`, `controlle
 (18, 'Modules', 'fa fa-th', 'modules', 'modules', 'AdminModulesController', 0, 0, '2018-12-15 08:03:18', NULL, NULL),
 (19, 'Notifications', 'fa fa-thumbs-o-up', 'notifications19', 'notifications', 'AdminNotifications19Controller', 0, 0, '2018-12-15 08:05:09', NULL, NULL),
 (20, 'Personnel', 'fa fa-user-md', 'personnels', 'personnels', 'AdminPersonnelsController', 0, 0, '2018-12-15 08:07:51', NULL, NULL),
-(21, 'Pointages', 'fa fa-user-times', 'pointages', 'pointages', 'AdminPointagesController', 0, 0, '2018-12-15 08:09:38', NULL, NULL),
+(21, 'Pointages', 'fa fa-user-times', 'pointages_journaliere', 'pointages_journaliere', 'AdminPointagesController', 0, 0, '2018-12-15 08:09:38', NULL, NULL),
 (22, 'Profession', 'fa fa-star', 'professions', 'professions', 'AdminProfessionsController', 0, 0, '2018-12-15 08:12:17', NULL, NULL),
 (23, 'Projects', 'fa fa-signal', 'projects', 'projects', 'AdminProjectsController', 0, 0, '2018-12-15 08:18:50', NULL, NULL),
 (24, 'Spent / Revenue', 'fa fa-money', 'spent_revenues', 'spent_revenues', 'AdminSpentRevenuesController', 0, 0, '2018-12-15 08:23:11', NULL, NULL),
-(25, 'Tasks', 'fa fa-inbox', 'tasks', 'tasks', 'AdminTasksController', 0, 0, '2018-12-15 08:25:31', NULL, NULL);
+(25, 'Tasks', 'fa fa-inbox', 'tasks', 'tasks', 'AdminTasksController', 0, 0, '2018-12-15 08:25:31', NULL, NULL),
+(26, 'Users', 'fa fa-user-secret', 'cms_users', 'cms_users', 'AdminCmsUsers1Controller', 0, 0, '2018-12-17 13:21:01', NULL, NULL),
+(27, 'Pointage details', 'fa fa-road', 'pointagesDetails', 'pointages', 'AdminPointagesDetailsController', 0, 0, '2018-12-18 21:22:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -432,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `cms_privileges_roles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_privileges_roles`
@@ -463,7 +517,9 @@ INSERT INTO `cms_privileges_roles` (`id`, `is_visible`, `is_create`, `is_read`, 
 (22, 1, 1, 1, 1, 1, 1, 22, NULL, NULL),
 (23, 1, 1, 1, 1, 1, 1, 23, NULL, NULL),
 (24, 1, 1, 1, 1, 1, 1, 24, NULL, NULL),
-(25, 1, 1, 1, 1, 1, 1, 25, NULL, NULL);
+(25, 1, 1, 1, 1, 1, 1, 25, NULL, NULL),
+(26, 1, 1, 1, 1, 1, 1, 26, NULL, NULL),
+(27, 1, 1, 1, 1, 1, 1, 27, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -522,7 +578,14 @@ CREATE TABLE IF NOT EXISTS `cms_statistics` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `cms_statistics`
+--
+
+INSERT INTO `cms_statistics` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Projects', 'projects', '2018-12-17 13:05:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -543,7 +606,14 @@ CREATE TABLE IF NOT EXISTS `cms_statistic_components` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `cms_statistic_components`
+--
+
+INSERT INTO `cms_statistic_components` (`id`, `id_cms_statistics`, `componentID`, `component_name`, `area_name`, `sorting`, `name`, `config`, `created_at`, `updated_at`) VALUES
+(1, 1, '16a70ca6145101b89bb2895892c21532', 'smallbox', 'area1', 0, NULL, '{\"name\":\"Projects\",\"icon\":\"ion-users\",\"color\":\"bg-green\",\"link\":\"projects\",\"sql\":\"select count(id) from projects\"}', '2018-12-17 13:06:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -570,7 +640,7 @@ CREATE TABLE IF NOT EXISTS `cms_users` (
 --
 
 INSERT INTO `cms_users` (`id`, `name`, `photo`, `email`, `password`, `id_cms_privileges`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'Achraf Saloumi', 'uploads/1/2018-12/chrysanthemum.jpg', 'achraf.saloumi@exo-it.com', '$2y$10$JWPs.xq1VebGO./hZhrEkuRON/B7E7oSr6tRHgE7zYfo8/ENGxdgy', 1, '2018-12-14 09:00:47', '2018-12-15 10:38:47', 'Active'),
+(1, 'Achraf Saloumi', 'uploads/1/2018-12/achraf600_600.png', 'achraf.saloumi@exo-it.com', '$2y$10$JWPs.xq1VebGO./hZhrEkuRON/B7E7oSr6tRHgE7zYfo8/ENGxdgy', 1, '2018-12-14 09:00:47', '2018-12-18 22:29:41', 'Active'),
 (2, 'Noura Bouchbaat', 'uploads/1/2018-12/desert.jpg', 'noura.bouchbaat@exo-it.com', '$2y$10$DRrv58s/MbKdPcRepj4uDOxZEIOpEKoGOVAZRFUec.3ji9/xmVnju', 1, '2018-12-15 09:23:34', NULL, NULL),
 (3, 'Brahim barjali', 'uploads/1/2018-12/hydrangeas.jpg', 'brahim.barjali@exo-it.com', '$2y$10$1VNoHoqdMcVqTyTmut1.buWEZS5s8c42xFoyy9ioYSnVr9ZYBqJ/y', 1, '2018-12-15 09:24:16', NULL, NULL),
 (4, 'Oumaima Stitini', 'uploads/1/2018-12/jellyfish.jpg', 'oumaima.stitini@exo-it.com', '$2y$10$EEUbBwoJjeWjJRb3UyQ9Z.SaaojVp3wgAF6RZhnySI6xHD3D2qMTW', 1, '2018-12-15 09:25:20', '2018-12-15 09:27:09', NULL),
@@ -610,8 +680,8 @@ CREATE TABLE IF NOT EXISTS `conges` (
   `end_date` date NOT NULL,
   `libelle` text NOT NULL,
   `nbr_days` float NOT NULL,
-  `isValid` tinyint(1) DEFAULT NULL,
-  `isJustify` tinyint(1) DEFAULT NULL,
+  `isValid` varchar(3) DEFAULT NULL,
+  `isJustify` varchar(3) DEFAULT NULL,
   `date_request` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_users` (`id_users`)
@@ -622,64 +692,63 @@ CREATE TABLE IF NOT EXISTS `conges` (
 --
 
 INSERT INTO `conges` (`id`, `id_users`, `start_date`, `end_date`, `libelle`, `nbr_days`, `isValid`, `isJustify`, `date_request`) VALUES
-(6, 6, '2018-01-31', '2018-01-31', 'Retard', 1, NULL, NULL, NULL),
-(9, 6, '2018-02-05', '2018-02-05', 'Inconnue', 1, NULL, NULL, NULL),
-(10, 6, '2018-03-19', '2018-03-19', 'Inconnue', 2, NULL, NULL, NULL),
-(12, 6, '2018-04-02', '2018-04-02', 'Retard', 1, NULL, NULL, NULL),
-(13, 6, '2018-03-30', '2018-03-30', 'Retard', 1, NULL, NULL, NULL),
-(14, 2, '2018-01-08', '2018-01-11', 'Conge', 4, NULL, NULL, NULL),
-(15, 2, '2018-02-05', '2018-02-09', 'Conge', 5, NULL, NULL, NULL),
-(16, 3, '2018-01-24', '2018-01-24', 'Conge', 1, NULL, NULL, NULL),
-(17, 3, '2018-04-09', '2018-04-16', 'Conge', 6, NULL, NULL, NULL),
-(18, 4, '2018-01-22', '2018-01-23', 'Conge', 2, NULL, NULL, NULL),
-(19, 4, '2018-02-12', '2018-02-16', 'Conge', 5, NULL, NULL, NULL),
-(21, 5, '2018-02-01', '2018-02-01', 'Conge', 1, NULL, NULL, NULL),
-(22, 5, '2018-04-02', '2018-04-04', 'Conge', 3, NULL, NULL, NULL),
-(23, 1, '2014-08-18', '2014-08-29', 'Conge', 10, NULL, NULL, NULL),
-(24, 1, '2014-12-12', '2014-12-16', 'Weeding party', 2, NULL, NULL, NULL),
-(25, 1, '2016-05-05', '2016-05-06', 'Conge', 2, NULL, NULL, NULL),
-(26, 1, '2015-09-28', '2015-10-14', 'Conge', 13, NULL, NULL, NULL),
-(27, 1, '2016-09-15', '2016-09-16', 'Conge', 2, NULL, NULL, NULL),
-(28, 1, '2017-03-17', '2017-03-17', 'Conge', 1, NULL, NULL, NULL),
-(29, 1, '2017-05-15', '2017-05-21', 'Conge', 5, NULL, NULL, NULL),
-(30, 1, '2017-06-06', '2017-06-06', 'Conge', 0, NULL, NULL, NULL),
-(31, 1, '2017-06-09', '2017-06-09', 'Conge', 1, NULL, NULL, NULL),
-(32, 1, '2017-08-04', '2017-08-04', 'Conge', 0, NULL, NULL, NULL),
-(33, 1, '2017-09-04', '2017-09-10', 'Conge', 5, NULL, NULL, NULL),
-(34, 1, '2016-12-05', '2016-12-16', 'Conge pay', 10, NULL, NULL, NULL),
-(35, 2, '2018-06-06', '2018-06-06', 'Conge', 1, NULL, NULL, NULL),
-(36, 6, '2018-07-05', '2018-07-05', 'Conge ', 1, NULL, NULL, NULL),
-(38, 1, '2014-11-24', '2014-11-25', 'Conge', 2, NULL, NULL, NULL),
-(40, 1, '2017-11-10', '2017-11-10', 'Conge', 1, NULL, NULL, NULL),
-(41, 1, '2017-12-11', '2017-12-12', 'Conge', 2, NULL, NULL, NULL),
-(42, 2, '2014-08-04', '2014-08-15', 'Conge', 10, NULL, NULL, NULL),
-(43, 2, '2014-12-12', '2014-12-16', 'Conge', 3, NULL, NULL, NULL),
-(44, 2, '2015-03-24', '2015-03-24', 'Conge', 1, NULL, NULL, NULL),
-(45, 2, '2015-09-28', '2015-10-15', 'Conge', 13, NULL, NULL, NULL),
-(46, 2, '2016-09-15', '2016-09-16', 'Conge', 2, NULL, NULL, NULL),
-(47, 2, '2017-02-03', '2017-02-03', 'Conge', 1, NULL, NULL, NULL),
-(48, 2, '2017-03-21', '2017-03-22', 'Conge', 2, NULL, NULL, NULL),
-(49, 2, '2017-05-15', '2017-05-21', 'Conge', 5, NULL, NULL, NULL),
-(50, 2, '2017-06-06', '2017-06-07', 'Conge', 2, NULL, NULL, NULL),
-(51, 2, '2017-07-04', '2017-07-04', 'Conge', 1, NULL, NULL, NULL),
-(52, 2, '2017-08-04', '2017-08-04', 'Conge', 1, NULL, NULL, NULL),
-(53, 2, '2017-09-04', '2017-10-09', 'Conge', 5, NULL, NULL, NULL),
-(54, 2, '2017-12-04', '2017-12-04', 'Conge', 1, NULL, NULL, NULL),
-(55, 2, '2018-01-03', '2018-01-24', 'Conge', 1, NULL, NULL, NULL),
-(56, 2, '2018-01-05', '2018-01-05', 'Conge', 1, NULL, NULL, NULL),
-(57, 2, '2018-01-08', '2018-01-08', 'Conge', 1, NULL, NULL, NULL),
-(58, 2, '2018-02-12', '2018-02-15', 'Conge', 4, NULL, NULL, NULL),
-(59, 2, '2018-03-02', '2018-03-02', 'Conge', 1, NULL, NULL, NULL),
-(60, 2, '2018-05-14', '2018-05-14', 'Conge', 1, NULL, NULL, NULL),
-(61, 2, '2018-06-11', '2018-06-11', 'Conge', 1, NULL, NULL, NULL),
-(62, 2, '2018-06-18', '2018-06-18', 'Conge', 1, NULL, NULL, NULL),
-(63, 2, '2018-06-06', '2018-06-06', 'Conge', 1, NULL, NULL, NULL),
-(64, 2, '2018-07-18', '2018-07-24', 'Conge Maladie', 5, NULL, NULL, NULL),
-(65, 5, '2018-07-16', '2018-07-17', 'Conge relaxing', 2, NULL, NULL, NULL),
-(66, 6, '2018-11-01', '2018-11-02', 'Malade certifier', 1.5, NULL, NULL, NULL),
-(67, 1, '2018-11-02', '2018-11-02', 'CongÃ© certifier : nouvelle naissance', 1, NULL, NULL, NULL),
-(68, 2, '2018-11-01', '2019-01-31', 'Conge de maternite', 65, NULL, NULL, NULL),
-(69, 2, '2018-11-01', '2019-01-31', 'Conge de maternite', 65, NULL, NULL, NULL);
+(6, 6, '2018-01-31', '2018-01-31', 'Retard', 1, 'Oui', 'Non', '2018-01-31'),
+(9, 6, '2018-02-05', '2018-02-05', 'Inconnue', 1, 'Oui', 'Non', '2018-02-05'),
+(10, 6, '2018-03-19', '2018-03-19', 'Inconnue', 2, 'Oui', 'Non', '2018-03-19'),
+(12, 6, '2018-04-02', '2018-04-02', 'Retard', 1, 'Oui', 'Non', '2018-04-02'),
+(13, 6, '2018-03-30', '2018-03-30', 'Retard', 1, 'Oui', 'Non', '2018-03-30'),
+(14, 2, '2018-01-08', '2018-01-11', 'Conge', 4, 'Oui', 'Non', '2018-01-08'),
+(15, 2, '2018-02-05', '2018-02-09', 'Conge', 5, 'Oui', 'Non', '2018-02-05'),
+(16, 3, '2018-01-24', '2018-01-24', 'Conge', 1, 'Oui', 'Non', '2018-01-24'),
+(17, 3, '2018-04-09', '2018-04-16', 'Conge', 6, 'Oui', 'Non', '2018-04-09'),
+(18, 4, '2018-01-22', '2018-01-23', 'Conge', 2, 'Oui', 'Non', '2018-01-22'),
+(19, 4, '2018-02-12', '2018-02-16', 'Conge', 5, 'Oui', 'Non', '2018-02-12'),
+(21, 5, '2018-02-01', '2018-02-01', 'Conge', 1, 'Oui', 'Non', '2018-02-01'),
+(22, 5, '2018-04-02', '2018-04-04', 'Conge', 3, 'Oui', 'Non', '2018-04-02'),
+(23, 1, '2014-08-18', '2014-08-29', 'Conge', 10, 'Oui', 'Non', '2014-08-18'),
+(24, 1, '2014-12-12', '2014-12-16', 'Weeding party', 2, 'Oui', 'Non', '2014-12-12'),
+(25, 1, '2016-05-05', '2016-05-06', 'Conge', 2, 'Oui', 'Non', '2016-05-05'),
+(26, 1, '2015-09-28', '2015-10-14', 'Conge', 13, 'Oui', 'Non', '2015-09-28'),
+(27, 1, '2016-09-15', '2016-09-16', 'Conge', 2, 'Oui', 'Non', '2016-09-15'),
+(28, 1, '2017-03-17', '2017-03-17', 'Conge', 1, 'Oui', 'Non', '2017-03-17'),
+(29, 1, '2017-05-15', '2017-05-21', 'Conge', 5, 'Oui', 'Non', '2017-05-15'),
+(30, 1, '2017-06-06', '2017-06-06', 'Conge', 0, 'Oui', 'Non', '2017-06-06'),
+(31, 1, '2017-06-09', '2017-06-09', 'Conge', 1, 'Oui', 'Non', '2017-06-09'),
+(32, 1, '2017-08-04', '2017-08-04', 'Conge', 0, 'Oui', 'Non', '2017-08-04'),
+(33, 1, '2017-09-04', '2017-09-10', 'Conge', 5, 'Oui', 'Non', '2017-09-04'),
+(34, 1, '2016-12-05', '2016-12-16', 'Conge pay', 10, 'Oui', 'Non', '2016-12-05'),
+(35, 2, '2018-06-06', '2018-06-06', 'Conge', 1, 'Oui', 'Non', '2018-06-06'),
+(36, 6, '2018-07-05', '2018-07-05', 'Conge ', 1, 'Oui', 'Non', '2018-07-05'),
+(38, 1, '2014-11-24', '2014-11-25', 'Conge', 2, 'Oui', 'Non', '2014-11-24'),
+(40, 1, '2017-11-10', '2017-11-10', 'Conge', 1, 'Oui', 'Non', '2017-11-10'),
+(41, 1, '2017-12-11', '2017-12-12', 'Conge', 2, 'Oui', 'Non', '2017-12-11'),
+(42, 2, '2014-08-04', '2014-08-15', 'Conge', 10, 'Oui', 'Non', '2014-08-04'),
+(43, 2, '2014-12-12', '2014-12-16', 'Conge', 3, 'Oui', 'Non', '2014-12-12'),
+(44, 2, '2015-03-24', '2015-03-24', 'Conge', 1, 'Oui', 'Non', '2015-03-24'),
+(45, 2, '2015-09-28', '2015-10-15', 'Conge', 13, 'Oui', 'Non', '2015-09-28'),
+(46, 2, '2016-09-15', '2016-09-16', 'Conge', 2, 'Oui', 'Non', '2016-09-15'),
+(47, 2, '2017-02-03', '2017-02-03', 'Conge', 1, 'Oui', 'Non', '2017-02-03'),
+(48, 2, '2017-03-21', '2017-03-22', 'Conge', 2, 'Oui', 'Non', '2017-03-21'),
+(49, 2, '2017-05-15', '2017-05-21', 'Conge', 5, 'Oui', 'Non', '2017-05-15'),
+(50, 2, '2017-06-06', '2017-06-07', 'Conge', 2, 'Oui', 'Non', '2017-06-06'),
+(51, 2, '2017-07-04', '2017-07-04', 'Conge', 1, 'Oui', 'Non', '2017-07-04'),
+(52, 2, '2017-08-04', '2017-08-04', 'Conge', 1, 'Oui', 'Non', '2017-08-04'),
+(53, 2, '2017-09-04', '2017-10-09', 'Conge', 5, 'Oui', 'Non', '2017-09-04'),
+(54, 2, '2017-12-04', '2017-12-04', 'Conge', 1, 'Oui', 'Non', '2017-12-04'),
+(55, 2, '2018-01-03', '2018-01-24', 'Conge', 1, 'Oui', 'Non', '2018-01-03'),
+(56, 2, '2018-01-05', '2018-01-05', 'Conge', 1, 'Oui', 'Non', '2018-01-05'),
+(57, 2, '2018-01-08', '2018-01-08', 'Conge', 1, 'Oui', 'Non', '2018-01-08'),
+(58, 2, '2018-02-12', '2018-02-15', 'Conge', 4, 'Oui', 'Non', '2018-02-12'),
+(59, 2, '2018-03-02', '2018-03-02', 'Conge', 1, 'Oui', 'Non', '2018-03-02'),
+(60, 2, '2018-05-14', '2018-05-14', 'Conge', 1, 'Oui', 'Non', '2018-05-14'),
+(61, 2, '2018-06-11', '2018-06-11', 'Conge', 1, 'Oui', 'Non', '2018-06-11'),
+(62, 2, '2018-06-18', '2018-06-18', 'Conge', 1, 'Oui', 'Non', '2018-06-18'),
+(63, 2, '2018-06-06', '2018-06-06', 'Conge', 1, 'Oui', 'Non', '2018-06-06'),
+(64, 2, '2018-07-18', '2018-07-24', 'Conge Maladie', 5, 'Oui', 'Non', '2018-07-18'),
+(65, 5, '2018-07-16', '2018-07-17', 'Conge relaxing', 2, 'Oui', 'Non', '2018-07-16'),
+(66, 6, '2018-11-01', '2018-11-02', 'Malade certifier', 1.5, 'Oui', 'Non', '2018-11-01'),
+(67, 1, '2018-11-02', '2018-11-02', 'CongÃ© certifier : nouvelle naissance', 1, 'Oui', 'Non', '2018-11-02'),
+(69, 2, '2018-11-01', '2019-01-31', 'Conge de maternite', 65, 'Oui', 'Oui', '2018-11-01');
 
 -- --------------------------------------------------------
 
@@ -805,7 +874,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `progress` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_projects` (`id_projects`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `modules`
@@ -813,7 +882,12 @@ CREATE TABLE IF NOT EXISTS `modules` (
 
 INSERT INTO `modules` (`id`, `id_projects`, `libelle`, `start_date`, `end_date`, `status`, `progress`) VALUES
 (1, 1, 'Analysis', '2018-12-16', '2018-12-24', 'TODO', 1),
-(2, 2, 'tet', '2018-12-03', '2018-12-07', 'TODO', 0);
+(2, 2, 'tet', '2018-12-03', '2018-12-07', 'TODO', 0),
+(3, 1, 'Master DAta', '2018-12-04', '2018-12-13', 'TODO', 0),
+(4, 3, 'Project', '2018-12-19', '2018-12-24', 'TODO', 0),
+(5, 3, 'Modules', '2018-12-19', '2018-12-07', 'TODO', 10),
+(6, 3, 'Tasks', '2018-12-20', '2018-12-20', 'TODO', 10),
+(7, 3, 'Clients', '2018-12-26', '2018-12-13', '', 10);
 
 -- --------------------------------------------------------
 
@@ -841,16 +915,14 @@ CREATE TABLE IF NOT EXISTS `notifications` (
 DROP TABLE IF EXISTS `personnels`;
 CREATE TABLE IF NOT EXISTS `personnels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_users` int(11) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
+  `id_users` int(11) UNSIGNED NOT NULL,
   `cin` varchar(50) NOT NULL,
   `cnss` varchar(50) NOT NULL,
   `polite` varchar(50) NOT NULL,
   `mobile` varchar(50) NOT NULL,
   `adress` text NOT NULL,
   `hiring_date` date NOT NULL,
-  `exit_date` date NOT NULL,
+  `exit_date` date DEFAULT NULL,
   `birth_date` date NOT NULL,
   `order_number` int(11) NOT NULL,
   `id_professions` int(11) NOT NULL,
@@ -861,7 +933,15 @@ CREATE TABLE IF NOT EXISTS `personnels` (
   PRIMARY KEY (`id`),
   KEY `id_users` (`id_users`),
   KEY `id_professions` (`id_professions`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `personnels`
+--
+
+INSERT INTO `personnels` (`id`, `id_users`, `cin`, `cnss`, `polite`, `mobile`, `adress`, `hiring_date`, `exit_date`, `birth_date`, `order_number`, `id_professions`, `net_salary`, `gross_salary`, `family_situation`, `number_children`) VALUES
+(2, 1, 'HA132209', '140924898', 'Mr.', '+212 6 53 90 36 59', 'Zaouia derb derraz N1 Marrakeche', '2014-02-03', '2014-02-03', '1985-09-07', 1, 2, 7400, 8511, 'Mariée', 2),
+(3, 2, 'EE260962', '', 'Mme', '+212 6 28 80 30 44', 'Zaouia Derb derraz N1', '2014-02-03', '2014-02-03', '1987-05-28', 2, 1, 7000, 8011, 'Mariee', 2);
 
 -- --------------------------------------------------------
 
@@ -872,52 +952,79 @@ CREATE TABLE IF NOT EXISTS `personnels` (
 DROP TABLE IF EXISTS `pointages`;
 CREATE TABLE IF NOT EXISTS `pointages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_users` int(11) NOT NULL,
+  `id_users` int(11) UNSIGNED NOT NULL,
   `date_pointage` date NOT NULL,
   `time_in` time NOT NULL,
   `time_out` time NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_users` (`id_users`)
-) ENGINE=InnoDB AUTO_INCREMENT=1211 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1206 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `pointages`
 --
 
 INSERT INTO `pointages` (`id`, `id_users`, `date_pointage`, `time_in`, `time_out`) VALUES
-(1178, 2, '2018-11-01', '09:05:19', '12:47:04'),
+(1178, 1, '2018-11-01', '09:05:19', '12:47:04'),
 (1179, 5, '2018-11-01', '09:05:24', '17:01:23'),
-(1180, 8, '2018-11-01', '09:05:29', '12:24:16'),
-(1181, 7, '2018-11-01', '09:11:03', '13:13:01'),
-(1182, 4, '2018-11-01', '09:12:40', '09:14:55'),
-(1183, 4, '2018-11-01', '09:15:02', '09:50:23'),
-(1184, 4, '2018-11-01', '10:05:56', '12:47:06'),
-(1185, 8, '2018-11-01', '13:14:55', '14:25:01'),
-(1186, 4, '2018-11-01', '13:39:59', '17:05:13'),
-(1187, 2, '2018-11-01', '13:40:00', '16:09:01'),
-(1188, 7, '2018-11-01', '14:18:06', '18:20:38'),
+(1180, 6, '2018-11-01', '09:05:29', '12:24:16'),
+(1181, 5, '2018-11-01', '09:11:03', '13:13:01'),
+(1182, 3, '2018-11-01', '09:12:40', '09:14:55'),
+(1183, 3, '2018-11-01', '09:15:02', '09:50:23'),
+(1184, 3, '2018-11-01', '10:05:56', '12:47:06'),
+(1185, 6, '2018-11-01', '13:14:55', '14:25:01'),
+(1186, 3, '2018-11-01', '13:39:59', '17:05:13'),
+(1187, 1, '2018-11-01', '13:40:00', '16:09:01'),
+(1188, 5, '2018-11-01', '14:18:06', '18:20:38'),
 (1189, 5, '2018-11-02', '09:03:32', '12:46:13'),
-(1190, 4, '2018-11-02', '09:10:28', '13:00:35'),
-(1191, 7, '2018-11-02', '09:15:47', '13:23:13'),
-(1192, 4, '2018-11-02', '13:41:45', '17:26:11'),
+(1190, 3, '2018-11-02', '09:10:28', '13:00:35'),
+(1191, 5, '2018-11-02', '09:15:47', '13:23:13'),
+(1192, 3, '2018-11-02', '13:41:45', '17:26:11'),
 (1193, 5, '2018-11-02', '13:56:14', '17:42:24'),
-(1194, 7, '2018-11-02', '14:35:04', '18:32:28'),
-(1195, 2, '2018-11-05', '09:33:42', '10:55:45'),
+(1194, 5, '2018-11-02', '14:35:04', '18:32:28'),
+(1195, 1, '2018-11-05', '09:33:42', '10:55:45'),
 (1196, 5, '2018-11-06', '08:36:37', '17:33:41'),
-(1197, 2, '2018-11-06', '08:59:17', '12:40:38'),
-(1198, 8, '2018-11-06', '09:11:23', '13:02:07'),
-(1199, 7, '2018-11-06', '09:20:24', '13:01:14'),
-(1200, 4, '2018-11-06', '09:22:27', '12:45:43'),
-(1201, 4, '2018-11-06', '13:03:14', '15:37:54'),
-(1202, 2, '2018-11-06', '13:45:47', '18:11:56'),
-(1203, 8, '2018-11-06', '13:47:05', '17:40:30'),
-(1204, 7, '2018-11-06', '14:24:56', '18:38:30'),
-(1205, 4, '2018-11-06', '15:39:19', '18:07:09'),
-(1206, 2, '2018-11-07', '08:25:42', '08:25:42'),
-(1207, 5, '2018-11-07', '08:40:41', '08:40:41'),
-(1208, 8, '2018-11-07', '08:57:22', '08:57:22'),
-(1209, 4, '2018-11-07', '09:18:53', '09:18:53'),
-(1210, 7, '2018-11-07', '09:36:11', '09:36:11');
+(1197, 1, '2018-11-06', '08:59:17', '12:40:38'),
+(1198, 6, '2018-11-06', '09:11:23', '13:02:07'),
+(1199, 5, '2018-11-06', '09:20:24', '13:01:14'),
+(1200, 3, '2018-11-06', '09:22:27', '12:45:43'),
+(1201, 3, '2018-11-06', '13:03:14', '15:37:54'),
+(1202, 1, '2018-11-06', '13:45:47', '18:11:56'),
+(1203, 6, '2018-11-06', '13:47:05', '17:40:30'),
+(1204, 5, '2018-11-06', '14:24:56', '18:38:30'),
+(1205, 3, '2018-11-06', '15:39:19', '18:07:09');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pointages_journaliere`
+--
+
+DROP TABLE IF EXISTS `pointages_journaliere`;
+CREATE TABLE IF NOT EXISTS `pointages_journaliere` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_users` int(10) UNSIGNED NOT NULL,
+  `date_pointages` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_users` (`id_users`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `pointages_journaliere`
+--
+
+INSERT INTO `pointages_journaliere` (`id`, `id_users`, `date_pointages`) VALUES
+(1, 1, '2018-11-01'),
+(2, 1, '2018-11-05'),
+(3, 1, '2018-11-06'),
+(4, 3, '2018-11-01'),
+(5, 3, '2018-11-02'),
+(6, 3, '2018-11-06'),
+(7, 5, '2018-11-01'),
+(8, 5, '2018-11-02'),
+(9, 5, '2018-11-06'),
+(10, 6, '2018-11-01'),
+(11, 6, '2018-11-06');
 
 -- --------------------------------------------------------
 
@@ -930,7 +1037,15 @@ CREATE TABLE IF NOT EXISTS `professions` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `professions`
+--
+
+INSERT INTO `professions` (`Id`, `Libelle`) VALUES
+(1, 'Devloppeur'),
+(2, 'Gerant');
 
 -- --------------------------------------------------------
 
@@ -951,7 +1066,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `id_clients` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `clients` (`id_clients`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `projects`
@@ -959,7 +1074,8 @@ CREATE TABLE IF NOT EXISTS `projects` (
 
 INSERT INTO `projects` (`id`, `start_date`, `end_date`, `technologies`, `progress`, `version`, `nom`, `status`, `id_clients`) VALUES
 (1, '2018-12-16', '2019-01-04', 'J2EE , Angular JS, Oracle', 10, '0.510 Bugs', 'Abatech 0.5.10', 'Todo', 1),
-(2, '2018-12-03', '2018-12-11', 'jaba', 2, '2', 'pr2', 'TODO', 2);
+(2, '2018-12-03', '2018-12-11', 'jaba', 2, '2', 'pr2', 'TODO', 2),
+(3, '2018-12-19', '2018-12-31', 'LARAVEL', 0, '1.0', 'Software', 'TODO', 1);
 
 -- --------------------------------------------------------
 
@@ -975,10 +1091,16 @@ CREATE TABLE IF NOT EXISTS `spent_revenues` (
   `montant` int(11) NOT NULL,
   `date_operation` date NOT NULL,
   `type_paiment` varchar(50) NOT NULL,
-  `id_users` int(11) NOT NULL,
-  PRIMARY KEY (`Id`),
-  KEY `id_users` (`id_users`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `spent_revenues`
+--
+
+INSERT INTO `spent_revenues` (`Id`, `type`, `libelle`, `montant`, `date_operation`, `type_paiment`) VALUES
+(1, 'Dépenses', 'test', 100, '2018-12-25', 'Espèce'),
+(2, 'Revenue', 'test', 1000, '2018-12-19', 'Virement');
 
 -- --------------------------------------------------------
 
@@ -1002,14 +1124,14 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_users`),
   KEY `id_module` (`id_modules`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `tasks`
 --
 
 INSERT INTO `tasks` (`id`, `title`, `description`, `status`, `id_users`, `progress`, `complexity`, `start_date`, `end_date`, `id_modules`, `priorite`) VALUES
-(2, 'Create analysis', 'Create analysis Create analysis Create analysis Create analysis Create analysis', 'TODO', 1, 10, 2, '2018-12-24', '2018-12-19', 1, 'Medium');
+(1, 'Create analysis', 'Create analysis Create analysis Create analysis Create analysis Create analysis', 'DONE', 1, 10, 2, '2018-12-24', '2018-12-19', 1, 'Medium');
 
 -- --------------------------------------------------------
 
@@ -1043,6 +1165,28 @@ INSERT INTO `users` (`id`, `login`, `password`, `role`, `nom`, `date_contrat`, `
 (5, 'Oumaima.Stitini', 'software', 2, 'Oumaima Stitini', '2015-11-01', 'AA3256', 'Devloppeur de logiciel', 'success', 1207),
 (7, 'mohammed.lechiakh', 'software', 2, 'Mohammed Lechiakh', '2016-11-01', 'AA3256', 'Devloppeur de logiciel', 'success', 1210),
 (8, 'abdellah.taha', 'software', 2, 'Abdellah Taha', '2017-01-01', 'AA3256', 'Devloppeur de logiciel', 'success', 1208);
+
+-- --------------------------------------------------------
+
+--
+-- Doublure de structure pour la vue `v_pointages_journalieres`
+-- (Voir ci-dessous la vue réelle)
+--
+DROP VIEW IF EXISTS `v_pointages_journalieres`;
+CREATE TABLE IF NOT EXISTS `v_pointages_journalieres` (
+`id_users` int(11) unsigned
+,`date_pointage` date
+,`total` decimal(42,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la vue `v_pointages_journalieres`
+--
+DROP TABLE IF EXISTS `v_pointages_journalieres`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_pointages_journalieres`  AS  select `pointages`.`id_users` AS `id_users`,`pointages`.`date_pointage` AS `date_pointage`,sum(timestampdiff(SECOND,`pointages`.`time_in`,`pointages`.`time_out`)) AS `total` from `pointages` group by `pointages`.`id_users`,`pointages`.`date_pointage` ;
 
 --
 -- Contraintes pour les tables déchargées
@@ -1086,25 +1230,25 @@ ALTER TABLE `modules`
 --
 ALTER TABLE `personnels`
   ADD CONSTRAINT `personnels_ibfk_1` FOREIGN KEY (`id_professions`) REFERENCES `professions` (`Id`),
-  ADD CONSTRAINT `personnels_ibfk_2` FOREIGN KEY (`id_users`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `personnels_ibfk_2` FOREIGN KEY (`id_users`) REFERENCES `cms_users` (`id`);
 
 --
 -- Contraintes pour la table `pointages`
 --
 ALTER TABLE `pointages`
-  ADD CONSTRAINT `pointages_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `pointages_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `cms_users` (`id`);
+
+--
+-- Contraintes pour la table `pointages_journaliere`
+--
+ALTER TABLE `pointages_journaliere`
+  ADD CONSTRAINT `pointages_journaliere_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `cms_users` (`id`);
 
 --
 -- Contraintes pour la table `projects`
 --
 ALTER TABLE `projects`
   ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`id_clients`) REFERENCES `clients` (`id`);
-
---
--- Contraintes pour la table `spent_revenues`
---
-ALTER TABLE `spent_revenues`
-  ADD CONSTRAINT `spent_revenues_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id`);
 
 --
 -- Contraintes pour la table `tasks`

@@ -38,9 +38,7 @@
 			$this->col[] = ["label"=>"Version","name"=>"version"];
 			$this->col[] = ["label"=>"Status","name"=>"status"];
 			$this->col[] = ["label"=>"Clients","name"=>"id_clients","join"=>"clients,social_reason"];
-			/*$this->col[] = ["label"=>"Complexity","name"=>"(select (100*x.sumDone)/y.sumTotal from (select sum(complexity) as sumDone from tasks,modules where tasks.id_modules=modules.id and modules.id_projects=projects.id and tasks.status='Done') x join ( select sum(complexity)as sumTotal from tasks,modules where tasks.id_modules=modules.id and modules.id_projects=projects.id) y on 1=1) as complexity"];
-			*/
-			$this->col[] = ["label"=>"Complexity","name"=>$this->getProjectProgress("projects.id")." as complexity"];
+			$this->col[] = ["label"=>"Complexity","name"=>"id","callback_php"=>'$this->getProjectProgress($row->id)'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -53,7 +51,6 @@
 			$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
-
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -229,14 +226,25 @@
 	        
 	    }
 
-	    public function getProjectProgress($id){
-	    /*	$sumComplexity = DB::table('tasks')->sum('complexity')->where('id_modules',DB::table('modules')->select('id')->where('id_project',$id)->first())->first();
+	    public function getProgressDone($id){
+	    	return DB::table('tasks')
+	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
+            						->join('projects', 'modules.id_projects', '=', 'projects.id')
+            						->where('projects.id','=',$id)
+                    				->where('tasks.status','=','DONE')
+                    				->sum('tasks.complexity');
+	    }
 
-	    */
-	    	$sumComplexityOfDone = intval($id);
-	    	$sumComplexity = 20;
-	    	return (100*$sumComplexityOfDone/$sumComplexity);
-	    		
+	    public function getProjectProgress($id){
+	    $sumComplexityOfDone = $this->getProgressDone($id);
+	    
+	    	$sumComplexity = DB::table('tasks')
+	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
+            						->join('projects', 'modules.id_projects', '=', 'projects.id')
+            						->where('projects.id','=',$id)
+                    				->sum('tasks.complexity');
+	    	$result= (100*$sumComplexityOfDone/$sumComplexity);
+	    	return $result>0 ? $result."%" : "0%";
 	    }
 
 	    public function getModules() {

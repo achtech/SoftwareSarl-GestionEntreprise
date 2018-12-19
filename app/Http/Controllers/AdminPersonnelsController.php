@@ -30,53 +30,51 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Last Name","name"=>"last_name"];
-			$this->col[] = ["label"=>"First Name","name"=>"first_name"];
+			$this->col[] = ["label"=>"Photo","name"=>"id_users","join"=>"cms_users,photo","image"=>true];
+			$this->col[] = ["label"=>"Polite","name"=>"polite"];
+			$this->col[] = ["label"=>"Nom","name"=>"id_users","join"=>"cms_users,name"];
 			$this->col[] = ["label"=>"Cin","name"=>"cin"];
 			$this->col[] = ["label"=>"Cnss","name"=>"cnss"];
-			$this->col[] = ["label"=>"Polite","name"=>"polite"];
 			$this->col[] = ["label"=>"Mobile","name"=>"mobile"];
+			$this->col[] = ["label"=>"Date d'embauche","name"=>"hiring_date"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Last Name','name'=>'last_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'First Name','name'=>'first_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Cin','name'=>'cin','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Cnss','name'=>'cnss','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Polite','name'=>'polite','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Mobile','name'=>'mobile','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Adress','name'=>'adress','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Exit Date','name'=>'exit_date','type'=>'date','validation'=>'date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Birth Date','name'=>'birth_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Order Number','name'=>'order_number','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Professions','name'=>'id_professions','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'professions,id'];
-			$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Family Situation','name'=>'family_situation','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Number Children','name'=>'number_children','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nom','name'=>'id_users','type'=>'select2','validation'=>'required','width'=>'col-sm-9','datatable'=>'cms_users,name'];
+			$this->form[] = ['label'=>'Cin','name'=>'cin','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Cnss','name'=>'cnss','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Polite','name'=>'polite','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Mobile','name'=>'mobile','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Adress','name'=>'adress','type'=>'textarea','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Exit Date','name'=>'exit_date','type'=>'date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Birth Date','name'=>'birth_date','type'=>'date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Order Number','name'=>'order_number','type'=>'number','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Professions','name'=>'id_professions','type'=>'select2','width'=>'col-sm-10','datatable'=>'professions,libelle'];
+			$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Family Situation','name'=>'family_situation','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Number Children','name'=>'number_children','type'=>'number','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
-			//$this->form[] = ['label'=>'Last Name','name'=>'last_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'First Name','name'=>'first_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Cin','name'=>'cin','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Cnss','name'=>'cnss','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Polite','name'=>'polite','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Mobile','name'=>'mobile','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Adress','name'=>'adress','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Exit Date','name'=>'exit_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Birth Date','name'=>'birth_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Order Number','name'=>'order_number','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Professions','name'=>'id_professions','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'professions,id'];
-			//$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Family Situation','name'=>'family_situation','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Number Children','name'=>'number_children','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Nom','name'=>'id_users','type'=>'select2','validation'=>'required','width'=>'col-sm-9','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Cin','name'=>'cin','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Cnss','name'=>'cnss','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Polite','name'=>'polite','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Mobile','name'=>'mobile','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Adress','name'=>'adress','type'=>'textarea','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Exit Date','name'=>'exit_date','type'=>'date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Birth Date','name'=>'birth_date','type'=>'date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Order Number','name'=>'order_number','type'=>'number','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Professions','name'=>'id_professions','type'=>'select2','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Family Situation','name'=>'family_situation','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Number Children','name'=>'number_children','type'=>'number','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

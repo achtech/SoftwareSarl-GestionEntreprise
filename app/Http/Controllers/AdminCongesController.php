@@ -19,7 +19,7 @@
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
 			$this->button_edit = true;
-			$this->button_delete = true;
+			$this->button_delete = false;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
@@ -30,7 +30,7 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"cms_users,id"];
+			$this->col[] = ["label"=>"Employe","name"=>"id_users","join"=>"cms_users,name"];
 			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
 			$this->col[] = ["label"=>"End Date","name"=>"end_date"];
 			$this->col[] = ["label"=>"Libelle","name"=>"libelle"];
@@ -41,26 +41,26 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Date Request','name'=>'date_request','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Nbr Days','name'=>'nbr_days','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Is Valid','name'=>'isValid','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Is Justify','name'=>'isJustify','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Date Request','name'=>'date_request','type'=>'date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nbr Days','name'=>'nbr_days','type'=>'number','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Valid','name'=>'isValid','type'=>'radio','width'=>'col-sm-10','dataenum'=>'Oui;Non'];
+			$this->form[] = ['label'=>'Justified','name'=>'isJustify','type'=>'radio','width'=>'col-sm-10','dataenum'=>'Oui;Non'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
-			//$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Date Request','name'=>'date_request','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Nbr Days','name'=>'nbr_days','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Is Valid','name'=>'isValid','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Is Justify','name'=>'isJustify','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Date Request','name'=>'date_request','type'=>'date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Nbr Days','name'=>'nbr_days','type'=>'number','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Is Valid','name'=>'isValid','type'=>'radio','width'=>'col-sm-10','dataenum'=>'Oui;Non'];
+			//$this->form[] = ['label'=>'Is Justify','name'=>'isJustify','type'=>'radio','width'=>'col-sm-10','dataenum'=>'Oui;Non'];
 			# OLD END FORM
 
 			/* 
