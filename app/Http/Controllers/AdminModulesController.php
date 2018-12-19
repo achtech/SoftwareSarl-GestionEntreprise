@@ -35,7 +35,8 @@
 			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
 			$this->col[] = ["label"=>"End Date","name"=>"end_date"];
 			$this->col[] = ["label"=>"Status","name"=>"status"];
-			$this->col[] = ["label"=>"Progress","name"=>"progress"];
+			$this->col[] = ["label"=>"Complexity","name"=>"id","callback_php"=>'$this->getTotalComplexityByModule($row->id)'];
+			$this->col[] = ["label"=>"Progress","name"=>"id","callback_php"=>'$this->getModuleProgress($row->id)'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -70,7 +71,9 @@
 			| @parent_columns = Sparate with comma, e.g : name,created_at
 	        | 
 	        */
-	        $this->sub_module = array();
+	         $this->sub_module = array();
+	        $this->sub_module[] = ['label'=>'Tasks','path'=>'tasks','parent_columns'=>'libelle','button_color'=>'primary','button_icon'=>'fa fa-bars','foreign_key'=>'id_modules','button_action_style' => "button_icon"];
+
 
 
 	        /* 
@@ -228,11 +231,32 @@
 	    | @button_name = the name of button
 	    |
 	    */
+
 	    public function actionButtonSelected($id_selected,$button_name) {
 	        //Your code here
 	            
 	    }
+        public function getTotalComplexityTaskDoneByModule($id){
+	    	return DB::table('tasks')
+	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
+            						->where('modules.id','=',$id)
+                    				->where('tasks.status','=','DONE')
+                    				->sum('tasks.complexity');
+	    }
+	    public function getTotalComplexityByModule($id){
 
+	    	return DB::table('tasks')
+	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
+            						->where('modules.id','=',$id)
+                    				->sum('tasks.complexity');
+	    }
+
+	    public function getModuleProgress($id){
+	    $sumComplexityOfDone = $this->getTotalComplexityTaskDoneByModule($id);
+	    $sumComplexity =  $this->getTotalComplexityByModule($id);
+	    $result= (100*$sumComplexityOfDone/$sumComplexity);
+	    return $result>0 ? $result."%" : "0%";
+	    }
 
 	    /*
 	    | ---------------------------------------------------------------------- 

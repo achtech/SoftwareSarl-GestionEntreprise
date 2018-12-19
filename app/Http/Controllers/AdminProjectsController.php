@@ -34,11 +34,11 @@
 			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
 			$this->col[] = ["label"=>"End Date","name"=>"end_date"];
 			$this->col[] = ["label"=>"Technologies","name"=>"technologies"];
-			$this->col[] = ["label"=>"Progress","name"=>"progress"];
 			$this->col[] = ["label"=>"Version","name"=>"version"];
 			$this->col[] = ["label"=>"Status","name"=>"status"];
 			$this->col[] = ["label"=>"Clients","name"=>"id_clients","join"=>"clients,social_reason"];
-			$this->col[] = ["label"=>"Complexity","name"=>"id","callback_php"=>'$this->getProjectProgress($row->id)'];
+			$this->col[] = ["label"=>"Complexity","name"=>"id","callback_php"=>'$this->getTotalComplexityByProjects($row->id)'];
+			$this->col[] = ["label"=>"Progress","name"=>"id","callback_php"=>'$this->getProjectProgress($row->id)'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -47,7 +47,6 @@
 			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Technologies','name'=>'technologies','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
@@ -59,7 +58,6 @@
 			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Technologies','name'=>'technologies','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
@@ -226,7 +224,7 @@
 	        
 	    }
 
-	    public function getProgressDone($id){
+	    public function getTotalComplexityTaskDoneByProjects($id){
 	    	return DB::table('tasks')
 	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
             						->join('projects', 'modules.id_projects', '=', 'projects.id')
@@ -234,23 +232,23 @@
                     				->where('tasks.status','=','DONE')
                     				->sum('tasks.complexity');
 	    }
+	    public function getTotalComplexityByProjects($id){
 
-	    public function getProjectProgress($id){
-	    $sumComplexityOfDone = $this->getProgressDone($id);
-	    
-	    	$sumComplexity = DB::table('tasks')
+	    	return DB::table('tasks')
 	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
             						->join('projects', 'modules.id_projects', '=', 'projects.id')
             						->where('projects.id','=',$id)
                     				->sum('tasks.complexity');
-	    	$result= (100*$sumComplexityOfDone/$sumComplexity);
-	    	return $result>0 ? $result."%" : "0%";
 	    }
 
-	    public function getModules() {
-	    	CRUDBooster::redirect($_SERVER['HTTP_REFERER'],"The status product has been updated !","info");
+	    public function getProjectProgress($id){
+	    $sumComplexityOfDone = $this->getTotalComplexityTaskDoneByProjects($id);
+	    $sumComplexity =  $this->getTotalComplexityByProjects($id);
+	    $result= (100*$sumComplexityOfDone/$sumComplexity);
+	    return $result>0 ? $result."%" : "0%";
 	    }
 
+	  
 	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for button selected

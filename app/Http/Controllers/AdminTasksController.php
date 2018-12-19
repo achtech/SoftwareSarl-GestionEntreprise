@@ -35,6 +35,8 @@
 			$this->col[] = ["label"=>"Description","name"=>"description"];
 			$this->col[] = ["label"=>"Status","name"=>"status"];
 			$this->col[] = ["label"=>"Progress","name"=>"progress"];
+			$this->col[] = ["label"=>"Project","name"=>"id","callback_php"=>'$this->getNameProject($row->id)'];
+			$this->col[] = ["label"=>"Module","name"=>"id","callback_php"=>'$this->getNameProject($row->id)'];
 			$this->col[] = ["label"=>"Complexity","name"=>"complexity"];
 			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
@@ -241,7 +243,13 @@
 	        //Your code here
 	            
 	    }
-
+          public function getNameProject($id){
+	    	return DB::table('projects')
+	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
+            						->join('projects', 'modules.id_projects', '=', 'projects.id')
+            						->where('modules.id','=',$id)
+                    				->('projects.nom';
+	    }
 
 	    /*
 	    | ---------------------------------------------------------------------- 
