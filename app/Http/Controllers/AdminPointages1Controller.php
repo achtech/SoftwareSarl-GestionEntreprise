@@ -4,57 +4,57 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+	use DateTime;
 
-	class AdminSpentRevenuesController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminPointages1Controller extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
 			$this->title_field = "id";
 			$this->limit = "20";
-			$this->orderby = "Id,desc";
+			$this->orderby = "id,desc";
 			$this->global_privilege = false;
-			$this->button_table_action = true;
-			$this->button_bulk_action = true;
+			$this->button_table_action = false;
+			$this->button_bulk_action = false;
 			$this->button_action_style = "button_icon";
-			$this->button_add = true;
-			$this->button_edit = true;
+			$this->button_add = false;
+			$this->button_edit = false;
 			$this->button_delete = false;
-			$this->button_detail = true;
-			$this->button_show = true;
-			$this->button_filter = true;
+			$this->button_detail = false;
+			$this->button_show = false;
+			$this->button_filter = false;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "spent_revenues";
+			$this->table = "cms_users";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Type","name"=>"type"];
-			$this->col[] = ["label"=>"Libelle","name"=>"libelle"];
-			$this->col[] = ["label"=>"Montant","name"=>"montant"];
-			$this->col[] = ["label"=>"Date Operation","name"=>"date_operation"];
-			$this->col[] = ["label"=>"Type Paiment","name"=>"type_paiment"];
-			# END COLUMNS DO NOT REMOVE THIS LINE
+			$this->col[] = ["label"=>"Users","name"=>"name"];
+			$this->col[] = ["label"=>"Conge","name"=>"id","callback_php"=>'$this->getSumConge($row->id,false)'];
+			$this->col[] = ["label"=>"Free Days","name"=>"id","callback_php"=>'$this->getSumFreeDays(false)'];
+			$this->col[] = ["label"=>"Required","name"=>"id","callback_php"=>'$this->getSumOfRequiredDays(false)'];
+			$this->col[] = ["label"=>"Worked","name"=>"id","callback_php"=>'$this->getSumWorkedHours($row->id,false)'];
+			$this->col[] = ["label"=>$this->getCurrentMonth(),"name"=>"id", "callback_php"=>'$this->getReportMensuelle($row->id)'];
 
+			$this->col[] = ["label"=>'Global Conge',"name"=>"id", "callback_php"=>'$this->getSumConge($row->id,true)'];
+			$this->col[] = ["label"=>'Global Free Days',"name"=>"id", "callback_php"=>'$this->getSumFreeDays(true)'];
+			$this->col[] = ["label"=>'Global Worked',"name"=>"id", "callback_php"=>'$this->getSumWorkedHours($row->id,true)'];
+			$this->col[] = ["label"=>'Global Required',"name"=>"id", "callback_php"=>'$this->getSumOfRequiredDays(true)'];
+			$this->col[] = ["label"=>'Global Report',"name"=>"id", "callback_php"=>'$this->getReport($row->id)'];
+			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Dépenses;Revenue'];
-			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Montant','name'=>'montant','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Date Operation','name'=>'date_operation','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Type Paiment','name'=>'type_paiment','type'=>'select2','width'=>'col-sm-10','dataenum'=>'Espèce;Chèque;Virement;Paypal'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Type','name'=>'type','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Montant','name'=>'montant','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Date Operation','name'=>'date_operation','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Type Paiment','name'=>'type_paiment','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
+			//$this->form[] = ['label'=>'Date Pointage','name'=>'date_pointage','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Time In','name'=>'time_in','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Time Out','name'=>'time_out','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -133,8 +133,8 @@
 	        | 
 	        */
 	        $this->table_row_color = array();     	          
-			$this->table_row_color[] = ["condition"=>"[type] == 'Revenue'","color"=>"success"];
-			$this->table_row_color[] = ["condition"=>"[type] == 'Dépenses'","color"=>"warning"];
+//$this->table_row_color[] = ["condition"=>"strpos($this->getReportMensuelle([id]),'-')!=0","color"=>"success"];
+//$this->table_row_color[] = ["condition"=>"strpos($this->getReportMensuelle([id]),'-')==0","color"=>"warning"];
 
 	        
 	        /*
@@ -206,7 +206,7 @@
 	        $this->style_css = NULL;
 	        
 	        
-	        
+	      
 	        /*
 	        | ---------------------------------------------------------------------- 
 	        | Include css File 
@@ -216,9 +216,185 @@
 	        |
 	        */
 	        $this->load_css = array();
-	        
-	        
 	    }
+
+	    public function getReport($idUser){
+		   	$worked = $this->getSumWorkedHours($idUser,true);
+		   	$wsecond = explode(":", $worked)[2];
+		   	$wminutes = explode(":", $worked)[1];
+		   	$whours = explode(":", $worked)[0];
+
+		   	 $conges = 8*$this->getSumConge($idUser,true);
+		   	 $freedays = 8*$this->getSumFreeDays(true);
+
+ 		   	$sommeWorked = ($conges+$freedays+$whours+8).' hours ';
+ 		   	$sommeWorked .= (empty($wminutes)?"0 minutes":$wminutes." minutes ");
+ 		   	$sommeWorked .= (empty($wsecond)?"0 seconds":$wsecond." seconds");
+ 		
+ 		   	$fullTime = $this->requiredDays(true);
+			 $required  = explode(":", $fullTime)[0]." hours ".explode(":", $fullTime)[1]." minutes 0 seconds";
+			$start = strtotime($sommeWorked);
+			 $end = strtotime($required);
+			if($end>$start) return "-".date("H:i:s",$end - $start);
+			else return date("H:i:s",$start - $end);
+	    }
+
+	    public function getReportMensuelle($idUser){
+		   	$worked = $this->getSumWorkedHours($idUser,false);
+		   	$wsecond = explode(":", $worked)[2];
+		   	$wminutes = explode(":", $worked)[1];
+		   	$whours = explode(":", $worked)[0];
+
+		   	$conges = 8*$this->getSumConge($idUser,false);
+		   	$freedays = 8*$this->getSumFreeDays(false);
+
+ 		   
+ 		   	$sommeWorked = ($conges+$freedays+$whours).' hours ';
+ 		   	$sommeWorked .= (empty($wminutes)?"0 minutes":$wminutes." minutes ");
+ 		   	$sommeWorked .= (empty($wsecond)?"0 seconds":$wsecond." seconds");
+
+ 		 
+ 		   	$fullTime = $this->requiredDays(false);
+			$required  = explode(":", $fullTime)[0]." hours ".explode(":", $fullTime)[1]." minutes 0 seconds";
+
+			$start = strtotime($sommeWorked);
+			$end = strtotime($required);
+			if($end>$start) return "-".date("H:i:s",$end - $start);
+			else return date("H:i:s",$start - $end);
+	    }
+
+	    public function getSumWorkedHours($id,$all){
+			$datedebut = $all?date('Y-m-d',strtotime("2018-11-01")):date('Y-m-d',strtotime(date('Y-m')."-01"));		   	
+			$datefin = date('Y-m-d');
+	    	$result = DB::table('pointages')
+	    		->select(DB::raw("SUM(TIMESTAMPDIFF(SECOND,pointages.time_in,pointages.time_out)) as count"))
+	    		->where('pointages.id_users','=',$id)
+         		->whereBetween('pointages.date_pointage',[$datedebut,$datefin])
+                ->first()->count;
+			$result1 = DB::select("select SUM(TIMESTAMPDIFF(SECOND,pointages.time_in,cast('".date('H:i')."' as time))) as count from pointages where pointages.id_users=".$id." and pointages.date_pointage='".$datefin."' and pointages.time_in=pointages.time_out");
+			$result1 = empty($result1) || count($result1)==0?0:$result1[0]->count;
+//                
+            $result = empty($result)?0: $result;
+            $result1 = empty($result1)?0: $result1;
+            return $this->secondsToHours($result+$result1);
+	    }
+
+	    public function secondsToHours($seconds){
+		    $h = intval($seconds / 3600);
+		    $sec = $seconds - $h*3600;
+		    $m = intval($sec / 60);
+		    $s =  $sec - $m * 60;
+		    return $h.":".($m<10?"0".$m:$m).":".($s<10?"0".$s:$s);
+		}
+
+	    public function getCurrentMonth(){
+	    	return date('m-Y');
+	    }
+
+	    public function getSumConge($idUser,$all){
+			$datedebut = $all?date('Y-m-d',strtotime("2018-11-01")):date('Y-m-d',strtotime(date('Y-m')."-01"));		   	$datefin = date('Y-m-d');
+			$case2= DB::table('conges')
+			    ->select(DB::raw("SUM(conges.nbr_days) as count"))
+	    		->where('conges.id_users','=',$idUser)
+	    	//	->where('conges.isJustify','=','Non')
+	    		->whereBetween('conges.start_date',[$datedebut,$datefin])
+	    		->whereBetween('conges.end_date',[$datedebut,$datefin])
+        		->first()->count;
+	        return empty($case2)?0:$case2;
+
+	    }
+
+	    public function getSumFreeDays($all){
+
+     		$datedebut = $all?date('Y-m-d',strtotime("2018-11-01")):date('Y-m-d',strtotime(date('Y-m')."-01"));
+		   	$datefin = date('Y-m-d');
+
+	    	$result = DB::table('freedays')
+	    		->select(DB::raw("SUM(DATEDIFF(freedays.end_date,freedays.start_date)) as count"))
+         		->whereBetween('freedays.start_date',[$datedebut,$datefin])
+         		->whereBetween('freedays.end_date',[$datedebut,$datefin])
+                ->first()->count;
+            return empty($result)?0:$result;
+	    }
+
+	    public function requiredDays($all){
+     		$datedebut = $all?date('Y-m-d',strtotime("2018-11-01")):date('Y-m-d',strtotime(date('Y-m')."-01"));
+		   	$datefin = date('Y-m-d');
+		   	$nbrDays = $this->nombreJour($datedebut,$datefin);
+		   	//TODO cette result inclus aujourd'hui alors on doit calculer le nombre d'heur juska cette moment
+		   	//if datefin not a weekend
+		   	$weekDay = date('w', strtotime($datefin));
+		   	$nbrHours = 0;
+    		if($weekDay == 0 || $weekDay == 6){
+		   		$nbrHours = ($nbrDays*8).":00";
+		   	}else{
+		   		$time = date('H:i', strtotime(date('H:i')) + 60*60);
+				//TODO PROBLEM IN GET REQUIRED HOURS OF TODAY
+				$current_time =date('H:i', strtotime(date('H:i')) + 60*60);
+				$start = "9:30";
+				$end = "17:30";
+				$date1 = DateTime::createFromFormat('H:i', $current_time);
+				$date2 = DateTime::createFromFormat('H:i', $start);
+				$date3 = DateTime::createFromFormat('H:i', $end);
+				if ($date1 > $date2 && $date1 < $date3)
+				{
+					$nbrDays = $nbrDays-1;
+			   		$requiredHoursOfToday = $this->getTimeDiff($current_time,$start);				   
+				} else if ($date1<$date2){
+					$nbrDays = $nbrDays-1;
+					$requiredHoursOfToday = 0;
+				}
+  			    $nbrHours = (($nbrDays*8)+ explode(":", $requiredHoursOfToday)[0]).":";
+  			    $nbrHours .= (!empty(explode(":", $requiredHoursOfToday)[1]))?explode(":", $requiredHoursOfToday)[1]:"00:00";
+		   	}
+
+		   	return $nbrHours;
+		   	//return $nbrDays."days (".($nbrHours)." Hours)";
+	    }
+
+	    public function getTimeDiff($dtime,$atime)
+    	{
+	        $nextDay = $dtime>$atime?1:0;
+	        $dep = explode(':',$dtime);
+	        $arr = explode(':',$atime);
+	        $diff = abs(mktime($dep[0],$dep[1],0,date('n'),date('j'),date('y'))-mktime($arr[0],$arr[1],0,date('n'),date('j')+$nextDay,date('y')));
+	        $hours = floor($diff/(60*60));
+	        $mins = floor(($diff-($hours*60*60))/(60));
+	        $secs = floor(($diff-(($hours*60*60)+($mins*60))));
+	        if(strlen($hours)<2){$hours="0".$hours;}
+	        if(strlen($mins)<2){$mins="0".$mins;}
+	        if(strlen($secs)<2){$secs="0".$secs;}
+	        return $hours.':'.$mins.':'.$secs;
+    	}
+
+	    public function getSumOfRequiredDays($all){
+	    	return $src=$this->requiredDays($all);
+	    	$heur = explode(":", $src)[0];
+	    	$min = explode(":", $src)[1];
+	    	$nbDays = intval($heur/8);
+	    	$nbHours = $heur - $nbDays*8;
+	    	return $nbDays."(".$src.")";
+	    }
+
+	    public function nombreJour($datedeb,$datefin){
+		    $nb_jours=0;
+		    $dated=explode('-',$datedeb);
+		    $datef=explode('-',$datefin);
+		    if(count($dated)==3 && count($datef)==3){
+		        $timestampcurr=mktime(0,0,0,$dated[1],$dated[2],$dated[0]);
+		        $timestampf=mktime(0,0,0,$datef[1],$datef[2],$datef[0]);
+		        while($timestampcurr<=$timestampf){
+		     
+		          if((date('w',$timestampcurr)!=0)&&(date('w',$timestampcurr)!=6)){
+		            $nb_jours++;
+		          }
+		          $timestampcurr=mktime(0,0,0,date('m',$timestampcurr),(date('d',$timestampcurr)+1)   ,date('Y',$timestampcurr));
+		        }
+		        return $nb_jours;
+		    }else{
+		        return 0;
+		    }
+		}
 
 
 	    /*
@@ -244,8 +420,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-//            $query->union('select A,B,C,D,E from dual');
-
+	            
 	    }
 
 	    /*

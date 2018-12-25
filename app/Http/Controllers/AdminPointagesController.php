@@ -127,6 +127,8 @@
 	        | 
 	        */
 	        $this->table_row_color = array();     	          
+			$this->table_row_color[] = ["condition"=>'$this->isWeekend([date_pointages])',"color"=>"warning"];
+			$this->table_row_color[] = ["condition"=>'!$this->isWeekend([date_pointages])',"color"=>"success"];
 
 	        
 	        /*
@@ -210,6 +212,12 @@
 	        $this->load_css = array();
 	        
 	        
+	    }
+
+	    public function isWeekend($date){
+	    	$weekDay = date('w', strtotime($date));
+    		if($weekDay == 0 || $weekDay == 6) return true;
+    		else return false;
 	    }
 
 
