@@ -15,3 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('congeReport', function () {
+    return view('congeReport');
+});
+
+

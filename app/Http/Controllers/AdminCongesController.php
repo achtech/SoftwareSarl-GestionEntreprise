@@ -127,7 +127,7 @@
 	        | 
 	        */
 	        $this->index_button = array();
-
+			$this->index_button[] = ["label"=>"Report congé","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../congeReport')];
 
 
 	        /* 
