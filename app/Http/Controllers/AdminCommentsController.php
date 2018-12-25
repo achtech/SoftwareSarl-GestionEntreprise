@@ -34,7 +34,6 @@
 			$this->col[] = ["label"=>"Tasks","name"=>"id_tasks","join"=>"tasks,title"];
 			$this->col[] = ["label"=>"Date Comment","name"=>"date_comment"];
 			$this->col[] = ["label"=>"Description","name"=>"description"];
-			$this->col[] = ["label"=>"Readed","name"=>"isNew"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE

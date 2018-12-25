@@ -35,8 +35,8 @@
 			$this->col[] = ["label"=>"Description","name"=>"description"];
 			$this->col[] = ["label"=>"Status","name"=>"status"];
 			$this->col[] = ["label"=>"Progress","name"=>"progress"];
-			$this->col[] = ["label"=>"Project","name"=>"id","callback_php"=>'$this->getNameProject($row->id)["nom"]'];
-        //    $this->col[] = ["label"=>"Module","name"=>"id","callback_php"=>'$this->getNameProject($row->id)'];
+			$this->col[] = ["label"=>"Project","name"=>"id","callback_php"=>'$this->getNameProject($row->id)'];
+            $this->col[] = ["label"=>"Module","name"=>"id","callback_php"=>'$this->getNameModule($row->id)'];
 			$this->col[] = ["label"=>"Complexity","name"=>"complexity"];
 			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
@@ -82,7 +82,7 @@
 	        | 
 	        */
 	        $this->sub_module = array();
-
+	        $this->sub_module[] = ['label'=>'Comments','path'=>'comments','parent_columns'=>'libelle','button_color'=>'primary','button_icon'=>'fa fa-bars','foreign_key'=>'id_tasks','button_action_style' => "button_icon"];
 
 	        /* 
 	        | ---------------------------------------------------------------------- 
@@ -232,13 +232,21 @@
 
    public function getNameProject($id){
 	    	return DB::table('projects')
-	    	                        ->select('nom')//->where('projects.id','=',1)
+	    	                        ->select('projects.nom as nameProject')
             						->join('modules', 'modules.id_projects', '=', 'projects.id')
 	    							->join('tasks', 'tasks.id_modules', '=', 'modules.id')
             						->where('tasks.id','=',$id)
-            						->get();
+            						->first()->nameProject;
 	    }
 
+    public function getNameModule($id){
+	    	return DB::table('modules')
+	    	                        ->select('modules.libelle as nameModule')
+            						->join('projects', 'modules.id_projects', '=', 'projects.id')
+	    							->join('tasks', 'tasks.id_modules', '=', 'modules.id')
+            						->where('tasks.id','=',$id)
+            						->first()->nameModule;
+	    }
 	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for button selected
