@@ -99,4 +99,11 @@ class CompilerEngine extends PhpEngine
     {
         return $this->compiler;
     }
+
+     public function isWeekend($date){
+            $weekDay = date('w', strtotime($date));
+            if($weekDay == 0 || $weekDay == 6) return true;
+            else return false;
+        }
+
 }
