@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 	use Session;
-	use Request;
+	//use Request;
 	use DB;
 	use CRUDBooster;
 
@@ -217,10 +217,24 @@
          	$data['page_title'] = 'Ajouter Un Document Administratif';
          	$this->cbView('add_document',$data);
          }
+
          public function getUser(Request $request){
-         	$nameEmploye = $request->input('nameEmploye');
+			$data['personnels'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();         	
+         	$data['selectedUser'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
+            ->where('cms_users.id',$request->input('idPersonnels'))
+         	->first();
+         	return view('attestation_travail',$data); 
+
          }
          public function goToAttestationTravail(){ 
+
          	$data['personnels'] = DB::table('personnels')
             ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
             ->join('professions', 'professions.id', '=', 'personnels.id_professions')

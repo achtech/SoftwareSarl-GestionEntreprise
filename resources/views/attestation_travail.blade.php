@@ -2,11 +2,16 @@
 @section('content')
 
 <h2>Retirer Votre Attestion De Travail</h2>
-<form action=" "   method="post"  >
+<form action="attestation_travail" method="Post"  name="f1">
+    {{ csrf_field() }}
 
- <select name="nameEmploye"  id="nameEmploye" class="form-control" >
-        @foreach($personnels as $nameEmploye) 
-        <option value="{{ $nameEmploye->id }}" > {{ $nameEmploye->id }} {{ $nameEmploye->name }}</option> 
+ <select name="idPersonnels"  id="idPersonnels" class="form-control" onchange="document.f1.submit()">
+        <option >Veuillez chois un 9ard</option> 
+        @foreach($personnels as $user) 
+        <?php 
+        $selected=''; 
+        if(!empty($selectedUser) && $user->id==$selectedUser->id) $selected="selected='selected'";?>
+        <option value="{{ $user->id }}" {{$selected}} >{{ $user->name }}</option> 
         @endforeach
      
     </select>
@@ -46,7 +51,7 @@ Attestation de travail
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>{{ $nameEmploye->name }}</b> titulaire de la CIN N° <b>{{ $nameEmploye->cin }}</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $nameEmploye->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $nameEmploye->hiring_date }}</b>. jusqu'à ce jour. 
+Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }}</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $selectedUser->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $selectedUser->hiring_date }}</b>. jusqu'à ce jour. 
 </p>
 <p  style="font-size: 22px;"> 
 La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
