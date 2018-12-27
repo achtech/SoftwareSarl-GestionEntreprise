@@ -213,6 +213,37 @@
 	        
 	    }
 
+         public function getAdd(){
+         	$data['page_title'] = 'Ajouter Un Document Administratif';
+         	$this->cbView('add_document',$data);
+         }
+         public function getUser(Request $request){
+         	$nameEmploye = $request->input('nameEmploye');
+         }
+         public function goToAttestationTravail(){ 
+         	$data['personnels'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();
+         	return view('attestation_travail',$data); 
+         }
+        
+         public function goToAttestationPoleEmploie(){ 
+         	return view('attestation_pole_emploi'); 
+         }
+         public function goToBulletinPaie(){ 
+         	return view('bulletin_paie'); 
+         }
+         public function goToAttestationSalaire(){ 
+         	return view('attestation_salaire'); 
+         }
+         public function goToAttestationStage(){ 
+         	return view('attestation_stage'); 
+         }
+         public function goToAccuseReception(){ 
+         	return view('accuse_reception'); 
+         }
 
 	    /*
 	    | ---------------------------------------------------------------------- 

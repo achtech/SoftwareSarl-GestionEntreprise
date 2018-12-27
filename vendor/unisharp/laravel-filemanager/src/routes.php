@@ -79,6 +79,8 @@ Route::group(compact('middleware', 'prefix', 'as', 'namespace'), function () {
         'uses' => 'DownloadController@getDownload',
         'as' => 'getDownload'
     ]);
+	
+	//Route::get('/about', 'AdminDocumentsController@about')->name('about');
 
     // delete
     Route::get('/delete', [
