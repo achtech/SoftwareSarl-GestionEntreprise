@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('congeReport', function () {
-    return view('congeReport');
-});
-
+Route::get('admin/congeReport','AdminCongesController@getListOfConge');
+Route::get('admin/home','HomeController@index');
 
