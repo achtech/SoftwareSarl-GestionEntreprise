@@ -1726,6 +1726,12 @@ class CBController extends Controller
 
         CRUDBooster::redirect(Request::server('HTTP_REFERER'), trans('crudbooster.alert_delete_data_success'), 'success');
     }
+    public  static function getValeurChamp($table,$champ,$critere,$valeur){
+        return DB::table($table)
+                    ->select($champ.' as result')
+                    ->where($critere,$valeur)
+                    ->first()->result;
+    }
 
     public function postUploadSummernote()
     {

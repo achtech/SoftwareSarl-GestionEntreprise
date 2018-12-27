@@ -31,10 +31,9 @@
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Type","name"=>"type"];
-			$this->col[] = ["label"=>"Libelle","name"=>"libelle"];
-			$this->col[] = ["label"=>"Montant","name"=>"montant"];
 			$this->col[] = ["label"=>"Date Operation","name"=>"date_operation"];
-			$this->col[] = ["label"=>"Type Paiment","name"=>"type_paiment"];
+			$this->col[] = ["label"=>"Dépenses (".$this->getSumDepense().")","name"=>"id","callback_php"=>'$this->getMontant($row->id,"Dépenses")'];
+			$this->col[] = ["label"=>"Revenue (".$this->getSumRevenue().")","name"=>"id","callback_php"=>'$this->getMontant($row->id,"Revenue")'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 
@@ -220,6 +219,28 @@
 	        
 	    }
 
+	    public function getMontant($id,$type){
+	    	//return $id."-".$type;
+	    	return $result = DB::table('spent_revenues')
+	    		->where('spent_revenues.type',$type)
+         		->where('spent_revenues.id',$id)
+                ->first()->montant;
+	    }
+
+	    public function getSumRevenue(){
+	    	return $result = DB::table('spent_revenues')
+	    		->select(DB::raw("SUM(montant) as count"))
+         		->where('spent_revenues.type','Revenue')
+                ->first()->count;
+	    }
+
+	    public function getSumDepense(){
+	    	return $result = DB::table('spent_revenues')
+	    		->select(DB::raw("SUM(montant) as count"))
+         		->where('spent_revenues.type','Dépenses')
+                ->first()->count;
+
+	    }
 
 	    /*
 	    | ---------------------------------------------------------------------- 
@@ -244,7 +265,11 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-//            $query->union('select A,B,C,D,E from dual');
+	        //$first = DB::select("select 'Somme Depenses','1000','Somme Revenue','2200' frm dual");
+	       // $first = DB::select("select * from spent_revenues");
+	        //$query->union($first);
+
+            
 
 	    }
 

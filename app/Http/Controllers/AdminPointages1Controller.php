@@ -227,7 +227,7 @@
 		   	 $conges = 8*$this->getSumConge($idUser,true);
 		   	 $freedays = 8*$this->getSumFreeDays(true);
 
- 		   	$sommeWorked = ($conges+$freedays+$whours+8).' hours ';
+ 		   	$sommeWorked = ($conges+$freedays+$whours).' hours ';
  		   	$sommeWorked .= (empty($wminutes)?"0 minutes":$wminutes." minutes ");
  		   	$sommeWorked .= (empty($wsecond)?"0 seconds":$wsecond." seconds");
  		

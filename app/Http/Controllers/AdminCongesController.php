@@ -127,7 +127,7 @@
 	        | 
 	        */
 	        $this->index_button = array();
-
+			$this->index_button[] = ["label"=>"Report congé","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../congeReport')];
 
 
 	        /* 
@@ -334,6 +334,69 @@
 
 	    }
 
+	    public function getListOfConge(){
+	    	$data['page_title']="Report Conge";
+	    	//get list of personnel from database
+	    	$result = DB::table('cms_users')
+	    				->get();
+	    	/*$startYear = 2014;
+	    	$endYear = date('Y');
+	    	$tabResult = [];
+	    	//for($i=$startYear,$index=0;$i<=$endYear;$i++){
+		    //	$tabResult[$index] = [];
+		    	for ($i$result as $key => $value) {
+					$tabResult['id'] = $value->id;
+					$tabResult['nom'] = $value->name;
+					$tabResult['$year'] = $i;
+		    	}
+		    //	$index++;
+		    //}*/
+	    	$data['personnels'] = $result;
+	    	//	dd($result);
+	    	
+	    	$this->cbView('congeReport',$data);
+	    }
+
+	    public static function getNombreJourCongePri($user,$year)
+	    {	
+	    	$nb = 0;
+	    	$start = $year."-01-01";
+	    	$end = $year."-12-31";
+	 		 $result = DB::table('conges')
+	 				->where('id_users',$user)
+	 				->where('isJustify',"Non")
+	 				->whereBetween('start_date',[$start,$end])
+	 				->whereBetween('end_date',[$start,$end])
+	    			->sum('nbr_days');
+	    	return empty($result) ? "0":intval($result);
+	    }
+
+	    public static function getNombreJourCongeCredit($user,$year){	
+    		$dateContrat = parent::getValeurChamp('personnels','hiring_date','id',$user);
+    		$firstMonth = explode('-',$dateContrat)[1];
+    		$firstYear = explode('-',$dateContrat)[0];
+    		
+    		if(!empty($dateContrat)){
+    			$currentYear=$firstYear;
+    			if($firstYear>$year){
+    				return "Not Yet";
+    			}else{
+	    			$nbDaysRequired = 0;
+	    			$nbDaysTaked = 0;
+	    			while ($currentYear<=$year) {
+	    				$nbDaysTaked =$nbDaysTaked+ self::getNombreJourCongePri($user,$currentYear);
+	    				$nbDaysRequired = $currentYear==$firstYear?(13-intval($firstMonth))*1.5:$nbDaysRequired+18;
+	    				$currentYear++;
+	    			}
+	    				$diff=$nbDaysRequired-$nbDaysTaked;
+	    				$nb=$nb+($diff>18?18:$diff);
+
+		    		return $nb;
+	    		}
+	    	} else {
+	    		return "Not Yet";
+	    	}
+	    }
 
 
 	    //By the way, you can still create your own method in here... :) 
