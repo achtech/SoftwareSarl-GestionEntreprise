@@ -13,7 +13,6 @@
                                 
                                 
                        </form>
-                                <div style="border: 1px solid gray;fonct-size : 40px !important;padding: 10px;">
 <div style="float:left">
 
              <form action="gestion.php" name="frm" method="post" 

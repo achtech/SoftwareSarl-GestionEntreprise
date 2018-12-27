@@ -13,7 +13,6 @@
                                 
                                 
                        </form>
-                                <div style="border: 1px solid gray;fonct-size : 40px !important;padding: 10px;">
 <div style="float:left">
 
              <form action="gestion.php" name="frm" method="post" 
@@ -23,13 +22,20 @@
                
     <img src="../storage/app/myImages/Logo.jpg">  
 
-<div style="float:right;font-size:20px">
-App 6 2eme étage  M'HITA <br>espace AL moustapha Semlalia,<br>40000 Marrakech Maroc<br>
-Tel : +212 524 449 352<br>
-N° RC 58467  <br>
-N° de Patente 92110189<br>  
-N° Id.fisc 0652837 <br>
+@foreach($entreprises as $entreprise) 
+<div style="float:right;font-size:20px" >
+
+      
+{{ $entreprise->adress }} <br>
+{{ $entreprise->rue }},<br>
+{{$entreprise->zip_code}} {{$entreprise->city}} <br>
+
+Tel : {{ $entreprise->mobile }}<br>
+N° RC : {{ $entreprise->rc }}  <br>
+N° de Patente : {{ $entreprise->patente }}<br>  
+N° Id.fisc : {{ $entreprise->idfisc }} <br>
 </div>
+  @endforeach
 <br style="clear:both">
 <p style="font-size: 34px;
     font-weight: bolder;
@@ -40,10 +46,10 @@ Attestation de stage
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b><?php echo $nom ?></b> titulaire de la CIN N° <b><?php echo $cin ?></b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b><?php echo $qualite ?></b> en contrat à durée indéterminée depuis le <b><?php echo $dateEmbauche ?></b>. jusqu'à ce jour. 
+Nous certifions que Monsieur / Madame <b><?php echo $nom ?></b> titulaire de la CIN N° <b><?php echo $cin ?></b> a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech.
 </p>
 <p  style="font-size: 22px;"> 
-La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
+Nous délivrons la présente attesttaion  pour servir et valoir ce que de droit.<br>
 </p>
 <p  style="font-size: 22px;"> 
 Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.<br>
