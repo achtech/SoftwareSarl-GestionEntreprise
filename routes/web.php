@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/pointageReport', 'PointageReportController@index');
-Route::get('attestation_travail', 'AdminDocumentsController@getUser','$data');
+Route::get('attestation_travail', 'AdminDocumentsController@getUser');
 Route::get('attestation_travail', 'AdminDocumentsController@goToAttestationTravail','$data');
 Route::get('attestation_emploie', 'AdminDocumentsController@goToAttestationPoleEmploie');
 Route::get('bulletin_paie', 'AdminDocumentsController@goToBulletinPaie');

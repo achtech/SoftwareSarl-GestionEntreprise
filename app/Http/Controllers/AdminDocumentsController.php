@@ -218,6 +218,7 @@
          	$this->cbView('add_document',$data);
          }
          public function getUser(Request $request){
+         	dd($request->input('nameEmploye'));
          	$nameEmploye = $request->input('nameEmploye');
          }
          public function goToAttestationTravail(){ 

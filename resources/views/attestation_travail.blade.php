@@ -2,11 +2,11 @@
 @section('content')
 
 <h2>Retirer Votre Attestion De Travail</h2>
-<form action=" "   method="post"  >
+<form action="AdminDocumentsController@getUser"   method="post"  >
 
  <select name="nameEmploye"  id="nameEmploye" class="form-control" >
         @foreach($personnels as $nameEmploye) 
-        <option value="{{ $nameEmploye->id }}" > {{ $nameEmploye->id }} {{ $nameEmploye->name }}</option> 
+        <option value="{{ $nameEmploye->id }}" >  {{ $nameEmploye->name }}</option> 
         @endforeach
      
     </select>
