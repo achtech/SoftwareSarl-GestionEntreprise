@@ -65,6 +65,7 @@
 	        | 
 	        */
 	        $this->sub_module = array();
+	        $this->sub_module[] = ['label'=>'Imprimer','path'=>'comments','parent_columns'=>'libelle','button_color'=>'primary','button_icon'=>'fa fa-bars','button_action_style' => "button_icon"];
 
 
 	        /* 

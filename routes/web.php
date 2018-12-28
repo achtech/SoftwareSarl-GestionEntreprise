@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Route::get('admin/congeReport','AdminCongesController@getListOfConge');
 Route::get('admin/home','HomeController@index');
-Route::get('/pointageReport', 'PointageReportController@index');
-Route::get('attestation_travail', 'AdminDocumentsController@getUser');
+Route::get('/pointageReport', 'PointageReportController@printpdf');
+Route::Post('attestation_travail', 'AdminDocumentsController@getUser');
+Route::get('attestation_travail/printpdf', 'AdminDocumentsController@printpdf');
+Route::get('attestation_travail_print', 'AdminDocumentsController@printpdf');
 Route::get('attestation_travail', 'AdminDocumentsController@goToAttestationTravail','$data');
 Route::get('attestation_emploie', 'AdminDocumentsController@goToAttestationPoleEmploie');
 Route::get('bulletin_paie', 'AdminDocumentsController@goToBulletinPaie');

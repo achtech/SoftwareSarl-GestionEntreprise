@@ -2,11 +2,16 @@
 @section('content')
 
 <h2>Retirer Votre Attestion De Travail</h2>
-<form action="AdminDocumentsController@getUser"   method="post"  >
+<form action="attestation_travail" method="Post"  name="f1">
+    {{ csrf_field() }}
 
- <select name="nameEmploye"  id="nameEmploye" class="form-control" >
-        @foreach($personnels as $nameEmploye) 
-        <option value="{{ $nameEmploye->id }}" >  {{ $nameEmploye->name }}</option> 
+ <select name="idPersonnels"  id="idPersonnels" class="form-control" onchange="document.f1.submit()">
+        <option >Veuillez choisir une personne</option> 
+        @foreach($personnels as $user) 
+        <?php 
+        $selected=''; 
+        if(!empty($selectedUser) && $user->id==$selectedUser->id) $selected="selected='selected'";?>
+        <option value="{{ $user->id }}" {{$selected}} >{{ $user->name }}</option> 
         @endforeach
      
     </select>
@@ -22,27 +27,21 @@
                                
 <div style="float:left">
 
-             <form action="gestion.php" name="frm" method="post" 
-                                  onsubmit="return checkForm(document.frm);" >
-                                <input type="hidden" name="act" value="generer_attestation_de_travail"/>
-                                <input type="hidden" name="page" value="conges.php"/>
-               
+             <form action="attestation_travail/printpdf" name="frm"  onsubmit="return checkForm(document.frm);" >
+<input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
    <img src="../storage/app/myImages/Logo.jpg">  
 
-@foreach($entreprises as $entreprise) 
 <div style="float:right;font-size:20px" >
 
       
-{{ $entreprise->adress }} <br>
-{{ $entreprise->rue }},<br>
-{{$entreprise->zip_code}} {{$entreprise->city}} <br>
-
-Tel : {{ $entreprise->mobile }}<br>
-N° RC : {{ $entreprise->rc }}  <br>
-N° de Patente : {{ $entreprise->patente }}<br>  
-N° Id.fisc : {{ $entreprise->idfisc }} <br>
+{{ $en->adress }} <br>
+{{ $en->rue }},<br>
+{{$en->zip_code}} {{$en->city}} <br>
+Tel : {{ $en->mobile }}<br>
+N° RC : {{ $en->rc }}  <br>
+N° de Patente : {{ $en->patente }}<br>  
+N° Id.fisc : {{ $en->idfisc }} <br>
 </div>
-  @endforeach
 <br style="clear:both">
 <p style="font-size: 34px;
     font-weight: bolder;
@@ -53,7 +52,7 @@ Attestation de travail
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>{{ $nameEmploye->name }}</b> titulaire de la CIN N° <b>{{ $nameEmploye->cin }}</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $nameEmploye->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $nameEmploye->hiring_date }}</b>. jusqu'à ce jour. 
+Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }}</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $selectedUser->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $selectedUser->hiring_date }}</b>. jusqu'à ce jour. 
 </p>
 <p  style="font-size: 22px;"> 
 La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
@@ -71,7 +70,7 @@ le <?php echo date("d-m-Y") ?>,
                                 </div>
                                <div class="col-lg-12">
                             	<br/>
-<button type="button" class="btn btn-primary" style="margin-left:1500px">Imprimer</button>
+<input  type="submit" class="btn btn-primary" style="margin-left:1500px" value = "Imprimer"></input>
  </div>
                         </form>
                         </div>

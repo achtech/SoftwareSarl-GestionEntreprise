@@ -24,20 +24,18 @@
 
 </div>
 
-@foreach($entreprises as $entreprise) 
 <div style="float:right;font-size:20px" >
 
       
-{{ $entreprise->adress }} <br>
-{{ $entreprise->rue }},<br>
-{{$entreprise->zip_code}} {{$entreprise->city}} <br>
-
-Tel : {{ $entreprise->mobile }}<br>
-N° RC : {{ $entreprise->rc }}  <br>
-N° de Patente : {{ $entreprise->patente }}<br>  
-N° Id.fisc : {{ $entreprise->idfisc }} <br>
+{{ $en->adress }} <br>
+{{ $en->rue }},<br>
+{{$en->zip_code}} {{$en->city}} <br>
+Tel : {{ $en->mobile }}<br>
+N° RC : {{ $en->rc }}  <br>
+N° de Patente : {{ $en->patente }}<br>  
+N° Id.fisc : {{ $en->idfisc }} <br>
+</div>isc : {{ $entreprise->idfisc }} <br>
 </div>
-  @endforeach
 <br style="clear:both">
 <p style="font-size: 34px;
     font-weight: bolder;
