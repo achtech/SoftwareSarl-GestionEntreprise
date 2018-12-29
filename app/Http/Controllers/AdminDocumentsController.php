@@ -239,7 +239,7 @@ use Illuminate\Http\Request;
       $data['en'] = DB::table('entreprises')->first();
 	//dd($request->input('idPersonnels'));
   //  $file = "attestation_travail_print/".$request->input('idPersonnels');
-      dd(CRUDBooster::mainpath().'attestation_travail_print')
+      //dd(CRUDBooster::mainpath().'attestation_travail_print');
       $html = file_get_contents(CRUDBooster::mainpath().'attestation_travail_print');
       //dd($html);
     //$this->cbView('attestation_travail_print');
