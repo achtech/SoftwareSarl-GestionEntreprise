@@ -263,7 +263,7 @@ $dompdf->stream();
 }
 
 
-
+/*
 		public function printpdf(Request $request){
          //	dd($request->input('idPersonnels'));
          	$file = "attestation_travail_print/".$request->input('idPersonnels');
@@ -273,7 +273,7 @@ $dompdf->stream();
 	    	return $pdf->stream();
          }
 
-         public function getAdd(){
+  */       public function getAdd(){
          	$data['page_title'] = 'Ajouter Un Document Administratif';
          	$this->cbView('add_document',$data);
          }
