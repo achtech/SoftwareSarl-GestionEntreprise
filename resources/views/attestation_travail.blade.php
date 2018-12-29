@@ -6,7 +6,7 @@
     {{ csrf_field() }}
 
  <select name="idPersonnels"  id="idPersonnels" class="form-control" onchange="document.f1.submit()">
-        <option >Veuillez chois un 9ard</option> 
+        <option >Veuillez choisir une personne</option> 
         @foreach($personnels as $user) 
         <?php 
         $selected=''; 
@@ -27,18 +27,20 @@
                                
 <div style="float:left">
 
-             <form action="attestation_travail/printpdf" name="frm" method="post" onsubmit="return checkForm(document.frm);" >
-                                <input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
-                                
-               
+             <form action="attestation_travail/printpdf" name="frm"  onsubmit="return checkForm(document.frm);" >
+<input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
    <img src="../storage/app/myImages/Logo.jpg">  
 
-<div style="float:right;font-size:20px">
-App 6 2eme étage  M'HITA <br>espace AL moustapha Semlalia,<br>40000 Marrakech Maroc<br>
-Tel : +212 524 449 352<br>
-N° RC 58467  <br>
-N° de Patente 92110189<br>  
-N° Id.fisc 0652837 <br>
+<div style="float:right;font-size:20px" >
+
+      
+{{ $en->adress }} <br>
+{{ $en->rue }},<br>
+{{$en->zip_code}} {{$en->city}} <br>
+Tel : {{ $en->mobile }}<br>
+N° RC : {{ $en->rc }}  <br>
+N° de Patente : {{ $en->patente }}<br>  
+N° Id.fisc : {{ $en->idfisc }} <br>
 </div>
 <br style="clear:both">
 <p style="font-size: 34px;
@@ -68,7 +70,7 @@ le <?php echo date("d-m-Y") ?>,
                                 </div>
                                <div class="col-lg-12">
                             	<br/>
-<button type="button" class="btn btn-primary" style="margin-left:1500px">Imprimer</button>
+<input  type="submit" class="btn btn-primary" style="margin-left:1500px" value = "Imprimer"></input>
  </div>
                         </form>
                         </div>

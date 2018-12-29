@@ -1,56 +1,55 @@
 <?php namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 	use Session;
-	//use Request;
-	use Dompdf\Dompdf;
+	use Request;
 	use DB;
 	use CRUDBooster;
 
-	class AdminDocumentsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminBulletinPaieController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "title";
+			$this->title_field = "id";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
-			$this->button_bulk_action = true;
+			$this->button_bulk_action = false;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
 			$this->button_edit = true;
 			$this->button_delete = true;
 			$this->button_detail = true;
-			$this->button_show = true;
+			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "documents";
+			$this->table = "bulletin_paie";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"cms_users,id"];
-			$this->col[] = ["label"=>"Title","name"=>"title"];
-			$this->col[] = ["label"=>"Document","name"=>"document"];
-			$this->col[] = ["label"=>"Date Impression","name"=>"date_impression"];
+			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"users,name"];
+			$this->col[] = ["label"=>"Year","name"=>"year"];
+			$this->col[] = ["label"=>"Month","name"=>"month"];
+			$this->col[] = ["label"=>"File","name"=>"file"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Document','name'=>'document','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Date Impression','name'=>'date_impression','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			$this->form[] = ['label'=>'Year','name'=>'year','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Month','name'=>'month','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Document','name'=>'document','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Date Impression','name'=>'date_impression','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ["label"=>"Users","name"=>"id_users","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"users,id"];
+			//$this->form[] = ["label"=>"Year","name"=>"year","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+			//$this->form[] = ["label"=>"Month","name"=>"month","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+			//$this->form[] = ["label"=>"File","name"=>"file","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
 			# OLD END FORM
 
 			/* 
@@ -66,6 +65,7 @@ use Illuminate\Http\Request;
 	        | 
 	        */
 	        $this->sub_module = array();
+	        $this->sub_module[] = ['label'=>'Imprimer','path'=>'comments','parent_columns'=>'libelle','button_color'=>'primary','button_icon'=>'fa fa-bars','button_action_style' => "button_icon"];
 
 
 	        /* 
@@ -213,126 +213,7 @@ use Illuminate\Http\Request;
 	        
 	        
 	    }
-	     public function getEmployeData($id){
-	    	$data = [];
-	    	$data['personnels'] = DB::table('personnels')->where('id',$id)->first();
-	    	return $data;
-	    }
 
-	    public function pdf($id)
-	    {
-		    $pdf = \App::make('dompdf.wrapper');
-	    	$pdf->loadHTML($this->print_attestation($id));
-	    	return $pdf->stream();
-	    }
-
-	    public function print_attestation($id){
-           $data = $this->getEmployeData($id);
-		   $output = "";
-		   //$headerPart="<div style="float:left"> <img src="../storage/app/myImages/Logo.jpg">  ";
-
-
-	    }
-	   public function printpdf(Request $request){
-     $data['selectedUser'] = DB::table('personnels')
-     ->where('id_users' ,'=',$request->input('idPersonnels'))->first();
-      $data['en'] = DB::table('entreprises')->first();
-	//dd($request->input('idPersonnels'));
-  //  $file = "attestation_travail_print/".$request->input('idPersonnels');
-     
-      $html = file_get_contents(CRUDBooster::mainpath().'attestation_travail_print');
-      //dd($html);
-    //$this->cbView('attestation_travail_print');
-    //$pdf = new Dompdf();
-    //$pdf->set_option('defaultFont', 'Courier');
-    //$pdf = \App::make('dompdf.wrapper');
-   // $pdf->loadHtmlFile($file);
-   // return $pdf->stream();
-      // instantiate and use the dompdf class
-$dompdf = new Dompdf();
-//$dompdf->loadHtml($file);
-$dompdf->loadHtmlFile($html);
-// (Optional) Setup the paper size and orientation
-$dompdf->setPaper('A4', 'landscape');
-
-// Render the HTML as PDF
-$dompdf->render();
-
-// Output the generated PDF to Browser
-$dompdf->stream();
-}
-
-
-
-		public function printpdf(Request $request){
-         //	dd($request->input('idPersonnels'));
-         	$file = "attestation_travail_print/".$request->input('idPersonnels');
-         //	$this->cbView('attestation_travail_print');
-         	$pdf = \App::make('dompdf.wrapper');
-	    	$pdf->loadHtmlFile($file);
-	    	return $pdf->stream();
-         }
-
-         public function getAdd(){
-         	$data['page_title'] = 'Ajouter Un Document Administratif';
-         	$this->cbView('add_document',$data);
-         }
-
-         public function getUser(Request $request){
-         	$nameEmploye = $request->input('nameEmploye');
-			$data['personnels'] = DB::table('personnels')
-            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
-            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
-            ->select('personnels.*', 'cms_users.name','professions.Libelle')
-         	->get();         	
-         	$data['selectedUser'] = DB::table('personnels')
-            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
-            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
-            //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
-            ->where('cms_users.id',$request->input('idPersonnels'))
-         	->first();
-         	 $data['en'] = DB::table('entreprises')->first();
-         	return view('attestation_travail',$data); 
-
-         }
-         public function goToAttestationTravail(){ 
-
-         	$data['personnels'] = DB::table('personnels')
-            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
-            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
-            ->select('personnels.*', 'cms_users.name','professions.Libelle')
-         	->get();
-             $data['en'] = DB::table('entreprises')->first();
-         	return view('attestation_travail',$data); 
-         }
-        
-         public function goToAttestationPoleEmploie(){ 
-         	$data['personnels'] = DB::table('personnels')
-            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
-            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
-            ->select('personnels.*', 'cms_users.name','professions.Libelle')
-         	->get();
-            $data['en'] = DB::table('entreprises')->first();        
-         	  	return view('attestation_pole_emploi',$data); 
-         }
-         public function goToBulletinPaie(){ 
-            $data['en'] = DB::table('entreprises')->first();
-         	return view('bulletin_paie',$data); 
-         }
-         public function goToAttestationSalaire(){ 
-            $data['en'] = DB::table('entreprises')->first();
-         	return view('attestation_salaire',$data); 
-         }
-         public function goToAttestationStage(){ 
-            $data['en'] = DB::table('entreprises')->first();
-         	return view('attestation_stage',$data); 
-         }
-         public function goToAccuseReception(){ 
-            $data['en'] = DB::table('entreprises')->first();
-         	return view('accuse_reception',$data); 
-         }
-
-         
 
 	    /*
 	    | ---------------------------------------------------------------------- 

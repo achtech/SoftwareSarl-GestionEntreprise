@@ -2,6 +2,20 @@
 @section('content')
 
 <h2>Retirer Votre Attestation De Salaire</h2>
+<form action="attestation_travail" method="Post"  name="f1">
+    {{ csrf_field() }}
+
+ <select name="idPersonnels"  id="idPersonnels" class="form-control" onchange="document.f1.submit()">
+        <option >Veuillez chois un 9ard</option> 
+        @foreach($personnels as $user) 
+        <?php 
+        $selected=''; 
+        if(!empty($selectedUser) && $user->id==$selectedUser->id) $selected="selected='selected'";?>
+        <option value="{{ $user->id }}" {{$selected}} >{{ $user->name }}</option> 
+        @endforeach
+     
+    </select>
+</form>
 <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -12,7 +26,6 @@
                                 
                                 
                        </form>
-                                <div style="border: 1px solid gray;fonct-size : 40px !important;padding: 10px;">
 <div style="float:left">
 
              <form action="gestion.php" name="frm" method="post" 
@@ -22,12 +35,14 @@
                
     <img src="../storage/app/myImages/Logo.jpg">  
 
-<div style="float:right;font-size:20px">
-App 6 2eme étage  M'HITA <br>espace AL moustapha Semlalia,<br>40000 Marrakech Maroc<br>
-Tel : +212 524 449 352<br>
-N° RC 58467  <br>
-N° de Patente 92110189<br>  
-N° Id.fisc 0652837 <br>
+<div style="float:right;font-size:20px" >
+{{ $en->adress }} <br>
+{{ $en->rue }},<br>
+{{$en->zip_code}} {{$en->city}} <br>
+Tel : {{ $en->mobile }}<br>
+N° RC : {{ $en->rc }}  <br>
+N° de Patente : {{ $en->patente }}<br>  
+N° Id.fisc : {{ $en->idfisc }} <br>
 </div>
 <br style="clear:both">
 <p style="font-size: 34px;
@@ -39,7 +54,7 @@ Attestation de salaire
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b><?php echo $nom ?></b> titulaire de la CIN N° <b><?php echo $cin ?></b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b><?php echo $qualite ?></b> en contrat à durée indéterminée depuis le <b><?php echo $dateEmbauche ?></b>. jusqu'à ce jour. 
+Nous certifions que Monsieur / Madame <b>{{ $nameEmploye->name }}</b> titulaire de la CIN N° <b>{{ $nameEmploye->cin }}</b> execrce dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $nameEmploye->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $nameEmploye->hiring_date }}</b>. jusqu'à ce jour et reçoit comme salaire net la somme de {{$nameEmploye->salaire}} , en complément de son salaire mensuel ,reçoit une prime annuelle d'au minimum 
 </p>
 <p  style="font-size: 22px;"> 
 La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
