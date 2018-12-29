@@ -6,7 +6,7 @@
 	use CRUDBooster;
 
 	class AdminPersonnelsController extends \crocodicstudio\crudbooster\controllers\CBController {
-
+		private     $privilegeId ;
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
@@ -26,6 +26,7 @@
 			$this->button_import = false;
 			$this->button_export = false;
 			$this->table = "personnels";
+			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
@@ -261,8 +262,9 @@
 	    |
 	    */
 	    public function hook_query_index(&$query) {
-	        //Your code here
-	            
+	        if($this->privilegeId!=1){
+	        		$query->where('personnels.id_users',$this->privilegeId);
+	        }   
 	    }
 
 	    /*
@@ -351,6 +353,7 @@
 
 
 	    //By the way, you can still create your own method in here... :) 
+	   
 
 
 	}

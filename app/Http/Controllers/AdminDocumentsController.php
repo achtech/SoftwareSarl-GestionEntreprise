@@ -213,6 +213,15 @@ use Illuminate\Http\Request;
 	        
 	    }
 
+		public function printpdf(Request $request){
+         //	dd($request->input('idPersonnels'));
+         	$file = "attestation_travail_print/".$request->input('idPersonnels');
+         //	$this->cbView('attestation_travail_print');
+         	$pdf = \App::make('dompdf.wrapper');
+	    	$pdf->loadHtmlFile($file);
+	    	return $pdf->stream();
+         }
+
          public function getAdd(){
          	$data['page_title'] = 'Ajouter Un Document Administratif';
          	$this->cbView('add_document',$data);

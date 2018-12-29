@@ -6,7 +6,7 @@
 	use CRUDBooster;
 
 	class AdminCongesController extends \crocodicstudio\crudbooster\controllers\CBController {
-
+private     $privilegeId ;
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
@@ -18,7 +18,7 @@
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
-			$this->button_edit = true;
+			$this->button_edit = false;
 			$this->button_delete = false;
 			$this->button_detail = true;
 			$this->button_show = true;
@@ -26,6 +26,7 @@
 			$this->button_import = false;
 			$this->button_export = false;
 			$this->table = "conges";
+			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
@@ -47,8 +48,10 @@
 			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Nbr Days','name'=>'nbr_days','type'=>'number','width'=>'col-sm-10'];
+			if($this->privilegeId===1){
 			$this->form[] = ['label'=>'Valid','name'=>'isValid','type'=>'radio','width'=>'col-sm-10','dataenum'=>'Oui;Non'];
 			$this->form[] = ['label'=>'Justified','name'=>'isJustify','type'=>'radio','width'=>'col-sm-10','dataenum'=>'Oui;Non'];
+			}
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -90,6 +93,10 @@
 	        | 
 	        */
 	        $this->addaction = array();
+$this->addaction[] = [
+        'title' =>'edit' , 'url' => CRUDBooster::mainpath('edit/[id]'),
+        'icon' => 'fa fa-pencil', 'color' => 'success', 'showIf' => $this->privilegeId==1?'true':'false'
+];
 
 
 	        /* 

@@ -27,10 +27,9 @@
                                
 <div style="float:left">
 
-             <form action="gestion.php" name="frm" method="post" 
-                                  onsubmit="return checkForm(document.frm);" >
-                                <input type="hidden" name="act" value="generer_attestation_de_travail"/>
-                                <input type="hidden" name="page" value="conges.php"/>
+             <form action="attestation_travail/printpdf" name="frm" method="post" onsubmit="return checkForm(document.frm);" >
+                                <input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
+                                
                
    <img src="../storage/app/myImages/Logo.jpg">  
 

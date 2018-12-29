@@ -13,7 +13,8 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             @foreach($users as $pers)
-                                <div class="col-md-3" style="height: 300px;background: lightgray;border: 1px solid grey;margin: 10px;padding: 10px;"><img src="{{$pers->photo}}" style="width: 200px;height: 200px;" /><br/>{{$pers->name}}<br/><hr>Report Pointage : {{HomeController::getReport($pers->id)}}</div>
+                               
+                                <div class="col-md-4" style="background: lightgray;border: 1px solid grey;padding: 10px;"><img src="{{$pers['user']->photo}}" style="width: 200px;height: 200px;" /><br/>{{$pers['user']->name}}<br/>Report Pointage : {{$pers['pointage']}}<br/>Report holidays : {{$pers['conge']}}</div>
                             @endforeach
                         </div>
                     </div>

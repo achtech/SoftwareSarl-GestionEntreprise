@@ -7,8 +7,8 @@
 
 	class AdminCommentsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
+	    	private     $privilegeId ;
 	    public function cbInit() {
-
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
 			$this->title_field = "id";
 			$this->limit = "20";
@@ -26,6 +26,7 @@
 			$this->button_import = false;
 			$this->button_export = false;
 			$this->table = "comments";
+			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
@@ -80,7 +81,14 @@
 	        | 
 	        */
 	        $this->addaction = array();
-
+$this->addaction[] = [
+        'title' =>'edit' , 'url' => CRUDBooster::mainpath('edit/[id]'),
+        'icon' => 'fa fa-pencil', 'color' => 'success', 'showIf' => $this->privilegeId==1?'true':'false'
+		];
+		$this->addaction[] = [
+		        'title' =>'delete' , 'url' => CRUDBooster::mainpath('delete/[id]'),
+		        'icon' => 'fa fa-trash', 'color' => 'warning', 'showIf' => $this->privilegeId==1?'true':'false'
+		];
 
 	        /* 
 	        | ---------------------------------------------------------------------- 

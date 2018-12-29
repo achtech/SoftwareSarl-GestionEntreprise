@@ -344,6 +344,7 @@
 					$nbrDays = $nbrDays-1;
 					$requiredHoursOfToday = 0;
 				}
+				 $nbrDays;
   			    $nbrHours = (($nbrDays*8)+ explode(":", $requiredHoursOfToday)[0]).":";
   			    $nbrHours .= (!empty(explode(":", $requiredHoursOfToday)[1]))?explode(":", $requiredHoursOfToday)[1]:"00:00";
 		   	}
