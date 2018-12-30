@@ -7,7 +7,7 @@
 	use DateTime;
 
 	class AdminPointages1Controller extends \crocodicstudio\crudbooster\controllers\CBController {
-
+		private $privilegeId;
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
@@ -18,9 +18,11 @@
 			$this->button_table_action = false;
 			$this->button_bulk_action = false;
 			$this->button_action_style = "button_icon";
-			$this->button_add = false;
-			$this->button_edit = false;
-			$this->button_delete = false;
+						$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
+			$this->button_add = $this->privilegeId==1;
+			$this->button_edit = $this->privilegeId==1;
+			$this->button_delete = $this->privilegeId==1;
+
 			$this->button_detail = false;
 			$this->button_show = false;
 			$this->button_filter = false;
@@ -235,8 +237,8 @@
 			 $required  = explode(":", $fullTime)[0]." hours ".explode(":", $fullTime)[1]." minutes 0 seconds";
 			$start = strtotime($sommeWorked);
 			 $end = strtotime($required);
-			if($end>$start) return "-".date("H:i:s",$end - $start);
-			else return date("H:i:s",$start - $end);
+			if($end>$start) return "-".$this->secondsToHours($end - $start);
+			else return $this->secondsToHours($start - $end);
 	    }
 
 	    public function getReportMensuelle($idUser){

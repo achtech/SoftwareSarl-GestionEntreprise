@@ -18,15 +18,15 @@ private     $privilegeId ;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
-			$this->button_edit = false;
-			$this->button_delete = false;
+			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
+			$this->button_edit = $this->privilegeId==1;
+			$this->button_delete = $this->privilegeId==1;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
 			$this->table = "modules";
-			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
 			
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
@@ -90,14 +90,6 @@ private     $privilegeId ;
 	        | 
 	        */
 	        $this->addaction = array();
-$this->addaction[] = [
-        'title' =>'edit' , 'url' => CRUDBooster::mainpath('edit/[id]'),
-        'icon' => 'fa fa-pencil', 'color' => 'success', 'showIf' => $this->privilegeId==1?'true':'false'
-		];
-		$this->addaction[] = [
-		        'title' =>'delete' , 'url' => CRUDBooster::mainpath('delete/[id]'),
-		        'icon' => 'fa fa-trash', 'color' => 'warning', 'showIf' => $this->privilegeId==1?'true':'false'
-		];
 
 	        /* 
 	        | ---------------------------------------------------------------------- 

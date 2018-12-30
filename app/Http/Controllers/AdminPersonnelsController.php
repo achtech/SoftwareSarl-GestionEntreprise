@@ -17,16 +17,15 @@
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->button_add = true;
-			$this->button_edit = true;
-			$this->button_delete = true;
+			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
+			$this->button_edit = $this->privilegeId==2;
+			$this->button_delete = $this->privilegeId==1;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
 			$this->table = "personnels";
-			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
