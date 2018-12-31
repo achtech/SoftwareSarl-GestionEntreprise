@@ -255,13 +255,13 @@
  		   	$sommeWorked .= (empty($wminutes)?"0 minutes":$wminutes." minutes ");
  		   	$sommeWorked .= (empty($wsecond)?"0 seconds":$wsecond." seconds");
 
- 		 
+ 		
  		   	$fullTime = $this->requiredDays(false);
 			$required  = explode(":", $fullTime)[0]." hours ".explode(":", $fullTime)[1]." minutes 0 seconds";
 
 			$start = strtotime($sommeWorked);
 			$end = strtotime($required);
-			if($end>$start) return "-".date("H:i:s",$end - $start);
+		if($end>$start) return "-".date("H:i:s",$end - $start);
 			else return date("H:i:s",$start - $end);
 	    }
 
@@ -310,9 +310,9 @@
 
      		$datedebut = $all?date('Y-m-d',strtotime("2018-11-01")):date('Y-m-d',strtotime(date('Y-m')."-01"));
 		   	$datefin = date('Y-m-d');
-
+$datefin = date('Y-m-d', strtotime($datefin . ' +1 day'));
 	    	$result = DB::table('freedays')
-	    		->select(DB::raw("SUM(DATEDIFF(freedays.end_date,freedays.start_date)) as count"))
+	    		->select(DB::raw("SUM(nbr_days) as count"))
          		->whereBetween('freedays.start_date',[$datedebut,$datefin])
          		->whereBetween('freedays.end_date',[$datedebut,$datefin])
                 ->first()->count;
@@ -327,7 +327,7 @@
 		   	//if datefin not a weekend
 		   	$weekDay = date('w', strtotime($datefin));
 		   	$nbrHours = 0;
-    		if($weekDay == 0 || $weekDay == 6){
+    		if($weekDay == 0 || $weekDay == 6 || $this->isFreeDay($datefin)){
 		   		$nbrHours = ($nbrDays*8).":00";
 		   	}else{
 		   		$time = date('H:i', strtotime(date('H:i')) + 60*60);
@@ -397,6 +397,14 @@
 		    }else{
 		        return 0;
 		    }
+		}
+
+		public function isFreeDay($date){
+			$result = DB::table('freedays')
+	    		->where('freedays.start_date','>=',$date)
+         		->where('freedays.end_date','<',$date)
+                ->count();
+            return empty($result)|| $result==0 ? false:true;
 		}
 
 
