@@ -393,7 +393,7 @@ private     $privilegeId ;
 	    				$currentYear++;
 	    			}
 	    				$diff=$nbDaysRequired-$nbDaysTaked;
-	    				$nb=$nb+($diff>18?18:$diff);
+	    				$nb=$nb+($diff>36?36:$diff);
 
 		    		return $nb;
 	    		}
