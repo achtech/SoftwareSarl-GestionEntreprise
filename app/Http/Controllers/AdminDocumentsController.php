@@ -219,61 +219,168 @@ use Illuminate\Http\Request;
 	    	return $data;
 	    }
 
-	    public function pdf($id)
+	    public function printpdf(Request $request)
 	    {
 		    $pdf = \App::make('dompdf.wrapper');
-	    	$pdf->loadHTML($this->print_attestation($id));
+		    $pdf->loadHTML($this->getHtmlPageAttestationTravail($request));
 	    	return $pdf->stream();
 	    }
-
-	    public function print_attestation($id){
-           $data = $this->getEmployeData($id);
-		   $output = "";
-		   //$headerPart="<div style="float:left"> <img src="../storage/app/myImages/Logo.jpg">  ";
-
-
-	    }
-	   public function printpdf(Request $request){
-     $data['selectedUser'] = DB::table('personnels')
-     ->where('id_users' ,'=',$request->input('idPersonnels'))->first();
-      $data['en'] = DB::table('entreprises')->first();
-	//dd($request->input('idPersonnels'));
-  //  $file = "attestation_travail_print/".$request->input('idPersonnels');
-     
-      $html = file_get_contents(CRUDBooster::mainpath().'attestation_travail_print');
-      //dd($html);
-    //$this->cbView('attestation_travail_print');
-    //$pdf = new Dompdf();
-    //$pdf->set_option('defaultFont', 'Courier');
-    //$pdf = \App::make('dompdf.wrapper');
-   // $pdf->loadHtmlFile($file);
-   // return $pdf->stream();
-      // instantiate and use the dompdf class
-$dompdf = new Dompdf();
-//$dompdf->loadHtml($file);
-$dompdf->loadHtmlFile($html);
-// (Optional) Setup the paper size and orientation
-$dompdf->setPaper('A4', 'landscape');
-
-// Render the HTML as PDF
-$dompdf->render();
-
-// Output the generated PDF to Browser
-$dompdf->stream();
-}
-
-
-/*
-		public function printpdf(Request $request){
-         //	dd($request->input('idPersonnels'));
-         	$file = "attestation_travail_print/".$request->input('idPersonnels');
-         //	$this->cbView('attestation_travail_print');
-         	$pdf = \App::make('dompdf.wrapper');
-	    	$pdf->loadHtmlFile($file);
+ public function printpdfofAttesstationEmploi(Request $request)
+	    {
+		    $pdf = \App::make('dompdf.wrapper');
+		    $pdf->loadHTML($this->getHtmlPageAttestationEmploi($request));
 	    	return $pdf->stream();
-         }
+	    }
+	   public function getHtmlPageAttestationTravail(Request $request){
+			$selectedUser = DB::table('personnels')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+			->where('id_users' ,'=',$request->input('idPersonnels'))->first();
+      		$en = DB::table('entreprises')->first();
+			
+			$out = '<div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12"> 
+                            <div style="float:left">
+                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  
+                                <div style="float:right;font-size:20px" >
+                                    '.$en->adress.'<br>
+                                    '. $en->rue.'<br>
+                                    '. $en->zip_code.' '. $en->city.' <br>
+                                    Tel : '. $en->mobile.'<br>
+                                    N° RC : '. $en->rc.'  <br>
+                                    N° de Patente : '. $en->patente.'<br>  
+                                    N° Id.fisc : '. $en->idfisc.' <br>
+                                </div>
+                                <br style="clear:both">
+                                <p style="font-size: 34px;
+                                    font-weight: bolder;
+                                    text-align:center;margin-top:100px">
+                                        Attestation de travail
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Madame, Monsieur,
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Nous certifions que Monsieur / Madame <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.<br>
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Fait à Marrakech <br>
+                                    le '.now().',
+                                </p>
+                                <p  style="font-size: 22px; margin-left:450px ; margin-bottom:55px;"> 
+                                   Signature,
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+			return $out;
+		}
 
-  */       public function getAdd(){
+	   public function getHtmlPageAttestationEmploi(Request $request){
+			$selectedUser = DB::table('personnels')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+			->where('id_users' ,'=',$request->input('idPersonnels'))->first();
+      		$en = DB::table('entreprises')->first();
+			
+			$out = '<div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12"> 
+                            <div style="float:left">
+                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  
+                                <div style="float:right;font-size:20px" >
+                                    '.$en->adress.'<br>
+                                    '. $en->rue.'<br>
+                                    '. $en->zip_code.' '. $en->city.' <br>
+                                    Tel : '. $en->mobile.'<br>
+                                    N° RC : '. $en->rc.'  <br>
+                                    N° de Patente : '. $en->patente.'<br>  
+                                    N° Id.fisc : '. $en->idfisc.' <br>
+                                </div>
+                                <br style="clear:both">
+                                <p style="font-size: 34px;
+                                    font-weight: bolder;
+                                    text-align:center;margin-top:100px">
+                                        Attestation d emploie 
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Madame, Monsieur,
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Nous certifions que Monsieur / Madame <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.<br>
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Fait à Marrakech <br>
+                                    le '.now().',
+                                </p>
+                                <p  style="font-size: 22px; margin-left:450px ; margin-bottom:55px;"> 
+                                   Signature,
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+			return $out;
+		}
+
+
+
+/*	   public function printpdf(Request $request){
+			$data['selectedUser'] = DB::table('personnels')->where('id_users' ,'=',$request->input('idPersonnels'))->first();
+      		$data['en'] = DB::table('entreprises')->first();
+			$file = '\admin\attestation_travail_print';
+     		//dd($file);
+     		dd(public_path().$file);
+     		$html = file_get_contents(public_path().$file);
+
+		    //$this->cbView('attestation_travail_print');
+		    //$pdf = new Dompdf();
+		    //$pdf->set_option('defaultFont', 'Courier');
+		    //$pdf = \App::make('dompdf.wrapper');
+		    // $pdf->loadHtmlFile($file);
+		    // return $pdf->stream();
+      		// instantiate and use the dompdf class
+			$dompdf = new Dompdf();
+			$dompdf->loadHtmlFile($html);
+			$dompdf->setPaper('A4', 'landscape');
+
+			// Render the HTML as PDF
+			$dompdf->render();
+
+			// Output the generated PDF to Browser
+			$dompdf->stream();
+		}
+*/
+
+      public function getAdd(){
          	$data['page_title'] = 'Ajouter Un Document Administratif';
          	$this->cbView('add_document',$data);
          }
@@ -293,6 +400,24 @@ $dompdf->stream();
          	->first();
          	 $data['en'] = DB::table('entreprises')->first();
          	return view('attestation_travail',$data); 
+
+         }
+
+         public function getUserToGetAttestationEmploi(Request $request){
+         	$nameEmploye = $request->input('nameEmploye');
+			$data['personnels'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();         	
+         	$data['selectedUser'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
+            ->where('cms_users.id',$request->input('idPersonnels'))
+         	->first();
+         	 $data['en'] = DB::table('entreprises')->first();
+         	return view('attestation_pole_emploi',$data); 
 
          }
          public function goToAttestationTravail(){ 

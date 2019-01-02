@@ -2,11 +2,11 @@
 @section('content')
 
 <h2>Retirer Votre Attestion Pole Emploi</h2>
-<form action="attestation_travail" method="Post"  name="f1">
+<form action="attestation_pole_emploi" method="Post"  name="f1">
     {{ csrf_field() }}
 
  <select name="idPersonnels"  id="idPersonnels" class="form-control" onchange="document.f1.submit()">
-        <option >Veuillez chois un 9ard</option> 
+        <option >Veuillez choisir une personne</option> 
         @foreach($personnels as $user) 
         <?php 
         $selected=''; 
@@ -16,24 +16,20 @@
      
     </select>
 </form>
+    <br/>
 <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12"> 
-                            <form action="" name="frm" method="post" >
-                                
-                                
-                       </form>
+                          
+                               
 <div style="float:left">
 
-             <form action="gestion.php" name="frm" method="post" 
-                                  onsubmit="return checkForm(document.frm);" >
-                                <input type="hidden" name="act" value="generer_attestation_de_travail"/>
-                                <input type="hidden" name="page" value="conges.php"/>
-               
-    <img src="../storage/app/myImages/Logo.jpg">  
+             <form action="admin/attestation_emploi_print"  method = "get" name="frm"  onsubmit="return checkForm(document.frm);" >
+<input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
+   <img src="../storage/app/myImages/Logo.jpg">  
 
 <div style="float:right;font-size:20px" >
 
@@ -50,21 +46,16 @@ N° Id.fisc : {{ $en->idfisc }} <br>
 <p style="font-size: 34px;
     font-weight: bolder;
     text-align: -webkit-center;margin-top:100px">
-Attestation de pole d'emploie
+Reçu pour solde de tout compte
  </p>
 <p  style="font-size: 22px;"> 
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b><?php echo $nom ?></b> titulaire de la CIN N° <b><?php echo $cin ?></b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b><?php echo $qualite ?></b> en contrat à durée indéterminée depuis le <b><?php echo $dateEmbauche ?></b>. jusqu'à ce jour. 
-</p>
-<p  style="font-size: 22px;"> 
-La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
-</p>
-<p  style="font-size: 22px;"> 
-Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.<br>
- </p>
-
+je soussigné(e) Monsieur/Madamme <p>{{ $selectedUser->name }}</p> titulaire de la CIN N° <p>{{ $selectedUser->cin }}</p> demeurant à <p> {{ $selectedUser->adress }} </p> reconnais avoir reçu de la société SOFTWARE S.A.R.L la somme de  <p><input type="text"></p>cette somme n'a été versée, pour solde de tout compte ,en paiement de :
+-Salaire <p><input type="text"></p> au <p><input type="text"></p>.
+-Solde des congés payés depuis le <p><input type="text"></p> jusqu'à le <p><input type="text"></p>
+Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m'a été remis.
 </p>
 <p  style="font-size: 22px;"> 
 Fait à Marrakech <br>
@@ -73,8 +64,8 @@ le <?php echo date("d-m-Y") ?>,
                                 </div>
                                 </div>
                                <div class="col-lg-12">
-                            	<br/>
-<button type="button" class="btn btn-primary" style="margin-left:1500px">Imprimer</button>
+                                <br/>
+<input  type="submit" class="btn btn-primary" style="margin-left:1500px" value = "Imprimer"></input>
  </div>
                         </form>
                         </div>
