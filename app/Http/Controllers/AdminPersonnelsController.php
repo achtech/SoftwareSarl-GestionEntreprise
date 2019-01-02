@@ -262,7 +262,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        if($this->privilegeId!=1){
-	        		$query->where('personnels.id_users',$this->privilegeId);
+	        		$query->where('personnels.id_users',CRUDBooster::myId());
 	        }   
 	    }
 

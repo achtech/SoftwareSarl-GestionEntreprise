@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 29 déc. 2018 à 14:55
+-- Généré le :  lun. 31 déc. 2018 à 17:31
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.3.0
 
@@ -382,7 +382,22 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (190, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/pointagesDetails/delete/1669', 'Delete data 1669 at Pointage details', '', 1, '2018-12-29 13:15:12', NULL),
 (191, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'achraf.saloumi@exo-it.com logout', '', 1, '2018-12-29 13:28:34', NULL),
 (192, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-29 13:29:04', NULL),
-(193, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/pointagesDetails/edit/1656', 'Try edit the data 1656 at Pointage details', '', 1, '2018-12-29 13:47:41', NULL);
+(193, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/pointagesDetails/edit/1656', 'Try edit the data 1656 at Pointage details', '', 1, '2018-12-29 13:47:41', NULL),
+(194, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-29 21:30:55', NULL),
+(195, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-30 16:36:22', NULL),
+(196, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-31 10:07:39', NULL),
+(197, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/freedays/edit-save/4', 'Update data  at Free days', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>end_date</td><td>2019-01-02</td><td>2019-01-01</td></tr></tbody></table>', 1, '2018-12-31 10:08:29', NULL),
+(198, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/freedays/edit-save/6', 'Update data  at Free days', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>isFixed</td><td>1</td><td></td></tr><tr><td>start_date</td><td>2019-04-01</td><td>2019-05-01</td></tr></tbody></table>', 1, '2018-12-31 10:08:46', NULL),
+(199, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/freedays/edit-save/6', 'Update data  at Free days', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>nbr_days</td><td>31</td><td>1</td></tr></tbody></table>', 1, '2018-12-31 10:08:57', NULL),
+(200, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/freedays/edit-save/4', 'Update data  at Free days', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>end_date</td><td>2019-01-01</td><td>2018-12-31</td></tr></tbody></table>', 1, '2018-12-31 10:09:48', NULL),
+(201, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/pointagesDetails/edit-save/1673', 'Update data  at Pointage details', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>time_in</td><td>11:01:27</td><td>10:01:27</td></tr><tr><td>time_out</td><td>11:01:27</td><td>10:01:27</td></tr></tbody></table>', 1, '2018-12-31 10:15:09', NULL),
+(202, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2018-12-31 15:55:21', NULL),
+(203, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/conges/edit-save/68', 'Update data  at Conges', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>end_date</td><td>2019-01-31</td><td>2018-12-31</td></tr><tr><td>nbr_days</td><td>65</td><td>39</td></tr></tbody></table>', 1, '2018-12-31 15:59:23', NULL),
+(204, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/conges/add-save', 'Add New Data  at Conges', '', 1, '2018-12-31 16:01:16', NULL),
+(205, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/conges/add-save', 'Add New Data  at Conges', '', 1, '2018-12-31 16:01:53', NULL),
+(206, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/conges/edit-save/68', 'Update data  at Conges', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>end_date</td><td>2018-12-31</td><td>2018-11-30</td></tr><tr><td>nbr_days</td><td>39</td><td>19</td></tr></tbody></table>', 1, '2018-12-31 16:04:51', NULL),
+(207, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/conges/add-save', 'Add New Data  at Conges', '', 1, '2018-12-31 16:05:32', NULL),
+(208, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/freedays/edit-save/4', 'Update data  at Free days', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2018-12-31 16:20:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -867,7 +882,7 @@ INSERT INTO `conges` (`id`, `id_users`, `start_date`, `end_date`, `libelle`, `nb
 (65, 5, '2018-07-16', '2018-07-17', 'Conge relaxing', 2, 'Oui', 'Non', '2018-07-16'),
 (66, 6, '2018-11-01', '2018-11-02', 'Malade certifier', 2, 'Oui', 'Oui', '2018-11-01'),
 (67, 1, '2018-11-02', '2018-11-02', 'Conge certifie : nouvelle naissance', 1, 'Oui', 'Oui', '2018-11-02'),
-(68, 2, '2018-11-01', '2019-01-31', 'Conge de maternite', 65, 'Oui', 'Oui', '2018-11-01'),
+(68, 2, '2018-11-01', '2018-11-30', 'Conge de maternite', 19, 'Oui', 'Oui', '2018-11-01'),
 (69, 1, '2018-11-12', '2018-11-12', 'Conge maladie', 1, 'Oui', 'Oui', '2018-11-12'),
 (70, 1, '2018-11-14', '2018-11-14', 'Conge justifier (parmi les 3 jouor du nouvelle naissance)', 1, 'Oui', 'Oui', '2018-11-14'),
 (73, 6, '2018-12-04', '2018-12-04', 'Conge', 1, 'Oui', 'Non', '2018-12-04'),
@@ -900,7 +915,10 @@ INSERT INTO `conges` (`id`, `id_users`, `start_date`, `end_date`, `libelle`, `nb
 (101, 6, '2017-10-02', '2017-11-30', 'Conge 2017', 18, 'Oui', 'Non', '2018-12-23'),
 (102, 6, '2018-09-03', '2018-09-24', 'Conge 2018 avant mois 11', 9, 'Oui', 'Non', '2018-12-23'),
 (103, 6, '2017-11-20', '2017-12-10', 'Conge maladie', 15, 'Oui', 'Oui', '2017-11-20'),
-(104, 3, '2016-02-01', '2016-03-02', 'Conge', 22, 'Oui', 'Non', '2016-02-01');
+(104, 3, '2016-02-01', '2016-03-02', 'Conge', 22, 'Oui', 'Non', '2016-02-01'),
+(105, 2, '2019-01-01', '2019-01-31', 'Conge de maternite', 23, 'Oui', 'Oui', '2018-12-01'),
+(106, 2, '2019-02-01', '2019-02-07', 'Conge de maternite', 5, 'Oui', 'Oui', '2018-12-31'),
+(107, 2, '2018-12-01', '2018-12-31', 'Conge de maternite', 20, 'Oui', 'Oui', '2018-11-01');
 
 -- --------------------------------------------------------
 
@@ -965,9 +983,9 @@ INSERT INTO `freedays` (`id`, `pattern`, `isFixed`, `start_date`, `end_date`, `n
 (1, 'La marche verte', 1, '2018-11-06', '2018-11-07', 1),
 (2, 'Fete de l’indépendance ', 1, '2018-11-18', '2018-11-19', 1),
 (3, 'Aid mawlid nabawi ', 1, '2018-11-20', '2018-11-21', 1),
-(4, 'Jour de l\'an', 1, '2019-01-01', '2019-01-02', 1),
+(4, 'Jour de l\'an', 1, '2018-12-31', '2019-01-01', 1),
 (5, 'Manifeste de l\'Indépendance', 1, '2019-01-11', '2019-01-12', 1),
-(6, 'Fete Du Travail', 1, '2019-04-01', '2019-05-02', 31),
+(6, 'Fete Du Travail', 1, '2019-05-01', '2019-05-02', 1),
 (7, 'Fete Du Trone', 1, '2019-07-30', '2019-07-31', 1),
 (8, 'Allégeance Oued Eddahab', 1, '2019-08-14', '2019-08-15', 1),
 (9, 'La Révolution Du Roi et du peuple', 1, '2019-08-20', '2019-08-21', 1),
@@ -1092,10 +1110,10 @@ CREATE TABLE `personnels` (
 --
 
 INSERT INTO `personnels` (`id`, `id_users`, `cin`, `cnss`, `polite`, `mobile`, `adress`, `hiring_date`, `exit_date`, `birth_date`, `order_number`, `id_professions`, `net_salary`, `gross_salary`, `family_situation`, `number_children`, `idLogs`, `classCss`) VALUES
-(1, 1, 'HA132209', '140924898', 'Mr.', '+212 6 53 90 36 59', 'Zaouia derb derraz N1 Marrakeche', '2014-02-03', '2014-02-03', '1985-09-07', 1, 2, 7400, 8511, 'Mariée', 2, 1656, 'danger'),
+(1, 1, 'HA132209', '140924898', 'Mr.', '+212 6 53 90 36 59', 'Zaouia derb derraz N1 Marrakeche', '2014-02-03', '2014-02-03', '1985-09-07', 1, 2, 7400, 8511, 'Mariée', 2, 1674, 'danger'),
 (2, 2, 'EE260962', '140925490', 'Mme', '+212 6 28 80 30 44', 'Zaouia Derb derraz N1', '2014-02-03', '2014-02-03', '1987-05-28', 2, 1, 7000, 8011, 'Mariee', 2, 1670, 'danger'),
 (3, 3, 'P245848', '175781099', 'Mr.', '', '', '2015-01-01', '2015-01-01', '1987-06-24', 3, 1, 7000, 8092, 'Celibataire', 0, 1657, 'danger'),
-(4, 4, 'EE563836', '126654117', 'Mlle', '0664282238', 'El Moukef Derb Toudgha n 125 bis Marrakech', '2018-09-02', '2021-01-06', '2018-12-12', 9, 1, 5600, 6210, 'Célibataire', 0, 1658, 'danger'),
+(4, 4, 'EE563836', '126654117', 'Mlle', '0664282238', 'El Moukef Derb Toudgha n 125 bis Marrakech', '2018-09-02', '2021-01-06', '2018-12-12', 9, 1, 5600, 6210, 'Célibataire', 0, 1672, 'danger'),
 (5, 5, 'JA152555', '139893601', 'Mr.', '+212 6 96 78 43 70', 'N 193 unite mohammed safou quartier youssef ben tachfine Marrakech', '2016-11-01', '2016-11-01', '1993-05-15', 7, 1, 6257, 7063, 'Marie', 0, 1653, 'danger'),
 (6, 6, 'EE471931', '145169200', 'Mr.', '+212 6 98 18 01 57', 'Assif B N 28 Marrakech', '2017-01-01', '2017-01-01', '1992-05-12', 8, 1, 6800, 7727, 'Marie', 1, 1655, 'danger');
 
@@ -1596,7 +1614,11 @@ INSERT INTO `pointages` (`id`, `id_users`, `date_pointage`, `time_in`, `time_out
 (1655, 6, '2018-12-28', '17:17:52', '17:23:52'),
 (1656, 1, '2018-12-29', '09:49:52', '15:00:52'),
 (1657, 3, '2018-12-29', '09:15:52', '12:00:52'),
-(1658, 4, '2018-12-29', '09:49:52', '13:00:00');
+(1658, 4, '2018-12-29', '09:49:52', '13:00:00'),
+(1671, 4, '2018-12-31', '09:45:55', '10:11:58'),
+(1672, 4, '2018-12-31', '11:01:25', '16:21:20'),
+(1673, 1, '2018-12-31', '10:01:27', '14:00:03'),
+(1674, 1, '2018-12-31', '14:44:48', '16:54:47');
 
 -- --------------------------------------------------------
 
@@ -2437,7 +2459,7 @@ ALTER TABLE `cms_email_templates`
 -- AUTO_INCREMENT pour la table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT pour la table `cms_menus`
@@ -2503,7 +2525,7 @@ ALTER TABLE `cms_users`
 -- AUTO_INCREMENT pour la table `conges`
 --
 ALTER TABLE `conges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT pour la table `documents`
@@ -2551,7 +2573,7 @@ ALTER TABLE `personnels`
 -- AUTO_INCREMENT pour la table `pointages`
 --
 ALTER TABLE `pointages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1671;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1675;
 
 --
 -- AUTO_INCREMENT pour la table `pointages_journaliere`

@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('home','HomeController@exportDatabase');
 Route::get('admin/congeReport','AdminCongesController@getListOfConge');
+Route::get('admin/statusSalarie','AdminCongesController@getStatusSalarie');
 Route::get('admin/home','HomeController@index');
 Route::get('/pointageReport', 'PointageReportController@printpdf');
 Route::Post('attestation_travail', 'AdminDocumentsController@getUser');
@@ -26,6 +28,7 @@ Route::get('admin/attestation_emploi_print', 'AdminDocumentsController@printpdfo
 Route::get('attestation_travail', 'AdminDocumentsController@goToAttestationTravail','$data');
 Route::get('attestation_emploie', 'AdminDocumentsController@goToAttestationPoleEmploie');
 Route::get('bulletin_paie', 'AdminDocumentsController@goToBulletinPaie');
+Route::get('admin/statusSalarie/printpdf', 'AdminCongesController@printpdf');
 Route::get('attestation_salaire', 'AdminDocumentsController@goToAttestationSalaire');
 Route::get('attestation_stage', 'AdminDocumentsController@goToAttestationStage');
 Route::get('accuse_reception', 'AdminDocumentsController@goToAccuseReception');

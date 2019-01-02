@@ -12,9 +12,10 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="table-responsive">
-                            @foreach($users as $pers)
-                               
-                                <div class="col-md-4" style="background: lightgray;border: 1px solid grey;padding: 10px;"><img src="{{$pers['user']->photo}}" style="width: 200px;height: 200px;" /><br/>{{$pers['user']->name}}<br/>Report Pointage : {{$pers['pointage']}}<br/>Report holidays : {{$pers['conge']}}</div>
+                            <?php $tab = ['#b8c5e9','#ef8c8e','#e4a392','#fae8e8','#d9d8e9','#faf9fe']; ?>
+                            @foreach($users as $i=>$pers)
+                                <?php $color=$tab[$i]; ?>
+                                <div class="col-md-2" style="background: <?php echo $color; ?>;border: 1px solid grey;padding: 5px;"><img src="{{$pers['user']->photo}}" style="width: 190px;height: 190px;" /><br/>{{$pers['user']->name}}<br/>Report Pointage : {{$pers['pointage']}}<br/>Report holidays : {{$pers['conge']}}</div>
                             @endforeach
                         </div>
                     </div>
