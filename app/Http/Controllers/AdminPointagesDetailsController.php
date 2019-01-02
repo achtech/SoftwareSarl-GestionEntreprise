@@ -251,11 +251,12 @@ $this->addaction[] = [
 	    | @query = current sql query 
 	    |
 	    */
-	    public function hook_query_index(&$query) {
-	        //Your code here
+	     public function hook_query_index(&$query) {
+	       if(!CRUDBooster::isSuperadmin()){
+	        	$query->where('pointages.id_users',CRUDBooster::myId());
+	       }
 	            
 	    }
-
 	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate row of index table html 

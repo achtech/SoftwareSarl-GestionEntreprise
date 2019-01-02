@@ -243,7 +243,9 @@
 	    |
 	    */
 	    public function hook_query_index(&$query) {
-	        //Your code here
+	       if(!CRUDBooster::isSuperadmin()){
+	        	$query->where('pointages_journaliere.id_users',CRUDBooster::myId());
+	       }
 	            
 	    }
 
