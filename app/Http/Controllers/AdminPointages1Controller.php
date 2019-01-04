@@ -348,7 +348,7 @@ $datefin = date('Y-m-d', strtotime($datefin . ' +1 day'));
 				}
 				$h=count(explode(":", $requiredHoursOfToday))===3?explode(":", $requiredHoursOfToday)[0]:0;
 				$m=count(explode(":", $requiredHoursOfToday))===3?explode(":", $requiredHoursOfToday)[1]:0;
-  			    $nbrHours = (($nbrDays*8)+ $h).":".$m."00:00";
+  			    $nbrHours = (($nbrDays*8)+ $h).":".$m.":00";
 		   	}
 
 		   	return $nbrHours;
