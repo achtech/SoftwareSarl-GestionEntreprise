@@ -480,18 +480,13 @@ private     $privilegeId ;
 
 	    	$header = "";
 	    	$body = "<table>
-                                <thead>
+                                <thead><tr>
                                     <th>Nom</th>
                                     <th>Salaire net</th>
                                     <th>Nombre d'heur</th>
-                                    <th>Congé</th>
+                                    <th>Congé</th></tr>
                                 </thead>
-                                <tfoot>
-                                    <th>Nom</th>
-                                    <th>Salaire net</th>
-                                    <th>Nombre d'heur</th>
-                                    <th>Congé</th>
-                                </tfoot>    
+                                
                                 <tbody>";
                                     for($i=0;$i<count($personnels);$i++){
                                         $body .="<tr >
@@ -505,6 +500,6 @@ private     $privilegeId ;
                             </table>";
 	    	$footer = "";
 
-	    	dd($header.$body.$footer);
+	    	return $header.$body.$footer;
 	    }
 	}
