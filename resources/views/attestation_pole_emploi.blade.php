@@ -31,7 +31,7 @@
 <input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
    <img src="../storage/app/myImages/Logo.jpg">  
 
-<div style="float:right;font-size:20px" >
+<div style="float:right;font-size:20px;margin-left: 833px;" >
 
       
 {{ $en->adress }} <br>
@@ -45,17 +45,19 @@ N° Id.fisc : {{ $en->idfisc }} <br>
 <br style="clear:both">
 <p style="font-size: 34px;
     font-weight: bolder;
-    text-align: -webkit-center;margin-top:100px">
-Reçu pour solde de tout compte
+    text-align: center;margin-top:11px">
+ Reçu pour solde de tout compte
  </p>
 <p  style="font-size: 22px;"> 
-    Madame, Monsieur,
+je soussigné(e) Monsieur/Madamme <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }} </b> demeurant à  
+<b>{{ $selectedUser->adress }} </b>reconnais avoir reçu de la société SOFTWARE S.A.R.L la somme de  <input type="text"  name = "salary" id="salary">cette somme n'a été versée, pour solde de tout compte ,en paiement de :
+<p style="font-size: 22px;" >
+-Salaire <input type="text" name = "salary" id="salary" > au  <input type="text" name = "netSalary" id="netSalary">.</p>
+<p style="font-size: 22px;" >
+-Solde des congés payés depuis le <input type="text"  name = "conge" id="conge" > jusqu'à le <input type="text" name = "endConge" id="endConge">
 </p>
-<p  style="font-size: 22px;"> 
-je soussigné(e) Monsieur/Madamme <p>{{ $selectedUser->name }}</p> titulaire de la CIN N° <p>{{ $selectedUser->cin }}</p> demeurant à <p> {{ $selectedUser->adress }} </p> reconnais avoir reçu de la société SOFTWARE S.A.R.L la somme de  <p><input type="text"></p>cette somme n'a été versée, pour solde de tout compte ,en paiement de :
--Salaire <p><input type="text"></p> au <p><input type="text"></p>.
--Solde des congés payés depuis le <p><input type="text"></p> jusqu'à le <p><input type="text"></p>
-Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m'a été remis.
+<p style="font-size: 22px;" >
+Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m'a été remis.</p>
 </p>
 <p  style="font-size: 22px;"> 
 Fait à Marrakech <br>

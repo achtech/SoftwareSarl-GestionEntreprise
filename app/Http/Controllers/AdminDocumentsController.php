@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 	use Session;
 	//use Request;
 	use Dompdf\Dompdf;
@@ -321,18 +322,17 @@ use Illuminate\Http\Request;
                                     text-align:center;margin-top:100px">
                                         Attestation d emploie 
                                 </p>
-                                <p  style="font-size: 22px;"> 
-                                    Madame, Monsieur,
-                                </p>
-                                <p  style="font-size: 22px;"> 
-                                    Nous certifions que Monsieur / Madame <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
-                                </p>
-                                <p  style="font-size: 22px;"> 
-                                    La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
-                                </p>
-                                <p  style="font-size: 22px;"> 
-                                    Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.<br>
-                                </p>
+                               <p  style="font-size: 22px;"> 
+je soussigné(e) Monsieur/Madamme <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
+<b>'.$selectedUser->adress.' </b>reconnais avoir reçu de la société SOFTWARE S.A.R.L la somme de  <b>'.$request->input('salary').' </b> cette somme n a été versée, pour solde de tout compte ,en paiement de :
+<p style="font-size: 22px;" >
+-Salaire <b> '.$request->input('salary').' </b> au <b> '.$request->input('netSalary').' </b> </p>
+<p style="font-size: 22px;" >
+-Solde des congés payés depuis le <b>'.$request->input('conge').' </b> jusqu  à le <b>'.$request->input('endConge').'</b>
+</p>
+<p style="font-size: 22px;" >
+Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m \'a été remis.</p>
+</p>
                                 <p  style="font-size: 22px;"> 
                                     Fait à Marrakech <br>
                                     le '.now().',
@@ -402,6 +402,23 @@ use Illuminate\Http\Request;
          	return view('attestation_travail',$data); 
 
          }
+         public function getAttestationStage(Request $request){
+         	$nameEmploye = $request->input('nameEmploye');
+			$data['personnels'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();         	
+         	$data['selectedUser'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
+            ->where('cms_users.id',$request->input('idPersonnels'))
+         	->first();
+         	 $data['en'] = DB::table('entreprises')->first();
+         	return view('attestation_stage',$data); 
+
+         }
 
          public function getUserToGetAttestationEmploi(Request $request){
          	$nameEmploye = $request->input('nameEmploye');
@@ -444,7 +461,23 @@ use Illuminate\Http\Request;
             $data['en'] = DB::table('entreprises')->first();
          	return view('bulletin_paie',$data); 
          }
-         public function goToAttestationSalaire(){ 
+         public function getAttestationSalaire(){ 
+      	    $nameEmploye = $request->input('nameEmploye');
+			$data['personnels'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();         	
+         	$data['selectedUser'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
+            ->where('cms_users.id',$request->input('idPersonnels'))
+         	->first();
+         	 $data['en'] = DB::table('entreprises')->first();
+         	return view('attestation_salaire',$data);  
+         }
+          public function goToAttestationSalaire(){ 
             $data['en'] = DB::table('entreprises')->first();
          	return view('attestation_salaire',$data); 
          }

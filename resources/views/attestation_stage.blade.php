@@ -2,6 +2,21 @@
 @section('content')
 
 <h2>Retirer Votre Attestion De Stage</h2>
+<form action="attestation_stage" method="Post"  name="f1">
+    {{ csrf_field() }}
+
+ <select name="idPersonnels"  id="idPersonnels" class="form-control" onchange="document.f1.submit()">
+        <option >Veuillez choisir une personne</option> 
+        @foreach($personnels as $user) 
+        <?php 
+        $selected=''; 
+        if(!empty($selectedUser) && $user->id==$selectedUser->id) $selected="selected='selected'";?>
+        <option value="{{ $user->id }}" {{$selected}} >{{ $user->name }}</option> 
+        @endforeach
+     
+    </select>
+</form>
+    <br/>
 
 <div class="row">
         <div class="col-lg-12">
@@ -41,7 +56,7 @@ Attestation de stage
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b><?php echo $nom ?></b> titulaire de la CIN N° <b><?php echo $cin ?></b> a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech.
+Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->name }}</b> a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech.
 </p>
 <p  style="font-size: 22px;"> 
 Nous délivrons la présente attesttaion  pour servir et valoir ce que de droit.<br>
@@ -59,7 +74,7 @@ le <?php echo date("d-m-Y") ?>,
                                 </div>
                                <div class="col-lg-12">
                             	<br/>
-<button type="button" class="btn btn-primary" style="margin-left:1500px">Imprimer</button>
+<input  type="submit" class="btn btn-primary" style="margin-left:1500px" value = "Imprimer"></input>
  </div>
                         </form>
                         </div>
