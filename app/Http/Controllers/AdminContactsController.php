@@ -10,18 +10,18 @@
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "id";
+			$this->title_field = "name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
-			$this->button_bulk_action = false;
+			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
 			$this->button_edit = true;
 			$this->button_delete = true;
-			$this->button_detail = false;
-			$this->button_show = false;
+			$this->button_detail = true;
+			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
@@ -30,26 +30,29 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Name","name"=>"Name"];
-			$this->col[] = ["label"=>"Profession","name"=>"Profession"];
-			$this->col[] = ["label"=>"Phone","name"=>"Phone"];
-			$this->col[] = ["label"=>"Email","name"=>"Email"];
+			$this->col[] = ["label"=>"Name","name"=>"name"];
+			$this->col[] = ["label"=>"Profession","name"=>"profession"];
+			$this->col[] = ["label"=>"Phone","name"=>"phone"];
+			$this->col[] = ["label"=>"Email","name"=>"email"];
+			$this->col[] = ["label"=>"Remarque","name"=>"remarque"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Name','name'=>'Name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Profession','name'=>'Profession','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Phone','name'=>'Phone','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Email','name'=>'Email','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Profession','name'=>'profession','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Phone','name'=>'phone','type'=>'text','width'=>'col-sm-10','placeholder'=>'You can only enter the number only'];
+			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','width'=>'col-sm-10','placeholder'=>'Please enter a valid email address'];
+			$this->form[] = ['label'=>'Remarque','name'=>'remarque','type'=>'textarea','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Name","name"=>"Name","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Profession","name"=>"Profession","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Phone","name"=>"Phone","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Email","name"=>"Email","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Name","name"=>"name","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
+			//$this->form[] = ["label"=>"Profession","name"=>"profession","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Phone","name"=>"phone","type"=>"number","required"=>TRUE,"validation"=>"required|numeric","placeholder"=>"You can only enter the number only"];
+			//$this->form[] = ["label"=>"Email","name"=>"email","type"=>"email","required"=>TRUE,"validation"=>"required|min:1|max:255|email|unique:contacts","placeholder"=>"Please enter a valid email address"];
+			//$this->form[] = ["label"=>"Remarque","name"=>"remarque","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
 			# OLD END FORM
 
 			/* 

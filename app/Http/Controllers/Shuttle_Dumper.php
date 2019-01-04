@@ -1,42 +1,4 @@
-<?php namespace App\Http\Controllers;
-	
-	use Session;
-	use Request;
-	use DB;
-	use CRUDBooster;
-	use App\Http\Controllers\AdminPointages1Controller;
-	use App\Http\Controllers\AdminCongesController;
-	use App\Http\Controllers\Shuttle_Dumper;
-
-	class HomeController extends AdminPointages1Controller {
-	    public function index() {
-	    	$data['page_title']="Home";
-	    	$result = DB::table('cms_users')->get();
-	    	$tab = [];
-	    	$i=0;
-	    	foreach ($result as $key => $value) {
-	    		$tab[$i]['user']=$value;
-	    		$tab[$i]['pointage']=parent::getReport($value->id);
-	    		$tab[$i]['conge']=AdminCongesController::getNombreJourCongeCredit($value->id,date('Y'));
-	    		$i=$i+1;	
-	    	}
-	    	$data['users']=$tab;
-	    	//dd($tab);
-	 		return View('home',$data);
-	    }
-
-	    public function exportDatabase(){
-    	    $date = date("d-m-Y-h-i-s");
-	    	//dd($date);
-	    	$world_dumper = Shuttle_Dumper::create(array(
-                    'host' => "localhost",
-                    'username' => "root",
-                    'password' => "",
-                    'db_name' => "db_software_sarl",
-	        ));
-        	$world_dumper->dump('../../../backup/db_software_sarl-' . $date . '.sql');
-	    }
-	}
+<?php
 
 /**
  * Abstract dump file: provides common interface for writing
@@ -70,7 +32,7 @@ abstract class Shuttle_Dump_File {
         $this->fh = $this->open();
 
         if (!$this->fh) {
-         //   throw new Shuttle_Exception("Couldn't create gz file");
+            throw new Shuttle_Exception("Couldn't create gz file");
         }
     }
 
@@ -325,7 +287,7 @@ class Shuttle_Dumper_ShellCommand extends Shuttle_Dumper {
         if ($return_val !== 0) {
             $error_text = file_get_contents($error_file);
             unlink($error_file);
-        //    throw new Shuttle_Exception('Couldn\'t export database: ' . $error_text);
+            throw new Shuttle_Exception('Couldn\'t export database: ' . $error_text);
         }
 
         unlink($error_file);
@@ -449,12 +411,12 @@ class Shuttle_DBConn_Mysql extends Shuttle_DBConn {
     function connect() {
         $this->connection = @mysqli_connect($this->host, $this->username, $this->password);
         if (!$this->connection) {
-          //  throw new Shuttle_Exception("Couldn't connect to the database: " . mysqli_error());
+            throw new Shuttle_Exception("Couldn't connect to the database: " . mysqli_error());
         }
 
         $select_db_res = mysqli_select_db($this->name, $this->connection);
         if (!$select_db_res) {
-          //  throw new Shuttle_Exception("Couldn't select database: " . mysqli_error($this->connection));
+            throw new Shuttle_Exception("Couldn't select database: " . mysqli_error($this->connection));
         }
 
         return true;
@@ -466,7 +428,7 @@ class Shuttle_DBConn_Mysql extends Shuttle_DBConn {
         }
         $res = mysqli_query($q);
         if (!$res) {
-           // throw new Shuttle_Exception("SQL error: " . mysqli_error($this->connection));
+            throw new Shuttle_Exception("SQL error: " . mysqli_error($this->connection));
         }
         return $res;
     }
@@ -513,7 +475,7 @@ class Shuttle_DBConn_Mysqli extends Shuttle_DBConn {
         $this->connection = @new MySQLi($this->host, $this->username, $this->password, $this->name);
 
         if ($this->connection->connect_error) {
-           // throw new Shuttle_Exception("Couldn't connect to the database: " . $this->connection->connect_error);
+            throw new Shuttle_Exception("Couldn't connect to the database: " . $this->connection->connect_error);
         }
 
         return true;
@@ -526,7 +488,7 @@ class Shuttle_DBConn_Mysqli extends Shuttle_DBConn {
         $res = $this->connection->query($q);
 
         if (!$res) {
-          //  throw new Shuttle_Exception("SQL error: " . $this->connection->error);
+            throw new Shuttle_Exception("SQL error: " . $this->connection->error);
         }
 
         return $res;
@@ -567,3 +529,9 @@ class Shuttle_DBConn_Mysqli extends Shuttle_DBConn {
     }
 
 }
+
+class Shuttle_Exception extends Exception {
+    
+}
+
+;

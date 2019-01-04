@@ -25,7 +25,7 @@
                                 <p style="font-size: 34px;
                                     font-weight: bolder;
                                     text-align: -webkit-center;margin-top:100px">
-                                        Attestation de travail
+                                        Attestation de stage
                                 </p>
                                 <p  style="font-size: 22px;"> 
                                     Madame, Monsieur,
