@@ -5,75 +5,54 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminTasksController extends \crocodicstudio\crudbooster\controllers\CBController {
-		private     $privilegeId ;
+	class AdminFacturesController extends \crocodicstudio\crudbooster\controllers\CBController {
+
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "title";
+			$this->title_field = "id";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
-			$this->button_add = $this->privilegeId==1;
-			$this->button_edit = $this->privilegeId==1;
-			$this->button_delete = $this->privilegeId==1;
+			$this->button_add = true;
+			$this->button_edit = true;
+			$this->button_delete = true;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "tasks";
-			
+			$this->table = "factures";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Ref Clients","name"=>"ref_client"];
-			$this->col[] = ["label"=>"Ref Interne","name"=>"ref_interne"];
-			$this->col[] = ["label"=>"Devlopper","name"=>"id_users","join"=>"cms_users,name"];
-			$this->col[] = ["label"=>"Title","name"=>"title"];
-			$this->col[] = ["label"=>"Description","name"=>"description"];
-			$this->col[] = ["label"=>"Status","name"=>"status"];
-			$this->col[] = ["label"=>"Progress","name"=>"progress"];
-			$this->col[] = ["label"=>"Project","name"=>"id","callback_php"=>'$this->getNameProject($row->id)'];
-			$this->col[] = ["label"=>"Module","name"=>"id","callback_php"=>'$this->getNameModule($row->id)'];
-			$this->col[] = ["label"=>"Complexity","name"=>"complexity"];
-			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
+			$this->col[] = ["label"=>"Num Facture","name"=>"num_facture"];
+			$this->col[] = ["label"=>"Client","name"=>"(select  social_reason from clients  where id =1) as clientName"];
+			$this->col[] = ["label"=>"Date Facture","name"=>"date_facture"];
+			$this->col[] = ["label"=>"Ref Clients","name"=>"ref_clients"];
+			$this->col[] = ["label"=>"Projects","name"=>"id","callback_php"=>'$this->getProjectsByFactures($row->id)'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Devlopper','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			$this->form[] = ['label'=>'Ref Client','name'=>'ref_client','type'=>'text','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Ref Software','name'=>'ref_interne','type'=>'text','width'=>'col-sm-10'];
-
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS;NEEDS WORK;DONE'];
-			$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Complexity','name'=>'complexity','type'=>'number','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10','datatable'=>'modules,libelle'];
-			$this->form[] = ['label'=>'Priorite','name'=>'priorite','type'=>'select2','width'=>'col-sm-10','dataenum'=>'Urgent;Hight;Medium;Low'];
+			$this->form[] = ['label'=>'Date Facture','name'=>'date_facture','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Ref Clients','name'=>'ref_clients','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Num Facture','name'=>'num_facture','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version','relationship_table'=>'factures_projects','datatable_format'=>'nom,\' ---> \',version'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Devlopper','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS;NEEDS WORK;DONE'];
-			//$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Complexity','name'=>'complexity','type'=>'number','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10','datatable'=>'modules,libelle'];
-			//$this->form[] = ['label'=>'Priorite','name'=>'priorite','type'=>'select2','width'=>'col-sm-10','dataenum'=>'Urgent;Hight;Medium;Low'];
+			//$this->form[] = ['label'=>'Date Facture','name'=>'date_facture','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Ref Clients','name'=>'ref_clients','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Num Facture','name'=>'num_facture','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version','relationship_table'=>'factures_projects','datatable_format'=>'nom,\' ---> \',version'];
+			//$this->form[] = ['label'=>'Totla Hors Taxe','name'=>'totla_hors_taxe','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Total','name'=>'total','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -89,7 +68,7 @@
 	        | 
 	        */
 	        $this->sub_module = array();
-	        $this->sub_module[] = ['label'=>'Comments','path'=>'comments','parent_columns'=>'libelle','button_color'=>'primary','button_icon'=>'fa fa-bars','foreign_key'=>'id_tasks','button_action_style' => "button_icon"];
+
 
 	        /* 
 	        | ---------------------------------------------------------------------- 
@@ -103,6 +82,11 @@
 	        | 
 	        */
 	        $this->addaction = array();
+	        $this->addaction[] = [
+        		'title' =>'Imprimer' , 'url' => 'factures_impression/[id]',
+        		'icon' => 'fa fa-print', 'color' => 'success'
+			];
+
 
 
 	        /* 
@@ -237,23 +221,11 @@
 	        
 	    }
 
-   public function getNameProject($id){
-	    	return DB::table('projects')
-	    	                        ->select('projects.nom as nameProject')
-            						->join('modules', 'modules.id_projects', '=', 'projects.id')
-	    							->join('tasks', 'tasks.id_modules', '=', 'modules.id')
-            						->where('tasks.id','=',$id)
-            						->first()->nameProject;
+	/*    public function getAdd(){
+	    	$data['page_title'] = 'Ajouter une facture';
+	    	$this->cbView('facture_add',$data);
 	    }
-
-    public function getNameModule($id){
-	    	return DB::table('modules')
-	    	                        ->select('modules.libelle as nameModule')
-            						->join('projects', 'modules.id_projects', '=', 'projects.id')
-	    							->join('tasks', 'tasks.id_modules', '=', 'modules.id')
-            						->where('tasks.id','=',$id)
-            						->first()->nameModule;
-	    }
+*/
 	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for button selected
@@ -266,7 +238,7 @@
 	        //Your code here
 	            
 	    }
-       
+
 
 	    /*
 	    | ---------------------------------------------------------------------- 
@@ -310,8 +282,49 @@
 	    | 
 	    */
 	    public function hook_after_add($id) {        
-	        //Your code here
+	        //details_factures : id_factures,id_tasks
+	        //factures_projects : nombre_heurs,total,prix_unitaire
+	        //factures : total_hors_taxe,total
+	        /*get list of Done tasks */
+	        $done = DB::table('tasks')
+	        		->join('modules','modules.id',"tasks.id_modules")
+	        		->join('projects','projects.id','modules.id_projects')
+	        		->join('factures_projects','factures_projects.id_projects','projects.id')
+	        		->select('tasks.id as tasksId','tasks.status as status','tasks.complexity as complexity','projects.id as id_projects','projects.prix_unitaire as prix_unitaire','factures_projects.id_factures as id_factures')
+	        		->where('factures_projects.id_factures',$id)
+	        		->where('tasks.status','like','Done')
+	        		->orderBy('projects.id', 'desc')
+	        		->get();
+	        	//	dd($done);
+	        $totalFactureProjects = 0;
+	        $nbrHeurProjects = 0;
+			$totalFacture = 0;
 
+			$projectId= 0;
+	        foreach ($done as $key => $value) {
+				DB::table('details_factures')->insert([
+				    ['id_factures' => $value->id_factures, 'id_tasks' => $value->tasksId]
+				]);
+			
+				$totalFactureProjects = $projectId!= $value->id_projects ? $value->complexity*4*$value->prix_unitaire : $totalFactureProjects + $value->complexity*4*$value->prix_unitaire;
+				$nbrHeurProjects = $projectId!= $value->id_projects ? $value->complexity*4 : $nbrHeurProjects+$value->complexity*4;
+				$projectId =  $projectId==0 ? $value->id_projects : ($projectId!= $value->id_projects ? $value->id_projects: $projectId);
+			
+		//		$projectId = $projectId == 0 ? $value->id_projects : $projectId;
+		//		$nbrHeurProjects = $nbrHeurProjects + $value->complexity*4;
+		//		$totalFactureProjects = $totalFactureProjects+$value->complexity*4*$value->prix_unitaire;
+				$totalFacture = $totalFacture+$value->complexity*4*$value->prix_unitaire;				
+
+				DB::table('factures_projects')
+					->where('id_projects',$value->id_projects)
+					->where('id_factures',$value->id_factures)
+					->update(['nombre_heurs' => $nbrHeurProjects,'prix_unitaire' => $value->prix_unitaire,'total' => $totalFactureProjects])
+					;
+					
+	        }
+    		DB::table('factures')
+				->where('factures.id',$value->id_factures)
+				->update(['total_hors_taxe' => $totalFacture,'total' => $totalFacture]);
 	    }
 
 	    /* 
@@ -367,5 +380,56 @@
 
 	    //By the way, you can still create your own method in here... :) 
 
+	    public function imprimerFacture($id){
+	    	$data['title_page'] = "Facture".$id;
+	    	$data['factures'] = DB::table('factures')
+	    						->where('id',$id)->first();
+	    	$data['clients'] = DB::table('clients')
+	    						->join('projects','clients.id','projects.id_clients')
+	    						->join('factures_projects','factures_projects.id_projects','projects.id')
+	    						->where('factures_projects.id_factures',$id)->first();
+	    	$data['factures_projects'] = DB::table('factures_projects')
+	    						->join('projects','projects.id','factures_projects.id_projects')
+	    						->where('factures_projects.id_factures',$id)->get();
+	    	$data['factures_tasks'] = DB::table('details_factures')
+	    						->join('tasks','tasks.id','details_factures.id_tasks')
+	    						->where('details_factures.id_factures',$id)->get();
+	    	$data['software'] = DB::table("entreprises")->first();
+	    						
+	    	return $this->cbView('factures_impression',$data);
+	    }
+	    public function getProjectsByFactures($factures){
+	    //	return $factures;
+	    	$result  = DB::table('projects')
+	    				->join('factures_projects','factures_projects.id_projects','projects.id')
+	    				->where('factures_projects.id_factures',$factures)
+	    				->get();
+	    	$name="";
 
+	    	foreach ($result as $key => $value) {
+	    	
+	    		$name .= $value->nom." [ ".$value->version." ] ";
+	    	}
+	    	return $name;
+	    }
+
+	    public function createFacture(Request $request){
+         	$id = $request->input('id');
+         	$data['title_page'] = "Facture".$id;
+	    	$data['factures'] = DB::table('factures')
+	    						->where('id',$id)->first();
+	    	$data['clients'] = DB::table('clients')
+	    						->join('projects','clients.id','projects.id_clients')
+	    						->join('factures_projects','factures_projects.id_projects','projects.id')
+	    						->where('factures_projects.id_factures',$id)->first();
+	    	$data['factures_projects'] = DB::table('factures_projects')
+	    						->join('projects','projects.id','factures_projects.id_projects')
+	    						->where('factures_projects.id_factures',$id)->get();
+	    	$data['factures_tasks'] = DB::table('details_factures')
+	    						->join('tasks','tasks.id','details_factures.id_tasks')
+	    						->where('details_factures.id_factures',$id)->get();
+	    	$data['software'] = DB::table("entreprises")->first();
+	    						
+	    	return $this->cbView('factures_impression',$data);
+	    }
 	}

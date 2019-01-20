@@ -7,4 +7,4 @@ group by `db_software_sarl`.`pointages`.`id_users`,`db_software_sarl`.`pointages
 
 
 INSERT INTO pointages_journaliere(id_users,date_pointages)
-SELECT id_users,date_pointage FROM `pointages` group by id_users,date_pointage
+SELECT id_users,date_pointage FROM `pointages` where  group by id_users,date_pointage

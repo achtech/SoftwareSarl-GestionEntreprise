@@ -34,6 +34,8 @@ Route::get('admin/statusSalarie/printpdf', 'AdminCongesController@printpdf');
 Route::get('attestation_salaire', 'AdminDocumentsController@goToAttestationSalaire','$data');
 Route::get('attestation_stage', 'AdminDocumentsController@goToAttestationStage');
 Route::get('accuse_reception', 'AdminDocumentsController@goToAccuseReception');
+Route::get('admin/factures_impression/{id}', 'AdminFacturesController@imprimerFacture');
+Route::get('admin/factures/{id}', 'AdminFacturesController@createFacture');
 
 
 
