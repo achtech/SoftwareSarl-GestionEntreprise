@@ -83,14 +83,6 @@
 	        */
 
 	        $this->addaction = array();
-	        $this->addaction[] = [
-        'title' =>'edit' , 'url' => CRUDBooster::mainpath('edit/[id]'),
-        'icon' => 'fa fa-pencil', 'color' => 'success', 'showIf' => $this->privilegeId==1?'true':'false'
-];
-$this->addaction[] = [
-		        'title' =>'delete' , 'url' => CRUDBooster::mainpath('delete/[id]'),
-		        'icon' => 'fa fa-trash', 'color' => 'warning', 'showIf' => $this->privilegeId==1?'true':'false'
-		];
 
 	        /* 
 	        | ---------------------------------------------------------------------- 
@@ -287,8 +279,13 @@ $this->addaction[] = [
 	    | 
 	    */
 	    public function hook_after_add($id) {        
-	        //Your code here
-
+	        $check = DB::table('pointages')->where('id',$id)->first();
+	        $pj = DB::table('pointages_journaliere')->where('id_users',$check->id_users)->where('date_pointage',date('Y-m-d'))->first();
+	        if(empty($pj->id)){
+				DB::table('pointages_journaliere')->insert([
+				    ['id_users' => $value->id_users, 'date_pointage' => $value->date_pointage]
+				]);
+	        }
 	    }
 
 	    /* 

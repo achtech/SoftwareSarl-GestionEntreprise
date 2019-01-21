@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 04 jan. 2019 à 21:06
+-- Généré le :  Dim 20 jan. 2019 à 14:21
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.3.0
 
@@ -61,10 +61,10 @@ CREATE TABLE `bulletin_paie` (
 CREATE TABLE `clients` (
   `id` int(11) NOT NULL,
   `social_reason` varchar(50) NOT NULL,
-  `email` int(11) DEFAULT NULL,
-  `contact` int(11) DEFAULT NULL,
-  `mobile` int(11) DEFAULT NULL,
-  `adress` int(11) DEFAULT NULL
+  `email` varchar(50) DEFAULT NULL,
+  `contact` varchar(50) DEFAULT NULL,
+  `mobile` varchar(50) DEFAULT NULL,
+  `adress` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `social_reason`, `email`, `contact`, `mobile`, `adress`) VALUES
-(1, 'Exo-it', NULL, NULL, NULL, NULL),
+(1, 'EXO IT Solutions GmbH', NULL, NULL, NULL, 'Westendstraße 277 80686 Munich Allemagne'),
 (2, 'Upwork', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -466,7 +466,95 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (260, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-04 16:04:36', NULL),
 (261, '192.168.0.8', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'oumaima.stitini@exo-it.com login with IP Address 192.168.0.8', '', 4, '2019-01-04 16:05:19', NULL),
 (262, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address ::1', '', 5, '2019-01-04 17:13:55', NULL),
-(263, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'mohammed.lechiakh@exo-it.com logout', '', 5, '2019-01-04 17:15:04', NULL);
+(263, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'mohammed.lechiakh@exo-it.com logout', '', 5, '2019-01-04 17:15:04', NULL),
+(264, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-01-05 14:19:54', NULL),
+(265, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'achraf.saloumi@exo-it.com logout', '', 1, '2019-01-06 17:01:12', NULL),
+(266, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-01-06 17:01:58', NULL),
+(267, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-06 17:15:09', NULL),
+(268, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/1', 'Delete data 1 at Factures', '', 1, '2019-01-06 17:15:23', NULL),
+(269, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/2', 'Delete data 2 at Factures', '', 1, '2019-01-06 17:15:29', NULL),
+(270, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-06 17:15:50', NULL),
+(271, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/tasks/add-save', 'Add New Data title at Tasks', '', 1, '2019-01-06 21:41:58', NULL),
+(272, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/tasks/edit-save/2', 'Update data title at Tasks', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>progress</td><td></td><td>100</td></tr><tr><td>complexity</td><td></td><td>120</td></tr><tr><td>Ref_client</td><td>test refclient</td><td></td></tr><tr><td>Ref_interne</td><td>testref intern</td><td></td></tr></tbody></table>', 1, '2019-01-06 21:42:21', NULL),
+(273, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/tasks/edit-save/1', 'Update data Create analysis at Tasks', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>complexity</td><td>2</td><td>100</td></tr><tr><td>Ref_client</td><td>SERA-13</td><td></td></tr><tr><td>Ref_interne</td><td>ABA-114</td><td></td></tr></tbody></table>', 1, '2019-01-06 21:42:35', NULL),
+(274, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/modules/add-save', 'Add New Data  at Modules', '', 1, '2019-01-06 21:43:17', NULL),
+(275, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/tasks/add-save', 'Add New Data title at Tasks', '', 1, '2019-01-06 21:45:08', NULL),
+(276, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/3', 'Delete data 3 at Factures', '', 1, '2019-01-06 21:45:21', NULL),
+(277, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-01-07 00:01:51', NULL),
+(278, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/4', 'Delete data 4 at Factures', '', 1, '2019-01-07 00:02:43', NULL),
+(279, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 00:32:08', NULL),
+(280, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/17', 'Delete data 17 at Factures', '', 1, '2019-01-07 00:32:17', NULL),
+(281, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/17', 'Delete data 17 at Factures', '', 1, '2019-01-07 00:34:23', NULL),
+(282, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/17', 'Delete data 17 at Factures', '', 1, '2019-01-07 00:35:12', NULL),
+(283, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/16', 'Delete data 16 at Factures', '', 1, '2019-01-07 00:35:17', NULL),
+(284, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 00:35:37', NULL),
+(285, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 00:36:41', NULL),
+(286, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 00:41:47', NULL);
+INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `details`, `id_cms_users`, `created_at`, `updated_at`) VALUES
+(287, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 00:43:59', NULL),
+(288, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-07 08:34:00', NULL),
+(289, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-07 09:48:52', NULL),
+(290, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-01-07 11:06:57', NULL),
+(291, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/22', 'Delete data 22 at Factures', '', 1, '2019-01-07 11:07:17', NULL),
+(292, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/21', 'Delete data 21 at Factures', '', 1, '2019-01-07 11:07:20', NULL),
+(293, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/20', 'Delete data 20 at Factures', '', 1, '2019-01-07 11:07:23', NULL),
+(294, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 11:07:41', NULL),
+(295, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 11:39:40', NULL),
+(296, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/23', 'Delete data 23 at Factures', '', 1, '2019-01-07 11:39:54', NULL),
+(297, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/24', 'Delete data 24 at Factures', '', 1, '2019-01-07 11:39:57', NULL),
+(298, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 11:40:46', NULL),
+(299, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 11:48:17', NULL),
+(300, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 12:04:23', NULL),
+(301, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 12:09:32', NULL),
+(302, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 12:10:05', NULL),
+(303, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/add-save', 'Add New Data  at Factures', '', 1, '2019-01-07 12:10:40', NULL),
+(304, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-07 16:11:54', NULL),
+(305, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'achraf.saloumi@exo-it.com logout', '', 1, '2019-01-07 16:29:19', NULL),
+(306, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-07 16:40:15', NULL),
+(307, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address ::1', '', 5, '2019-01-07 17:21:43', NULL),
+(308, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'mohammed.lechiakh@exo-it.com logout', '', 5, '2019-01-07 17:22:22', NULL),
+(309, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-01-07 20:21:58', NULL),
+(310, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/factures/delete/30', 'Delete data 30 at Factures', '', 1, '2019-01-07 22:59:15', NULL),
+(311, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-08 09:09:36', NULL),
+(312, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-08 16:37:33', NULL),
+(313, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-01-08 18:39:03', NULL),
+(314, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-09 12:51:38', NULL),
+(315, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-09 16:41:49', NULL),
+(316, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/conges/add-save', 'Add New Data  at Conges', '', 1, '2019-01-09 22:27:47', NULL),
+(317, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/conges/add-save', 'Add New Data  at Conges', '', 1, '2019-01-09 22:28:47', NULL),
+(318, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/conges/edit-save/111', 'Update data  at Conges', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>libelle</td><td>Conge maladoe</td><td>Conge maladie</td></tr><tr><td>isJustify</td><td>Non</td><td>Oui</td></tr></tbody></table>', 1, '2019-01-09 22:29:26', NULL),
+(319, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-10 10:43:04', NULL),
+(320, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-10 11:49:35', NULL),
+(321, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-10 16:37:30', NULL),
+(322, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-10 16:38:05', NULL),
+(323, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address ::1', '', 5, '2019-01-10 17:01:35', NULL),
+(324, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'mohammed.lechiakh@exo-it.com logout', '', 5, '2019-01-11 08:35:16', NULL),
+(325, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-01-11 08:35:37', NULL),
+(326, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-01-14 14:22:27', NULL),
+(327, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/projects/delete/4', 'Delete data 4 at Projects', '', 1, '2019-01-14 14:22:52', NULL),
+(328, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/projects/delete/1', 'Delete data 1 at Projects', '', 1, '2019-01-14 14:22:57', NULL),
+(329, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-14 15:21:02', NULL),
+(330, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address ::1', '', 5, '2019-01-14 16:49:02', NULL),
+(331, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'mohammed.lechiakh@exo-it.com logout', '', 5, '2019-01-14 16:49:32', NULL),
+(332, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address ::1', '', 5, '2019-01-14 16:50:29', NULL),
+(333, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/logout', 'mohammed.lechiakh@exo-it.com logout', '', 5, '2019-01-14 16:50:51', NULL),
+(334, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-15 08:54:42', NULL),
+(335, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-15 15:34:04', NULL),
+(336, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/conges/add-save', 'Add New Data  at Conges', '', 6, '2019-01-15 15:35:39', NULL),
+(337, '192.168.0.8', 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko', 'http://192.168.0.7/GE/public/admin/login', 'oumaima.stitini@exo-it.com login with IP Address 192.168.0.8', '', 4, '2019-01-15 15:36:55', NULL),
+(338, '192.168.0.8', 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko', 'http://192.168.0.7/GE/public/admin/pointagesDetails/edit-save/1753', 'Update data  at Pointage details', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>time_in</td><td>09:27:01</td><td>08:40:01</td></tr></tbody></table>', 4, '2019-01-15 15:40:32', NULL),
+(339, '192.168.0.8', 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko', 'http://192.168.0.7/GE/public/admin/pointagesDetails/edit-save/1756', 'Update data  at Pointage details', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>time_out</td><td>17:49:39</td><td>21:49:39</td></tr></tbody></table>', 4, '2019-01-15 15:41:16', NULL),
+(340, '192.168.0.8', 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko', 'http://192.168.0.7/GE/public/admin/pointagesDetails/edit-save/1752', 'Update data  at Pointage details', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>time_out</td><td>09:27:06</td><td>17:15:06</td></tr></tbody></table>', 4, '2019-01-15 15:42:02', NULL),
+(341, '192.168.0.8', 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko', 'http://192.168.0.7/GE/public/admin/conges/edit-save/113', 'Update data  at Conges', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>isValid</td><td></td><td>Oui</td></tr><tr><td>isJustify</td><td></td><td>Non</td></tr></tbody></table>', 4, '2019-01-15 15:43:19', NULL),
+(342, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-16 09:23:34', NULL),
+(343, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-16 16:21:39', NULL),
+(344, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address ::1', '', 5, '2019-01-16 17:21:58', NULL),
+(345, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-17 07:44:43', NULL),
+(346, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-17 15:04:36', NULL),
+(347, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-17 16:11:05', NULL),
+(348, '192.168.0.4', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'abdellah.taha@exo-it.com login with IP Address 192.168.0.4', '', 6, '2019-01-18 08:15:31', NULL),
+(349, '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://192.168.0.7/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address 192.168.0.2', '', 5, '2019-01-18 16:53:28', NULL),
+(350, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', 'http://localhost/GE/public/admin/login', 'mohammed.lechiakh@exo-it.com login with IP Address ::1', '', 5, '2019-01-18 17:38:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -516,9 +604,10 @@ INSERT INTO `cms_menus` (`id`, `name`, `type`, `path`, `color`, `icon`, `parent_
 (21, 'Pointages et Conges', 'URL', '#', 'normal', 'fa fa-users', 0, 1, 0, 1, 2, '2018-12-18 21:28:39', '2018-12-24 08:29:34'),
 (23, 'Pointages Report', 'Route', 'AdminPointages1ControllerGetIndex', 'normal', 'fa fa-bar-chart', 21, 1, 0, 1, 3, '2018-12-20 20:52:09', '2018-12-24 08:30:12'),
 (24, 'Dashboard', 'Controller & Method', 'HomeController@index', 'normal', 'fa fa-bars', 0, 1, 1, 1, 1, '2018-12-26 21:56:40', NULL),
-(25, 'Bulletin de paie', 'Route', 'AdminBulletinPaie1ControllerGetIndex', 'normal', 'fa fa-file-pdf-o', 15, 1, 0, 1, 5, '2019-01-01 15:51:14', '2019-01-01 16:00:17'),
-(26, 'Contacts', 'Route', 'AdminContactsControllerGetIndex', NULL, 'fa fa-user-secret', 15, 1, 0, 1, 6, '2019-01-01 15:56:51', NULL),
-(27, 'Database', 'URL', 'home', 'normal', 'fa fa-database', 17, 1, 0, 1, 4, '2019-01-01 22:49:58', '2019-01-01 23:19:20');
+(25, 'Bulletin de paie', 'Route', 'AdminBulletinPaie1ControllerGetIndex', 'normal', 'fa fa-file-pdf-o', 15, 1, 0, 1, 6, '2019-01-01 15:51:14', '2019-01-01 16:00:17'),
+(26, 'Contacts', 'Route', 'AdminContactsControllerGetIndex', NULL, 'fa fa-user-secret', 15, 1, 0, 1, 7, '2019-01-01 15:56:51', NULL),
+(27, 'Database', 'URL', 'home', 'normal', 'fa fa-database', 17, 1, 0, 1, 4, '2019-01-01 22:49:58', '2019-01-01 23:19:20'),
+(28, 'Factures', 'Route', 'AdminFacturesControllerGetIndex', NULL, 'fa fa-inbox', 15, 1, 0, 1, 5, '2019-01-05 14:20:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -580,7 +669,8 @@ INSERT INTO `cms_menus_privileges` (`id`, `id_cms_menus`, `id_cms_privileges`) V
 (63, 26, 1),
 (64, 25, 1),
 (65, 25, 2),
-(67, 27, 1);
+(67, 27, 1),
+(68, 28, 1);
 
 -- --------------------------------------------------------
 
@@ -636,7 +726,8 @@ INSERT INTO `cms_moduls` (`id`, `name`, `icon`, `path`, `table_name`, `controlle
 (27, 'Pointage details', 'fa fa-road', 'pointagesDetails', 'pointages', 'AdminPointagesDetailsController', 0, 0, '2018-12-18 21:22:00', NULL, NULL),
 (28, 'Pointages Report', 'fa fa-bar-chart', 'cms_users29', 'cms_users', 'AdminPointages1Controller', 0, 0, '2018-12-20 20:52:09', NULL, NULL),
 (29, 'Bulletin de paie', 'fa fa-file-pdf-o', 'bulletin_paie', 'bulletin_paie', 'AdminBulletinPaie1Controller', 0, 0, '2019-01-01 15:51:14', NULL, NULL),
-(30, 'Contacts', 'fa fa-user-secret', 'contacts', 'contacts', 'AdminContactsController', 0, 0, '2019-01-01 15:56:51', NULL, NULL);
+(30, 'Contacts', 'fa fa-user-secret', 'contacts', 'contacts', 'AdminContactsController', 0, 0, '2019-01-01 15:56:51', NULL, NULL),
+(31, 'Factures', 'fa fa-inbox', 'factures', 'factures', 'AdminFacturesController', 0, 0, '2019-01-05 14:20:41', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -742,7 +833,8 @@ INSERT INTO `cms_privileges_roles` (`id`, `is_visible`, `is_create`, `is_read`, 
 (39, 1, 0, 0, 0, 0, 2, 23, NULL, NULL),
 (40, 1, 1, 1, 1, 1, 2, 25, NULL, NULL),
 (41, 1, 1, 1, 1, 1, 1, 29, NULL, NULL),
-(42, 1, 1, 1, 1, 1, 1, 30, NULL, NULL);
+(42, 1, 1, 1, 1, 1, 1, 30, NULL, NULL),
+(43, 1, 1, 1, 1, 1, 1, 31, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -999,7 +1091,10 @@ INSERT INTO `conges` (`id`, `id_users`, `start_date`, `end_date`, `libelle`, `nb
 (106, 2, '2019-02-01', '2019-02-07', 'Conge de maternite', 5, 'Oui', 'Oui', '2018-12-31'),
 (107, 2, '2018-12-01', '2018-12-31', 'Conge de maternite', 20, 'Oui', 'Oui', '2018-11-01'),
 (108, 6, '2019-01-01', '2019-01-02', 'Conge', 1, 'Non', 'Non', '2019-01-01'),
-(109, 3, '2019-01-01', '2019-01-02', 'Conge', 1, 'Non', 'Non', '2019-01-01');
+(109, 3, '2019-01-01', '2019-01-02', 'Conge', 1, 'Non', 'Non', '2019-01-01'),
+(111, 4, '2019-01-07', '2019-01-08', 'Conge maladie', 1, 'Oui', 'Oui', '2019-01-02'),
+(112, 4, '2019-01-10', '2019-01-11', 'Conge', 1, 'Oui', 'Non', '2019-01-01'),
+(113, 6, '2019-01-14', '2019-01-15', 'Relaxing holiday', 1, 'Oui', 'Non', '2019-01-01');
 
 -- --------------------------------------------------------
 
@@ -1015,6 +1110,37 @@ CREATE TABLE `contacts` (
   `email` varchar(50) NOT NULL,
   `remarque` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `details_factures`
+--
+
+CREATE TABLE `details_factures` (
+  `id` int(11) NOT NULL,
+  `id_factures` int(11) NOT NULL,
+  `id_tasks` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `details_factures`
+--
+
+INSERT INTO `details_factures` (`id`, `id_factures`, `id_tasks`) VALUES
+(35, 25, 3),
+(36, 26, 3),
+(37, 26, 1),
+(38, 26, 2),
+(39, 27, 3),
+(40, 27, 1),
+(41, 27, 2),
+(42, 28, 3),
+(43, 28, 1),
+(44, 28, 2),
+(45, 29, 3),
+(46, 30, 1),
+(47, 30, 2);
 
 -- --------------------------------------------------------
 
@@ -1054,7 +1180,63 @@ CREATE TABLE `entreprises` (
 --
 
 INSERT INTO `entreprises` (`id`, `social_reason`, `mobile`, `phone`, `adress`, `zip_code`, `rc`, `patente`, `idfisc`, `logo`) VALUES
-(1, 'Software S.A.R.L', '+212 5 24 4 93 52', '212653903659', 'App 6 2eme étage M\'HITA espace AL moustapha Semlalia Marrakech', '40000', '58467', '92110189', '0652837', 'uploads/1/2018-12/Logo.jpg');
+(1, 'Software S.A.R.L', '+212 5 24 4 93 52', '212653903659', 'App 6 2eme étage M\'HITA \r\nespace AL moustapha Semlalia', '40000', '58467', '92110189', '0652837', 'uploads/1/2018-12/Logo.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `factures`
+--
+
+CREATE TABLE `factures` (
+  `id` int(11) NOT NULL,
+  `date_facture` date NOT NULL,
+  `ref_clients` varchar(30) NOT NULL,
+  `num_facture` int(11) NOT NULL,
+  `total_hors_taxe` float DEFAULT NULL,
+  `total` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `factures`
+--
+
+INSERT INTO `factures` (`id`, `date_facture`, `ref_clients`, `num_facture`, `total_hors_taxe`, `total`) VALUES
+(25, '2019-01-03', 'EXO1901001', 1, 5600, 5600),
+(26, '2019-01-09', 'EXO1901001', 20, 23200, 23200),
+(27, '2019-01-01', 'EXO1901001', 25, 23200, 23200),
+(28, '2019-01-15', 'EXO1901001', 35, 23200, 23200),
+(29, '2019-01-15', 'EXO1901001', 45, 5600, 5600);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `factures_projects`
+--
+
+CREATE TABLE `factures_projects` (
+  `id` int(11) NOT NULL,
+  `id_factures` int(11) NOT NULL,
+  `id_projects` int(11) NOT NULL,
+  `nombre_heurs` int(11) DEFAULT NULL,
+  `prix_unitaire` int(11) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `factures_projects`
+--
+
+INSERT INTO `factures_projects` (`id`, `id_factures`, `id_projects`, `nombre_heurs`, `prix_unitaire`, `total`) VALUES
+(46, 25, 4, NULL, NULL, NULL),
+(47, 26, 4, NULL, NULL, NULL),
+(48, 26, 1, 280, 20, 5600),
+(49, 27, 4, 0, 20, 0),
+(50, 27, 1, 480, 20, 9600),
+(51, 28, 4, 280, 20, 5600),
+(52, 28, 1, 880, 20, 17600),
+(53, 29, 4, 280, 20, 5600),
+(54, 30, 1, 880, 20, 17600);
 
 -- --------------------------------------------------------
 
@@ -1147,13 +1329,6 @@ CREATE TABLE `modules` (
   `progress` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `modules`
---
-
-INSERT INTO `modules` (`id`, `id_projects`, `libelle`, `start_date`, `end_date`, `status`, `progress`) VALUES
-(1, 1, 'All', '2018-11-07', '2018-12-05', 'DONE', 100);
-
 -- --------------------------------------------------------
 
 --
@@ -1200,12 +1375,12 @@ CREATE TABLE `personnels` (
 --
 
 INSERT INTO `personnels` (`id`, `id_users`, `cin`, `cnss`, `polite`, `mobile`, `adress`, `hiring_date`, `exit_date`, `birth_date`, `order_number`, `id_professions`, `net_salary`, `gross_salary`, `family_situation`, `number_children`, `idLogs`, `classCss`) VALUES
-(1, 1, 'HA132209', '140924898', 'Mr.', '+212 6 53 90 36 59', 'Zaouia derb derraz N1 Marrakeche', '2014-02-03', '2014-02-03', '1985-09-07', 1, 2, 7400, 8511, 'Mariée', 2, 1713, 'danger'),
+(1, 1, 'HA132209', '140924898', 'Mr.', '+212 6 53 90 36 59', 'Zaouia derb derraz N1 Marrakeche', '2014-02-03', '2014-02-03', '1985-09-07', 1, 2, 7400, 8511, 'Mariée', 2, 1785, 'danger'),
 (2, 2, 'EE260962', '140925490', 'Mme', '+212 6 28 80 30 44', 'Zaouia Derb derraz N1', '2014-02-03', '2014-02-03', '1987-05-28', 2, 1, 7000, 8011, 'Mariee', 2, 1670, 'danger'),
-(3, 3, 'P245848', '175781099', 'Mr.', '', '', '2015-01-01', '2015-01-01', '1987-06-24', 3, 1, 7000, 8092, 'Celibataire', 0, 1714, 'danger'),
-(4, 4, 'EE563836', '126654117', 'Mlle', '0664282238', 'El Moukef Derb Toudgha n 125 bis Marrakech', '2018-09-02', '2021-01-06', '2018-12-12', 9, 1, 5600, 6210, 'Célibataire', 0, 1711, 'danger'),
-(5, 5, 'JA152555', '139893601', 'Mr.', '+212 6 96 78 43 70', 'N 193 unite mohammed safou quartier youssef ben tachfine Marrakech', '2016-11-01', '2016-11-01', '1993-05-15', 7, 1, 6257, 7063, 'Marie', 0, 1712, 'danger'),
-(6, 6, 'EE471931', '145169200', 'Mr.', '+212 6 98 18 01 57', 'Assif B N 28 Marrakech', '2017-01-01', '2017-01-01', '1992-05-12', 8, 1, 6800, 7727, 'Marie', 1, 1709, 'danger');
+(3, 3, 'P245848', '175781099', 'Mr.', '', '', '2015-01-01', '2015-01-01', '1987-06-24', 3, 1, 7000, 8092, 'Celibataire', 0, 1786, 'danger'),
+(4, 4, 'EE563836', '126654117', 'Mlle', '0664282238', 'El Moukef Derb Toudgha n 125 bis Marrakech', '2018-09-02', '2021-01-06', '2018-12-12', 9, 1, 5600, 6210, 'Célibataire', 0, 1781, 'danger'),
+(5, 5, 'JA152555', '139893601', 'Mr.', '+212 6 96 78 43 70', 'N 193 unite mohammed safou quartier youssef ben tachfine Marrakech', '2016-11-01', '2016-11-01', '1993-05-15', 7, 1, 6257, 7063, 'Marie', 0, 1788, 'danger'),
+(6, 6, 'EE471931', '145169200', 'Mr.', '+212 6 98 18 01 57', 'Assif B N 28 Marrakech', '2017-01-01', '2017-01-01', '1992-05-12', 8, 1, 6800, 7727, 'Marie', 1, 1787, 'danger');
 
 -- --------------------------------------------------------
 
@@ -1748,7 +1923,81 @@ INSERT INTO `pointages` (`id`, `id_users`, `date_pointage`, `time_in`, `time_out
 (1711, 4, '2019-01-04', '14:22:37', '18:10:46'),
 (1712, 5, '2019-01-04', '14:38:16', '18:14:46'),
 (1713, 1, '2019-01-04', '14:49:51', '17:43:55'),
-(1714, 3, '2019-01-04', '14:49:53', '16:12:00');
+(1714, 3, '2019-01-04', '14:49:53', '16:12:00'),
+(1715, 6, '2019-01-07', '09:23:26', '12:29:52'),
+(1716, 5, '2019-01-07', '09:33:08', '18:21:49'),
+(1717, 1, '2019-01-07', '09:34:52', '11:32:04'),
+(1718, 3, '2019-01-07', '09:47:13', '11:53:37'),
+(1719, 1, '2019-01-07', '11:39:34', '13:12:17'),
+(1720, 3, '2019-01-07', '12:00:41', '17:10:13'),
+(1721, 6, '2019-01-07', '13:12:14', '18:22:01'),
+(1722, 1, '2019-01-07', '13:58:16', '17:29:09'),
+(1723, 4, '2019-01-08', '08:39:23', '17:42:05'),
+(1724, 3, '2019-01-08', '09:19:21', '13:21:36'),
+(1725, 1, '2019-01-08', '09:31:39', '13:21:23'),
+(1726, 6, '2019-01-08', '09:34:17', '17:37:20'),
+(1727, 5, '2019-01-08', '09:35:16', '13:08:59'),
+(1728, 5, '2019-01-08', '13:14:34', '13:20:44'),
+(1729, 3, '2019-01-08', '13:32:54', '14:21:23'),
+(1730, 1, '2019-01-08', '13:32:57', '17:42:02'),
+(1731, 5, '2019-01-08', '14:34:46', '18:57:40'),
+(1732, 3, '2019-01-08', '14:53:22', '17:31:40'),
+(1733, 4, '2019-01-09', '08:38:02', '15:22:43'),
+(1734, 6, '2019-01-09', '09:07:59', '12:51:50'),
+(1735, 1, '2019-01-09', '09:16:40', '17:40:36'),
+(1736, 3, '2019-01-09', '09:22:33', '14:08:37'),
+(1737, 5, '2019-01-09', '09:38:48', '12:51:48'),
+(1738, 5, '2019-01-09', '13:19:14', '16:48:05'),
+(1739, 6, '2019-01-09', '13:19:15', '16:48:41'),
+(1740, 3, '2019-01-09', '14:20:56', '17:11:01'),
+(1741, 4, '2019-01-09', '15:51:30', '17:11:02'),
+(1742, 5, '2019-01-09', '16:56:56', '18:58:46'),
+(1743, 3, '2019-01-10', '08:30:59', '09:56:36'),
+(1744, 1, '2019-01-10', '09:24:41', '17:41:45'),
+(1745, 6, '2019-01-10', '09:31:19', '12:58:36'),
+(1746, 5, '2019-01-10', '09:36:06', '12:58:35'),
+(1747, 3, '2019-01-10', '10:06:24', '17:09:16'),
+(1748, 5, '2019-01-10', '13:35:54', '14:45:33'),
+(1749, 6, '2019-01-10', '13:35:55', '17:51:00'),
+(1750, 5, '2019-01-10', '15:32:34', '18:02:04'),
+(1751, 6, '2019-01-10', '17:51:47', '17:59:55'),
+(1752, 1, '2019-01-11', '09:34:04', '17:15:06'),
+(1753, 4, '2019-01-14', '08:40:01', '17:41:50'),
+(1754, 1, '2019-01-14', '09:27:07', '17:33:39'),
+(1755, 3, '2019-01-14', '09:32:24', '17:46:07'),
+(1756, 5, '2019-01-14', '09:37:18', '21:49:39'),
+(1757, 3, '2019-01-15', '09:06:41', '17:18:47'),
+(1758, 6, '2019-01-15', '09:19:43', '17:27:03'),
+(1759, 1, '2019-01-15', '09:22:38', '17:41:51'),
+(1760, 4, '2019-01-15', '09:26:12', '17:32:31'),
+(1761, 5, '2019-01-15', '09:30:49', '11:29:58'),
+(1762, 5, '2019-01-15', '11:44:52', '17:17:15'),
+(1763, 6, '2019-01-15', '17:41:25', '17:41:47'),
+(1764, 4, '2019-01-16', '08:44:20', '12:44:19'),
+(1765, 1, '2019-01-16', '09:22:03', '17:47:37'),
+(1766, 6, '2019-01-16', '09:22:44', '13:05:10'),
+(1767, 5, '2019-01-16', '09:35:42', '13:05:12'),
+(1768, 3, '2019-01-16', '09:53:15', '17:51:38'),
+(1769, 5, '2019-01-16', '13:27:04', '18:22:12'),
+(1770, 6, '2019-01-16', '13:27:06', '17:56:01'),
+(1771, 4, '2019-01-16', '15:51:41', '18:20:36'),
+(1772, 4, '2019-01-17', '08:31:48', '17:43:39'),
+(1773, 1, '2019-01-17', '08:37:03', '13:00:06'),
+(1774, 6, '2019-01-17', '08:40:51', '12:23:13'),
+(1775, 3, '2019-01-17', '08:43:13', '13:01:54'),
+(1776, 5, '2019-01-17', '09:15:57', '12:23:12'),
+(1777, 6, '2019-01-17', '12:40:11', '17:06:03'),
+(1778, 5, '2019-01-17', '12:40:12', '17:42:26'),
+(1779, 3, '2019-01-17', '13:33:06', '17:15:30'),
+(1780, 1, '2019-01-17', '13:33:08', '19:17:19'),
+(1781, 4, '2019-01-18', '08:33:28', '17:54:42'),
+(1782, 6, '2019-01-18', '08:56:15', '13:28:37'),
+(1783, 3, '2019-01-18', '09:19:31', '13:05:44'),
+(1784, 5, '2019-01-18', '09:34:28', '13:26:18'),
+(1785, 1, '2019-01-18', '09:34:29', '17:46:52'),
+(1786, 3, '2019-01-18', '13:13:17', '17:23:54'),
+(1787, 6, '2019-01-18', '13:34:23', '17:29:20'),
+(1788, 5, '2019-01-18', '15:50:26', '18:38:31');
 
 -- --------------------------------------------------------
 
@@ -1767,404 +2016,246 @@ CREATE TABLE `pointages_journaliere` (
 --
 
 INSERT INTO `pointages_journaliere` (`id`, `id_users`, `date_pointages`) VALUES
-(178, 1, '2018-11-01'),
-(179, 1, '2018-11-05'),
-(180, 1, '2018-11-06'),
-(181, 1, '2018-11-07'),
-(182, 1, '2018-11-08'),
-(183, 1, '2018-11-09'),
-(184, 1, '2018-11-13'),
-(185, 1, '2018-11-15'),
-(186, 1, '2018-11-16'),
-(187, 1, '2018-11-19'),
-(188, 1, '2018-11-22'),
-(189, 1, '2018-11-23'),
-(190, 1, '2018-11-24'),
-(191, 1, '2018-11-26'),
-(192, 1, '2018-11-27'),
-(193, 1, '2018-11-28'),
-(194, 1, '2018-11-29'),
-(195, 1, '2018-11-30'),
-(196, 1, '2018-12-01'),
-(197, 1, '2018-12-03'),
-(198, 1, '2018-12-04'),
-(199, 1, '2018-12-05'),
-(200, 1, '2018-12-06'),
-(201, 1, '2018-12-07'),
-(202, 1, '2018-12-10'),
-(203, 1, '2018-12-11'),
-(204, 1, '2018-12-12'),
-(205, 1, '2018-12-13'),
-(206, 1, '2018-12-14'),
-(207, 1, '2018-12-17'),
-(208, 1, '2018-12-18'),
-(209, 1, '2018-12-19'),
-(210, 1, '2018-12-20'),
-(211, 1, '2018-12-21'),
-(212, 1, '2018-12-22'),
-(213, 1, '2018-12-24'),
-(214, 1, '2018-12-25'),
-(215, 1, '2018-12-26'),
-(216, 3, '2018-11-01'),
-(217, 3, '2018-11-02'),
-(218, 3, '2018-11-06'),
-(219, 3, '2018-11-07'),
-(220, 3, '2018-11-08'),
-(221, 3, '2018-11-09'),
-(222, 3, '2018-11-10'),
-(223, 3, '2018-11-12'),
-(224, 3, '2018-11-13'),
-(225, 3, '2018-11-14'),
-(226, 3, '2018-11-15'),
-(227, 3, '2018-11-16'),
-(228, 3, '2018-11-19'),
-(229, 3, '2018-11-21'),
-(230, 3, '2018-11-22'),
-(231, 3, '2018-11-23'),
-(232, 3, '2018-11-24'),
-(233, 3, '2018-11-26'),
-(234, 3, '2018-11-27'),
-(235, 3, '2018-11-28'),
-(236, 3, '2018-11-29'),
-(237, 3, '2018-11-30'),
-(238, 3, '2018-12-01'),
-(239, 3, '2018-12-03'),
-(240, 3, '2018-12-04'),
-(241, 3, '2018-12-05'),
-(242, 3, '2018-12-10'),
-(243, 3, '2018-12-11'),
-(244, 3, '2018-12-12'),
-(245, 3, '2018-12-13'),
-(246, 3, '2018-12-14'),
-(247, 3, '2018-12-17'),
-(248, 3, '2018-12-18'),
-(249, 3, '2018-12-19'),
-(250, 3, '2018-12-20'),
-(251, 3, '2018-12-21'),
-(252, 3, '2018-12-22'),
-(253, 3, '2018-12-24'),
-(254, 3, '2018-12-25'),
-(255, 3, '2018-12-26'),
-(256, 4, '2018-11-01'),
-(257, 4, '2018-11-02'),
-(258, 4, '2018-11-06'),
-(259, 4, '2018-11-07'),
-(260, 4, '2018-11-08'),
-(261, 4, '2018-11-09'),
-(262, 4, '2018-11-12'),
-(263, 4, '2018-11-13'),
-(264, 4, '2018-11-14'),
-(265, 4, '2018-11-15'),
-(266, 4, '2018-11-16'),
-(267, 4, '2018-11-21'),
-(268, 4, '2018-11-22'),
-(269, 4, '2018-11-23'),
-(270, 4, '2018-11-24'),
-(271, 4, '2018-11-26'),
-(272, 4, '2018-11-27'),
-(273, 4, '2018-11-28'),
-(274, 4, '2018-11-29'),
-(275, 4, '2018-11-30'),
-(276, 4, '2018-12-03'),
-(277, 4, '2018-12-04'),
-(278, 4, '2018-12-05'),
-(279, 4, '2018-12-06'),
-(280, 4, '2018-12-07'),
-(281, 4, '2018-12-10'),
-(282, 4, '2018-12-11'),
-(283, 4, '2018-12-12'),
-(284, 4, '2018-12-13'),
-(285, 4, '2018-12-14'),
-(286, 4, '2018-12-17'),
-(287, 4, '2018-12-18'),
-(288, 4, '2018-12-19'),
-(289, 4, '2018-12-20'),
-(290, 4, '2018-12-21'),
-(291, 4, '2018-12-24'),
-(292, 4, '2018-12-25'),
-(293, 4, '2018-12-26'),
-(294, 5, '2018-11-01'),
-(295, 5, '2018-11-02'),
-(296, 5, '2018-11-06'),
-(297, 5, '2018-11-07'),
-(298, 5, '2018-11-08'),
-(299, 5, '2018-11-09'),
-(300, 5, '2018-11-10'),
-(301, 5, '2018-11-12'),
-(302, 5, '2018-11-13'),
-(303, 5, '2018-11-14'),
-(304, 5, '2018-11-15'),
-(305, 5, '2018-11-16'),
-(306, 5, '2018-11-20'),
-(307, 5, '2018-11-21'),
-(308, 5, '2018-11-22'),
-(309, 5, '2018-11-23'),
-(310, 5, '2018-11-26'),
-(311, 5, '2018-11-28'),
-(312, 5, '2018-11-29'),
-(313, 5, '2018-11-30'),
-(314, 5, '2018-12-01'),
-(315, 5, '2018-12-03'),
-(316, 5, '2018-12-04'),
-(317, 5, '2018-12-05'),
-(318, 5, '2018-12-06'),
-(319, 5, '2018-12-07'),
-(320, 5, '2018-12-08'),
-(321, 5, '2018-12-10'),
-(322, 5, '2018-12-11'),
-(323, 5, '2018-12-12'),
-(324, 5, '2018-12-13'),
-(325, 5, '2018-12-14'),
-(326, 5, '2018-12-15'),
-(327, 5, '2018-12-16'),
-(328, 5, '2018-12-17'),
-(329, 5, '2018-12-18'),
-(330, 5, '2018-12-19'),
-(331, 5, '2018-12-20'),
-(332, 5, '2018-12-21'),
-(333, 5, '2018-12-24'),
-(334, 5, '2018-12-25'),
-(335, 5, '2018-12-26'),
-(336, 6, '2018-11-01'),
-(337, 6, '2018-11-06'),
-(338, 6, '2018-11-07'),
-(339, 6, '2018-11-08'),
-(340, 6, '2018-11-09'),
-(341, 6, '2018-11-12'),
-(342, 6, '2018-11-13'),
-(343, 6, '2018-11-14'),
-(344, 6, '2018-11-15'),
-(345, 6, '2018-11-16'),
-(346, 6, '2018-11-21'),
-(347, 6, '2018-11-22'),
-(348, 6, '2018-11-23'),
-(349, 6, '2018-11-26'),
-(350, 6, '2018-11-27'),
-(351, 6, '2018-11-28'),
-(352, 6, '2018-11-29'),
-(353, 6, '2018-11-30'),
-(354, 6, '2018-12-03'),
-(355, 6, '2018-12-05'),
-(356, 6, '2018-12-06'),
-(357, 6, '2018-12-07'),
-(358, 6, '2018-12-10'),
-(359, 6, '2018-12-11'),
-(360, 6, '2018-12-12'),
-(361, 6, '2018-12-13'),
-(362, 6, '2018-12-14'),
-(363, 6, '2018-12-18'),
-(364, 6, '2018-12-19'),
-(365, 6, '2018-12-20'),
-(366, 6, '2018-12-21'),
-(367, 6, '2018-12-24'),
-(368, 6, '2018-12-25'),
-(369, 6, '2018-12-26'),
-(433, 1, '2018-11-01'),
-(434, 1, '2018-11-05'),
-(435, 1, '2018-11-06'),
-(436, 1, '2018-11-07'),
-(437, 1, '2018-11-08'),
-(438, 1, '2018-11-09'),
-(439, 1, '2018-11-13'),
-(440, 1, '2018-11-15'),
-(441, 1, '2018-11-16'),
-(442, 1, '2018-11-19'),
-(443, 1, '2018-11-22'),
-(444, 1, '2018-11-23'),
-(445, 1, '2018-11-24'),
-(446, 1, '2018-11-26'),
-(447, 1, '2018-11-27'),
-(448, 1, '2018-11-28'),
-(449, 1, '2018-11-29'),
-(450, 1, '2018-11-30'),
-(451, 1, '2018-12-01'),
-(452, 1, '2018-12-03'),
-(453, 1, '2018-12-04'),
-(454, 1, '2018-12-05'),
-(455, 1, '2018-12-06'),
-(456, 1, '2018-12-07'),
-(457, 1, '2018-12-10'),
-(458, 1, '2018-12-11'),
-(459, 1, '2018-12-12'),
-(460, 1, '2018-12-13'),
-(461, 1, '2018-12-14'),
-(462, 1, '2018-12-17'),
-(463, 1, '2018-12-18'),
-(464, 1, '2018-12-19'),
-(465, 1, '2018-12-20'),
-(466, 1, '2018-12-21'),
-(467, 1, '2018-12-22'),
-(468, 1, '2018-12-24'),
-(469, 1, '2018-12-25'),
-(470, 1, '2018-12-26'),
-(471, 1, '2018-12-27'),
-(472, 1, '2018-12-28'),
-(473, 1, '2018-12-29'),
-(474, 2, '2018-12-29'),
-(475, 3, '2018-11-01'),
-(476, 3, '2018-11-02'),
-(477, 3, '2018-11-06'),
-(478, 3, '2018-11-07'),
-(479, 3, '2018-11-08'),
-(480, 3, '2018-11-09'),
-(481, 3, '2018-11-10'),
-(482, 3, '2018-11-12'),
-(483, 3, '2018-11-13'),
-(484, 3, '2018-11-14'),
-(485, 3, '2018-11-15'),
-(486, 3, '2018-11-16'),
-(487, 3, '2018-11-19'),
-(488, 3, '2018-11-21'),
-(489, 3, '2018-11-22'),
-(490, 3, '2018-11-23'),
-(491, 3, '2018-11-24'),
-(492, 3, '2018-11-26'),
-(493, 3, '2018-11-27'),
-(494, 3, '2018-11-28'),
-(495, 3, '2018-11-29'),
-(496, 3, '2018-11-30'),
-(497, 3, '2018-12-01'),
-(498, 3, '2018-12-03'),
-(499, 3, '2018-12-04'),
-(500, 3, '2018-12-05'),
-(501, 3, '2018-12-10'),
-(502, 3, '2018-12-11'),
-(503, 3, '2018-12-12'),
-(504, 3, '2018-12-13'),
-(505, 3, '2018-12-14'),
-(506, 3, '2018-12-17'),
-(507, 3, '2018-12-18'),
-(508, 3, '2018-12-19'),
-(509, 3, '2018-12-20'),
-(510, 3, '2018-12-21'),
-(511, 3, '2018-12-22'),
-(512, 3, '2018-12-24'),
-(513, 3, '2018-12-25'),
-(514, 3, '2018-12-26'),
-(515, 3, '2018-12-27'),
-(516, 3, '2018-12-28'),
-(517, 3, '2018-12-29'),
-(518, 4, '2018-11-01'),
-(519, 4, '2018-11-02'),
-(520, 4, '2018-11-06'),
-(521, 4, '2018-11-07'),
-(522, 4, '2018-11-08'),
-(523, 4, '2018-11-09'),
-(524, 4, '2018-11-12'),
-(525, 4, '2018-11-13'),
-(526, 4, '2018-11-14'),
-(527, 4, '2018-11-15'),
-(528, 4, '2018-11-16'),
-(529, 4, '2018-11-21'),
-(530, 4, '2018-11-22'),
-(531, 4, '2018-11-23'),
-(532, 4, '2018-11-24'),
-(533, 4, '2018-11-26'),
-(534, 4, '2018-11-27'),
-(535, 4, '2018-11-28'),
-(536, 4, '2018-11-29'),
-(537, 4, '2018-11-30'),
-(538, 4, '2018-12-03'),
-(539, 4, '2018-12-04'),
-(540, 4, '2018-12-05'),
-(541, 4, '2018-12-06'),
-(542, 4, '2018-12-07'),
-(543, 4, '2018-12-10'),
-(544, 4, '2018-12-11'),
-(545, 4, '2018-12-12'),
-(546, 4, '2018-12-13'),
-(547, 4, '2018-12-14'),
-(548, 4, '2018-12-17'),
-(549, 4, '2018-12-18'),
-(550, 4, '2018-12-19'),
-(551, 4, '2018-12-20'),
-(552, 4, '2018-12-21'),
-(553, 4, '2018-12-24'),
-(554, 4, '2018-12-25'),
-(555, 4, '2018-12-26'),
-(556, 4, '2018-12-27'),
-(557, 4, '2018-12-28'),
-(558, 4, '2018-12-29'),
-(559, 5, '2018-11-01'),
-(560, 5, '2018-11-02'),
-(561, 5, '2018-11-06'),
-(562, 5, '2018-11-07'),
-(563, 5, '2018-11-08'),
-(564, 5, '2018-11-09'),
-(565, 5, '2018-11-10'),
-(566, 5, '2018-11-12'),
-(567, 5, '2018-11-13'),
-(568, 5, '2018-11-14'),
-(569, 5, '2018-11-15'),
-(570, 5, '2018-11-16'),
-(571, 5, '2018-11-20'),
-(572, 5, '2018-11-21'),
-(573, 5, '2018-11-22'),
-(574, 5, '2018-11-23'),
-(575, 5, '2018-11-26'),
-(576, 5, '2018-11-28'),
-(577, 5, '2018-11-29'),
-(578, 5, '2018-11-30'),
-(579, 5, '2018-12-01'),
-(580, 5, '2018-12-03'),
-(581, 5, '2018-12-04'),
-(582, 5, '2018-12-05'),
-(583, 5, '2018-12-06'),
-(584, 5, '2018-12-07'),
-(585, 5, '2018-12-08'),
-(586, 5, '2018-12-10'),
-(587, 5, '2018-12-11'),
-(588, 5, '2018-12-12'),
-(589, 5, '2018-12-13'),
-(590, 5, '2018-12-14'),
-(591, 5, '2018-12-15'),
-(592, 5, '2018-12-16'),
-(593, 5, '2018-12-17'),
-(594, 5, '2018-12-18'),
-(595, 5, '2018-12-19'),
-(596, 5, '2018-12-20'),
-(597, 5, '2018-12-21'),
-(598, 5, '2018-12-24'),
-(599, 5, '2018-12-25'),
-(600, 5, '2018-12-26'),
-(601, 5, '2018-12-27'),
-(602, 5, '2018-12-28'),
-(603, 6, '2018-11-01'),
-(604, 6, '2018-11-06'),
-(605, 6, '2018-11-07'),
-(606, 6, '2018-11-08'),
-(607, 6, '2018-11-09'),
-(608, 6, '2018-11-12'),
-(609, 6, '2018-11-13'),
-(610, 6, '2018-11-14'),
-(611, 6, '2018-11-15'),
-(612, 6, '2018-11-16'),
-(613, 6, '2018-11-21'),
-(614, 6, '2018-11-22'),
-(615, 6, '2018-11-23'),
-(616, 6, '2018-11-26'),
-(617, 6, '2018-11-27'),
-(618, 6, '2018-11-28'),
-(619, 6, '2018-11-29'),
-(620, 6, '2018-11-30'),
-(621, 6, '2018-12-03'),
-(622, 6, '2018-12-05'),
-(623, 6, '2018-12-06'),
-(624, 6, '2018-12-07'),
-(625, 6, '2018-12-10'),
-(626, 6, '2018-12-11'),
-(627, 6, '2018-12-12'),
-(628, 6, '2018-12-13'),
-(629, 6, '2018-12-14'),
-(630, 6, '2018-12-18'),
-(631, 6, '2018-12-19'),
-(632, 6, '2018-12-20'),
-(633, 6, '2018-12-21'),
-(634, 6, '2018-12-24'),
-(635, 6, '2018-12-25'),
-(636, 6, '2018-12-26'),
-(637, 6, '2018-12-27'),
-(638, 6, '2018-12-28');
+(688, 1, '2018-11-01'),
+(689, 1, '2018-11-05'),
+(690, 1, '2018-11-06'),
+(691, 1, '2018-11-07'),
+(692, 1, '2018-11-08'),
+(693, 1, '2018-11-09'),
+(694, 1, '2018-11-13'),
+(695, 1, '2018-11-15'),
+(696, 1, '2018-11-16'),
+(697, 1, '2018-11-19'),
+(698, 1, '2018-11-22'),
+(699, 1, '2018-11-23'),
+(700, 1, '2018-11-24'),
+(701, 1, '2018-11-26'),
+(702, 1, '2018-11-27'),
+(703, 1, '2018-11-28'),
+(704, 1, '2018-11-29'),
+(705, 1, '2018-11-30'),
+(706, 1, '2018-12-01'),
+(707, 1, '2018-12-03'),
+(708, 1, '2018-12-04'),
+(709, 1, '2018-12-05'),
+(710, 1, '2018-12-06'),
+(711, 1, '2018-12-07'),
+(712, 1, '2018-12-10'),
+(713, 1, '2018-12-11'),
+(714, 1, '2018-12-12'),
+(715, 1, '2018-12-13'),
+(716, 1, '2018-12-14'),
+(717, 1, '2018-12-17'),
+(718, 1, '2018-12-18'),
+(719, 1, '2018-12-19'),
+(720, 1, '2018-12-20'),
+(721, 1, '2018-12-21'),
+(722, 1, '2018-12-22'),
+(723, 1, '2018-12-24'),
+(724, 1, '2018-12-25'),
+(725, 1, '2018-12-26'),
+(726, 1, '2018-12-27'),
+(727, 1, '2018-12-28'),
+(728, 1, '2018-12-29'),
+(729, 1, '2018-12-31'),
+(730, 1, '2019-01-01'),
+(731, 1, '2019-01-02'),
+(732, 1, '2019-01-03'),
+(733, 1, '2019-01-04'),
+(734, 1, '2019-01-07'),
+(735, 1, '2019-01-08'),
+(736, 1, '2019-01-09'),
+(737, 3, '2018-11-01'),
+(738, 3, '2018-11-02'),
+(739, 3, '2018-11-06'),
+(740, 3, '2018-11-07'),
+(741, 3, '2018-11-08'),
+(742, 3, '2018-11-09'),
+(743, 3, '2018-11-10'),
+(744, 3, '2018-11-12'),
+(745, 3, '2018-11-13'),
+(746, 3, '2018-11-14'),
+(747, 3, '2018-11-15'),
+(748, 3, '2018-11-16'),
+(749, 3, '2018-11-19'),
+(750, 3, '2018-11-21'),
+(751, 3, '2018-11-22'),
+(752, 3, '2018-11-23'),
+(753, 3, '2018-11-24'),
+(754, 3, '2018-11-26'),
+(755, 3, '2018-11-27'),
+(756, 3, '2018-11-28'),
+(757, 3, '2018-11-29'),
+(758, 3, '2018-11-30'),
+(759, 3, '2018-12-01'),
+(760, 3, '2018-12-03'),
+(761, 3, '2018-12-04'),
+(762, 3, '2018-12-05'),
+(763, 3, '2018-12-10'),
+(764, 3, '2018-12-11'),
+(765, 3, '2018-12-12'),
+(766, 3, '2018-12-13'),
+(767, 3, '2018-12-14'),
+(768, 3, '2018-12-17'),
+(769, 3, '2018-12-18'),
+(770, 3, '2018-12-19'),
+(771, 3, '2018-12-20'),
+(772, 3, '2018-12-21'),
+(773, 3, '2018-12-22'),
+(774, 3, '2018-12-24'),
+(775, 3, '2018-12-25'),
+(776, 3, '2018-12-26'),
+(777, 3, '2018-12-27'),
+(778, 3, '2018-12-28'),
+(779, 3, '2018-12-29'),
+(780, 3, '2019-01-02'),
+(781, 3, '2019-01-03'),
+(782, 3, '2019-01-04'),
+(783, 3, '2019-01-07'),
+(784, 3, '2019-01-08'),
+(785, 3, '2019-01-09'),
+(786, 4, '2018-11-01'),
+(787, 4, '2018-11-02'),
+(788, 4, '2018-11-06'),
+(789, 4, '2018-11-07'),
+(790, 4, '2018-11-08'),
+(791, 4, '2018-11-09'),
+(792, 4, '2018-11-12'),
+(793, 4, '2018-11-13'),
+(794, 4, '2018-11-14'),
+(795, 4, '2018-11-15'),
+(796, 4, '2018-11-16'),
+(797, 4, '2018-11-21'),
+(798, 4, '2018-11-22'),
+(799, 4, '2018-11-23'),
+(800, 4, '2018-11-24'),
+(801, 4, '2018-11-26'),
+(802, 4, '2018-11-27'),
+(803, 4, '2018-11-28'),
+(804, 4, '2018-11-29'),
+(805, 4, '2018-11-30'),
+(806, 4, '2018-12-03'),
+(807, 4, '2018-12-04'),
+(808, 4, '2018-12-05'),
+(809, 4, '2018-12-06'),
+(810, 4, '2018-12-07'),
+(811, 4, '2018-12-10'),
+(812, 4, '2018-12-11'),
+(813, 4, '2018-12-12'),
+(814, 4, '2018-12-13'),
+(815, 4, '2018-12-14'),
+(816, 4, '2018-12-17'),
+(817, 4, '2018-12-18'),
+(818, 4, '2018-12-19'),
+(819, 4, '2018-12-20'),
+(820, 4, '2018-12-21'),
+(821, 4, '2018-12-24'),
+(822, 4, '2018-12-25'),
+(823, 4, '2018-12-26'),
+(824, 4, '2018-12-27'),
+(825, 4, '2018-12-28'),
+(826, 4, '2018-12-29'),
+(827, 4, '2018-12-31'),
+(828, 4, '2019-01-01'),
+(829, 4, '2019-01-02'),
+(830, 4, '2019-01-03'),
+(831, 4, '2019-01-04'),
+(832, 4, '2019-01-08'),
+(833, 4, '2019-01-09'),
+(834, 5, '2018-11-01'),
+(835, 5, '2018-11-02'),
+(836, 5, '2018-11-06'),
+(837, 5, '2018-11-07'),
+(838, 5, '2018-11-08'),
+(839, 5, '2018-11-09'),
+(840, 5, '2018-11-10'),
+(841, 5, '2018-11-12'),
+(842, 5, '2018-11-13'),
+(843, 5, '2018-11-14'),
+(844, 5, '2018-11-15'),
+(845, 5, '2018-11-16'),
+(846, 5, '2018-11-20'),
+(847, 5, '2018-11-21'),
+(848, 5, '2018-11-22'),
+(849, 5, '2018-11-23'),
+(850, 5, '2018-11-26'),
+(851, 5, '2018-11-28'),
+(852, 5, '2018-11-29'),
+(853, 5, '2018-11-30'),
+(854, 5, '2018-12-01'),
+(855, 5, '2018-12-03'),
+(856, 5, '2018-12-04'),
+(857, 5, '2018-12-05'),
+(858, 5, '2018-12-06'),
+(859, 5, '2018-12-07'),
+(860, 5, '2018-12-08'),
+(861, 5, '2018-12-10'),
+(862, 5, '2018-12-11'),
+(863, 5, '2018-12-12'),
+(864, 5, '2018-12-13'),
+(865, 5, '2018-12-14'),
+(866, 5, '2018-12-15'),
+(867, 5, '2018-12-16'),
+(868, 5, '2018-12-17'),
+(869, 5, '2018-12-18'),
+(870, 5, '2018-12-19'),
+(871, 5, '2018-12-20'),
+(872, 5, '2018-12-21'),
+(873, 5, '2018-12-24'),
+(874, 5, '2018-12-25'),
+(875, 5, '2018-12-26'),
+(876, 5, '2018-12-27'),
+(877, 5, '2018-12-28'),
+(878, 5, '2018-12-31'),
+(879, 5, '2019-01-01'),
+(880, 5, '2019-01-02'),
+(881, 5, '2019-01-03'),
+(882, 5, '2019-01-04'),
+(883, 5, '2019-01-07'),
+(884, 5, '2019-01-08'),
+(885, 5, '2019-01-09'),
+(886, 6, '2018-11-01'),
+(887, 6, '2018-11-06'),
+(888, 6, '2018-11-07'),
+(889, 6, '2018-11-08'),
+(890, 6, '2018-11-09'),
+(891, 6, '2018-11-12'),
+(892, 6, '2018-11-13'),
+(893, 6, '2018-11-14'),
+(894, 6, '2018-11-15'),
+(895, 6, '2018-11-16'),
+(896, 6, '2018-11-21'),
+(897, 6, '2018-11-22'),
+(898, 6, '2018-11-23'),
+(899, 6, '2018-11-26'),
+(900, 6, '2018-11-27'),
+(901, 6, '2018-11-28'),
+(902, 6, '2018-11-29'),
+(903, 6, '2018-11-30'),
+(904, 6, '2018-12-03'),
+(905, 6, '2018-12-05'),
+(906, 6, '2018-12-06'),
+(907, 6, '2018-12-07'),
+(908, 6, '2018-12-10'),
+(909, 6, '2018-12-11'),
+(910, 6, '2018-12-12'),
+(911, 6, '2018-12-13'),
+(912, 6, '2018-12-14'),
+(913, 6, '2018-12-18'),
+(914, 6, '2018-12-19'),
+(915, 6, '2018-12-20'),
+(916, 6, '2018-12-21'),
+(917, 6, '2018-12-24'),
+(918, 6, '2018-12-25'),
+(919, 6, '2018-12-26'),
+(920, 6, '2018-12-27'),
+(921, 6, '2018-12-28'),
+(922, 6, '2019-01-02'),
+(923, 6, '2019-01-03'),
+(924, 6, '2019-01-04'),
+(925, 6, '2019-01-07'),
+(926, 6, '2019-01-08'),
+(927, 6, '2019-01-09');
 
 -- --------------------------------------------------------
 
@@ -2199,16 +2290,9 @@ CREATE TABLE `projects` (
   `version` varchar(50) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `id_clients` int(11) NOT NULL
+  `id_clients` int(11) NOT NULL,
+  `prix_unitaire` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `projects`
---
-
-INSERT INTO `projects` (`id`, `start_date`, `end_date`, `technologies`, `version`, `nom`, `status`, `id_clients`) VALUES
-(1, '2018-11-07', '2018-12-04', 'J2EE , Angular JS, Oracle', '0.510', 'Abatech 0.5.10', 'DONE', 1),
-(4, '2018-12-07', '2019-01-04', 'J2EEE, angularJS', '0.5.10', 'Abatech 0.5.10 bugfixing 1', 'IN PROGRESS', 1);
 
 -- --------------------------------------------------------
 
@@ -2241,24 +2325,19 @@ INSERT INTO `spent_revenues` (`Id`, `type`, `libelle`, `montant`, `date_operatio
 
 CREATE TABLE `tasks` (
   `id` int(11) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `description` text NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `id_users` int(11) UNSIGNED NOT NULL,
-  `progress` int(11) NOT NULL,
-  `complexity` int(20) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `id_modules` int(11) NOT NULL,
-  `priorite` varchar(20) NOT NULL
+  `title` varchar(50) DEFAULT NULL,
+  `description` text,
+  `status` varchar(50) DEFAULT NULL,
+  `id_users` int(11) UNSIGNED DEFAULT NULL,
+  `progress` int(11) DEFAULT NULL,
+  `complexity` int(20) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `id_modules` int(11) DEFAULT NULL,
+  `priorite` varchar(20) DEFAULT NULL,
+  `Ref_client` varchar(50) DEFAULT NULL,
+  `Ref_interne` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `tasks`
---
-
-INSERT INTO `tasks` (`id`, `title`, `description`, `status`, `id_users`, `progress`, `complexity`, `start_date`, `end_date`, `id_modules`, `priorite`) VALUES
-(1, 'Create analysis', 'Create analysis Create analysis Create analysis Create analysis Create analysis', 'DONE', 1, 10, 2, '2018-12-24', '2018-12-19', 1, 'Medium');
 
 -- --------------------------------------------------------
 
@@ -2455,6 +2534,14 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `details_factures`
+--
+ALTER TABLE `details_factures`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `details_factures_ibfk_1` (`id_factures`),
+  ADD KEY `details_factures_ibfk_2` (`id_tasks`);
+
+--
 -- Index pour la table `documents`
 --
 ALTER TABLE `documents`
@@ -2466,6 +2553,20 @@ ALTER TABLE `documents`
 --
 ALTER TABLE `entreprises`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `factures`
+--
+ALTER TABLE `factures`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `factures_projects`
+--
+ALTER TABLE `factures_projects`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_factures` (`id_factures`),
+  ADD KEY `id_projects` (`id_projects`);
 
 --
 -- Index pour la table `freedays`
@@ -2605,25 +2706,25 @@ ALTER TABLE `cms_email_templates`
 -- AUTO_INCREMENT pour la table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=351;
 
 --
 -- AUTO_INCREMENT pour la table `cms_menus`
 --
 ALTER TABLE `cms_menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `cms_menus_privileges`
 --
 ALTER TABLE `cms_menus_privileges`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT pour la table `cms_moduls`
 --
 ALTER TABLE `cms_moduls`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `cms_notifications`
@@ -2641,7 +2742,7 @@ ALTER TABLE `cms_privileges`
 -- AUTO_INCREMENT pour la table `cms_privileges_roles`
 --
 ALTER TABLE `cms_privileges_roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT pour la table `cms_settings`
@@ -2671,13 +2772,19 @@ ALTER TABLE `cms_users`
 -- AUTO_INCREMENT pour la table `conges`
 --
 ALTER TABLE `conges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT pour la table `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `details_factures`
+--
+ALTER TABLE `details_factures`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT pour la table `documents`
@@ -2690,6 +2797,18 @@ ALTER TABLE `documents`
 --
 ALTER TABLE `entreprises`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `factures`
+--
+ALTER TABLE `factures`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT pour la table `factures_projects`
+--
+ALTER TABLE `factures_projects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT pour la table `freedays`
@@ -2707,7 +2826,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT pour la table `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `notifications`
@@ -2725,13 +2844,13 @@ ALTER TABLE `personnels`
 -- AUTO_INCREMENT pour la table `pointages`
 --
 ALTER TABLE `pointages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1715;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1789;
 
 --
 -- AUTO_INCREMENT pour la table `pointages_journaliere`
 --
 ALTER TABLE `pointages_journaliere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=688;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=943;
 
 --
 -- AUTO_INCREMENT pour la table `professions`
@@ -2755,7 +2874,7 @@ ALTER TABLE `spent_revenues`
 -- AUTO_INCREMENT pour la table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `users`

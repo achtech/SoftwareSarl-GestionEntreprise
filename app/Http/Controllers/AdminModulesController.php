@@ -32,7 +32,7 @@ private     $privilegeId ;
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Projects","name"=>"id_projects","join"=>"projects,nom"];
+			$this->col[] = ["label"=>"Projects","name"=>"id_projects","join"=>"projects,version"];
 			$this->col[] = ["label"=>"Libelle","name"=>"libelle"];
 			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
 			$this->col[] = ["label"=>"End Date","name"=>"end_date"];
@@ -43,7 +43,7 @@ private     $privilegeId ;
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,nom'];
+			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version'];
 			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
