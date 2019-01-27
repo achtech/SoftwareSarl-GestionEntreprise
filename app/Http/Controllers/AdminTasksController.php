@@ -53,7 +53,7 @@
 
 			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS;NEEDS WORK;DONE'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS;IN REVIEW;DONE'];
 			$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Complexity','name'=>'complexity','type'=>'number','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
