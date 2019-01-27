@@ -18,7 +18,7 @@
 			$this->button_table_action = false;
 			$this->button_bulk_action = false;
 			$this->button_action_style = "button_icon";
-						$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
+			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
 			$this->button_add = $this->privilegeId==1;
 			$this->button_edit = $this->privilegeId==1;
 			$this->button_delete = $this->privilegeId==1;
@@ -346,9 +346,9 @@ $datefin = date('Y-m-d', strtotime($datefin . ' +1 day'));
 					$nbrDays = $nbrDays-1;
 					$requiredHoursOfToday = 0;
 				}
-				 $nbrDays;
-  			    $nbrHours = (($nbrDays*8)+ explode(":", $requiredHoursOfToday)[0]).":";
-  			    $nbrHours .= (!empty(explode(":", $requiredHoursOfToday)[1]))?explode(":", $requiredHoursOfToday)[1]:"00:00";
+				$h=count(explode(":", $requiredHoursOfToday))===3?explode(":", $requiredHoursOfToday)[0]:0;
+				$m=count(explode(":", $requiredHoursOfToday))===3?explode(":", $requiredHoursOfToday)[1]:0;
+  			    $nbrHours = (($nbrDays*8)+ $h).":".$m.":00";
 		   	}
 
 		   	return $nbrHours;
@@ -430,7 +430,9 @@ $datefin = date('Y-m-d', strtotime($datefin . ' +1 day'));
 	    |
 	    */
 	    public function hook_query_index(&$query) {
-	        //Your code here
+	        if(!CRUDBooster::isSuperadmin()){
+	        	$query->where('cms_users.id',CRUDBooster::myId());
+	        }
 	            
 	    }
 

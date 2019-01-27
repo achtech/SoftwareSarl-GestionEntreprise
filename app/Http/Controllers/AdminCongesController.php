@@ -42,7 +42,11 @@ private     $privilegeId ;
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			if(!CRUDBooster::isSuperadmin()){
+				$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id = ".CRUDBooster::myId()];
+			}else{
+				$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			}
 			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Date Request','name'=>'date_request','type'=>'date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','width'=>'col-sm-10'];
@@ -132,7 +136,9 @@ private     $privilegeId ;
 	        */
 	        $this->index_button = array();
 			$this->index_button[] = ["label"=>"Report congé","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../congeReport')];
-
+			if($this->privilegeId===1){
+				$this->index_button[] = ["label"=>"Status des salaries","icon"=>"fa fa-users","url"=>CRUDBooster::mainpath('../statusSalarie')];
+			}
 
 	        /* 
 	        | ---------------------------------------------------------------------- 
@@ -251,8 +257,9 @@ private     $privilegeId ;
 	    |
 	    */
 	    public function hook_query_index(&$query) {
-	        //Your code here
-	            
+	    	if(!CRUDBooster::isSuperadmin()){
+	        	$query->where('conges.id_users',CRUDBooster::myId());
+	        }
 	    }
 
 	    /*
@@ -338,34 +345,31 @@ private     $privilegeId ;
 
 	    }
 
+		public function getStatusSalarie(){
+			$data['page_title']="Status des salaries";
+	    	//get list of personnel from database
+	    	$result = DB::table('cms_users')
+	    				->join('personnels','personnels.id_users','=','cms_users.id')
+	    				->get();
+	    	$data['personnels'] = $result;
+	    	$this->cbView('statusSalarie',$data);	    	
+		}
+
 	    public function getListOfConge(){
 	    	$data['page_title']="Report Conge";
 	    	//get list of personnel from database
 	    	$result = DB::table('cms_users')
 	    				->get();
-	    	/*$startYear = 2014;
-	    	$endYear = date('Y');
-	    	$tabResult = [];
-	    	//for($i=$startYear,$index=0;$i<=$endYear;$i++){
-		    //	$tabResult[$index] = [];
-		    	for ($i$result as $key => $value) {
-					$tabResult['id'] = $value->id;
-					$tabResult['nom'] = $value->name;
-					$tabResult['$year'] = $i;
-		    	}
-		    //	$index++;
-		    //}*/
 	    	$data['personnels'] = $result;
-	    	//	dd($result);
-	    	
+    	
 	    	$this->cbView('congeReport',$data);
 	    }
 
-	    public static function getNombreJourCongePri($user,$year)
+	    public static function getNombreJourCongePri($user,$month,$year)
 	    {	
 	    	$nb = 0;
-	    	$start = $year."-01-01";
-	    	$end = $year."-12-31";
+	    	$start = empty($month)?$year."-01-01":$year."-".$month."-01";
+	    	$end = empty($month)?$year."-12-31":$year."-".$month."-31";
 	 		 $result = DB::table('conges')
 	 				->where('id_users',$user)
 	 				->where('isJustify',"Non")
@@ -388,12 +392,12 @@ private     $privilegeId ;
 	    			$nbDaysRequired = 0;
 	    			$nbDaysTaked = 0;
 	    			while ($currentYear<=$year) {
-	    				$nbDaysTaked =$nbDaysTaked+ self::getNombreJourCongePri($user,$currentYear);
+	    				$nbDaysTaked =$nbDaysTaked+ self::getNombreJourCongePri($user,'',$currentYear);
 	    				$nbDaysRequired = $currentYear==$firstYear?(13-intval($firstMonth))*1.5:$nbDaysRequired+18;
 	    				$currentYear++;
 	    			}
 	    				$diff=$nbDaysRequired-$nbDaysTaked;
-	    				$nb=$nb+($diff>18?18:$diff);
+	    				$nb=$nb+($diff>36?36:$diff);
 
 		    		return $nb;
 	    		}
@@ -402,8 +406,100 @@ private     $privilegeId ;
 	    	}
 	    }
 
+	    public static function getNbrHeurs($user,$month,$year){
+	    	$congePris = self::getNombreJourConge($user,$month,$year);
+	    	$congePris = empty($congePris)?0:$congePris;
+	    	 $nbrWorkedHours = self::nombreJour(date('Y-m-d',$year."-".$month."-01"),date('Y-m-t',$year."-".$month."-01"));
 
-	    //By the way, you can still create your own method in here... :) 
+	    	return $congePris-1===$nbrWorkedHours?0:intval(191-($congePris*8));
+	    }
+
+	    public static function getMotif($user,$month,$year){
+	    	$start = empty($month)?$year."-01-01":$year."-".$month."-01";
+	    	$end = empty($month)?$year."-12-31":$year."-".$month."-31";
+	 		 $result = DB::table('conges')
+	 				->select(DB::raw('CONCAT(SUM(nbr_days), " jour(s) : ", libelle) AS lib') )
+	 		 		//->select("libelle as lib")
+	 				->where('id_users',$user)
+	 				->whereBetween('start_date',[$start,$end])
+	 				->whereBetween('end_date',[$start,$end])
+	    			->groupBy('libelle')
+	    			->get();
+
+	    	$res="";
+	    	foreach ($result as $key => $value) {
+	    		$res.= $value->lib." .\r\n";
+	    	}
+	    	return substr($res,0,-1);
+	    	 
+	    }
+	    //justifier et non justifier
+	    public static function getNombreJourConge($user,$month,$year)
+	    {	
+	    	$nb = 0;
+	    	$start = empty($month)?$year."-01-01":$year."-".$month."-01";
+	    	$end = empty($month)?$year."-12-31":$year."-".$month."-31";
+	 		 $result = DB::table('conges')
+	 				->where('id_users',$user)
+	 				->whereBetween('start_date',[$start,$end])
+	 				->whereBetween('end_date',[$start,$end])
+	    			->sum('nbr_days');
+	    	return empty($result) ? "0":intval($result);
+	    }
+
+	     public static function nombreJour($datedeb,$datefin){
+		    $nb_jours=0;
+		    $dated=explode('-',$datedeb);
+		    $datef=explode('-',$datefin);
+		    if(count($dated)==3 && count($datef)==3){
+		        $timestampcurr=mktime(0,0,0,$dated[1],$dated[2],$dated[0]);
+		        $timestampf=mktime(0,0,0,$datef[1],$datef[2],$datef[0]);
+		        while($timestampcurr<=$timestampf){
+		     
+		          if((date('w',$timestampcurr)!=0)&&(date('w',$timestampcurr)!=6)){
+		            $nb_jours++;
+		          }
+		          $timestampcurr=mktime(0,0,0,date('m',$timestampcurr),(date('d',$timestampcurr)+1)   ,date('Y',$timestampcurr));
+		        }
+		        return $nb_jours;
+		    }else{
+		        return 0;
+		    }
+		}
 
 
+	    public function printpdf()
+	    {
+	    	
+		    $pdf = \App::make('dompdf.wrapper');
+	    	$pdf->loadHTML($this->printStatusSalarie());
+	    	return $pdf->stream();
+	    }
+	    public function printStatusSalarie(){
+	    	$personnels = DB::table('personnels')->join('cms_users','cms_users.id','=','personnels.id_users')->get();
+
+	    	$header = "";
+	    	$body = "<table>
+                                <thead><tr>
+                                    <th>Nom</th>
+                                    <th>Salaire net</th>
+                                    <th>Nombre d'heur</th>
+                                    <th>Congé</th></tr>
+                                </thead>
+                                
+                                <tbody>";
+                                    for($i=0;$i<count($personnels);$i++){
+                                        $body .="<tr >
+                            <td>".$personnels[$i]->name."</td> 
+                            <td>".$personnels[$i]->net_salary."</td> 
+                            <td>".self::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))."</td> 
+                            <td>".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
+                    </tr>";
+                                 }       
+                                $body .="</tbody>
+                            </table>";
+	    	$footer = "";
+
+	    	return $header.$body.$footer;
+	    }
 	}

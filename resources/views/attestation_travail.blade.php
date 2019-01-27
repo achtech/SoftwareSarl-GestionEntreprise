@@ -27,7 +27,7 @@
                                
 <div style="float:left">
 
-             <form action="attestation_travail/printpdf" name="frm"  onsubmit="return checkForm(document.frm);" >
+             <form action="admin/attestation_travail_print"  method = "get" name="frm"  onsubmit="return checkForm(document.frm);" >
 <input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
    <img src="../storage/app/myImages/Logo.jpg">  
 

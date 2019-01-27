@@ -160,7 +160,7 @@
 	        | $this->script_js = "function() { ... }";
 	        |
 	        */
-	        $this->script_js = $this->privilegeId==1?"$('#btn_add_new_data').hide();":NULL;
+	        $this->script_js = $this->privilegeId!=1?"$('#btn_add_new_data').hide();":NULL;
 
 
             /*

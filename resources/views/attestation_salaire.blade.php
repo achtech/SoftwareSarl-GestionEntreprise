@@ -1,12 +1,12 @@
 @extends('crudbooster::admin_template')
 @section('content')
 
-<h2>Retirer Votre Attestation De Salaire</h2>
-<form action="attestation_travail" method="Post"  name="f1">
+<h2>Retirer Votre Attestion De Travail</h2>
+<form action="attestation_salaire" method="Post"  name="f1">
     {{ csrf_field() }}
 
  <select name="idPersonnels"  id="idPersonnels" class="form-control" onchange="document.f1.submit()">
-        <option >Veuillez chois un 9ard</option> 
+        <option >Veuillez choisir une personne</option> 
         @foreach($personnels as $user) 
         <?php 
         $selected=''; 
@@ -16,26 +16,24 @@
      
     </select>
 </form>
+    <br/>
 <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12"> 
-                            <form action="" name="frm" method="post" >
-                                
-                                
-                       </form>
+                          
+                               
 <div style="float:left">
 
-             <form action="gestion.php" name="frm" method="post" 
-                                  onsubmit="return checkForm(document.frm);" >
-                                <input type="hidden" name="act" value="generer_attestation_de_travail"/>
-                                <input type="hidden" name="page" value="conges.php"/>
-               
-    <img src="../storage/app/myImages/Logo.jpg">  
+             <form action="admin/attestation_travail_print"  method = "get" name="frm"  onsubmit="return checkForm(document.frm);" >
+<input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
+   <img src="../storage/app/myImages/Logo.jpg">  
 
 <div style="float:right;font-size:20px" >
+
+      
 {{ $en->adress }} <br>
 {{ $en->rue }},<br>
 {{$en->zip_code}} {{$en->city}} <br>
@@ -48,13 +46,13 @@ N° Id.fisc : {{ $en->idfisc }} <br>
 <p style="font-size: 34px;
     font-weight: bolder;
     text-align: -webkit-center;margin-top:100px">
-Attestation de salaire
+Attestation de travail
  </p>
 <p  style="font-size: 22px;"> 
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>{{ $nameEmploye->name }}</b> titulaire de la CIN N° <b>{{ $nameEmploye->cin }}</b> execrce dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $nameEmploye->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $nameEmploye->hiring_date }}</b>. jusqu'à ce jour et reçoit comme salaire net la somme de {{$nameEmploye->salaire}} , en complément de son salaire mensuel ,reçoit une prime annuelle d'au minimum 
+Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }}</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $selectedUser->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $selectedUser->hiring_date }}</b>. jusqu'à ce jour. 
 </p>
 <p  style="font-size: 22px;"> 
 La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
@@ -71,8 +69,8 @@ le <?php echo date("d-m-Y") ?>,
                                 </div>
                                 </div>
                                <div class="col-lg-12">
-                            	<br/>
-<button type="button" class="btn btn-primary" style="margin-left:1500px">Imprimer</button>
+                                <br/>
+<input  type="submit" class="btn btn-primary" style="margin-left:1500px" value = "Imprimer"></input>
  </div>
                         </form>
                         </div>
@@ -81,5 +79,4 @@ le <?php echo date("d-m-Y") ?>,
                 </div>
             </div>
         </div>
-
 @endsection

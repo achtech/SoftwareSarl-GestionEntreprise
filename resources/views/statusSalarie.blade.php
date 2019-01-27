@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel panel-default">
     <div class="panel-heading">
-        Conge Report
+        Status des salaries
     </div>
     <div class="panel-body">
         <div class="row">
@@ -15,25 +15,23 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <th>Nom</th>
-                                     @for($year=2014;$year<=date('Y');$year++)
-                                        <th colspan="2"><?php echo $year ?></th>
-                                    @endfor
+                                    <th>Salaire net</th>
+                                    <th>Nombre d'heur</th>
+                                    <th>Congé</th>
                                 </thead>
-                                <thead>
-                                    <th></th>
-                                    @for($year=2014;$year<=date('Y');$year++) 
-                                        <th>Somme</th>
-                                        <th>Reste</th>
-                                    @endfor
-                                </thead>    
+                                <tfoot>
+                                    <th>Nom</th>
+                                    <th>Salaire net</th>
+                                    <th>Nombre d'heur</th>
+                                    <th>Congé</th>
+                                </tfoot>    
                                 <tbody>
                                     @for($i=0;$i<count($personnels);$i++)
                                         <tr >
-                    <td>{{$personnels[$i]->name}}</td> 
-                        @for($j=2014;$j<=date('Y');$j++)
-                            <td>{{AdminCongesController::getNombreJourCongePri($personnels[$i]->id,'',$j)}}</td>
-                            <td>{{AdminCongesController::getNombreJourCongeCredit($personnels[$i]->id,$j)}}</td> 
-                        @endfor
+                            <td>{{$personnels[$i]->name}}</td> 
+                            <td>{{$personnels[$i]->net_salary}}</td> 
+                            <td>{{AdminCongesController::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))}}</td> 
+                            <td>{{AdminCongesController::getMotif($personnels[$i]->id,date('m'),date('Y'))}}</td> 
                     </tr>
                                         @endfor
                                 </tbody>
@@ -44,6 +42,7 @@
         </div>
     </div>
         
+    <a  href="statusSalarie/printpdf" class="btn btn-primary">Imprimer</a>
     </div>
 </div>
 
