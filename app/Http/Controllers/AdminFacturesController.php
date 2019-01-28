@@ -382,21 +382,122 @@
 
 	    public function imprimerFacture($id){
 	    	$data['title_page'] = "Facture".$id;
-	    	$data['factures'] = DB::table('factures')
+	    	$factures = DB::table('factures')
 	    						->where('id',$id)->first();
-	    	$data['clients'] = DB::table('clients')
+	    	$clients= DB::table('clients')
 	    						->join('projects','clients.id','projects.id_clients')
 	    						->join('factures_projects','factures_projects.id_projects','projects.id')
 	    						->where('factures_projects.id_factures',$id)->first();
-	    	$data['factures_projects'] = DB::table('factures_projects')
+	    	$factures_projects = DB::table('factures_projects')
 	    						->join('projects','projects.id','factures_projects.id_projects')
 	    						->where('factures_projects.id_factures',$id)->get();
-	    	$data['factures_tasks'] = DB::table('details_factures')
+	    	$factures_tasks = DB::table('details_factures')
 	    						->join('tasks','tasks.id','details_factures.id_tasks')
 	    						->where('details_factures.id_factures',$id)->get();
-	    	$data['software'] = DB::table("entreprises")->first();
-	    						
-	    	return $this->cbView('factures_impression',$data);
+	    	$software = DB::table("entreprises")->first();
+	    	$data['factures'] = $factures;
+	    	$data['clients'] = $clients;
+	    	$data['factures_projects'] = $factures_projects;
+	    	$data['factures_tasks'] = $factures_tasks;
+	    	$data['software'] = $software;
+	    		    	
+		    $pdf = \App::make('dompdf.wrapper');
+	    	$pdf->loadHTML($this->printFacture($factures,$clients,$factures_projects,$factures_tasks,$software));
+	    	return $pdf->stream();
+
+	    	//return $this->cbView('factures_impression',$data);
+	    }
+
+	    public function printFacture($factures,$clients,$factures_projects,$factures_tasks,$software){
+	    	$header="";
+	    	$body="<div style='float:left;'>".$software->social_reason."<br>".$software->adress."<br>".$software->zip_code." Marrakech<br>Maroc<br></div>";
+    		$body.="<div style='float:right;'>";
+    		$body.="<h2>Facture</h2>";
+        $body.="Date :$factures->date_facture<br>";
+        $body.="Reference Client:$factures->ref_clients<br>";
+        $body.="N° facture:".$factures->num_facture."<br>";
+        $body.=$clients->social_reason."<br>";
+        $body.=$clients->adress."<br>";
+    	$body.="</div>";
+    	$body.="<br style='clear: both;'>";
+        $body.="<div style='padding-top: 40px;'>";
+        $body.="<table width='100%' border='1' style='border: 1px;margin-bottom: 100px;'>";
+        $body.="<thead><tr>
+                <th style='padding: 10px'>Réference</th>
+                <th style='padding: 10px'>Description</th>
+                <th style='padding: 10px'>Prix unitaire</th>
+                <th style='padding: 10px'>Qté</th>
+                <th style='padding: 10px'>Montant</th>
+            </tr>
+            </thead>
+            <tbody>";
+	    foreach($factures_projects as $fp){
+            $body.="<tr>
+                <td style='padding: 10px'>$fp->nom</td>
+                <td style='padding: 10px'>$fp->version</td>
+                <td style='padding: 10px; text-align: center;''>$fp->prix_unitaire</td>
+                <td style='padding: 10px; text-align: right;''>$fp->nombre_heurs</td>
+                <td style='padding: 10px;text-align: right;''>$fp->total</td>
+            </tr>";
+        }
+            $body.="</tbody>
+            <tfoot>
+            <tr>
+                <th colspan='4' style='text-align: right !important;padding: 10px'>Total Hors Taxes</th>
+                <th style='padding: 10px'>$factures->total_hors_taxe</th>
+            </tr>
+            <tr>
+                <th colspan='4'style='text-align: right !important;padding: 10px'>Montant Total</th>
+                <th style='padding: 10px'>$factures->total</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+";
+
+	    	$footer="<hr style='width: 90%;background: brown;height: 5px'>
+    <div><center>
+        Software SARL • App 6 2eme étage M'HITA espace AL moustapha Semlalia,40000 Marrakech Maroc<br>
+N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
+    </center></div>
+
+    </div>";
+    $body2="<div style='padding-top: 40px;''>
+        <table width='100%' border='1' style='border: 1px;margin-bottom: 100px;'>
+            <thead>
+            <tr>
+                <th style='padding: 10px'>Réf client</th>
+                <th style='padding: 10px'>Réf interne</th>
+                <th style='padding: 10px'>Complexity</th>
+                <th style='padding: 10px'>Nombre d'heurs</th>
+            </tr>
+            </thead>
+            <tbody>";
+                    $sumHours = 0;
+                foreach($factures_tasks as $ft){
+			    $sumHours = $sumHours+$ft->complexity*4;
+            $body2.="<tr>
+                <td style='padding: 10px'>".$ft->Ref_client."</td>
+                <td style='padding: 10px; text-align: center;'>".$ft->Ref_interne."</td>
+                <td style='padding: 10px; text-align: right;'>".$ft->complexity."</td>
+                <td style='padding: 10px;text-align: right;'>".($ft->complexity*4)."</td>
+            </tr>";
+            }
+            $body2.="</tbody>
+            <tfoot>
+            <tr>
+                <th colspan='3' style='text-align: right !important;padding: 10px'>Sum of Worked hours</th>
+                <th style='padding: 10px'>".$sumHours."</th>
+            </tr>
+            <tr>
+                <th colspan='3' style='text-align: right !important;padding: 10px'>Montant total</th>
+                <th style='padding: 10px'>".$factures->total."</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>";
+
+	    	return $header.$body.$footer."<br>".$header.$body2.$footer;
 	    }
 	    public function getProjectsByFactures($factures){
 	    //	return $factures;

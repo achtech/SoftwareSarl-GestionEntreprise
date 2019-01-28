@@ -1,10 +1,6 @@
 @extends('crudbooster::admin_template')
 @section('content')
-<form action="../factures" method="post" >
-    {{ csrf_field() }}
-    <input type="hidden" name="id" value="{{$factures->id}}">
-    <input type="submit" id="btSubmit" name="btSubmit" value="Imprimer">
-</form>
+
 <div id="widget">
 <div class="box">
     <div style="margin:50px;font-size: 24px">
