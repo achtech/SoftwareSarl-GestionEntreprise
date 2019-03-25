@@ -92,6 +92,7 @@
 	        | 
 	        */
 	        $this->addaction = array();
+
 	        /* 
 	        | ---------------------------------------------------------------------- 
 	        | Add More Button Selected
@@ -127,6 +128,7 @@
 	        | 
 	        */
 	        $this->index_button = array();
+	        $this->index_button[] = ["label"=>"Primes","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../PrimesProjects')];
 
 
 
@@ -248,7 +250,54 @@
 	    return $result>0 ? $result."%" : "0%";
 	    }
 
-	  
+
+	    public function getListOfPrimes(){
+		    $personnels = DB::table('users')->get();
+		    $projects = DB::table('projects')->where('prime',1)->get();
+   	    	$data['page_title']="Report Projects";
+	    	//get list of personnel from database
+	    	$result = DB::table('cms_users')
+	    				->get();
+	    	$data['personnels'] = $personnels;
+	    	$data['projects'] = $projects;
+	    	$prime = [];
+	    	$primeUser = [];
+	    	for ($i=0; $i < count($personnels); $i++) { 
+	    		$sum = 0;
+	    		for($j=0,$k=0;$j<count($projects);$j++) {
+	    			 $comp = $this->getSumComplexity($personnels[$i]->id,$projects[$j]->id);
+	    			 $sum = intval($sum) +intval($comp);
+	    			 $prime[$i][$j] = $comp;
+	    			 if(($j%3===0 && $j!==0) || $j===count($projects)) {
+	    			 	$primeUser[$i][$k] = $sum;
+	    			 	$k++;
+	    			 	$sum=0;
+	    			 }
+	    		}
+	    	}    	
+	    	$data['prime'] = $prime;
+	    	$data['primeUser'] = $primeUser;
+	   // 	dd($data);
+	    	$this->cbView('PrimesProjects',$data);
+	    }
+
+	    public function getSumComplexity($userId,$projectId){
+	    	return DB::table('tasks')
+		    	->join('modules', 'tasks.id_modules', '=', 'modules.id')
+    			->join('projects', 'modules.id_projects', '=', 'projects.id')
+            	->where('projects.id','=',$projectId)
+            	->where('tasks.id_users','=',$userId)
+            	->sum('tasks.complexity');
+	    }	  
+
+   	    public static function getComplexityProjects($id){
+
+	    	return DB::table('tasks')
+	    				->join('modules', 'tasks.id_modules', '=', 'modules.id')
+           				->join('projects', 'modules.id_projects', '=', 'projects.id')
+   						->where('projects.id','=',$id)
+  						->sum('tasks.complexity');
+   	    }
 	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for button selected

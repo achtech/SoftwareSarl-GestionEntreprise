@@ -497,7 +497,7 @@ N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
         </table>
     </div>";
 
-	    	return $header.$body.$footer."<br>".$header.$body2.$footer;
+	    	return $header.$body.$footer."<br/><br/><br/><br/>".$header.$body2.$footer;
 	    }
 	    public function getProjectsByFactures($factures){
 	    //	return $factures;

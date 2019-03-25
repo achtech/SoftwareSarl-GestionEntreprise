@@ -134,16 +134,16 @@ private     $privilegeId ;
 	        | @icon  = Icon from Awesome.
 	        | 
 	        */
-	        $this->index_button = array();
+			$this->index_button = array();
 			$this->index_button[] = ["label"=>"Report congé","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../congeReport')];
 			if($this->privilegeId===1){
 				$this->index_button[] = ["label"=>"Status des salaries","icon"=>"fa fa-users","url"=>CRUDBooster::mainpath('../statusSalarie')];
 			}
 
 	        /* 
-	        | ---------------------------------------------------------------------- 
+	        | ----------------------------------------------------------------
 	        | Customize Table Row Color
-	        | ----------------------------------------------------------------------     
+	        | -----------------------------------------------------------------  
 	        | @condition = If condition. You may use field alias. E.g : [id] == 1
 	        | @color = Default is none. You can use bootstrap success,info,warning,danger,primary.        
 	        | 

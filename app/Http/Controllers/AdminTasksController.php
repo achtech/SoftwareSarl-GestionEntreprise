@@ -6,7 +6,6 @@
 	use CRUDBooster;
 
 	class AdminTasksController extends \crocodicstudio\crudbooster\controllers\CBController {
-		private     $privilegeId ;
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
@@ -17,10 +16,9 @@
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
-			$this->button_add = $this->privilegeId==1;
-			$this->button_edit = $this->privilegeId==1;
-			$this->button_delete = $this->privilegeId==1;
+			$this->button_add = CRUDBooster::isSuperadmin();
+			$this->button_edit = CRUDBooster::isSuperadmin();
+			$this->button_delete = CRUDBooster::isSuperadmin();
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
@@ -48,11 +46,11 @@
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Devlopper','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			$this->form[] = ['label'=>'Ref Client','name'=>'ref_client','type'=>'text','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Ref Software','name'=>'ref_interne','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Ref Client','name'=>'Ref_client','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Ref Software','name'=>'Ref_interne','type'=>'text','width'=>'col-sm-10'];
 
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS;IN REVIEW;DONE'];
 			$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Complexity','name'=>'complexity','type'=>'number','width'=>'col-sm-10'];

@@ -5,54 +5,48 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminSpentRevenuesController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminMissedDailyMeetingController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
 			$this->title_field = "id";
 			$this->limit = "20";
-			$this->orderby = "Id,desc";
+			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
 			$this->button_edit = true;
-			$this->button_delete = false;
+			$this->button_delete = true;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "spent_revenues";
+			$this->table = "missed_daily_meeting";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Type","name"=>"type"];
-			$this->col[] = ["label"=>"Date Operation","name"=>"date_operation"];
-			$this->col[] = ["label"=>"Libelle","name"=>"libelle"];
-			$this->col[] = ["label"=>"Dépenses (".$this->getSumDepense().")","name"=>"id","callback_php"=>'$this->getMontant($row->id,"Dépenses")'];
-			$this->col[] = ["label"=>"Revenue (".$this->getSumRevenue().")","name"=>"id","callback_php"=>'$this->getMontant($row->id,"Revenue")'];
+			$this->col[] = ["label"=>"User","name"=>"id_users","join"=>"users,nom"];
+			$this->col[] = ["label"=>"MissedDays","name"=>"missedDays"];
+			$this->col[] = ["label"=>"Projects","name"=>"id_projects","join"=>"projects,version"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','width'=>'col-sm-10','dataenum'=>'Dépenses;Revenue'];
-			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Montant','name'=>'montant','type'=>'number','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Date Operation','name'=>'date_operation','type'=>'date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Type Paiment','name'=>'type_paiment','type'=>'select2','width'=>'col-sm-10','dataenum'=>'Espèce;Chèque;Virement;Paypal'];
+			$this->form[] = ['label'=>'User','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,nom'];
+			$this->form[] = ['label'=>'MissedDays','name'=>'missedDays','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'projects,version'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Dépenses;Revenue'];
-			//$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Montant','name'=>'montant','type'=>'number','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Date Operation','name'=>'date_operation','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Type Paiment','name'=>'type_paiment','type'=>'select2','width'=>'col-sm-10','dataenum'=>'Espèce;Chèque;Virement;Paypal'];
+			//$this->form[] = ['label'=>'User','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'user,id'];
+			//$this->form[] = ['label'=>'MissedDays','name'=>'missedDays','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'projects,id'];
 			# OLD END FORM
 
 			/* 
@@ -131,8 +125,6 @@
 	        | 
 	        */
 	        $this->table_row_color = array();     	          
-			$this->table_row_color[] = ["condition"=>"[type] == 'Revenue'","color"=>"success"];
-			$this->table_row_color[] = ["condition"=>"[type] == 'Dépenses'","color"=>"warning"];
 
 	        
 	        /*
@@ -218,28 +210,6 @@
 	        
 	    }
 
-	    public function getMontant($id,$type){
-	    	//return $id."-".$type;
-	    	return $result = DB::table('spent_revenues')
-	    		->where('spent_revenues.type',$type)
-         		->where('spent_revenues.id',$id)
-                ->first()->montant;
-	    }
-
-	    public function getSumRevenue(){
-	    	return $result = DB::table('spent_revenues')
-	    		->select(DB::raw("SUM(montant) as count"))
-         		->where('spent_revenues.type','Revenue')
-                ->first()->count;
-	    }
-
-	    public function getSumDepense(){
-	    	return $result = DB::table('spent_revenues')
-	    		->select(DB::raw("SUM(montant) as count"))
-         		->where('spent_revenues.type','Dépenses')
-                ->first()->count;
-
-	    }
 
 	    /*
 	    | ---------------------------------------------------------------------- 
@@ -264,12 +234,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-	        //$first = DB::select("select 'Somme Depenses','1000','Somme Revenue','2200' frm dual");
-	       // $first = DB::select("select * from spent_revenues");
-	        //$query->union($first);
-
-            
-
+	            
 	    }
 
 	    /*
