@@ -5,6 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
+
 	class AdminFacturesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
@@ -410,94 +411,108 @@
 
 	    public function printFacture($factures,$clients,$factures_projects,$factures_tasks,$software){
 	    	$header="";
-	    	$body="<div style='float:left;'>".$software->social_reason."<br>".$software->adress."<br>".$software->zip_code." Marrakech<br>Maroc<br></div>";
+	    	//$body = "<img src='../../../storage/app/myImages/Logo.jpg'>";
+	    	$body="<table  style='border-bottom: 2px solid #997339;' ><tr ><td style='padding-right:180px;color:#857252 ; background-color:#faf7f2;font-weight: bold; border-right: 2px solid #997339;'>";
+	    	$body.="<div style=' margin-top:10px;text-align:justify;'>".$software->social_reason."<br>App 6 2eme étage M'HITA espace <br>AL moustapha Semlalia<br>".$software->zip_code." Marrakech<br>Maroc<br></div>";
     		$body.="<div style='float:right;'>";
-    		$body.="<h2>Facture</h2>";
+    		$body.="</td><td >";
+    		$body.="<h2 style ='color:#c19859;font-weight:bold;text-align:center'>Facture</h2>";
+    		$body.="</td></tr><tr><td style='border-top: 2px solid #997339;background-color:#faf7f2;border-right: 2px solid #997339;'></td><td style ='color:#664d26;text-align:right ;border-top: 2px solid #997339;'>";
         $body.="Date :$factures->date_facture<br>";
         $body.="Reference Client:$factures->ref_clients<br>";
         $body.="N° facture:".$factures->num_facture."<br>";
         $body.=$clients->social_reason."<br>";
         $body.=$clients->adress."<br>";
     	$body.="</div>";
+    	$body.="</td></tr></table>";
     	$body.="<br style='clear: both;'>";
-        $body.="<div style='padding-top: 40px;'>";
-        $body.="<table width='100%' border='1' style='border: 1px;margin-bottom: 100px;'>";
-        $body.="<thead><tr>
-                <th style='padding: 10px'>Réference</th>
-                <th style='padding: 10px'>Description</th>
-                <th style='padding: 10px'>Prix unitaire</th>
-                <th style='padding: 10px'>Qté</th>
-                <th style='padding: 10px'>Montant</th>
+        $body.="<div style='padding-top: 90px; padding-bottom:200px'>";
+        $body.="<table width='100%' style='border: 2px solid black;'>";
+        $body.="<thead><tr style='border-right: none;'>
+                <th style='padding: 10px ; border-bottom: 2px solid black;'>Réference</th>
+                <th style='padding: 10px ; border-bottom: 2px solid black;border-left: 2px solid black; '>Description</th>
+                <th style='padding: 10px ; border-bottom: 2px solid black; border-left: 2px solid black; '>Prix unitaire</th>
+                <th style='padding: 10px ; border-bottom: 2px solid black; border-left: 2px solid black; '>Qté</th>
+                <th style='padding: 10px ; border-bottom: 2px solid black; border-left: 2px solid black; '>Montant</th>
             </tr>
             </thead>
             <tbody>";
-	    foreach($factures_projects as $fp){
+
+	    foreach($factures_projects->take(5) as $fp){
+	    	
             $body.="<tr>
-                <td style='padding: 10px'>$fp->nom</td>
-                <td style='padding: 10px'>$fp->version</td>
-                <td style='padding: 10px; text-align: center;''>$fp->prix_unitaire</td>
-                <td style='padding: 10px; text-align: right;''>$fp->nombre_heurs</td>
-                <td style='padding: 10px;text-align: right;''>$fp->total</td>
+                <td style='padding: 10px; border-bottom: 2px solid black;'>$fp->nom</td>
+                <td style='padding: 10px ;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->version</td>
+                <td style='padding: 10px; text-align: center; border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->prix_unitaire</td>
+                <td style='padding: 10px; text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->nombre_heurs</td>
+                <td style='padding: 10px;text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->total</td>
             </tr>";
         }
             $body.="</tbody>
             <tfoot>
-            <tr>
-                <th colspan='4' style='text-align: right !important;padding: 10px'>Total Hors Taxes</th>
-                <th style='padding: 10px'>$factures->total_hors_taxe</th>
+            <tr >
+                <th colspan='4' style='text-align: right !important;padding: 10px;border-bottom: 2px solid black;'>Total Hors Taxes</th>
+                <th style='padding: 10px ;border-bottom: 2px solid black; border-left: 2px solid black;'>$factures->total_hors_taxe</th>
             </tr>
             <tr>
-                <th colspan='4'style='text-align: right !important;padding: 10px'>Montant Total</th>
-                <th style='padding: 10px'>$factures->total</th>
+                <th colspan='4' style='text-align: right !important;padding: 10px; '>Montant Total</th>
+                <th style='padding: 10px;border-left: 2px solid black;'>$factures->total</th>
             </tr>
             </tfoot>
         </table>
     </div>
 ";
 
-	    	$footer="<hr style='width: 90%;background: brown;height: 5px'>
+	    	$footer="<div style='position: fixed; bottom: 30px;'><hr style='width: 90%;background: brown;height: 3px;'>
     <div><center>
         Software SARL • App 6 2eme étage M'HITA espace AL moustapha Semlalia,40000 Marrakech Maroc<br>
 N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
-    </center></div>
+    </center></div></div>
 
     </div>";
-    $body2="<div style='padding-top: 40px;''>
-        <table width='100%' border='1' style='border: 1px;margin-bottom: 100px;'>
+
+    $body2="<div style='padding-top: 40px;''>";
+    $body2.="<h2 style='text-align:center;'>Details Factures</h2>
+
+        <table width='100%'  style='border: 1px;border: 2px solid black;margin-bottom: 100px;'>
             <thead>
             <tr>
-                <th style='padding: 10px'>Réf client</th>
-                <th style='padding: 10px'>Réf interne</th>
-                <th style='padding: 10px'>Complexity</th>
-                <th style='padding: 10px'>Nombre d'heurs</th>
+                <th style='padding: 10px;border-bottom: 2px solid black;border-top: 2px solid black;'>Réf client</th>
+                <th style='padding: 10px;border-top: 2px solid black;border-left: 2px solid black;border-bottom: 2px solid black;'>Réf interne</th>
+                <th style='padding: 10px;border-top: 2px solid black;border-left: 2px solid black;border-bottom: 2px solid black;'>Complexity</th>
+                <th style='padding: 10px;border-top: 2px solid black;border-left: 2px solid black;border-bottom: 2px solid black;'>Nombre d'heures</th>
             </tr>
             </thead>
+
             <tbody>";
                     $sumHours = 0;
-                foreach($factures_tasks as $ft){
+                foreach($factures_tasks as $ft ){
 			    $sumHours = $sumHours+$ft->complexity*4;
+
             $body2.="<tr>
-                <td style='padding: 10px'>".$ft->Ref_client."</td>
-                <td style='padding: 10px; text-align: center;'>".$ft->Ref_interne."</td>
-                <td style='padding: 10px; text-align: right;'>".$ft->complexity."</td>
-                <td style='padding: 10px;text-align: right;'>".($ft->complexity*4)."</td>
+                <td style='padding: 10px ;border-bottom: 2px solid black;'>".$ft->Ref_client."</td>
+                <td style='padding: 10px; text-align: center; ;border-bottom: 2px solid black;border-left: 2px solid black;'>".$ft->Ref_interne."</td>
+                <td style='padding: 10px; text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>".$ft->complexity."</td>
+                <td style='padding: 10px;text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>".($ft->complexity*4)."</td>
             </tr>";
             }
+            //{{ $factures_tasks->links() }}
             $body2.="</tbody>
             <tfoot>
             <tr>
-                <th colspan='3' style='text-align: right !important;padding: 10px'>Sum of Worked hours</th>
-                <th style='padding: 10px'>".$sumHours."</th>
+                <th colspan='3' style='text-align: right !important;padding: 10px;border-bottom: 2px solid black;'>Sum of Worked hours</th>
+                <th style='padding: 10px;border-bottom: 2px solid black;border-left: 2px solid black;'>".$sumHours."</th>
             </tr>
             <tr>
                 <th colspan='3' style='text-align: right !important;padding: 10px'>Montant total</th>
-                <th style='padding: 10px'>".$factures->total."</th>
+                <th style='padding: 10px;border-left: 2px solid black;'>".$factures->total."</th>
             </tr>
             </tfoot>
         </table>
     </div>";
 
-	    	return $header.$body.$footer."<br/><br/><br/><br/>".$header.$body2.$footer;
+
+	    	return $header.$body.$footer."<br/><br/><br/><br/>".$header.$body2;
 	    }
 	    public function getProjectsByFactures($factures){
 	    //	return $factures;

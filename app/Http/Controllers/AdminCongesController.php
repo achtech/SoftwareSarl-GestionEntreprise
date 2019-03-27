@@ -479,7 +479,7 @@ private     $privilegeId ;
 	    	$personnels = DB::table('personnels')->join('cms_users','cms_users.id','=','personnels.id_users')->get();
 
 	    	$header = "";
-	    	$body = "<table>
+	    	$body = "<h1 style ='text-align:center'>Status des salaries</h1><table border-bottom: 2px solid black;>
                                 <thead><tr>
                                     <th>Nom</th>
                                     <th>Salaire net</th>

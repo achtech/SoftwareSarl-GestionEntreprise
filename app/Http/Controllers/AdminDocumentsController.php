@@ -269,17 +269,17 @@ use Illuminate\Support\Facades\Input;
                                     Nous certifions que Monsieur / Madame <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
                                 </p>
                                 <p  style="font-size: 22px;"> 
-                                    La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
+                                    La présente attestation est délivrée à l’intéressé(e) sur sa demande pour servir et valoir ce que de droit.<br>
                                 </p>
                                 <p  style="font-size: 22px;"> 
                                     Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.<br>
                                 </p>
                                 <p  style="font-size: 22px;"> 
                                     Fait à Marrakech <br>
-                                    le '.now().',
+                                    le '.date('d/m/Y').'
                                 </p>
                                 <p  style="font-size: 22px; margin-left:450px ; margin-bottom:55px;"> 
-                                   Signature,
+                                   Signature
                                 </p>
                             </div>
                         </div>
@@ -335,10 +335,10 @@ Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m \'
 </p>
                                 <p  style="font-size: 22px;"> 
                                     Fait à Marrakech <br>
-                                    le '.now().',
+                                    le '.date('d/m/Y').'
                                 </p>
                                 <p  style="font-size: 22px; margin-left:450px ; margin-bottom:55px;"> 
-                                   Signature,
+                                   Signature
                                 </p>
                             </div>
                         </div>
