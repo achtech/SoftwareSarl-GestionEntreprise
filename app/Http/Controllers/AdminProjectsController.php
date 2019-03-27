@@ -260,24 +260,40 @@
 	    				->get();
 	    	$data['personnels'] = $personnels;
 	    	$data['projects'] = $projects;
-	    	$prime = [];
-	    	$primeUser = [];
+	    	$complexityS = [];
+	    	$pinalities = [];
+	    	$primes = [];
+	    	$compUser = [];
+	    	$pinaUser = [];
+	    	$primUser = [];
 	    	for ($i=0; $i < count($personnels); $i++) { 
 	    		$sum = 0;
-	    		for($j=0,$k=0;$j<count($projects);$j++) {
-	    			 $comp = $this->getSumComplexity($personnels[$i]->id,$projects[$j]->id);
-	    			 $sum = intval($sum) +intval($comp);
-	    			 $prime[$i][$j] = $comp;
-	    			 if(($j%3===0 && $j!==0) || $j===count($projects)) {
-	    			 	$primeUser[$i][$k] = $sum;
+	    		for($j=0,$k=0;$j<=count($projects);$j++) {
+	    			 if(($j%3===0 && $j!==0)) {
+	    			 	$compUser[$i][$k] = $complexityS[$i][$j-1]+$complexityS[$i][$j-2]+$complexityS[$i][$j-3];
+	    			 	$pinaUser[$i][$k] = $pinalities[$i][$j-1]+$pinalities[$i][$j-2]+$pinalities[$i][$j-3];
+	    			 	$primUser[$i][$k] = $primes[$i][$j-1]+$primes[$i][$j-2]+$primes[$i][$j-3]-$pinaUser[$i][$k];
 	    			 	$k++;
 	    			 	$sum=0;
 	    			 }
+	    			 $comp = $j!==count($projects) ? $this->getSumComplexity($personnels[$i]->id,$projects[$j]->id):0;
+	    			 $pin =  $j!==count($projects) ? $this->getSumPinalities($personnels[$i]->id,$projects[$j]->id):0;
+	    			 $prime = $comp * 40; //$comp * (8/2) * 200 * 0.05
+	    			 if( $j!==count($projects)){
+	    			 $complexityS[$i][$j] = $comp;
+	    			 $pinalities[$i][$j] = $pin;
+	    			 $primes[$i][$j] = $prime;
+	    			 }
 	    		}
 	    	}    	
-	    	$data['prime'] = $prime;
-	    	$data['primeUser'] = $primeUser;
-	   // 	dd($data);
+
+	    	$data['pinalities'] = $pinalities;
+	    	$data['complexityS'] = $complexityS;
+	    	$data['primes'] = $primes;
+	    	$data['compUser'] = $compUser;
+	    	$data['pinaUser'] = $pinaUser;
+	    	$data['primUser'] = $primUser;
+	    //dd($data['complexityS']);
 	    	$this->cbView('PrimesProjects',$data);
 	    }
 
@@ -288,6 +304,13 @@
             	->where('projects.id','=',$projectId)
             	->where('tasks.id_users','=',$userId)
             	->sum('tasks.complexity');
+	    }	  
+
+	    public function getSumPinalities($userId,$projectId){
+	    	return DB::table('pinalites')
+            	->where('id_projects','=',$projectId)
+            	->where('id_users','=',$userId)
+            	->sum('type');
 	    }	  
 
    	    public static function getComplexityProjects($id){
