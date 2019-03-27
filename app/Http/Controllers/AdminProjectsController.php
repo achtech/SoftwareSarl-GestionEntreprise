@@ -51,6 +51,7 @@
 			$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
+			$this->form[] = ['label'=>'Prix Unitaire','name'=>'prix_unitaire','type'=>'number','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
