@@ -479,21 +479,21 @@ private     $privilegeId ;
 	    	$personnels = DB::table('personnels')->join('cms_users','cms_users.id','=','personnels.id_users')->get();
 
 	    	$header = "";
-	    	$body = "<h1 style ='text-align:center'>Status des salaries</h1><table border-bottom: 2px solid black;>
+	    	$body = "<h1 style ='text-align:center'>Status des salaries</h1><table style ='border-bottom: 2px solid black;border-top: 2px solid black;border-right: 2px solid black;border-left: 2px solid black'>
                                 <thead><tr>
-                                    <th>Nom</th>
-                                    <th>Salaire net</th>
-                                    <th>Nombre d'heur</th>
+                                    <th style ='border-right: 2px solid black;'>Nom</th>
+                                    <th style ='border-right: 2px solid black;'>Salaire net</th>
+                                    <th style ='border-right: 2px solid black;'>Nombre d'heur</th>
                                     <th>Congé</th></tr>
                                 </thead>
                                 
                                 <tbody>";
                                     for($i=0;$i<count($personnels);$i++){
                                         $body .="<tr >
-                            <td>".$personnels[$i]->name."</td> 
-                            <td>".$personnels[$i]->net_salary."</td> 
-                            <td>".self::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))."</td> 
-                            <td>".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
+                            <td style ='border-right: 2px solid black;'>".$personnels[$i]->name."</td> 
+                            <td style ='border-right: 2px solid black;'>".$personnels[$i]->net_salary."</td> 
+                            <td style ='border-right: 2px solid black;'>".self::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))."</td> 
+                            <td >".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
                     </tr>";
                                  }       
                                 $body .="</tbody>
