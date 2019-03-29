@@ -492,30 +492,50 @@ private     $privilegeId ;
 
 	    	$header = "";
 	    	$body = "
-<table><tr><td> <img src='storage/app/myImages/Logo.jpg'>  </td><td>Status des salaries</td></tr></table>
-	    	<h1 style ='text-align:center'>Status des salaries</h1><table style ='border-bottom: 2px solid black;border-top: 2px solid black;border-right: 2px solid black;border-left: 2px solid black'>
+
+<table >
+<tr>
+<td style='padding-right:180px;margin-right:50px;color:#857252 ; background-color:#faf7f2;font-weight: bold;border-left: 2px solid #997339;border-bottom: 2px solid #997339; border-top: 2px solid #997339; border-right: 2px solid #997339;'> Software S.A.R.L<br>
+App 6 2eme étage M'HITA espace<br>
+AL moustapha Semlalia<br>
+40000 Marrakech<br>
+Maroc</td>
+<td style ='color:#c19859;font-size:20px;font-weight:bold;padding-right:88px;border-bottom: 2px solid #997339; border-top: 2px solid #997339; border-right: 2px solid #997339; width:99px;'>Status des salaries</td>
+</tr>
+</table>
+
+
+	    	<h1 style ='text-align:center;'>Mars 2019</h1><table style ='border-bottom: 2px solid black;border-top: 2px solid black;border-right: 2px solid black;border-left: 2px solid black;text-align:center;'>
                                 <thead><tr>
                                     <th style ='border-right: 2px solid black;'>Nom</th>
                                     <th style ='border-right: 2px solid black;'>Salaire net</th>
                                     <th style ='border-right: 2px solid black;'>Nombre d'heur</th>
-                                    <th style ='border-right: 2px solid black;'>Congé</th>
-                                    <th >Motif</th>
+                                    <th >Congé:Motif</th>
+                                
                                     </tr>
                                 </thead>
                                 
                                 <tbody>";
+
+
                                     for($i=0;$i<count($personnels);$i++){
                                         $body .="<tr >
-                            <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".$personnels[$i]->name."</td> 
+                            <td style ='border-right: 2px solid black;border-top: 2px solid black; height:40px;'>".$personnels[$i]->name."</td> 
                             <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".$personnels[$i]->net_salary."</td> 
                             <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".self::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))."</td> 
-                            <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
                             <td style ='border-top: 2px solid black;'>".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
+                        
                     </tr>";
                                  }       
                                 $body .="</tbody>
                             </table>";
-	    	$footer = "";
+	    		$footer="<div style='position: fixed; bottom: 30px;'><hr style='width: 90%;background: brown;height: 3px;'>
+    <div><center>
+        Software SARL • App 6 2eme étage M'HITA espace AL moustapha Semlalia,40000 Marrakech Maroc<br>
+N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
+    </center></div></div>
+
+    </div>";
 
 	    	return $header.$body.$footer;
 	    }

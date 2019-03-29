@@ -245,21 +245,22 @@ use Illuminate\Support\Facades\Input;
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12"> 
-                            <div style="float:left">
-                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  
-                                <div style="float:right;font-size:20px" >
+                            <div style="float:left" class="col-lg-6">
+                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  </div>
+                                <div style="padding-left:450px;margin-bottom:100px;font-size:20px" class="col-lg-6">
                                     '.$en->adress.'<br>
-                                    '. $en->rue.'<br>
-                                    '. $en->zip_code.' '. $en->city.' <br>
+                                    '. $en->rue.'
                                     Tel : '. $en->mobile.'<br>
                                     N° RC : '. $en->rc.'  <br>
                                     N° de Patente : '. $en->patente.'<br>  
                                     N° Id.fisc : '. $en->idfisc.' <br>
+                                    '. $en->zip_code.'
                                 </div>
+
                                 <br style="clear:both">
                                 <p style="font-size: 34px;
                                     font-weight: bolder;
-                                    text-align:center;margin-top:100px">
+                                    text-align:center;margin-top:0px;">
                                         Attestation de travail
                                 </p>
                                 <p  style="font-size: 22px;"> 

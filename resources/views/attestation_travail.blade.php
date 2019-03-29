@@ -70,7 +70,7 @@ le <?php echo date("d-m-Y") ?>,
                                 </div>
                                <div class="col-lg-12">
                             	<br/>
-<input  type="submit" class="btn btn-primary" style="margin-left:1500px" value = "Imprimer"></input>
+<input  type="submit" class="btn btn-primary"  value = "Imprimer"></input>
  </div>
                         </form>
                         </div>
