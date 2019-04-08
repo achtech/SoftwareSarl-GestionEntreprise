@@ -36,7 +36,7 @@
 			$this->col[] = ["label"=>"End Date","name"=>"end_date"];
 			$this->col[] = ["label"=>"Technologies","name"=>"technologies"];
 			$this->col[] = ["label"=>"Version","name"=>"version"];
-			$this->col[] = ["label"=>"Status","name"=>"status"];
+			//$this->col[] = ["label"=>"Status","name"=>"status"];
 			$this->col[] = ["label"=>"Clients","name"=>"id_clients","join"=>"clients,social_reason"];
 			$this->col[] = ["label"=>"Complexity","name"=>"id","callback_php"=>'$this->getTotalComplexityByProjects($row->id)'];
 			$this->col[] = ["label"=>"Progress","name"=>"id","callback_php"=>'$this->getProjectProgress($row->id)'];
@@ -49,7 +49,7 @@
 			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Technologies','name'=>'technologies','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
 			# END FORM DO NOT REMOVE THIS LINE
 

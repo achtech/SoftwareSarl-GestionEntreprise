@@ -104,6 +104,10 @@
 	        | 
 	        */
 	        $this->addaction = array();
+	        $this->addaction[] = [
+        		'title' =>'Historique Salaire' , 'url' => 'historique_salaire/[id]',
+        		'icon' => 'fa fa-history', 'color' => 'info'
+			];
 
 
 	        /* 
@@ -251,7 +255,32 @@
 	        //Your code here
 	            
 	    }
-
+        
+        public function historiqueSalaire($id){
+                	$data['title_page'] = "Facture".$id;
+	    	$factures = DB::table('factures')
+	    						->where('id',$id)->first();
+	    	$clients= DB::table('clients')
+	    						->join('projects','clients.id','projects.id_clients')
+	    						->join('factures_projects','factures_projects.id_projects','projects.id')
+	    						->where('factures_projects.id_factures',$id)->first();
+	    	$factures_projects = DB::table('factures_projects')
+	    						->join('projects','projects.id','factures_projects.id_projects')
+	    						->where('factures_projects.id_factures',$id)->get();
+	    	$factures_tasks = DB::table('details_factures')
+	    						->join('tasks','tasks.id','details_factures.id_tasks')
+	    						->where('details_factures.id_factures',$id)->get();
+	    	$software = DB::table("entreprises")->first();
+	    	$data['factures'] = $factures;
+	    	$data['clients'] = $clients;
+	    	$data['factures_projects'] = $factures_projects;
+	    	$data['factures_tasks'] = $factures_tasks;
+	    	$data['software'] = $software;
+	    		    	
+		    $pdf = \App::make('dompdf.wrapper');
+	    	//$pdf->loadHTML($this->printFacture($factures,$clients,$factures_projects,$factures_tasks,$software));
+	    	return $pdf->stream();
+        }
 
 	    /*
 	    | ---------------------------------------------------------------------- 

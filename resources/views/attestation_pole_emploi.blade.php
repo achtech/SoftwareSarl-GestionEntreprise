@@ -31,12 +31,12 @@
 <input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
    <img src="../storage/app/myImages/Logo.jpg">  
 
-<div style="float:right;font-size:20px;margin-left: 833px;" >
+<div style="float:right;font-size:20px;" >
 
       
 {{ $en->adress }} <br>
-{{ $en->rue }},<br>
-{{$en->zip_code}} {{$en->city}} <br>
+{{ $en->rue }}
+{{$en->zip_code}}, {{$en->city}} <br>
 Tel : {{ $en->mobile }}<br>
 N° RC : {{ $en->rc }}  <br>
 N° de Patente : {{ $en->patente }}<br>  

@@ -452,11 +452,11 @@
             <tfoot>
             <tr >
                 <th colspan='4' style='text-align: right !important;padding: 10px;border-bottom: 2px solid black;'>Total Hors Taxes</th>
-                <th style='padding: 10px ;border-bottom: 2px solid black; border-left: 2px solid black;'>$factures->total_hors_taxe</th>
+                <th style='padding: 10px ;border-bottom: 2px solid black; border-left: 2px solid black;'>$factures->total_hors_taxe $</th>
             </tr>
             <tr>
                 <th colspan='4' style='text-align: right !important;padding: 10px; '>Montant Total</th>
-                <th style='padding: 10px;border-left: 2px solid black;'>$factures->total</th>
+                <th style='padding: 10px;border-left: 2px solid black;'>$factures->total $</th>
             </tr>
             </tfoot>
         </table>
@@ -501,11 +501,11 @@ N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
             <tfoot>
             <tr>
                 <th colspan='3' style='text-align: right !important;padding: 10px;border-bottom: 2px solid black;'>Sum of Worked hours</th>
-                <th style='padding: 10px;border-bottom: 2px solid black;border-left: 2px solid black;'>".$sumHours."</th>
+                <th style='padding: 10px;border-bottom: 2px solid black;border-left: 2px solid black;'>".$sumHours." h</th>
             </tr>
             <tr>
                 <th colspan='3' style='text-align: right !important;padding: 10px'>Montant total</th>
-                <th style='padding: 10px;border-left: 2px solid black;'>".$factures->total."</th>
+                <th style='padding: 10px;border-left: 2px solid black;'>".$factures->total." $</th>
             </tr>
             </tfoot>
         </table>

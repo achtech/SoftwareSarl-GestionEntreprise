@@ -2,6 +2,8 @@
 @section('content')
 
 <h2>Retirer Votre Attestion De Stage</h2>
+
+    
 <form action="attestation_stage" method="Post"  name="f1">
     {{ csrf_field() }}
 
@@ -16,8 +18,7 @@
      
     </select>
 </form>
-    <br/>
-
+<br/>
 <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -30,17 +31,14 @@
                        </form>
 <div style="float:left">
 
-             <form action="gestion.php" name="frm" method="post" 
-                                  onsubmit="return checkForm(document.frm);" >
-                                <input type="hidden" name="act" value="generer_attestation_de_travail"/>
-                                <input type="hidden" name="page" value="conges.php"/>
+             <form action="admin/attestation_stage_print" method = "get" name="frm"  onsubmit="return checkForm(document.frm);"  >
+                               <input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
                
     <img src="../storage/app/myImages/Logo.jpg">  
 
 <div style="float:right;font-size:20px" >    
 {{ $en->adress }} <br>
-{{ $en->rue }},<br>
-{{$en->zip_code}} {{$en->city}} <br>
+{{$en->zip_code}}, {{$en->city}} <br>
 Tel : {{ $en->mobile }}<br>
 N° RC : {{ $en->rc }}  <br>
 N° de Patente : {{ $en->patente }}<br>  
@@ -56,7 +54,7 @@ Attestation de stage
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->name }}</b> a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech.
+Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }}</b> a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech.
 </p>
 <p  style="font-size: 22px;"> 
 Nous délivrons la présente attesttaion  pour servir et valoir ce que de droit.<br>
