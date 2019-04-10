@@ -5,19 +5,19 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminPersonnelsController extends \crocodicstudio\crudbooster\controllers\CBController {
-		private     $privilegeId ;
+	class AdminPersonnels36Controller extends \crocodicstudio\crudbooster\controllers\CBController {
+
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "last_name";
+			$this->title_field = "id";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->button_add = false;
+			$this->button_add = true;
 			$this->button_edit = true;
 			$this->button_delete = true;
 			$this->button_detail = true;
@@ -30,53 +30,29 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Photo","name"=>"id_users","join"=>"cms_users,photo","image"=>true];
-			$this->col[] = ["label"=>"Polite","name"=>"polite"];
-			$this->col[] = ["label"=>"Nom","name"=>"id_users","join"=>"cms_users,name"];
-			$this->col[] = ["label"=>"Cin","name"=>"cin"];
-			$this->col[] = ["label"=>"Cnss","name"=>"cnss"];
-			$this->col[] = ["label"=>"Mobile","name"=>"mobile"];
-			$this->col[] = ["label"=>"Date d'embauche","name"=>"hiring_date"];
+			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"users,nom"];
+			$this->col[] = ["label"=>"Net Salary","name"=>"net_salary"];
+			$this->col[] = ["label"=>"Gross Salary","name"=>"gross_salary"];
+			$this->col[] = ["label"=>"Hiring Date","name"=>"hiring_date"];
 			$this->col[] = ["label"=>"Contrat","name"=>"contrat"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Nom','name'=>'id_users','type'=>'select2','validation'=>'required','width'=>'col-sm-9','datatable'=>'cms_users,name'];
-			$this->form[] = ['label'=>'Cin','name'=>'cin','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Cnss','name'=>'cnss','type'=>'text','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Polite','name'=>'polite','type'=>'text','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Mobile','name'=>'mobile','type'=>'text','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Adress','name'=>'adress','type'=>'textarea','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'date','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Exit Date','name'=>'exit_date','type'=>'date','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Birth Date','name'=>'birth_date','type'=>'date','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Order Number','name'=>'order_number','type'=>'number','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Professions','name'=>'id_professions','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'professions,libelle'];
-			$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Family Situation','name'=>'family_situation','type'=>'text','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Number Children','name'=>'number_children','type'=>'number','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Contrat','name'=>'contrat','type'=>'upload','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
+			$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Contrat','name'=>'contrat','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Nom','name'=>'id_users','type'=>'select2','validation'=>'required','width'=>'col-sm-9','datatable'=>'cms_users,name'];
-			//$this->form[] = ['label'=>'Cin','name'=>'cin','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Cnss','name'=>'cnss','type'=>'text','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Polite','name'=>'polite','type'=>'text','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Mobile','name'=>'mobile','type'=>'text','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Adress','name'=>'adress','type'=>'textarea','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'date','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Exit Date','name'=>'exit_date','type'=>'date','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Birth Date','name'=>'birth_date','type'=>'date','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Order Number','name'=>'order_number','type'=>'number','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Professions','name'=>'id_professions','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'professions,libelle'];
-			//$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Family Situation','name'=>'family_situation','type'=>'text','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Number Children','name'=>'number_children','type'=>'number','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
+			//$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Contrat','name'=>'contrat','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			# OLD END FORM
 
 			/* 
@@ -106,10 +82,6 @@
 	        | 
 	        */
 	        $this->addaction = array();
-	        $this->addaction[] = [
-        		'title' =>'Historique Salaire' , 'url' => 'historique_salaire/[id]',
-        		'icon' => 'fa fa-history', 'color' => 'info'
-			];
 
 
 	        /* 
@@ -253,12 +225,18 @@
 	    | @button_name = the name of button
 	    |
 	    */
+	     public function historiqueSalaire($id){
+            $data = [];
+	    	$data['personnels'] = DB::table('personnels')->join('cms_users','cms_users.id','=','personnels.id_users')
+	    	->select('name','net_salary','gross_salary','hiring_date','contrat')
+	    	->where('personnels.id',$id)->get();
+	    	return $data;
+        }
 	    public function actionButtonSelected($id_selected,$button_name) {
 	        //Your code here
 	            
 	    }
-        
-       
+
 
 	    /*
 	    | ---------------------------------------------------------------------- 
@@ -268,9 +246,8 @@
 	    |
 	    */
 	    public function hook_query_index(&$query) {
-	        if($this->privilegeId!=1){
-	        		$query->where('personnels.id_users',CRUDBooster::myId());
-	        }   
+	        //Your code here
+	            
 	    }
 
 	    /*
@@ -359,7 +336,6 @@
 
 
 	    //By the way, you can still create your own method in here... :) 
-	   
 
 
 	}

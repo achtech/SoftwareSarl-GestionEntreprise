@@ -454,9 +454,10 @@ public function getHtmlPageAttestaionSalaire(Request $request){
                                 </p>
                                 <p style ="font-size:20px;">Madame, Monsieur,</p>
                                <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
-<b>'.$selectedUser->adress.' </b>a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage MHITA espace AL moustapha Semlalia,40000 Marrakech.
-
+Nous certifions que Monsieur / Madame <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b>employé par la société SOFTWARE S.A.R.L
+ dont le siège social est situé à app 6 2eme étage  MHITA espace AL moustapha Semlalia,40000 Marrakech,
+ en tant que
+<b>'.$selectedUser->Libelle.' </b>en contrat à durée indéterminée depuis le <b>'.$selectedUser->hiring_date.' </b> jusqu à ce jour et reçoit comme salaire <b>'.$selectedUser->net_salary.' </b>DH
 Nous délivrons la présente attesttaion pour servir et valoir ce que de droit.
 Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.
                                 <p  style="font-size: 22px;"> 
@@ -622,7 +623,7 @@ Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m \'
 
          }
          public function getAttestationSalaire(){ 
-      	  	$nameEmploye = $request->input('nameEmploye');
+      	  	//$nameEmploye = $request->input('nameEmploye');
 			$data['personnels'] = DB::table('personnels')
             ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
             ->join('professions', 'professions.id', '=', 'personnels.id_professions')
@@ -632,7 +633,7 @@ Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m \'
             ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
             ->join('professions', 'professions.id', '=', 'personnels.id_professions')
             //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
-            ->where('cms_users.id',$request->input('idPersonnels'))
+           // ->where('cms_users.id',$request->input('idPersonnels'))
          	->first();
          	 $data['en'] = DB::table('entreprises')->first();
          	return view('attestation_salaire',$data);  

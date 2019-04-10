@@ -42,7 +42,7 @@ Route::get('attestation_salaire', 'AdminDocumentsController@goToAttestationSalai
 //Route::get('attestation_stage', 'AdminDocumentsController@goToAttestationStage');
 Route::get('accuse_reception', 'AdminDocumentsController@goToAccuseReception');
 Route::get('admin/factures_impression/{id}', 'AdminFacturesController@imprimerFacture');
-Route::get('admin/historique_salaire/{id}', 'AdminPersonnelsController@historiqueSalaire');
+Route::get('admin/historique_salaire/{id}', 'AdminPersonnels36Controller@historiqueSalaire');
 Route::get('admin/factures/{id}', 'AdminFacturesController@createFacture');
 
 

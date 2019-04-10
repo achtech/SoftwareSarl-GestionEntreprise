@@ -29,7 +29,7 @@
 
              <form action="admin/attestation_salaire_print"  method = "get" name="frm"  onsubmit="return checkForm(document.frm);" >
 <input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
-   <img src="../storage/app/myImages/Logo.jpg">  
+<img src="../storage/app/myImages/Logo.jpg">  
 
 <div style="float:right;font-size:20px" >
 
@@ -51,7 +51,7 @@ Attestation de salaire
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }}</b> a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech.</p>
+Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }}</b> employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $selectedUser->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $selectedUser->hiring_date }}</b>. jusqu'à ce jour reçoit comme salaire <b>{{ $selectedUser->net_salary }} DH</b>. 
 <p  style="font-size: 22px;"> 
 La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
 </p>

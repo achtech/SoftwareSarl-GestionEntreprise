@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminCongesController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminStatusSalarieController extends \crocodicstudio\crudbooster\controllers\CBController {
 private     $privilegeId ;
 	    public function cbInit() {
 
@@ -135,10 +135,10 @@ private     $privilegeId ;
 	        | 
 	        */
 			$this->index_button = array();
-			$this->index_button[] = ["label"=>"Report congé","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../congeReport')];
-			/*if($this->privilegeId===1){
+			//$this->index_button[] = ["label"=>"Report congé","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../congeReport')];
+			if($this->privilegeId===1){
 				$this->index_button[] = ["label"=>"Status des salaries","icon"=>"fa fa-users","url"=>CRUDBooster::mainpath('../statusSalarie')];
-			}*/
+			}
 
 	        /* 
 	        | ----------------------------------------------------------------
@@ -505,11 +505,12 @@ Maroc</td>
 </table>
 
 
-	    	<h1 style ='text-align:center;'>Mars 2019</h1><table style ='border-bottom: 2px solid black;border-top: 2px solid black;border-right: 2px solid black;border-left: 2px solid black;text-align:center;'>
+	    	<h1 style ='text-align:center;'>Mars 2019</h1><table style ='border-bottom: 2px solid black;border-top: 2px solid black;border-right: 2px solid black;border-left: 2px solid black;'>
                                 <thead><tr>
                                     <th style ='border-right: 2px solid black;'>Nom</th>
                                     <th style ='border-right: 2px solid black;'>Salaire net</th>
-                                    <th style ='border-right: 2px solid black;'>Nombre d'heur</th>
+                                    <th style ='border-right: 2px solid black;'>Prime</th>
+                                    <th style ='border-right: 2px solid black;'>Nombre d'heure</th>
                                     <th >Congé:Motif</th>
                                 
                                     </tr>
@@ -522,6 +523,7 @@ Maroc</td>
                                         $body .="<tr >
                             <td style ='border-right: 2px solid black;border-top: 2px solid black; height:40px;'>".$personnels[$i]->name."</td> 
                             <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".$personnels[$i]->net_salary."</td> 
+                              <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".$personnels[$i]->net_salary."</td> 
                             <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".self::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))."</td> 
                             <td style ='border-top: 2px solid black;'>".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
                         
