@@ -93,6 +93,8 @@
 	        */
 	        $this->sub_module = array();
 
+	        $this->sub_module[] = ['label'=>'Historique Salaire','path'=>'personnels36','parent_columns'=>'nom','button_color'=>'info','button_icon'=>'fa fa-history','button_action_style' => "button_icon"];
+
 
 	        /* 
 	        | ---------------------------------------------------------------------- 

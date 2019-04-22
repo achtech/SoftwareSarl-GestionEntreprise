@@ -285,7 +285,7 @@ use Illuminate\Support\Facades\Input;
                                     Madame, Monsieur,
                                 </p>
                                 <p  style="font-size: 22px;"> 
-                                    Nous certifions que Monsieur / Madame <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
+                                    Nous certifions que Monsieur <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
                                 </p>
                                 <p  style="font-size: 22px;"> 
                                     La présente attestation est délivrée à l’intéressé(e) sur sa demande pour servir et valoir ce que de droit.<br>
@@ -345,7 +345,7 @@ use Illuminate\Support\Facades\Input;
                                     Madame, Monsieur,
                                 </p>
                                 <p  style="font-size: 22px;"> 
-                                    Nous certifions que Monsieur / Madame <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
+                                    Nous certifions que Monsieur <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
                                 </p>
                                 <p  style="font-size: 22px;"> 
                                     La présente attestation est délivrée à l’intéressé(e) sur sa demande pour servir et valoir ce que de droit.<br>
@@ -401,7 +401,7 @@ public function getHtmlPageAttestaionStage(Request $request){
                                 </p>
                                 <p style ="font-size:20px;">Madame, Monsieur,</p>
                                <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
+Nous certifions que Monsieur <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
 <b>'.$selectedUser->adress.' </b>a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage MHITA espace AL moustapha Semlalia,40000 Marrakech.
 
 Nous délivrons la présente attesttaion pour servir et valoir ce que de droit.
@@ -454,7 +454,7 @@ public function getHtmlPageAttestaionSalaire(Request $request){
                                 </p>
                                 <p style ="font-size:20px;">Madame, Monsieur,</p>
                                <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b>employé par la société SOFTWARE S.A.R.L
+Nous certifions que Monsieur <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b>employé par la société SOFTWARE S.A.R.L
  dont le siège social est situé à app 6 2eme étage  MHITA espace AL moustapha Semlalia,40000 Marrakech,
  en tant que
 <b>'.$selectedUser->Libelle.' </b>en contrat à durée indéterminée depuis le <b>'.$selectedUser->hiring_date.' </b> jusqu à ce jour et reçoit comme salaire <b>'.$selectedUser->net_salary.' </b>DH
@@ -509,7 +509,7 @@ Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutatio
                                         Attestation d emploie 
                                 </p>
                                <p  style="font-size: 22px;"> 
-je soussigné(e) Monsieur/Madamme <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
+je soussigné(e) Monsieur <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
 <b>'.$selectedUser->adress.' </b>reconnais avoir reçu de la société SOFTWARE S.A.R.L la somme de  <b>'.$request->input('salary').' </b> cette somme n a été versée, pour solde de tout compte ,en paiement de :
 <p style="font-size: 22px;" >
 -Salaire <b> '.$request->input('salary').' </b> au <b> '.$request->input('netSalary').' </b> </p>
