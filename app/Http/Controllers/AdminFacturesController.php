@@ -40,7 +40,7 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Date Facture','name'=>'date_facture','type'=>'date','id'=>"mydate",'validation'=>'required|date|date_format:d/m/Y|after:tomorrow','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Date Facture','name'=>'date_facture','type'=>'date','id'=>"mydate",'width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Ref Clients','name'=>'ref_clients','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Num Facture','name'=>'num_facture','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version','relationship_table'=>'factures_projects','datatable_format'=>'nom,\' ---> \',version'];
