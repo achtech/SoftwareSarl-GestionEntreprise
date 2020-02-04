@@ -17,21 +17,21 @@
                                     <th>Nom</th>
                                     <th>Salaire net</th>
                                     <th>Prime</th>
-                                    <th>Nombre d'heur</th>
-                                    <th>Motif</th>
+                                    <th>Nombre d'heure</th>
+                                    <th>Congé:Motif</th>
                                 </thead>
                                 <tfoot>
                                     <th>Nom</th>
                                     <th>Salaire net</th>
                                     <th>Prime</th>
-                                    <th>Nombre d'heur</th>
-                                    <th>Motif</th>
+                                    <th>Nombre d'heure</th>
+                                    <th>Congé:Motif</th>
                                 </tfoot>    
                                 <tbody>
                                     @for($i=0;$i < count($personnels);$i++)
                                         <tr >
                             <td>{{$personnels[$i]->name}}</td> 
-                            <td>{{$personnels[$i]->net_salary}}</td> 
+                            <td>{{$personnels[$i]->net_salary. ".00 Dh"}}</td> 
                             <td>{{AdminCongesController::getPrime($personnels[$i]->id,date('m'),date('Y'))}}</td> 
                             <td>{{AdminCongesController::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))}}</td> 
                             <td>{{AdminCongesController::getMotif($personnels[$i]->id,date('m'),date('Y'))}}</td> 

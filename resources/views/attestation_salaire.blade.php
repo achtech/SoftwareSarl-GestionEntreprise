@@ -1,7 +1,7 @@
 @extends('crudbooster::admin_template')
 @section('content')
 
-<h2>Retirer Votre Attestion De Travail</h2>
+<h2>Retirer Votre Attestion De salaire</h2>
 <form action="attestation_salaire" method="Post"  name="f1">
     {{ csrf_field() }}
 
@@ -27,16 +27,15 @@
                                
 <div style="float:left">
 
-             <form action="admin/attestation_travail_print"  method = "get" name="frm"  onsubmit="return checkForm(document.frm);" >
+             <form action="admin/attestation_salaire_print"  method = "get" name="frm"  onsubmit="return checkForm(document.frm);" >
 <input type="hidden" name="idPersonnels" value="{{$selectedUser->id}}"/>
-   <img src="../storage/app/myImages/Logo.jpg">  
+<img src="../storage/app/myImages/Logo.jpg">  
 
 <div style="float:right;font-size:20px" >
 
       
 {{ $en->adress }} <br>
-{{ $en->rue }},<br>
-{{$en->zip_code}} {{$en->city}} <br>
+{{$en->zip_code}} ,{{$en->city}} <br>
 Tel : {{ $en->mobile }}<br>
 N° RC : {{ $en->rc }}  <br>
 N° de Patente : {{ $en->patente }}<br>  
@@ -46,14 +45,13 @@ N° Id.fisc : {{ $en->idfisc }} <br>
 <p style="font-size: 34px;
     font-weight: bolder;
     text-align: -webkit-center;margin-top:100px">
-Attestation de travail
+Attestation de salaire
  </p>
 <p  style="font-size: 22px;"> 
     Madame, Monsieur,
 </p>
 <p  style="font-size: 22px;"> 
-Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }}</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $selectedUser->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $selectedUser->hiring_date }}</b>. jusqu'à ce jour. 
-</p>
+Nous certifions que Monsieur / Madame <b>{{ $selectedUser->name }}</b> titulaire de la CIN N° <b>{{ $selectedUser->cin }}</b> employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M'HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> {{ $selectedUser->Libelle }} </b> en contrat à durée indéterminée depuis le <b>{{ $selectedUser->hiring_date }}</b>. jusqu'à ce jour reçoit comme salaire <b>{{ $selectedUser->net_salary }} DH</b>. 
 <p  style="font-size: 22px;"> 
 La présente attestation est délivrée à l’intéressé sur sa demande pour servir et valoir ce que de droit.<br>
 </p>

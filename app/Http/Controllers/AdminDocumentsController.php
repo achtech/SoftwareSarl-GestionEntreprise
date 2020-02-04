@@ -226,6 +226,24 @@ use Illuminate\Support\Facades\Input;
 		    $pdf->loadHTML($this->getHtmlPageAttestationTravail($request));
 	    	return $pdf->stream();
 	    }
+	     public function printAccusepdf(Request $request)
+	    {
+		    $pdf = \App::make('dompdf.wrapper');
+		    $pdf->loadHTML($this->getHtmlPageAccuseReception($request));
+	    	return $pdf->stream();
+	    }
+	    public function printStagepdf(Request $request)
+	    {
+		    $pdf = \App::make('dompdf.wrapper');
+		    $pdf->loadHTML($this->getHtmlPageAttestaionStage($request));
+	    	return $pdf->stream();
+	    }
+	     public function printSalairepdf(Request $request)
+	    {
+		    $pdf = \App::make('dompdf.wrapper');
+		    $pdf->loadHTML($this->getHtmlPageAttestaionSalaire($request));
+	    	return $pdf->stream();
+	    }
  public function printpdfofAttesstationEmploi(Request $request)
 	    {
 		    $pdf = \App::make('dompdf.wrapper');
@@ -245,28 +263,29 @@ use Illuminate\Support\Facades\Input;
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12"> 
-                            <div style="float:left">
-                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  
-                                <div style="float:right;font-size:20px" >
+                            <div style="float:left" class="col-lg-6">
+                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  </div>
+                                <div style="padding-left:450px;margin-bottom:100px;font-size:20px" class="col-lg-6">
                                     App 6 2eme étage M\'HITA <br>espace AL moustapha Semlalia<br>
-                                    '. $en->rue.'<br>
-                                    '. $en->zip_code.' '. $en->city.' <br>
+                                    '. $en->rue.'
                                     Tel : '. $en->mobile.'<br>
                                     N° RC : '. $en->rc.'  <br>
                                     N° de Patente : '. $en->patente.'<br>  
                                     N° Id.fisc : '. $en->idfisc.' <br>
+                                    '. $en->zip_code.'
                                 </div>
+
                                 <br style="clear:both">
                                 <p style="font-size: 34px;
                                     font-weight: bolder;
-                                    text-align:center;margin-top:100px">
+                                    text-align:center;margin-top:0px;">
                                         Attestation de travail
                                 </p>
                                 <p  style="font-size: 22px;"> 
                                     Madame, Monsieur,
                                 </p>
                                 <p  style="font-size: 22px;"> 
-                                    Nous certifions que Monsieur / Madame <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
+                                    Nous certifions que Monsieur <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
                                 </p>
                                 <p  style="font-size: 22px;"> 
                                     La présente attestation est délivrée à l’intéressé(e) sur sa demande pour servir et valoir ce que de droit.<br>
@@ -291,6 +310,174 @@ use Illuminate\Support\Facades\Input;
 ';
 			return $out;
 		}
+		 public function getHtmlPageAccuseReception(Request $request){
+			$selectedUser = DB::table('personnels')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+			->where('id_users' ,'=',$request->input('idPersonnels'))->first();
+      		$en = DB::table('entreprises')->first();
+			
+			$out = '<div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12"> 
+                            <div style="float:left" class="col-lg-6">
+                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  </div>
+                                <div style="padding-left:450px;margin-bottom:100px;font-size:20px" class="col-lg-6">
+                                    '.$en->adress.'<br>
+                                    '. $en->rue.'
+                                    Tel : '. $en->mobile.'<br>
+                                    N° RC : '. $en->rc.'  <br>
+                                    N° de Patente : '. $en->patente.'<br>  
+                                    N° Id.fisc : '. $en->idfisc.' <br>
+                                    '. $en->zip_code.'
+                                </div>
+
+                                <br style="clear:both">
+                                <p style="font-size: 34px;
+                                    font-weight: bolder;
+                                    text-align:center;margin-top:0px;">
+                                        Accusé de Réception de lettre de démission
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Madame, Monsieur,
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Nous certifions que Monsieur <b>'. $selectedUser->name.'</b> titulaire de la CIN N° <b>'. $selectedUser->cin.'</b> est employé par la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage  M HITA espace AL moustapha Semlalia,40000 Marrakech, en tant que <b> '. $selectedUser->Libelle.' </b> en contrat à durée indéterminée depuis le <b>'. $selectedUser->hiring_date.'</b>. jusqu à ce jour. 
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    La présente attestation est délivrée à l’intéressé(e) sur sa demande pour servir et valoir ce que de droit.<br>
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.<br>
+                                </p>
+                                <p  style="font-size: 22px;"> 
+                                    Fait à Marrakech <br>
+                                    le '.date('d/m/Y').'
+                                </p>
+                                <p  style="font-size: 22px; margin-left:450px ; margin-bottom:55px;"> 
+                                   Signature
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+			return $out;
+		}
+public function getHtmlPageAttestaionStage(Request $request){
+			$selectedUser = DB::table('personnels')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+			->where('id_users' ,'=',$request->input('idPersonnels'))->first();
+      		$en = DB::table('entreprises')->first();
+			
+			$out = '<div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12"> 
+                            <div style="float:left">
+                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  
+                                <div style="float:right;font-size:20px;margin-left:390px;" >
+                                    '.$en->adress.'<br>
+                                    '. $en->zip_code.' ,'. $en->city.' <br>
+                                    Tel : '. $en->mobile.'<br>
+                                    N° RC : '. $en->rc.'  <br>
+                                    N° de Patente : '. $en->patente.'<br>  
+                                    N° Id.fisc : '. $en->idfisc.' <br>
+                                </div>
+                                <br style="clear:both">
+                                <p style="font-size: 34px;
+                                    font-weight: bolder;
+                                    text-align:center;margin-top:100px">
+                                        Attestation de stage
+                                </p>
+                                <p style ="font-size:20px;">Madame, Monsieur,</p>
+                               <p  style="font-size: 22px;"> 
+Nous certifions que Monsieur <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
+<b>'.$selectedUser->adress.' </b>a effectué un stage de 6 mois dans la société SOFTWARE S.A.R.L dont le siège social est situé à app 6 2eme étage MHITA espace AL moustapha Semlalia,40000 Marrakech.
+
+Nous délivrons la présente attesttaion pour servir et valoir ce que de droit.
+Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.
+                                <p  style="font-size: 22px;"> 
+                                    Fait à Marrakech <br>
+                                    le '.date('d/m/Y').'
+                                </p>
+                                <p  style="font-size: 22px; margin-left:450px ; margin-bottom:55px;"> 
+                                   Signature
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+			return $out;
+		}
+public function getHtmlPageAttestaionSalaire(Request $request){
+			$selectedUser = DB::table('personnels')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+			->where('id_users' ,'=',$request->input('idPersonnels'))->first();
+      		$en = DB::table('entreprises')->first();
+			
+			$out = '<div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12"> 
+                            <div style="float:left">
+                                <img src="../storage/app/myImages/Logo.jpg" width="350px">  
+                                <div style="float:right;font-size:20px;margin-left:390px;" >
+                                    '.$en->adress.'<br>
+                                    '. $en->zip_code.' ,'. $en->city.' <br>
+                                    Tel : '. $en->mobile.'<br>
+                                    N° RC : '. $en->rc.'  <br>
+                                    N° de Patente : '. $en->patente.'<br>  
+                                    N° Id.fisc : '. $en->idfisc.' <br>
+                                </div>
+                                <br style="clear:both">
+                                <p style="font-size: 34px;
+                                    font-weight: bolder;
+                                    text-align:center;margin-top:100px">
+                                        Attestation de salaire
+                                </p>
+                                <p style ="font-size:20px;">Madame, Monsieur,</p>
+                               <p  style="font-size: 22px;"> 
+Nous certifions que Monsieur <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b>employé par la société SOFTWARE S.A.R.L
+ dont le siège social est situé à app 6 2eme étage  MHITA espace AL moustapha Semlalia,40000 Marrakech,
+ en tant que
+<b>'.$selectedUser->Libelle.' </b>en contrat à durée indéterminée depuis le <b>'.$selectedUser->hiring_date.' </b> jusqu à ce jour et reçoit comme salaire <b>'.$selectedUser->net_salary.' </b>DH
+Nous délivrons la présente attesttaion pour servir et valoir ce que de droit.
+Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.
+                                <p  style="font-size: 22px;"> 
+                                    Fait à Marrakech <br>
+                                    le '.date('d/m/Y').'
+                                </p>
+                                <p  style="font-size: 22px; margin-left:450px ; margin-bottom:55px;"> 
+                                   Signature
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+			return $out;
+		}
+
 
 	   public function getHtmlPageAttestationEmploi(Request $request){
 			$selectedUser = DB::table('personnels')
@@ -307,10 +494,9 @@ use Illuminate\Support\Facades\Input;
                         <div class="col-lg-12"> 
                             <div style="float:left">
                                 <img src="../storage/app/myImages/Logo.jpg" width="350px">  
-                                <div style="float:right;font-size:20px" >
+                                <div style="float:right;font-size:20px;margin-left:390px;" >
                                     '.$en->adress.'<br>
-                                    '. $en->rue.'<br>
-                                    '. $en->zip_code.' '. $en->city.' <br>
+                                    '. $en->zip_code.' ,'. $en->city.' <br>
                                     Tel : '. $en->mobile.'<br>
                                     N° RC : '. $en->rc.'  <br>
                                     N° de Patente : '. $en->patente.'<br>  
@@ -323,7 +509,7 @@ use Illuminate\Support\Facades\Input;
                                         Attestation d emploie 
                                 </p>
                                <p  style="font-size: 22px;"> 
-je soussigné(e) Monsieur/Madamme <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
+je soussigné(e) Monsieur <b>'.$selectedUser->name.'</b> titulaire de la CIN N° <b>'.$selectedUser->cin.' </b> demeurant à  
 <b>'.$selectedUser->adress.' </b>reconnais avoir reçu de la société SOFTWARE S.A.R.L la somme de  <b>'.$request->input('salary').' </b> cette somme n a été versée, pour solde de tout compte ,en paiement de :
 <p style="font-size: 22px;" >
 -Salaire <b> '.$request->input('salary').' </b> au <b> '.$request->input('netSalary').' </b> </p>
@@ -419,7 +605,39 @@ Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m \'
          	return view('attestation_stage',$data); 
 
          }
+          public function getAccuseReception(Request $request){
+         	$nameEmploye = $request->input('nameEmploye');
+			$data['personnels'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();         	
+         	$data['selectedUser'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
+            ->where('cms_users.id',$request->input('idPersonnels'))
+         	->first();
+         	 $data['en'] = DB::table('entreprises')->first();
+         	return view('accuse_reception',$data); 
 
+         }
+         public function getAttestationSalaire(){ 
+      	  	//$nameEmploye = $request->input('nameEmploye');
+			$data['personnels'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();         	
+         	$data['selectedUser'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
+           // ->where('cms_users.id',$request->input('idPersonnels'))
+         	->first();
+         	 $data['en'] = DB::table('entreprises')->first();
+         	return view('attestation_salaire',$data);  
+         }
          public function getUserToGetAttestationEmploi(Request $request){
          	$nameEmploye = $request->input('nameEmploye');
 			$data['personnels'] = DB::table('personnels')
@@ -447,7 +665,15 @@ Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m \'
              $data['en'] = DB::table('entreprises')->first();
          	return view('attestation_travail',$data); 
          }
-        
+         public function goToAttestationStage(){ 
+             $data['personnels'] = DB::table('personnels')
+            ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
+            ->join('professions', 'professions.id', '=', 'personnels.id_professions')
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();
+             $data['en'] = DB::table('entreprises')->first();
+         	return view('attestation_stage',$data); 
+         }
          public function goToAttestationPoleEmploie(){ 
          	$data['personnels'] = DB::table('personnels')
             ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
@@ -461,32 +687,24 @@ Ce reçu de solde de tout compte a été établi en deux exemplaire,dont un m \'
             $data['en'] = DB::table('entreprises')->first();
          	return view('bulletin_paie',$data); 
          }
-         public function getAttestationSalaire(){ 
-      	    $nameEmploye = $request->input('nameEmploye');
-			$data['personnels'] = DB::table('personnels')
+      
+          public function goToAttestationSalaire(){ 
+           $data['personnels'] = DB::table('personnels')
             ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
             ->join('professions', 'professions.id', '=', 'personnels.id_professions')
             ->select('personnels.*', 'cms_users.name','professions.Libelle')
-         	->get();         	
-         	$data['selectedUser'] = DB::table('personnels')
+         	->get();
+             $data['en'] = DB::table('entreprises')->first();
+         	return view('attestation_salaire',$data);
+         }
+        
+         public function goToAccuseReception(){ 
+           $data['personnels'] = DB::table('personnels')
             ->join('cms_users', 'cms_users.id', '=', 'personnels.id_users')
             ->join('professions', 'professions.id', '=', 'personnels.id_professions')
-            //->select('personnels.*', 'cms_users.name as name','professions.libelle as libelle')
-            ->where('cms_users.id',$request->input('idPersonnels'))
-         	->first();
-         	 $data['en'] = DB::table('entreprises')->first();
-         	return view('attestation_salaire',$data);  
-         }
-          public function goToAttestationSalaire(){ 
-            $data['en'] = DB::table('entreprises')->first();
-         	return view('attestation_salaire',$data); 
-         }
-         public function goToAttestationStage(){ 
-            $data['en'] = DB::table('entreprises')->first();
-         	return view('attestation_stage',$data); 
-         }
-         public function goToAccuseReception(){ 
-            $data['en'] = DB::table('entreprises')->first();
+            ->select('personnels.*', 'cms_users.name','professions.Libelle')
+         	->get();
+             $data['en'] = DB::table('entreprises')->first();
          	return view('accuse_reception',$data); 
          }
 

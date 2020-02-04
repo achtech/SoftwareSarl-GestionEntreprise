@@ -5,13 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-
 	class AdminFacturesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "id";
+			$this->title_field = "date";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -30,6 +29,7 @@
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
+			//date('d/m/Y')
 			$this->col = [];
 			$this->col[] = ["label"=>"Num Facture","name"=>"num_facture"];
 			$this->col[] = ["label"=>"Client","name"=>"(select  social_reason from clients  where id =1) as clientName"];
@@ -40,7 +40,7 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Date Facture','name'=>'date_facture','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Date Facture','name'=>'date_facture','type'=>'date','id'=>"mydate",'width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Ref Clients','name'=>'ref_clients','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Num Facture','name'=>'num_facture','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version','relationship_table'=>'factures_projects','datatable_format'=>'nom,\' ---> \',version'];
@@ -48,12 +48,10 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Date Facture','name'=>'date_facture','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Date Facture','name'=>'date_facture','type'=>'date','validation'=>'required|date','width'=>'col-sm-10','readonly'=>'false','disabled'=>'true'];
 			//$this->form[] = ['label'=>'Ref Clients','name'=>'ref_clients','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Num Facture','name'=>'num_facture','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version','relationship_table'=>'factures_projects','datatable_format'=>'nom,\' ---> \',version'];
-			//$this->form[] = ['label'=>'Totla Hors Taxe','name'=>'totla_hors_taxe','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Total','name'=>'total','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -412,6 +410,7 @@
 	    }
 
 	    public function printFacture($factures,$clients,$factures_projects,$factures_tasks,$software){
+	    	
 	    	$header="";
 	    	//$body = "<img src='../../../storage/app/myImages/Logo.jpg'>";
 	    	$body="<table  style='border-bottom: 2px solid #997339;' ><tr ><td style='padding-right:180px;color:#857252 ; background-color:#faf7f2;font-weight: bold; border-right: 2px solid #997339;'>";
@@ -454,11 +453,11 @@
             <tfoot>
             <tr >
                 <th colspan='4' style='text-align: right !important;padding: 10px;border-bottom: 2px solid black;'>Total Hors Taxes</th>
-                <th style='padding: 10px ;border-bottom: 2px solid black; border-left: 2px solid black;'>$factures->total_hors_taxe</th>
+                <th style='padding: 10px ;border-bottom: 2px solid black; border-left: 2px solid black;'>$factures->total_hors_taxe €</th>
             </tr>
             <tr>
                 <th colspan='4' style='text-align: right !important;padding: 10px; '>Montant Total</th>
-                <th style='padding: 10px;border-left: 2px solid black;'>$factures->total</th>
+                <th style='padding: 10px;border-left: 2px solid black;'>$factures->total €</th>
             </tr>
             </tfoot>
         </table>
@@ -503,11 +502,11 @@ N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
             <tfoot>
             <tr>
                 <th colspan='3' style='text-align: right !important;padding: 10px;border-bottom: 2px solid black;'>Sum of Worked hours</th>
-                <th style='padding: 10px;border-bottom: 2px solid black;border-left: 2px solid black;'>".$sumHours."</th>
+                <th style='padding: 10px;border-bottom: 2px solid black;border-left: 2px solid black;'>".$sumHours." h</th>
             </tr>
             <tr>
                 <th colspan='3' style='text-align: right !important;padding: 10px'>Montant total</th>
-                <th style='padding: 10px;border-left: 2px solid black;'>".$factures->total."</th>
+                <th style='padding: 10px;border-left: 2px solid black;'>".$factures->total." $</th>
             </tr>
             </tfoot>
         </table>
@@ -529,6 +528,10 @@ N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
 	    		$name .= $value->nom." [ ".$value->version." ] ";
 	    	}
 	    	return $name;
+	    }
+
+	    public function getCurrentDate(){
+	    	return date('d/m/Y');
 	    }
 
 	    public function createFacture(Request $request){

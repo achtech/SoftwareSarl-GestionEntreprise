@@ -5,8 +5,8 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminProjectsController extends \crocodicstudio\crudbooster\controllers\CBController {
-			private     $privilegeId ;
+	class AdminPersonnels36Controller extends \crocodicstudio\crudbooster\controllers\CBController {
+
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
@@ -17,52 +17,42 @@
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
-			$this->button_add = $this->privilegeId==1;
-			$this->button_edit = $this->privilegeId==1;
-			$this->button_delete = $this->privilegeId==1;
-			$this->button_detail = false;
+			$this->button_add = true;
+			$this->button_edit = true;
+			$this->button_delete = true;
+			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "projects";
+			$this->table = "personnels";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Nom","name"=>"nom"];
-			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
-			$this->col[] = ["label"=>"End Date","name"=>"end_date"];
-			$this->col[] = ["label"=>"Technologies","name"=>"technologies"];
-			$this->col[] = ["label"=>"Version","name"=>"version"];
-			//$this->col[] = ["label"=>"Status","name"=>"status"];
-			$this->col[] = ["label"=>"Clients","name"=>"id_clients","join"=>"clients,social_reason"];
-			$this->col[] = ["label"=>"Complexity","name"=>"id","callback_php"=>'$this->getTotalComplexityByProjects($row->id)'];
-			$this->col[] = ["label"=>"Progress","name"=>"id","callback_php"=>'$this->getProjectProgress($row->id)'];
+			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"users,nom"];
+			$this->col[] = ["label"=>"Net Salary","name"=>"net_salary"];
+			$this->col[] = ["label"=>"Gross Salary","name"=>"gross_salary"];
+			$this->col[] = ["label"=>"Hiring Date","name"=>"hiring_date"];
+			$this->col[] = ["label"=>"Contrat","name"=>"contrat"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Nom','name'=>'nom','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Technologies','name'=>'technologies','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
-			$this->form[] = ['label'=>'Prix Unitaire','name'=>'prix_unitaire','type'=>'number','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
+			$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Contrat','name'=>'contrat','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Nom','name'=>'nom','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Technologies','name'=>'technologies','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
+			//$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,id'];
+			//$this->form[] = ['label'=>'Hiring Date','name'=>'hiring_date','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Gross Salary','name'=>'gross_salary','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Net Salary','name'=>'net_salary','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Contrat','name'=>'contrat','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			# OLD END FORM
 
 			/* 
@@ -78,7 +68,6 @@
 	        | 
 	        */
 	        $this->sub_module = array();
-	        $this->sub_module[] = ['label'=>'Modules','path'=>'modules','parent_columns'=>'nom','button_color'=>'primary','button_icon'=>'fa fa-bars','foreign_key'=>'id_projects','button_action_style' => "button_icon"];
 
 
 	        /* 
@@ -93,6 +82,7 @@
 	        | 
 	        */
 	        $this->addaction = array();
+
 
 	        /* 
 	        | ---------------------------------------------------------------------- 
@@ -129,7 +119,6 @@
 	        | 
 	        */
 	        $this->index_button = array();
-	        $this->index_button[] = ["label"=>"Primes","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../PrimesProjects')];
 
 
 
@@ -163,7 +152,7 @@
 	        | $this->script_js = "function() { ... }";
 	        |
 	        */
-	        $this->script_js = $this->privilegeId!=1?"$('#btn_add_new_data').hide();":NULL;
+	        $this->script_js = NULL;
 
 
             /*
@@ -227,101 +216,7 @@
 	        
 	    }
 
-	    public function getTotalComplexityTaskDoneByProjects($id){
-	    	return DB::table('tasks')
-	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
-            						->join('projects', 'modules.id_projects', '=', 'projects.id')
-            						->where('projects.id','=',$id)
-                    				->where('tasks.status','=','DONE')
-                    				->sum('tasks.complexity');
-	    }
-	    public function getTotalComplexityByProjects($id){
 
-	    	return DB::table('tasks')
-	    							->join('modules', 'tasks.id_modules', '=', 'modules.id')
-            						->join('projects', 'modules.id_projects', '=', 'projects.id')
-            						->where('projects.id','=',$id)
-                    				->sum('tasks.complexity');
-	    }
-
-	    public function getProjectProgress($id){
-	    $sumComplexityOfDone = $this->getTotalComplexityTaskDoneByProjects($id);
-	    $sumComplexity =  $this->getTotalComplexityByProjects($id);
-	    $result= (100*$sumComplexityOfDone/$sumComplexity);
-	    return $result>0 ? $result."%" : "0%";
-	    }
-
-
-	    public function getListOfPrimes(){
-		    $personnels = DB::table('users')->get();
-		    $projects = DB::table('projects')->where('prime',1)->get();
-   	    	$data['page_title']="Report Projects";
-	    	//get list of personnel from database
-	    	$result = DB::table('cms_users')
-	    				->get();
-	    	$data['personnels'] = $personnels;
-	    	$data['projects'] = $projects;
-	    	$complexityS = [];
-	    	$pinalities = [];
-	    	$primes = [];
-	    	$compUser = [];
-	    	$pinaUser = [];
-	    	$primUser = [];
-	    	for ($i=0; $i < count($personnels); $i++) { 
-	    		$sum = 0;
-	    		for($j=0,$k=0;$j<=count($projects);$j++) {
-	    			 if(($j%3===0 && $j!==0)) {
-	    			 	$compUser[$i][$k] = $complexityS[$i][$j-1]+$complexityS[$i][$j-2]+$complexityS[$i][$j-3];
-	    			 	$pinaUser[$i][$k] = $pinalities[$i][$j-1]+$pinalities[$i][$j-2]+$pinalities[$i][$j-3];
-	    			 	$primUser[$i][$k] = $primes[$i][$j-1]+$primes[$i][$j-2]+$primes[$i][$j-3]-$pinaUser[$i][$k];
-	    			 	$k++;
-	    			 	$sum=0;
-	    			 }
-	    			 $comp = $j!==count($projects) ? $this->getSumComplexity($personnels[$i]->id,$projects[$j]->id):0;
-	    			 $pin =  $j!==count($projects) ? $this->getSumPinalities($personnels[$i]->id,$projects[$j]->id):0;
-	    			 $prime = $comp * 80; //$comp * (8/2) * 200 * 0.05
-	    			 if( $j!==count($projects)){
-	    			 $complexityS[$i][$j] = $comp;
-	    			 $pinalities[$i][$j] = $pin;
-	    			 $primes[$i][$j] = $prime;
-	    			 }
-	    		}
-	    	}    	
-
-	    	$data['pinalities'] = $pinalities;
-	    	$data['complexityS'] = $complexityS;
-	    	$data['primes'] = $primes;
-	    	$data['compUser'] = $compUser;
-	    	$data['pinaUser'] = $pinaUser;
-	    	$data['primUser'] = $primUser;
-	    //dd($data['complexityS']);
-	    	$this->cbView('PrimesProjects',$data);
-	    }
-
-	    public function getSumComplexity($userId,$projectId){
-	    	return DB::table('tasks')
-		    	->join('modules', 'tasks.id_modules', '=', 'modules.id')
-    			->join('projects', 'modules.id_projects', '=', 'projects.id')
-            	->where('projects.id','=',$projectId)
-            	->where('tasks.id_users','=',$userId)
-            	->sum('tasks.complexity');
-	    }	  
-
-	    public function getSumPinalities($userId,$projectId){
-	    	return DB::table('pinalites')
-            	->where('id_projects','=',$projectId)
-            	->where('id_users','=',$userId)
-            	->sum('type');
-	    }	  
-
-   	    public static function getComplexityProjects($id){
-
-	    	return DB::table('tasks')
-	    				->join('modules', 'tasks.id_modules', '=', 'modules.id')
-           				->join('projects', 'modules.id_projects', '=', 'projects.id')
-   						->where('projects.id','=',$id)
-  						->sum('tasks.complexity');
-   	    }
 	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for button selected
@@ -330,6 +225,13 @@
 	    | @button_name = the name of button
 	    |
 	    */
+	     public function historiqueSalaire($id){
+            $data = [];
+	    	$data['personnels'] = DB::table('personnels')->join('cms_users','cms_users.id','=','personnels.id_users')
+	    	->select('name','net_salary','gross_salary','hiring_date','contrat')
+	    	->where('personnels.id',$id)->get();
+	    	return $data;
+        }
 	    public function actionButtonSelected($id_selected,$button_name) {
 	        //Your code here
 	            

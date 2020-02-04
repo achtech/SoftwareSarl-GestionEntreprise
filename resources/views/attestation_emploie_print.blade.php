@@ -12,10 +12,9 @@
                         <div class="col-lg-12"> 
                             <div style="float:left">
                                 <img src="../storage/app/myImages/Logo.jpg">  
-                                <div style="float:right;font-size:20px" >
+                                <div style="font-size:20px;float:right;" >
                                     {{ $en->adress }} <br>
-                                    {{ $en->rue }},<br>
-                                    {{$en->zip_code}} {{$en->city}} <br>
+                                    {{$en->zip_code}} ,{{$en->city}} <br>
                                     Tel : {{ $en->mobile }}<br>
                                     N° RC : {{ $en->rc }}  <br>
                                     N° de Patente : {{ $en->patente }}<br>  

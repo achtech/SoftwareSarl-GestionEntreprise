@@ -34,21 +34,21 @@ private     $privilegeId ;
 			$this->col = [];
 			$this->col[] = ["label"=>"Projects","name"=>"id_projects","join"=>"projects,version"];
 			$this->col[] = ["label"=>"Libelle","name"=>"libelle"];
-			$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
-			$this->col[] = ["label"=>"End Date","name"=>"end_date"];
-			$this->col[] = ["label"=>"Status","name"=>"status"];
-			$this->col[] = ["label"=>"Complexity","name"=>"id","callback_php"=>'$this->getTotalComplexityByModule($row->id)'];
-			$this->col[] = ["label"=>"Progress","name"=>"id","callback_php"=>'$this->getModuleProgress($row->id)'];
+			//$this->col[] = ["label"=>"Start Date","name"=>"start_date"];
+			//$this->col[] = ["label"=>"End Date","name"=>"end_date"];
+			//$this->col[] = ["label"=>"Status","name"=>"status"];
+			//$this->col[] = ["label"=>"Complexity","name"=>"id","callback_php"=>'$this->getTotalComplexityByModule($row->id)'];
+			//$this->col[] = ["label"=>"Progress","name"=>"id","callback_php"=>'$this->getModuleProgress($row->id)'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version'];
 			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS; NEEDS WORK; DONE'];
-			$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM

@@ -35,8 +35,8 @@
 
       
 {{ $en->adress }} <br>
-{{ $en->rue }},<br>
-{{$en->zip_code}} {{$en->city}} <br>
+{{ $en->rue }}
+{{$en->zip_code}} ,{{$en->city}} <br>
 Tel : {{ $en->mobile }}<br>
 N° RC : {{ $en->rc }}  <br>
 N° de Patente : {{ $en->patente }}<br>  
@@ -70,7 +70,7 @@ le <?php echo date("d-m-Y") ?>,
                                 </div>
                                <div class="col-lg-12">
                             	<br/>
-<input  type="submit" class="btn btn-primary" style="margin-left:1500px" value = "Imprimer"></input>
+<input  type="submit" class="btn btn-primary"  value = "Imprimer"></input>
  </div>
                         </form>
                         </div>

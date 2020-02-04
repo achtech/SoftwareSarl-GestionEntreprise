@@ -25,7 +25,7 @@
                                 <p style="font-size: 34px;
                                     font-weight: bolder;
                                     text-align: -webkit-center;margin-top:100px">
-                                        Attestation de travail
+                                        Attestation de stage
                                 </p>
                                 <p  style="font-size: 22px;"> 
                                     Madame, Monsieur,
@@ -40,7 +40,7 @@
                                     Nous vous prions de croire, Madame, Monsieur, à l’expression de nos salutations distinguées.<br>
                                 </p>
                                 <p  style="font-size: 22px;"> 
-                                    Fait à Marrakech: <br>
+                                    Fait à Marrakech <br>
                                     le <?php echo date("d-m-Y") ?>,
                                 </p>
                             </div>

@@ -25,25 +25,27 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "pinalites";
+			$this->table = "penalite";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"User","name"=>"id_users","join"=>"users,nom"];
-			$this->col[] = ["label"=>"Projects","name"=>"id_projects","join"=>"projects,version"];
+			//$this->col[] = ["label"=>"Projects","name"=>"id_projects","join"=>"projects,version"];
 			$this->col[] = ["label"=>"Libelle","name"=>"libelle"];
 			$this->col[] = ["label"=>"Date","name"=>"date_operation"];
-			$this->col[] = ["label"=>"Pinalite","name"=>"type"];
+			$this->col[] = ["label"=>"penalite","name"=>"type"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'User','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,nom'];
 			$this->form[] = ['label'=>'Date','name'=>'date_operation','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'projects,version'];
-			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
-			$this->form[] = ['label'=>'Pinalite','name'=>'type','type'=>'number','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'projects,version'];
+			
+			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'radio','dataenum'=>'Missing Daily Meeting;Asking For Holiday;Other','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'penalite','name'=>'type','type'=>'number','validation'=>'required','width'=>'col-sm-9'];
+		
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM

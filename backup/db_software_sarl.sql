@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 25 mars 2019 à 10:54
+-- Généré le :  ven. 29 mars 2019 à 15:32
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -224,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `cms_logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=493 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=527 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_logs`
@@ -725,7 +725,41 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (489, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-03-24 10:12:00', NULL),
 (490, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-03-25 09:16:27', NULL),
 (491, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 Avast/72.0.1174.122', 'http://localhost/laravel/GE/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-03-25 09:43:48', NULL),
-(492, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 Avast/72.0.1174.122', 'http://localhost/laravel/GE/public/admin/bulletin_paie/add-save', 'Add New Data  at Bulletin de paie', '', 1, '2019-03-25 09:51:55', NULL);
+(492, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 Avast/72.0.1174.122', 'http://localhost/laravel/GE/public/admin/bulletin_paie/add-save', 'Add New Data  at Bulletin de paie', '', 1, '2019-03-25 09:51:55', NULL),
+(493, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/factures/add-save', 'Add New Data  at Factures', '', 4, '2019-03-25 10:19:46', NULL),
+(494, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/factures/add-save', 'Add New Data  at Factures', '', 4, '2019-03-25 11:21:04', NULL),
+(495, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/login', 'oumaima.stitini@exo-it.com login with IP Address ::1', '', 4, '2019-03-26 08:39:53', NULL),
+(496, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/login', 'oumaima.stitini@exo-it.com login with IP Address ::1', '', 4, '2019-03-27 07:05:20', NULL),
+(497, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/factures/add-save', 'Add New Data  at Factures', '', 4, '2019-03-27 08:49:36', NULL),
+(498, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/factures/add-save', 'Add New Data  at Factures', '', 4, '2019-03-27 09:22:33', NULL),
+(499, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/conges/add-save', 'Add New Data  at Conges', '', 4, '2019-03-27 14:13:42', NULL),
+(500, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/login', 'oumaima.stitini@exo-it.com login with IP Address ::1', '', 4, '2019-03-28 09:40:30', NULL),
+(501, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/login', 'oumaima.stitini@exo-it.com login with IP Address ::1', '', 4, '2019-03-29 07:33:36', NULL),
+(502, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/login', 'achraf.saloumi@exo-it.com login with IP Address ::1', '', 1, '2019-03-29 11:08:30', NULL),
+(503, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/edit-save/6', 'Update data  at Primes', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>id_users</td><td>6</td><td></td></tr><tr><td>projects</td><td>xxx</td><td></td></tr><tr><td>pinalites</td><td>50</td><td></td></tr><tr><td>complexite</td><td>120</td><td></td></tr><tr><td>prime</td><td>4750</td><td></td></tr></tbody></table>', 1, '2019-03-29 12:53:24', NULL),
+(504, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:13:06', NULL),
+(505, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:13:43', NULL),
+(506, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:14:07', NULL),
+(507, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/delete/9', 'Delete data 9 at Primes', '', 1, '2019-03-29 13:14:46', NULL),
+(508, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/delete/8', 'Delete data 8 at Primes', '', 1, '2019-03-29 13:14:50', NULL),
+(509, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:38:45', NULL),
+(510, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/delete/12', 'Delete data 12 at Primes', '', 1, '2019-03-29 13:39:00', NULL),
+(511, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/delete/11', 'Delete data 11 at Primes', '', 1, '2019-03-29 13:39:03', NULL),
+(512, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/delete/10', 'Delete data 10 at Primes', '', 1, '2019-03-29 13:39:06', NULL),
+(513, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:42:25', NULL),
+(514, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:43:38', NULL),
+(515, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:53:48', NULL),
+(516, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:54:12', NULL),
+(517, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/delete/19', 'Delete data 19 at Primes', '', 1, '2019-03-29 13:54:30', NULL),
+(518, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:55:37', NULL),
+(519, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/delete/20', 'Delete data 20 at Primes', '', 1, '2019-03-29 13:55:41', NULL),
+(520, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 13:55:58', NULL),
+(521, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 14:03:51', NULL),
+(522, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/delete/22', 'Delete data 22 at Primes', '', 1, '2019-03-29 14:04:02', NULL),
+(523, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/edit-save/23', 'Update data  at Primes', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>pinalites</td><td>0</td><td></td></tr><tr><td>complexite</td><td>96</td><td></td></tr><tr><td>prime</td><td>3840</td><td></td></tr></tbody></table>', 1, '2019-03-29 14:26:57', NULL),
+(524, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/edit-save/23', 'Update data  at Primes', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>pinalites</td><td>0</td><td></td></tr><tr><td>complexite</td><td>96</td><td></td></tr><tr><td>prime</td><td>3840</td><td></td></tr></tbody></table>', 1, '2019-03-29 14:26:57', NULL),
+(525, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/edit-save/23', 'Update data  at Primes', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>pinalites</td><td>0</td><td></td></tr><tr><td>complexite</td><td>96</td><td></td></tr><tr><td>prime</td><td>3840</td><td></td></tr></tbody></table>', 1, '2019-03-29 14:27:54', NULL),
+(526, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36', 'http://localhost/SoftwareSarl-GestionEntreprise/public/admin/primes/add-save', 'Add New Data  at Primes', '', 1, '2019-03-29 14:28:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -749,7 +783,7 @@ CREATE TABLE IF NOT EXISTS `cms_menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_menus`
@@ -777,11 +811,12 @@ INSERT INTO `cms_menus` (`id`, `name`, `type`, `path`, `color`, `icon`, `parent_
 (21, 'Pointages et Conges', 'URL', '#', 'normal', 'fa fa-users', 0, 1, 0, 1, 2, '2018-12-18 21:28:39', '2018-12-24 08:29:34'),
 (23, 'Pointages Report', 'Route', 'AdminPointages1ControllerGetIndex', 'normal', 'fa fa-bar-chart', 21, 1, 0, 1, 3, '2018-12-20 20:52:09', '2018-12-24 08:30:12'),
 (24, 'Dashboard', 'Controller & Method', 'HomeController@index', 'normal', 'fa fa-bars', 0, 1, 1, 1, 1, '2018-12-26 21:56:40', NULL),
-(25, 'Bulletin de paie', 'Route', 'AdminBulletinPaie1ControllerGetIndex', 'normal', 'fa fa-file-pdf-o', 15, 1, 0, 1, 6, '2019-01-01 15:51:14', '2019-01-01 16:00:17'),
-(26, 'Contacts', 'Route', 'AdminContactsControllerGetIndex', NULL, 'fa fa-user-secret', 15, 1, 0, 1, 7, '2019-01-01 15:56:51', NULL),
+(25, 'Bulletin de paie', 'Route', 'AdminBulletinPaie1ControllerGetIndex', 'normal', 'fa fa-file-pdf-o', 15, 1, 0, 1, 7, '2019-01-01 15:51:14', '2019-01-01 16:00:17'),
+(26, 'Contacts', 'Route', 'AdminContactsControllerGetIndex', NULL, 'fa fa-user-secret', 15, 1, 0, 1, 8, '2019-01-01 15:56:51', NULL),
 (27, 'Database', 'URL', 'home', 'normal', 'fa fa-database', 17, 1, 0, 1, 4, '2019-01-01 22:49:58', '2019-01-01 23:19:20'),
 (28, 'Factures', 'Route', 'AdminFacturesControllerGetIndex', NULL, 'fa fa-inbox', 15, 1, 0, 1, 5, '2019-01-05 14:20:41', NULL),
-(29, 'Daily meeting', 'Route', 'AdminMissedDailyMeetingControllerGetIndex', NULL, 'fa fa-power-off', 21, 1, 0, 1, 4, '2019-03-23 17:42:15', NULL);
+(29, 'Daily meeting', 'Route', 'AdminMissedDailyMeetingControllerGetIndex', NULL, 'fa fa-power-off', 21, 1, 0, 1, 4, '2019-03-23 17:42:15', NULL),
+(30, 'Primes', 'Route', 'AdminPrimesControllerGetIndex', NULL, 'fa fa-money', 15, 1, 0, 1, 6, '2019-03-29 11:09:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -795,7 +830,7 @@ CREATE TABLE IF NOT EXISTS `cms_menus_privileges` (
   `id_cms_menus` int(11) DEFAULT NULL,
   `id_cms_privileges` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_menus_privileges`
@@ -847,7 +882,8 @@ INSERT INTO `cms_menus_privileges` (`id`, `id_cms_menus`, `id_cms_privileges`) V
 (65, 25, 2),
 (67, 27, 1),
 (68, 28, 1),
-(69, 29, 1);
+(69, 29, 1),
+(70, 30, 1);
 
 -- --------------------------------------------------------
 
@@ -869,7 +905,7 @@ CREATE TABLE IF NOT EXISTS `cms_moduls` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_moduls`
@@ -907,7 +943,8 @@ INSERT INTO `cms_moduls` (`id`, `name`, `icon`, `path`, `table_name`, `controlle
 (29, 'Bulletin de paie', 'fa fa-file-pdf-o', 'bulletin_paie', 'bulletin_paie', 'AdminBulletinPaie1Controller', 0, 0, '2019-01-01 15:51:14', NULL, NULL),
 (30, 'Contacts', 'fa fa-user-secret', 'contacts', 'contacts', 'AdminContactsController', 0, 0, '2019-01-01 15:56:51', NULL, NULL),
 (31, 'Factures', 'fa fa-inbox', 'factures', 'factures', 'AdminFacturesController', 0, 0, '2019-01-05 14:20:41', NULL, NULL),
-(32, 'Daily meeting', 'fa fa-power-off', 'missed_daily_meeting', 'missed_daily_meeting', 'AdminMissedDailyMeetingController', 0, 0, '2019-03-23 17:42:15', NULL, NULL);
+(32, 'Daily meeting', 'fa fa-power-off', 'missed_daily_meeting', 'missed_daily_meeting', 'AdminMissedDailyMeetingController', 0, 0, '2019-03-23 17:42:15', NULL, NULL),
+(33, 'Primes', 'fa fa-money', 'primes', 'primes', 'AdminPrimesController', 0, 0, '2019-03-29 11:09:07', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -971,7 +1008,7 @@ CREATE TABLE IF NOT EXISTS `cms_privileges_roles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cms_privileges_roles`
@@ -1021,7 +1058,8 @@ INSERT INTO `cms_privileges_roles` (`id`, `is_visible`, `is_create`, `is_read`, 
 (41, 1, 1, 1, 1, 1, 1, 29, NULL, NULL),
 (42, 1, 1, 1, 1, 1, 1, 30, NULL, NULL),
 (43, 1, 1, 1, 1, 1, 1, 31, NULL, NULL),
-(44, 1, 1, 1, 1, 1, 1, 32, NULL, NULL);
+(44, 1, 1, 1, 1, 1, 1, 32, NULL, NULL),
+(45, 1, 1, 1, 1, 1, 1, 33, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1195,7 +1233,7 @@ CREATE TABLE IF NOT EXISTS `conges` (
   `date_request` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_users` (`id_users`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `conges`
@@ -1296,7 +1334,14 @@ INSERT INTO `conges` (`id`, `id_users`, `start_date`, `end_date`, `libelle`, `nb
 (109, 3, '2019-01-01', '2019-01-02', 'Conge', 1, 'Non', 'Non', '2019-01-01'),
 (111, 4, '2019-01-07', '2019-01-08', 'Conge maladie', 1, 'Oui', 'Oui', '2019-01-02'),
 (112, 4, '2019-01-10', '2019-01-11', 'Conge', 1, 'Oui', 'Non', '2019-01-01'),
-(113, 6, '2019-01-14', '2019-01-15', 'Relaxing holiday', 1, 'Oui', 'Non', '2019-01-01');
+(113, 6, '2019-01-14', '2019-01-15', 'Relaxing holiday', 1, 'Oui', 'Non', '2019-01-01'),
+(114, 6, '2019-02-01', '2019-02-01', 'Holiday', 1, 'Oui', 'Non', '2019-01-28'),
+(115, 5, '2019-02-08', '2019-02-09', 'Conge', 1, 'Oui', 'Non', '2019-01-01'),
+(117, 6, '2019-02-25', '2019-02-27', 'Conge : Grand mere', 3, 'Oui', 'Oui', '2019-02-24'),
+(118, 5, '2019-03-06', '2019-03-08', 'malade', 3, 'Oui', 'Oui', '2019-03-06'),
+(119, 6, '2019-03-11', '2019-03-17', 'Conge', 5, 'Oui', 'Non', '2019-02-01'),
+(120, 2, '2019-03-04', '2019-03-05', 'Conge', 1, 'Oui', 'Non', '2019-03-01'),
+(121, 5, '2019-03-14', '2019-03-14', 'Conge', 2, 'Oui', 'Non', '2019-02-27');
 
 -- --------------------------------------------------------
 
@@ -1327,7 +1372,7 @@ CREATE TABLE IF NOT EXISTS `details_factures` (
   `id_factures` int(11) NOT NULL,
   `id_tasks` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=648 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `details_factures`
@@ -1494,7 +1539,459 @@ INSERT INTO `details_factures` (`id`, `id_factures`, `id_tasks`) VALUES
 (192, 37, 85),
 (193, 37, 43),
 (194, 37, 60),
-(195, 37, 79);
+(195, 37, 79),
+(196, 38, 230),
+(197, 38, 211),
+(198, 38, 223),
+(199, 38, 182),
+(200, 38, 199),
+(201, 38, 217),
+(202, 38, 233),
+(203, 38, 179),
+(204, 38, 196),
+(205, 38, 214),
+(206, 38, 176),
+(207, 38, 193),
+(208, 38, 227),
+(209, 38, 189),
+(210, 38, 208),
+(211, 38, 224),
+(212, 38, 240),
+(213, 38, 186),
+(214, 38, 205),
+(215, 38, 221),
+(216, 38, 237),
+(217, 38, 183),
+(218, 38, 202),
+(219, 38, 218),
+(220, 38, 234),
+(221, 38, 180),
+(222, 38, 197),
+(223, 38, 215),
+(224, 38, 231),
+(225, 38, 177),
+(226, 38, 194),
+(227, 38, 212),
+(228, 38, 228),
+(229, 38, 174),
+(230, 38, 191),
+(231, 38, 209),
+(232, 38, 225),
+(233, 38, 241),
+(234, 38, 187),
+(235, 38, 206),
+(236, 38, 222),
+(237, 38, 238),
+(238, 38, 184),
+(239, 38, 203),
+(240, 38, 219),
+(241, 38, 235),
+(242, 38, 181),
+(243, 38, 198),
+(244, 38, 216),
+(245, 38, 232),
+(246, 38, 178),
+(247, 38, 195),
+(248, 38, 213),
+(249, 38, 229),
+(250, 38, 175),
+(251, 38, 192),
+(252, 38, 210),
+(253, 38, 226),
+(254, 38, 243),
+(255, 38, 188),
+(256, 38, 207),
+(257, 38, 239),
+(258, 38, 185),
+(259, 38, 204),
+(260, 38, 220),
+(261, 38, 236),
+(262, 38, 102),
+(263, 38, 119),
+(264, 38, 165),
+(265, 38, 115),
+(266, 38, 160),
+(267, 38, 112),
+(268, 38, 131),
+(269, 38, 109),
+(270, 38, 128),
+(271, 38, 173),
+(272, 38, 106),
+(273, 38, 124),
+(274, 38, 169),
+(275, 38, 103),
+(276, 38, 121),
+(277, 38, 166),
+(278, 38, 87),
+(279, 38, 116),
+(280, 38, 161),
+(281, 38, 113),
+(282, 38, 135),
+(283, 38, 110),
+(284, 38, 129),
+(285, 38, 107),
+(286, 38, 125),
+(287, 38, 170),
+(288, 38, 104),
+(289, 38, 122),
+(290, 38, 167),
+(291, 38, 101),
+(292, 38, 118),
+(293, 38, 162),
+(294, 38, 114),
+(295, 38, 159),
+(296, 38, 111),
+(297, 38, 130),
+(298, 38, 108),
+(299, 38, 126),
+(300, 38, 171),
+(301, 38, 105),
+(302, 38, 123),
+(303, 38, 168),
+(304, 39, 176),
+(305, 39, 193),
+(306, 39, 212),
+(307, 39, 229),
+(308, 39, 189),
+(309, 39, 208),
+(310, 39, 226),
+(311, 39, 186),
+(312, 39, 205),
+(313, 39, 222),
+(314, 39, 240),
+(315, 39, 183),
+(316, 39, 202),
+(317, 39, 219),
+(318, 39, 237),
+(319, 39, 180),
+(320, 39, 197),
+(321, 39, 216),
+(322, 39, 234),
+(323, 39, 177),
+(324, 39, 194),
+(325, 39, 213),
+(326, 39, 231),
+(327, 39, 174),
+(328, 39, 191),
+(329, 39, 209),
+(330, 39, 227),
+(331, 39, 187),
+(332, 39, 206),
+(333, 39, 224),
+(334, 39, 241),
+(335, 39, 184),
+(336, 39, 203),
+(337, 39, 220),
+(338, 39, 238),
+(339, 39, 181),
+(340, 39, 198),
+(341, 39, 217),
+(342, 39, 235),
+(343, 39, 178),
+(344, 39, 195),
+(345, 39, 214),
+(346, 39, 232),
+(347, 39, 175),
+(348, 39, 192),
+(349, 39, 210),
+(350, 39, 228),
+(351, 39, 188),
+(352, 39, 207),
+(353, 39, 225),
+(354, 39, 243),
+(355, 39, 185),
+(356, 39, 204),
+(357, 39, 221),
+(358, 39, 239),
+(359, 39, 182),
+(360, 39, 199),
+(361, 39, 218),
+(362, 39, 236),
+(363, 39, 179),
+(364, 39, 196),
+(365, 39, 215),
+(366, 39, 233),
+(367, 40, 176),
+(368, 40, 193),
+(369, 40, 212),
+(370, 40, 229),
+(371, 40, 189),
+(372, 40, 208),
+(373, 40, 226),
+(374, 40, 186),
+(375, 40, 205),
+(376, 40, 222),
+(377, 40, 240),
+(378, 40, 183),
+(379, 40, 202),
+(380, 40, 219),
+(381, 40, 237),
+(382, 40, 180),
+(383, 40, 197),
+(384, 40, 216),
+(385, 40, 234),
+(386, 40, 177),
+(387, 40, 194),
+(388, 40, 213),
+(389, 40, 231),
+(390, 40, 174),
+(391, 40, 191),
+(392, 40, 209),
+(393, 40, 227),
+(394, 40, 187),
+(395, 40, 206),
+(396, 40, 224),
+(397, 40, 241),
+(398, 40, 184),
+(399, 40, 203),
+(400, 40, 220),
+(401, 40, 238),
+(402, 40, 181),
+(403, 40, 198),
+(404, 40, 217),
+(405, 40, 235),
+(406, 40, 178),
+(407, 40, 195),
+(408, 40, 214),
+(409, 40, 232),
+(410, 40, 175),
+(411, 40, 192),
+(412, 40, 210),
+(413, 40, 228),
+(414, 40, 188),
+(415, 40, 207),
+(416, 40, 225),
+(417, 40, 243),
+(418, 40, 185),
+(419, 40, 204),
+(420, 40, 221),
+(421, 40, 239),
+(422, 40, 182),
+(423, 40, 199),
+(424, 40, 218),
+(425, 40, 236),
+(426, 40, 179),
+(427, 40, 196),
+(428, 40, 215),
+(429, 40, 233),
+(430, 41, 223),
+(431, 41, 230),
+(432, 41, 211),
+(433, 41, 184),
+(434, 41, 203),
+(435, 41, 219),
+(436, 41, 235),
+(437, 41, 181),
+(438, 41, 198),
+(439, 41, 216),
+(440, 41, 232),
+(441, 41, 178),
+(442, 41, 195),
+(443, 41, 213),
+(444, 41, 229),
+(445, 41, 175),
+(446, 41, 192),
+(447, 41, 210),
+(448, 41, 226),
+(449, 41, 243),
+(450, 41, 188),
+(451, 41, 207),
+(452, 41, 239),
+(453, 41, 185),
+(454, 41, 204),
+(455, 41, 220),
+(456, 41, 236),
+(457, 41, 182),
+(458, 41, 199),
+(459, 41, 217),
+(460, 41, 233),
+(461, 41, 179),
+(462, 41, 196),
+(463, 41, 214),
+(464, 41, 176),
+(465, 41, 193),
+(466, 41, 227),
+(467, 41, 189),
+(468, 41, 208),
+(469, 41, 224),
+(470, 41, 240),
+(471, 41, 186),
+(472, 41, 205),
+(473, 41, 221),
+(474, 41, 237),
+(475, 41, 183),
+(476, 41, 202),
+(477, 41, 218),
+(478, 41, 234),
+(479, 41, 180),
+(480, 41, 197),
+(481, 41, 215),
+(482, 41, 231),
+(483, 41, 177),
+(484, 41, 194),
+(485, 41, 212),
+(486, 41, 228),
+(487, 41, 174),
+(488, 41, 191),
+(489, 41, 209),
+(490, 41, 225),
+(491, 41, 241),
+(492, 41, 187),
+(493, 41, 206),
+(494, 41, 222),
+(495, 41, 238),
+(496, 41, 107),
+(497, 41, 125),
+(498, 41, 167),
+(499, 41, 104),
+(500, 41, 122),
+(501, 41, 162),
+(502, 41, 101),
+(503, 41, 118),
+(504, 41, 159),
+(505, 41, 114),
+(506, 41, 111),
+(507, 41, 130),
+(508, 41, 171),
+(509, 41, 108),
+(510, 41, 126),
+(511, 41, 168),
+(512, 41, 105),
+(513, 41, 123),
+(514, 41, 165),
+(515, 41, 102),
+(516, 41, 119),
+(517, 41, 160),
+(518, 41, 115),
+(519, 41, 112),
+(520, 41, 131),
+(521, 41, 173),
+(522, 41, 109),
+(523, 41, 128),
+(524, 41, 169),
+(525, 41, 106),
+(526, 41, 124),
+(527, 41, 166),
+(528, 41, 87),
+(529, 41, 103),
+(530, 41, 121),
+(531, 41, 161),
+(532, 41, 116),
+(533, 41, 113),
+(534, 41, 135),
+(535, 41, 110),
+(536, 41, 129),
+(537, 41, 170),
+(538, 41, 149),
+(539, 41, 146),
+(540, 41, 143),
+(541, 41, 140),
+(542, 41, 156),
+(543, 41, 153),
+(544, 41, 150),
+(545, 41, 147),
+(546, 41, 144),
+(547, 41, 141),
+(548, 41, 157),
+(549, 41, 154),
+(550, 41, 151),
+(551, 41, 148),
+(552, 41, 145),
+(553, 41, 142),
+(554, 41, 158),
+(555, 41, 155),
+(556, 41, 152),
+(557, 41, 39),
+(558, 41, 59),
+(559, 41, 75),
+(560, 41, 91),
+(561, 41, 56),
+(562, 41, 72),
+(563, 41, 88),
+(564, 41, 52),
+(565, 41, 69),
+(566, 41, 85),
+(567, 41, 48),
+(568, 41, 66),
+(569, 41, 82),
+(570, 41, 98),
+(571, 41, 44),
+(572, 41, 63),
+(573, 41, 79),
+(574, 41, 95),
+(575, 41, 40),
+(576, 41, 60),
+(577, 41, 76),
+(578, 41, 92),
+(579, 41, 36),
+(580, 41, 57),
+(581, 41, 73),
+(582, 41, 89),
+(583, 41, 53),
+(584, 41, 70),
+(585, 41, 86),
+(586, 41, 50),
+(587, 41, 67),
+(588, 41, 83),
+(589, 41, 99),
+(590, 41, 45),
+(591, 41, 64),
+(592, 41, 80),
+(593, 41, 96),
+(594, 41, 41),
+(595, 41, 61),
+(596, 41, 77),
+(597, 41, 93),
+(598, 41, 37),
+(599, 41, 58),
+(600, 41, 74),
+(601, 41, 90),
+(602, 41, 55),
+(603, 41, 71),
+(604, 41, 51),
+(605, 41, 68),
+(606, 41, 84),
+(607, 41, 100),
+(608, 41, 46),
+(609, 41, 65),
+(610, 41, 81),
+(611, 41, 97),
+(612, 41, 42),
+(613, 41, 62),
+(614, 41, 78),
+(615, 41, 94),
+(616, 41, 6),
+(617, 41, 22),
+(618, 41, 19),
+(619, 41, 35),
+(620, 41, 16),
+(621, 41, 32),
+(622, 41, 13),
+(623, 41, 29),
+(624, 41, 10),
+(625, 41, 26),
+(626, 41, 7),
+(627, 41, 23),
+(628, 41, 4),
+(629, 41, 20),
+(630, 41, 17),
+(631, 41, 33),
+(632, 41, 14),
+(633, 41, 30),
+(634, 41, 11),
+(635, 41, 27),
+(636, 41, 8),
+(637, 41, 24),
+(638, 41, 5),
+(639, 41, 21),
+(640, 41, 18),
+(641, 41, 34),
+(642, 41, 15),
+(643, 41, 31),
+(644, 41, 12),
+(645, 41, 28),
+(646, 41, 9),
+(647, 41, 25);
 
 -- --------------------------------------------------------
 
@@ -1556,7 +2053,7 @@ CREATE TABLE IF NOT EXISTS `factures` (
   `total_hors_taxe` float DEFAULT NULL,
   `total` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `factures`
@@ -1567,7 +2064,11 @@ INSERT INTO `factures` (`id`, `date_facture`, `ref_clients`, `num_facture`, `tot
 (34, '2019-01-08', '12', 89, 9280, 9280),
 (35, '2019-01-24', 'refClient', 55, 9280, 9280),
 (36, '2018-12-31', 'refClient2', 100, 9280, 9280),
-(37, '2019-01-15', 'proj 2', 140, 11680, 11680);
+(37, '2019-01-15', 'proj 2', 140, 11680, 11680),
+(38, '2019-03-06', 'EXo-01', 89, 27360, 27360),
+(39, '2019-03-06', 'EXo-01', 1, 15840, 15840),
+(40, '2019-03-06', 'EXo-01', 1, 15840, 15840),
+(41, '2019-03-12', 'EXo-01', 28, 59600, 59600);
 
 -- --------------------------------------------------------
 
@@ -1584,7 +2085,7 @@ CREATE TABLE IF NOT EXISTS `factures_projects` (
   `prix_unitaire` int(11) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `factures_projects`
@@ -1606,7 +2107,18 @@ INSERT INTO `factures_projects` (`id`, `id_factures`, `id_projects`, `nombre_heu
 (58, 34, 5, 464, 20, 9280),
 (59, 35, 5, 464, 20, 9280),
 (60, 36, 5, 464, 20, 9280),
-(61, 37, 6, 584, 20, 11680);
+(61, 37, 6, 584, 20, 11680),
+(62, 38, 10, 792, 20, 15840),
+(63, 38, 8, 520, 20, 10400),
+(64, 38, 11, 56, 20, 1120),
+(65, 39, 10, 792, 20, 15840),
+(66, 40, 10, 792, 20, 15840),
+(67, 41, 10, 792, 20, 15840),
+(68, 41, 7, 444, 20, 8880),
+(69, 41, 5, 464, 20, 9280),
+(70, 41, 6, 704, 20, 14080),
+(71, 41, 8, 520, 20, 10400),
+(72, 41, 11, 56, 20, 1120);
 
 -- --------------------------------------------------------
 
@@ -1807,6 +2319,38 @@ INSERT INTO `personnels` (`id`, `id_users`, `cin`, `cnss`, `polite`, `mobile`, `
 (4, 4, 'EE563836', '126654117', 'Mlle', '0664282238', 'El Moukef Derb Toudgha n 125 bis Marrakech', '2018-09-02', '2021-01-06', '2018-12-12', 9, 1, 5600, 6210, 'Célibataire', 0, 1781, 'danger'),
 (5, 5, 'JA152555', '139893601', 'Mr.', '+212 6 96 78 43 70', 'N 193 unite mohammed safou quartier youssef ben tachfine Marrakech', '2016-11-01', '2016-11-01', '1993-05-15', 7, 1, 6257, 7063, 'Marie', 0, 1788, 'danger'),
 (6, 6, 'EE471931', '145169200', 'Mr.', '+212 6 98 18 01 57', 'Assif B N 28 Marrakech', '2017-01-01', '2017-01-01', '1992-05-12', 8, 1, 6800, 7727, 'Marie', 1, 1787, 'danger');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pinalites`
+--
+
+DROP TABLE IF EXISTS `pinalites`;
+CREATE TABLE IF NOT EXISTS `pinalites` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_users` int(11) NOT NULL,
+  `date_operation` date NOT NULL,
+  `id_projects` int(11) NOT NULL,
+  `libelle` text,
+  `type` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `pinalites`
+--
+
+INSERT INTO `pinalites` (`id`, `id_users`, `date_operation`, `id_projects`, `libelle`, `type`) VALUES
+(1, 6, '2019-01-08', 5, 'late for daily meeting', 50),
+(2, 6, '2019-01-24', 6, 'Absente all day', 100),
+(3, 6, '2019-02-01', 6, 'late for daily meeting', 50),
+(5, 3, '2019-03-01', 8, 'late for daily meeting', 50),
+(6, 3, '2019-03-20', 10, 'late for daily meeting', 50),
+(7, 1, '2019-03-13', 10, 'late for daily meeting', 50),
+(8, 2, '2019-03-13', 10, 'late for daily meeting', 50),
+(9, 2, '2019-03-25', 11, 'Absente all day : Daughter sick', 100),
+(10, 4, '2019-03-20', 11, 'late for daily meeting', 50);
 
 -- --------------------------------------------------------
 
@@ -2454,12 +2998,53 @@ DROP TABLE IF EXISTS `primes`;
 CREATE TABLE IF NOT EXISTS `primes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_users` int(11) NOT NULL,
-  `projects` text NOT NULL,
-  `pinalites` int(11) NOT NULL,
-  `complexite` int(11) NOT NULL,
-  `prime` int(11) NOT NULL,
+  `date_paiement` date DEFAULT NULL,
+  `pinalites` int(11) DEFAULT NULL,
+  `complexite` int(11) DEFAULT NULL,
+  `prime` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `primes`
+--
+
+INSERT INTO `primes` (`id`, `id_users`, `date_paiement`, `pinalites`, `complexite`, `prime`) VALUES
+(21, 4, '2019-03-13', 0, 105, 4200),
+(23, 6, '2019-03-13', 0, 60, 2400),
+(24, 6, '2019-03-06', 200, 124, 4760);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `primes_projects`
+--
+
+DROP TABLE IF EXISTS `primes_projects`;
+CREATE TABLE IF NOT EXISTS `primes_projects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_projects` int(11) NOT NULL,
+  `id_primes` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `primes_projects`
+--
+
+INSERT INTO `primes_projects` (`id`, `id_projects`, `id_primes`) VALUES
+(38, 7, 21),
+(39, 5, 21),
+(40, 6, 21),
+(41, 10, 22),
+(42, 7, 22),
+(43, 8, 22),
+(53, 10, 23),
+(54, 8, 23),
+(55, 11, 23),
+(56, 7, 24),
+(57, 5, 24),
+(58, 6, 24);
 
 -- --------------------------------------------------------
 
@@ -2516,6 +3101,28 @@ INSERT INTO `projects` (`id`, `start_date`, `end_date`, `technologies`, `version
 (9, '2019-02-01', '2019-02-28', 'Laravel', 'GE v.0.2', 'Sofwtare SARL', 'IN PROGRESS', 2, 20, 0),
 (10, '2019-02-21', '2019-03-19', 'oracle jee angular', 'ABA sprint  19.3.2', 'Abatech 20', 'DONE', 1, 20, 1),
 (11, '2019-03-21', '2019-04-10', 'Java8, J2EE 6, Oracle, Angular JS', 'ABA sprint 19.5', 'Abatech 20', 'IN PROGRESS', 1, 20, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `settings`
+--
+
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE IF NOT EXISTS `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prime_percentage` int(50) DEFAULT '5',
+  `penalite_missing_daily_meeting` int(50) NOT NULL DEFAULT '50',
+  `penalite_ask_late_for_holiday` int(50) NOT NULL DEFAULT '100',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `settings`
+--
+
+INSERT INTO `settings` (`id`, `prime_percentage`, `penalite_missing_daily_meeting`, `penalite_ask_late_for_holiday`) VALUES
+(1, 5, 50, 100);
 
 -- --------------------------------------------------------
 
