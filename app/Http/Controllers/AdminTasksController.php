@@ -48,32 +48,29 @@
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Devlopper','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			$this->form[] = ['label'=>'Ref Client','name'=>'ref_client','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Ref Software','name'=>'ref_interne','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Ref Client','name'=>'Ref_client','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Ref Software','name'=>'Ref_interne','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS;IN REVIEW;DONE'];
 			$this->form[] = ['label'=>'Complexity','name'=>'complexity','type'=>'number','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10','datatable'=>'modules,libelle'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Devlopper','name'=>'id_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			//$this->form[] = ['label'=>'Ref Client','name'=>'ref_client','type'=>'text','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Ref Software','name'=>'ref_interne','type'=>'text','width'=>'col-sm-10'];
-			//
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Ref Client','name'=>'Ref_client','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Ref Software','name'=>'Ref_interne','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'TODO;IN PROGRESS;IN REVIEW;DONE'];
-			//$this->form[] = ['label'=>'Progress','name'=>'progress','type'=>'number','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Complexity','name'=>'complexity','type'=>'number','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10','datatable'=>'modules,libelle'];
-			//$this->form[] = ['label'=>'Priorite','name'=>'priorite','type'=>'select2','width'=>'col-sm-10','dataenum'=>'Urgent;Hight;Medium;Low'];
+			//$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

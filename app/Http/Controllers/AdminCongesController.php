@@ -134,16 +134,16 @@ private     $privilegeId ;
 	        | @icon  = Icon from Awesome.
 	        | 
 	        */
-	        $this->index_button = array();
+			$this->index_button = array();
 			$this->index_button[] = ["label"=>"Report congé","icon"=>"fa fa-pie-chart","url"=>CRUDBooster::mainpath('../congeReport')];
 			if($this->privilegeId===1){
 				$this->index_button[] = ["label"=>"Status des salaries","icon"=>"fa fa-users","url"=>CRUDBooster::mainpath('../statusSalarie')];
 			}
 
 	        /* 
-	        | ---------------------------------------------------------------------- 
+	        | ----------------------------------------------------------------
 	        | Customize Table Row Color
-	        | ----------------------------------------------------------------------     
+	        | -----------------------------------------------------------------  
 	        | @condition = If condition. You may use field alias. E.g : [id] == 1
 	        | @color = Default is none. You can use bootstrap success,info,warning,danger,primary.        
 	        | 
@@ -433,6 +433,18 @@ private     $privilegeId ;
 	    	return substr($res,0,-1);
 	    	 
 	    }
+
+	    public static function getPrime($user,$month,$year){
+	    	$start = empty($month)?$year."-01-01":$year."-".$month."-01";
+	    	$end = empty($month)?$year."-12-31":$year."-".$month."-31";
+	 		 $result = DB::table('primes')
+	 				->where('id_users',$user)
+	 				->whereBetween('date_paiement',[$start,$end])
+	 				->first();
+
+	    	return $result->prime. ".00 Dh";
+	    	 
+	    }
 	    //justifier et non justifier
 	    public static function getNombreJourConge($user,$month,$year)
 	    {	
@@ -479,21 +491,26 @@ private     $privilegeId ;
 	    	$personnels = DB::table('personnels')->join('cms_users','cms_users.id','=','personnels.id_users')->get();
 
 	    	$header = "";
-	    	$body = "<table>
+	    	$body = "
+<table><tr><td> <img src='storage/app/myImages/Logo.jpg'>  </td><td>Status des salaries</td></tr></table>
+	    	<h1 style ='text-align:center'>Status des salaries</h1><table style ='border-bottom: 2px solid black;border-top: 2px solid black;border-right: 2px solid black;border-left: 2px solid black'>
                                 <thead><tr>
-                                    <th>Nom</th>
-                                    <th>Salaire net</th>
-                                    <th>Nombre d'heur</th>
-                                    <th>Congé</th></tr>
+                                    <th style ='border-right: 2px solid black;'>Nom</th>
+                                    <th style ='border-right: 2px solid black;'>Salaire net</th>
+                                    <th style ='border-right: 2px solid black;'>Nombre d'heur</th>
+                                    <th style ='border-right: 2px solid black;'>Congé</th>
+                                    <th >Motif</th>
+                                    </tr>
                                 </thead>
                                 
                                 <tbody>";
                                     for($i=0;$i<count($personnels);$i++){
                                         $body .="<tr >
-                            <td>".$personnels[$i]->name."</td> 
-                            <td>".$personnels[$i]->net_salary."</td> 
-                            <td>".self::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))."</td> 
-                            <td>".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
+                            <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".$personnels[$i]->name."</td> 
+                            <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".$personnels[$i]->net_salary."</td> 
+                            <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".self::getNbrHeurs($personnels[$i]->id,date('m'),date('Y'))."</td> 
+                            <td style ='border-right: 2px solid black;border-top: 2px solid black;'>".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
+                            <td style ='border-top: 2px solid black;'>".self::getMotif($personnels[$i]->id,date('m'),date('Y'))."</td> 
                     </tr>";
                                  }       
                                 $body .="</tbody>

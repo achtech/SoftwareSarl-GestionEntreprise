@@ -5,6 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
+
 	class AdminFacturesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
@@ -306,14 +307,14 @@
 				    ['id_factures' => $value->id_factures, 'id_tasks' => $value->tasksId]
 				]);
 			
-				$totalFactureProjects = $projectId!= $value->id_projects ? $value->complexity*4*$value->prix_unitaire : $totalFactureProjects + $value->complexity*4*$value->prix_unitaire;
-				$nbrHeurProjects = $projectId!= $value->id_projects ? $value->complexity*4 : $nbrHeurProjects+$value->complexity*4;
+				$totalFactureProjects = $projectId!= $value->id_projects ? $value->complexity*8*$value->prix_unitaire : $totalFactureProjects + $value->complexity*8*$value->prix_unitaire;
+				$nbrHeurProjects = $projectId!= $value->id_projects ? $value->complexity*8 : $nbrHeurProjects+$value->complexity*8;
 				$projectId =  $projectId==0 ? $value->id_projects : ($projectId!= $value->id_projects ? $value->id_projects: $projectId);
 			
 		//		$projectId = $projectId == 0 ? $value->id_projects : $projectId;
-		//		$nbrHeurProjects = $nbrHeurProjects + $value->complexity*4;
-		//		$totalFactureProjects = $totalFactureProjects+$value->complexity*4*$value->prix_unitaire;
-				$totalFacture = $totalFacture+$value->complexity*4*$value->prix_unitaire;				
+		//		$nbrHeurProjects = $nbrHeurProjects + $value->complexity*8;
+		//		$totalFactureProjects = $totalFactureProjects+$value->complexity*8*$value->prix_unitaire;
+				$totalFacture = $totalFacture+$value->complexity*8*$value->prix_unitaire;				
 
 				DB::table('factures_projects')
 					->where('id_projects',$value->id_projects)
@@ -382,21 +383,138 @@
 
 	    public function imprimerFacture($id){
 	    	$data['title_page'] = "Facture".$id;
-	    	$data['factures'] = DB::table('factures')
+	    	$factures = DB::table('factures')
 	    						->where('id',$id)->first();
-	    	$data['clients'] = DB::table('clients')
+	    	$clients= DB::table('clients')
 	    						->join('projects','clients.id','projects.id_clients')
 	    						->join('factures_projects','factures_projects.id_projects','projects.id')
 	    						->where('factures_projects.id_factures',$id)->first();
-	    	$data['factures_projects'] = DB::table('factures_projects')
+	    	$factures_projects = DB::table('factures_projects')
 	    						->join('projects','projects.id','factures_projects.id_projects')
 	    						->where('factures_projects.id_factures',$id)->get();
-	    	$data['factures_tasks'] = DB::table('details_factures')
+	    	$factures_tasks = DB::table('details_factures')
 	    						->join('tasks','tasks.id','details_factures.id_tasks')
-	    						->where('details_factures.id_factures',$id)->get();
-	    	$data['software'] = DB::table("entreprises")->first();
-	    						
-	    	return $this->cbView('factures_impression',$data);
+	    						->where('details_factures.id_factures',$id)
+	    						->orderby('tasks.id_modules')
+	    						->get();
+	    	$software = DB::table("entreprises")->first();
+	    	$data['factures'] = $factures;
+	    	$data['clients'] = $clients;
+	    	$data['factures_projects'] = $factures_projects;
+	    	$data['factures_tasks'] = $factures_tasks;
+	    	$data['software'] = $software;
+	    		    	
+		    $pdf = \App::make('dompdf.wrapper');
+	    	$pdf->loadHTML($this->printFacture($factures,$clients,$factures_projects,$factures_tasks,$software));
+	    	return $pdf->stream();
+
+	    	//return $this->cbView('factures_impression',$data);
+	    }
+
+	    public function printFacture($factures,$clients,$factures_projects,$factures_tasks,$software){
+	    	$header="";
+	    	//$body = "<img src='../../../storage/app/myImages/Logo.jpg'>";
+	    	$body="<table  style='border-bottom: 2px solid #997339;' ><tr ><td style='padding-right:180px;color:#857252 ; background-color:#faf7f2;font-weight: bold; border-right: 2px solid #997339;'>";
+	    	$body.="<div style=' margin-top:10px;text-align:justify;'>".$software->social_reason."<br>App 6 2eme étage M'HITA espace <br>AL moustapha Semlalia<br>".$software->zip_code." Marrakech<br>Maroc<br></div>";
+    		$body.="<div style='float:right;'>";
+    		$body.="</td><td >";
+    		$body.="<h2 style ='color:#c19859;font-weight:bold;text-align:center'>Facture</h2>";
+    		$body.="</td></tr><tr><td style='border-top: 2px solid #997339;background-color:#faf7f2;border-right: 2px solid #997339;'></td><td style ='color:#664d26;text-align:right ;border-top: 2px solid #997339;'>";
+        $body.="Date :$factures->date_facture<br>";
+        $body.="Reference Client:$factures->ref_clients<br>";
+        $body.="N° facture:".$factures->num_facture."<br>";
+        $body.=$clients->social_reason."<br>";
+        $body.=$clients->adress."<br>";
+    	$body.="</div>";
+    	$body.="</td></tr></table>";
+    	$body.="<br style='clear: both;'>";
+        $body.="<div style='padding-top: 90px; padding-bottom:200px'>";
+        $body.="<table width='100%' style='border: 2px solid black;'>";
+        $body.="<thead><tr style='border-right: none;'>
+                <th style='padding: 10px ; border-bottom: 2px solid black;'>Réference</th>
+                <th style='padding: 10px ; border-bottom: 2px solid black;border-left: 2px solid black; '>Description</th>
+                <th style='padding: 10px ; border-bottom: 2px solid black; border-left: 2px solid black; '>Prix unitaire</th>
+                <th style='padding: 10px ; border-bottom: 2px solid black; border-left: 2px solid black; '>Qté</th>
+                <th style='padding: 10px ; border-bottom: 2px solid black; border-left: 2px solid black; '>Montant</th>
+            </tr>
+            </thead>
+            <tbody>";
+
+	    foreach($factures_projects->take(5) as $fp){
+	    	
+            $body.="<tr>
+                <td style='padding: 10px; border-bottom: 2px solid black;'>$fp->nom</td>
+                <td style='padding: 10px ;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->version</td>
+                <td style='padding: 10px; text-align: center; border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->prix_unitaire</td>
+                <td style='padding: 10px; text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->nombre_heurs</td>
+                <td style='padding: 10px;text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->total</td>
+            </tr>";
+        }
+            $body.="</tbody>
+            <tfoot>
+            <tr >
+                <th colspan='4' style='text-align: right !important;padding: 10px;border-bottom: 2px solid black;'>Total Hors Taxes</th>
+                <th style='padding: 10px ;border-bottom: 2px solid black; border-left: 2px solid black;'>$factures->total_hors_taxe</th>
+            </tr>
+            <tr>
+                <th colspan='4' style='text-align: right !important;padding: 10px; '>Montant Total</th>
+                <th style='padding: 10px;border-left: 2px solid black;'>$factures->total</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+";
+
+	    	$footer="<div style='position: fixed; bottom: 30px;'><hr style='width: 90%;background: brown;height: 3px;'>
+    <div><center>
+        Software SARL • App 6 2eme étage M'HITA espace AL moustapha Semlalia,40000 Marrakech Maroc<br>
+N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
+    </center></div></div>
+
+    </div>";
+
+    $body2="<div style='padding-top: 40px;''>";
+    $body2.="<h2 style='text-align:center;'>Details Factures</h2>
+
+        <table width='100%'  style='border: 1px;border: 2px solid black;margin-bottom: 100px;'>
+            <thead>
+            <tr>
+                <th style='padding: 10px;border-bottom: 2px solid black;border-top: 2px solid black;'>Réf client</th>
+                <th style='padding: 10px;border-top: 2px solid black;border-left: 2px solid black;border-bottom: 2px solid black;'>Réf interne</th>
+                <th style='padding: 10px;border-top: 2px solid black;border-left: 2px solid black;border-bottom: 2px solid black;'>Complexity</th>
+                <th style='padding: 10px;border-top: 2px solid black;border-left: 2px solid black;border-bottom: 2px solid black;'>Nombre d'heures</th>
+            </tr>
+            </thead>
+
+            <tbody>";
+                    $sumHours = 0;
+                foreach($factures_tasks as $ft ){
+			    $sumHours = $sumHours+$ft->complexity*8;
+
+            $body2.="<tr>
+                <td style='padding: 10px ;border-bottom: 2px solid black;'>".$ft->Ref_client."</td>
+                <td style='padding: 10px; text-align: center; ;border-bottom: 2px solid black;border-left: 2px solid black;'>".$ft->Ref_interne."</td>
+                <td style='padding: 10px; text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>".$ft->complexity."</td>
+                <td style='padding: 10px;text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>".($ft->complexity*8)."</td>
+            </tr>";
+            }
+            //{{ $factures_tasks->links() }}
+            $body2.="</tbody>
+            <tfoot>
+            <tr>
+                <th colspan='3' style='text-align: right !important;padding: 10px;border-bottom: 2px solid black;'>Sum of Worked hours</th>
+                <th style='padding: 10px;border-bottom: 2px solid black;border-left: 2px solid black;'>".$sumHours."</th>
+            </tr>
+            <tr>
+                <th colspan='3' style='text-align: right !important;padding: 10px'>Montant total</th>
+                <th style='padding: 10px;border-left: 2px solid black;'>".$factures->total."</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>";
+
+
+	    	return $header.$body.$footer."<br/><br/><br/><br/>".$header.$body2;
 	    }
 	    public function getProjectsByFactures($factures){
 	    //	return $factures;

@@ -1,14 +1,11 @@
 @extends('crudbooster::admin_template')
 @section('content')
-<form action="../factures" method="post" >
-    {{ csrf_field() }}
-    <input type="hidden" name="id" value="{{$factures->id}}">
-    <input type="submit" id="btSubmit" name="btSubmit" value="Imprimer">
-</form>
+
 <div id="widget">
 <div class="box">
+     <table> 
+        <tr>
     <div style="margin:50px;font-size: 24px">
-        
     <div style="float:left;">
         {{$software->social_reason}}<br>
         {{$software->adress}}<br>
@@ -77,6 +74,10 @@ N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
     </center></div>
 
     </div>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+</table>      
     </div>
 
     <div class="box">

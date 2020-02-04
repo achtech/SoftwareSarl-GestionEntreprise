@@ -18,8 +18,8 @@
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
 			$this->privilegeId = DB::table('cms_users')->where('id',CRUDBooster::myId())->first()->id_cms_privileges;
-			$this->button_edit = $this->privilegeId==2;
-			$this->button_delete = $this->privilegeId==1;
+			$this->button_edit = CRUDBooster::isSuperadmin();
+			$this->button_delete = CRUDBooster::isSuperadmin();
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;

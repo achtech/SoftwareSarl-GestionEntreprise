@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('home','HomeController@exportDatabase');
 Route::get('admin/congeReport','AdminCongesController@getListOfConge');
 Route::get('admin/statusSalarie','AdminCongesController@getStatusSalarie');
+Route::get('admin/PrimesProjects','AdminProjectsController@getListOfPrimes');
 Route::get('admin/home','HomeController@index');
 Route::get('/pointageReport', 'PointageReportController@printpdf');
 Route::Post('attestation_travail', 'AdminDocumentsController@getUser');
