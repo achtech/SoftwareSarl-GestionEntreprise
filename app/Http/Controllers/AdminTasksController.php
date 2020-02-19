@@ -57,6 +57,7 @@
 			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10','datatable'=>'modules,libelle'];
+			$this->form[] = ['label'=>'Priorite','name'=>'priorite','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -70,7 +71,7 @@
 			//$this->form[] = ['label'=>'Complexity','name'=>'complexity','type'=>'number','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Modules','name'=>'id_modules','type'=>'select2','width'=>'col-sm-10','datatable'=>'modules,libelle'];
 			# OLD END FORM
 
 			/* 

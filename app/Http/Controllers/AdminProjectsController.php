@@ -49,9 +49,9 @@
 			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Technologies','name'=>'technologies','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
 			$this->form[] = ['label'=>'Prix Unitaire','name'=>'prix_unitaire','type'=>'number','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Honoraire','name'=>'honoraire','type'=>'select2','validation'=>'required','width'=>'col-sm-9','dataenum'=>'day;hour;total'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -61,8 +61,9 @@
 			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'date','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Technologies','name'=>'technologies','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Version','name'=>'version','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Clients','name'=>'id_clients','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'clients,social_reason'];
+			//$this->form[] = ['label'=>'Prix Unitaire','name'=>'prix_unitaire','type'=>'number','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Honoraire','name'=>'honoraire','type'=>'select2','validation'=>'required','width'=>'col-sm-9','dataenum'=>'day;heure;total'];
 			# OLD END FORM
 
 			/* 
@@ -253,13 +254,15 @@
 
 
 	    public function getListOfPrimes(){
+			
 		    $personnels = DB::table('users')->get();
 		    $projects = DB::table('projects')->where('prime',1)->get();
    	    	$data['page_title']="Report Projects";
 	    	//get list of personnel from database
 	    	$result = DB::table('cms_users')
-	    				->get();
-	    	$data['personnels'] = $personnels;
+			->where('status','=','Active')->get();
+			$data['personnels'] = $personnels;
+			//dd($result);
 	    	$data['projects'] = $projects;
 	    	$complexityS = [];
 	    	$pinalities = [];
@@ -290,10 +293,11 @@
 
 	    	$data['pinalities'] = $pinalities;
 	    	$data['complexityS'] = $complexityS;
-	    	$data['primes'] = $primes;
+			$data['primes'] = $primes;
 	    	$data['compUser'] = $compUser;
 	    	$data['pinaUser'] = $pinaUser;
-	    	$data['primUser'] = $primUser;
+			$data['primUser'] = $primUser;
+			//dd(count($personnels));
 	    //dd($data['complexityS']);
 	    	$this->cbView('PrimesProjects',$data);
 	    }

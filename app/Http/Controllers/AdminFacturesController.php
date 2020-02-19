@@ -410,7 +410,6 @@
 	    }
 
 	    public function printFacture($factures,$clients,$factures_projects,$factures_tasks,$software){
-	    	
 	    	$header="";
 	    	//$body = "<img src='../../../storage/app/myImages/Logo.jpg'>";
 	    	$body="<table  style='border-bottom: 2px solid #997339;' ><tr ><td style='padding-right:180px;color:#857252 ; background-color:#faf7f2;font-weight: bold; border-right: 2px solid #997339;'>";
@@ -437,15 +436,13 @@
                 <th style='padding: 10px ; border-bottom: 2px solid black; border-left: 2px solid black; '>Montant</th>
             </tr>
             </thead>
-            <tbody>";
-
+			<tbody>";
 	    foreach($factures_projects->take(5) as $fp){
-	    	
             $body.="<tr>
                 <td style='padding: 10px; border-bottom: 2px solid black;'>$fp->nom</td>
                 <td style='padding: 10px ;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->version</td>
                 <td style='padding: 10px; text-align: center; border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->prix_unitaire</td>
-                <td style='padding: 10px; text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->nombre_heurs</td>
+				<td style='padding: 10px; text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>	</td>
                 <td style='padding: 10px;text-align: right;border-bottom: 2px solid black;border-left: 2px solid black;'>$fp->total</td>
             </tr>";
         }
@@ -513,7 +510,9 @@ N° RC 58467 • N° de Patente 92110189 • N° Id.fisc 06528370
     </div>";
 
 
-	    	return $header.$body.$footer."<br/><br/><br/><br/>".$header.$body2;
+			return $header.$body.$footer."<br/><br/><br/><br/>".$header.$body2;
+		
+		
 	    }
 	    public function getProjectsByFactures($factures){
 	    //	return $factures;

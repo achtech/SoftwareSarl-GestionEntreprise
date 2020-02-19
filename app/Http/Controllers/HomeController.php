@@ -10,13 +10,14 @@
 
 	class HomeController extends AdminPointages1Controller {
 	    public function index() {
+        
 	    	$data['page_title']="Home";
             if(!CRUDBooster::isSuperadmin()){
                 $result = DB::table('cms_users')
                             ->where('id',CRUDBooster::myId())
                             ->get();
             }else{
-                $result = DB::table('cms_users')->get();
+                $result = DB::table('cms_users')->where('status','=','Active')->get();
             }
 	    	$tab = [];
 	    	$i=0;

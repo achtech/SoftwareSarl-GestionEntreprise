@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminPrimesController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminPanierController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -25,33 +25,36 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "primes";
+			$this->table = "panier";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"users,nom"];
-			$this->col[] = ["label"=>"Date Paiement","name"=>"date_paiement"];
-			$this->col[] = ["label"=>"Projects","name"=>"id","callback_php"=>'$this->getProjectName($row->id)'];
-			$this->col[] = ["label"=>"Pinalites","name"=>"pinalites"];
-			$this->col[] = ["label"=>"Complexite","name"=>"complexite"];
-			$this->col[] = ["label"=>"Prime","name"=>"prime"];
+			$this->col[] = ["label"=>"Libelle","name"=>"libelle"];
+			$this->col[] = ["label"=>"Description","name"=>"description"];
+			$this->col[] = ["label"=>"StartDate","name"=>"startDate"];
+			$this->col[] = ["label"=>"EndDate","name"=>"endDate"];
+			$this->col[] = ["label"=>"Developpeur","name"=>"developpeur"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
-			//$this->form = [];
-			//$this->form[] = ['label'=>'Date Paiement','name'=>'date_paiement','type'=>'date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version','relationship_table'=>'primes_projects','datatable_format'=>'nom,\' ---> \',version'];
+			$this->form = [];
+			$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'StartDate','name'=>'startDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'EndDate','name'=>'endDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Developpeur','name'=>'developpeur','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
-			$this->form = [];
-			$this->form[] = ['label'=>'Users','name'=>'id_users','type'=>'select2','width'=>'col-sm-10','datatable'=>'users,nom'];
-			$this->form[] = ['label'=>'Date Paiement','name'=>'date_paiement','type'=>'date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Projects','name'=>'id_projects','type'=>'select2','width'=>'col-sm-10','datatable'=>'projects,version','relationship_table'=>'primes_projects','datatable_format'=>'nom,\' ---> \',version'];
-			/*$this->form[] = ['label'=>'Penalites','name'=>'pinalites','type'=>'number','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Complexite','name'=>'complexite','type'=>'number','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Prime','name'=>'prime','type'=>'number','width'=>'col-sm-10'];
-			*/
+			# OLD START FORM
+			//$this->form = [];
+			//$this->form[] = ['label'=>'Libelle','name'=>'libelle','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'StartDate','name'=>'startDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'EndDate','name'=>'endDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Developpeur','name'=>'developpeur','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			# OLD END FORM
+
 			/* 
 	        | ---------------------------------------------------------------------- 
 	        | Sub Module
@@ -259,7 +262,7 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-	    //	dd($postdata);
+
 	    }
 
 	    /* 
@@ -271,67 +274,8 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
-			$projects = DB::table('primes_projects')
-            	->where('id_primes','=',$id)
-            	->get();
-            $user = DB::table('primes')
-            	->where('id','=',$id)
-            	->first()->id_users;
-            $percentagePrime =DB::table('settings')
-            	->first()->prime_percentage; 
-            $complexity = 0;
-            $penalite = 0;
-         //   dd($projects);
-            for ($i=0;$i<count($projects);$i++) {
-            	$complexity = $complexity + intval($this->getSumComplexity($user,$projects[$i]->id_projects));
-            	$penalite = $penalite + intval($this->getSumPinalities($user,$projects[$i]->id_projects));
-            }
-            $primes = ($complexity * ($percentagePrime/100) * 200 * (8/2)) - $penalite;
-            DB::table('primes')
-					->where('id',$id)
-					->update(['pinalites' => $penalite,'complexite' => $complexity,'prime' => $primes])
-					;
-					
+
 	    }
-
-	    public function getProjectName($id){
-			
-	    	$result = '';
-	    	$projects = DB::table('projects')
-	    		->join('primes_projects', 'primes_projects.id_projects', '=', 'projects.id')
-            	->where('primes_projects.id_primes','=',$id)
-            	->get();
-            for ($i=0;$i<count($projects);$i++) {
-            	$result = $i != 0 ? $result.", ".$projects[$i]->version : $projects[$i]->version;
-            }	
-            return $result;
-            
-	    }
-
-	   	public function getSumComplexity($userId,$projectId){
-	    	return DB::table('tasks')
-		    	->join('modules', 'tasks.id_modules', '=', 'modules.id')
-    			->join('projects', 'modules.id_projects', '=', 'projects.id')
-            	->where('projects.id','=',$projectId)
-            	->where('tasks.id_users','=',$userId)
-            	->sum('tasks.complexity');
-	    }	  
-
-	    public function getSumPinalities($userId,$projectId){
-	    	return DB::table('pinalites')
-            	->where('id_projects','=',$projectId)
-            	->where('id_users','=',$userId)
-            	->sum('type');
-	    }	  
-
-   	    public static function getComplexityProjects($id){
-
-	    	return DB::table('tasks')
-	    				->join('modules', 'tasks.id_modules', '=', 'modules.id')
-           				->join('projects', 'modules.id_projects', '=', 'projects.id')
-   						->where('projects.id','=',$id)
-  						->sum('tasks.complexity');
-   	    }
 
 	    /* 
 	    | ---------------------------------------------------------------------- 
@@ -354,26 +298,7 @@
 	    | 
 	    */
 	    public function hook_after_edit($id) {
-	        $projects = DB::table('primes_projects')
-            	->where('id_primes','=',$id)
-            	->get();
-            $user = DB::table('primes')
-            	->where('id','=',$id)
-            	->first()->id_users;
-            $percentagePrime =DB::table('settings')
-            	->first()->prime_percentage; 
-            $complexity = 0;
-            $penalite = 0;
-         //   dd($projects);
-            for ($i=0;$i<count($projects);$i++) {
-            	$complexity = $complexity + intval($this->getSumComplexity($user,$projects[$i]->id_projects));
-            	$penalite = $penalite + intval($this->getSumPinalities($user,$projects[$i]->id_projects));
-            }
-            $primes = ($complexity * ($percentagePrime/100) * 200 * (8/2)) - $penalite;
-            DB::table('primes')
-					->where('id',$id)
-					->update(['pinalites' => $penalite,'complexite' => $complexity,'prime' => $primes])
-					;
+	        //Your code here 
 
 	    }
 

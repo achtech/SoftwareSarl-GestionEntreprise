@@ -36,6 +36,7 @@
                         <div class="table-responsive">
                    
                             @foreach($users as $pers)
+                           
  <div class="col-md-6" style ="background-color: #f0f0f0">
                                 <div class="col-md-6" style="padding: 5px;">
                                  <table style="border-style: none;">
